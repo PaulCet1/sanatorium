@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="content">
+        Podaj treść posta
+        <div class="row">
+            <div class="col-6">
+                {% include 'Core/display_alerts.twig' %}
+
+                <form method="POST">
+                    <input type="text" name="content" />
+                    <input type="submit" value="Zapisz" />
+                </form>
+            </div>
+            <div class="col-6">
+                {{ post|raw }}
+            </div>
+            
+        </div>
+        
+        
+    </div>
+    
+{% endblock %}

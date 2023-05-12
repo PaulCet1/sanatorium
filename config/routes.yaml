@@ -1,0 +1,19 @@
+controllers:
+    resource:
+        path: ../src/Core/Controller/
+        namespace: App\Core\Controller
+    type: attribute
+    
+User_controllers:
+    resource:
+        path: ../src/User/Controller/
+        namespace: App\User\Controller
+    type: attribute
+    
+Post_controllers:
+    resource:
+        path: ../src/Post/Controller/
+        namespace: App\Post\Controller
+    type: attribute    
+    
+    
