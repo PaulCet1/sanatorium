@@ -3,6 +3,7 @@
 namespace Doctrine\Bundle\DoctrineBundle\DependencyInjection;
 
 use Doctrine\Common\Proxy\AbstractProxyFactory;
+use Doctrine\DBAL\Schema\LegacySchemaManagerFactory;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadataFactory;
@@ -42,6 +43,8 @@ use function trigger_deprecation;
  *
  * This information is solely responsible for how the different configuration
  * sections are normalized, and merged.
+ *
+ * @final since 2.9
  */
 class Configuration implements ConfigurationInterface
 {
@@ -155,7 +158,13 @@ class Configuration implements ConfigurationInterface
             ->fixXmlConfig('default_table_option')
             ->children()
                 ->scalarNode('driver')->defaultValue('pdo_mysql')->end()
-                ->scalarNode('platform_service')->end()
+                ->scalarNode('platform_service')
+                    ->setDeprecated(
+                        'doctrine/doctrine-bundle',
+                        '2.9',
+                        'The "platform_service" configuration key is deprecated since doctrine-bundle 2.9. DBAL 4 will not support setting a custom platform via connection params anymore.'
+                    )
+                ->end()
                 ->booleanNode('auto_commit')->end()
                 ->scalarNode('schema_filter')->end()
                 ->booleanNode('logging')->defaultValue($this->debug)->end()
@@ -194,6 +203,10 @@ class Configuration implements ConfigurationInterface
                 ))
                     ->useAttributeAsKey('name')
                     ->prototype('scalar')->end()
+                ->end()
+                ->scalarNode('schema_manager_factory')
+                    ->cannotBeEmpty()
+                    ->defaultValue($this->getDefaultSchemaManagerFactory())
                 ->end()
             ->end();
 
@@ -786,5 +799,14 @@ class Configuration implements ConfigurationInterface
             'names' => $namesArray,
             'values' => $valuesArray,
         ];
+    }
+
+    private function getDefaultSchemaManagerFactory(): string
+    {
+        if (class_exists(LegacySchemaManagerFactory::class)) {
+            return 'doctrine.dbal.legacy_schema_manager_factory';
+        }
+
+        return 'doctrine.dbal.default_schema_manager_factory';
     }
 }
