@@ -413,6 +413,6 @@ class __TwigTemplate_5b5bc97d21bbf12be3e88e713ee75694 extends Template
         </div>
     {% endfor %}
 {% endblock %}
-", "@Debug/Profiler/dump.html.twig", "/home/paul-cetnarowski/Pulpit/Projects/sanatorium/vendor/symfony/debug-bundle/Resources/views/Profiler/dump.html.twig");
+", "@Debug/Profiler/dump.html.twig", "/var/www/vendor/symfony/debug-bundle/Resources/views/Profiler/dump.html.twig");
     }
 }

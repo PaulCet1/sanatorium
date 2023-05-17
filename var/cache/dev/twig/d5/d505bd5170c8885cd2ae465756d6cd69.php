@@ -160,6 +160,6 @@ class __TwigTemplate_416c17e4b719f32bdf44f378c7e99e99 extends Template
 
     {{ include('@WebProfiler/Profiler/toolbar_item.html.twig', { link: profiler_url, name: 'time', status: status_color }) }}
 {% endblock %}
-", "@WebProfiler/Collector/memory.html.twig", "/home/paul-cetnarowski/Pulpit/Projects/sanatorium/vendor/symfony/web-profiler-bundle/Resources/views/Collector/memory.html.twig");
+", "@WebProfiler/Collector/memory.html.twig", "/var/www/vendor/symfony/web-profiler-bundle/Resources/views/Collector/memory.html.twig");
     }
 }

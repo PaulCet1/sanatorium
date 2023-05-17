@@ -237,6 +237,6 @@ class __TwigTemplate_db8a4ec91b96a85d9138eaae70540f18 extends Template
         </div>
     </form>
 </div>
-", "@WebProfiler/Profiler/search.html.twig", "/home/paul-cetnarowski/Pulpit/Projects/sanatorium/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/search.html.twig");
+", "@WebProfiler/Profiler/search.html.twig", "/var/www/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/search.html.twig");
     }
 }

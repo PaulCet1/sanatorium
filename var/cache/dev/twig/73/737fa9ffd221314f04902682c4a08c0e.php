@@ -1082,6 +1082,6 @@ $context["log"], "type", [], "any", false, false, false, 144))) ? ("silenced") :
         {% endif %}
     </div>
 {% endmacro %}
-", "@WebProfiler/Collector/logger.html.twig", "/home/paul-cetnarowski/Pulpit/Projects/sanatorium/vendor/symfony/web-profiler-bundle/Resources/views/Collector/logger.html.twig");
+", "@WebProfiler/Collector/logger.html.twig", "/var/www/vendor/symfony/web-profiler-bundle/Resources/views/Collector/logger.html.twig");
     }
 }

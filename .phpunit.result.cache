@@ -1,0 +1,1 @@
+{"version":1,"defects":{"App\\Tests\\Controller\\ProfileControllerTest::testVisitingWhileLoggedIn":4,"App\\Tests\\homepageTest::testSomething":4,"UserTest::testCreateUser":4},"times":{"App\\Tests\\homepageTest::testSomething":0.911,"App\\Tests\\Controller\\ProfileControllerTest::testVisitingWhileLoggedIn":0.001,"UserTest::testCreateUser":0.203}}

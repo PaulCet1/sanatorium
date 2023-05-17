@@ -1393,6 +1393,6 @@ class __TwigTemplate_7d539d12a79e3edec1ad85ed958ef87f extends Template
         <span>{{ route|default(controller) }}</span>
     {%- endif %}
 {% endmacro %}
-", "@WebProfiler/Collector/request.html.twig", "/home/paul-cetnarowski/Pulpit/Projects/sanatorium/vendor/symfony/web-profiler-bundle/Resources/views/Collector/request.html.twig");
+", "@WebProfiler/Collector/request.html.twig", "/var/www/vendor/symfony/web-profiler-bundle/Resources/views/Collector/request.html.twig");
     }
 }

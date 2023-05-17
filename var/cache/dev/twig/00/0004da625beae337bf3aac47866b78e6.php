@@ -236,6 +236,6 @@ class __TwigTemplate_edc2062d53b6e3c22fa142d037b6b783 extends Template
 
 
             
-", "User/Auth/login.twig", "/home/paul-cetnarowski/Pulpit/Projects/sanatorium/templates/User/Auth/login.twig");
+", "User/Auth/login.twig", "/var/www/templates/User/Auth/login.twig");
     }
 }

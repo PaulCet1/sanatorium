@@ -153,6 +153,6 @@ class __TwigTemplate_083d7fc70c3bba7fb8eb24fef533805d extends Template
             </div>
         </div>
     </div>
-{% endblock %}", "User/Auth/registration.twig", "/var/www/templates/User/Auth/registration.twig");
+{% endblock %}", "User/Auth/registration.twig", "/home/paul-cetnarowski/Pulpit/Projects/sanatorium/templates/User/Auth/registration.twig");
     }
 }

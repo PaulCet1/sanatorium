@@ -20,7 +20,9 @@ class TwigCustonExtension extends AbstractExtension {
         $this->container = $container;
         $this->twig = $twig;
     }
-    
+    /**
+     * @return array
+     */
     public function getFunctions() {
         return [
           new TwigFunction('convertPrice', [$this, 'convertPrice']),  

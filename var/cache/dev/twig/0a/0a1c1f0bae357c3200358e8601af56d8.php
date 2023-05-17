@@ -1803,6 +1803,6 @@ class __TwigTemplate_28e113059b93050a1de612a2c31bb6a3 extends Template
         </tbody>
     </table>
 {% endmacro %}
-", "@Doctrine/Collector/db.html.twig", "/home/paul-cetnarowski/Pulpit/Projects/sanatorium/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig");
+", "@Doctrine/Collector/db.html.twig", "/var/www/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig");
     }
 }
