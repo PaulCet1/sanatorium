@@ -14,6 +14,28 @@ Post_controllers:
     resource:
         path: ../src/Post/Controller/
         namespace: App\Post\Controller
-    type: attribute    
+    type: attribute
+
+
+home:
+    path: /home
+    controller: App\Core\Controller\HomeController::index
+    methods: ['GET']
+
     
     
+welcome:
+    path: /
+    controller: App\Core\Controller\HomeController::welcome
+    methods: ['GET']
+
+reservation_listing:
+    path: /reservation
+    controller: App\Reservation\Controller\Listing
+    methods: ['GET']
+
+
+user_show:
+    path: /user/show
+    controller: App\User\Controller\Show
+    methods: ['GET']

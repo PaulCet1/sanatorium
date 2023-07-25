@@ -57,9 +57,9 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Start</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Twoje konto</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Rezerwacje</span></a></li>
+          <li><a href="{{ path('home') }}" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Start</span></a></li>
+          <li><a href="{{ path('user_show') }}" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Twoje konto</span></a></li>
+          <li><a href="{{ path('reservation_listing') }}" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Rezerwacje</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Zabiegi</span></a></li>
           <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Kontakt</span></a></li>
           <li><a href="{{ path('logout') }}" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Wyloguj</span></a></li>

@@ -66,15 +66,13 @@ class __TwigTemplate_8945c2c57994d56ca25d99c34fcf4dee extends Template
 
         // line 5
         echo "<main id=\"main\">
-
-    <!-- ======= About Section ======= -->
     <section id=\"about\" class=\"about\">
       <div class=\"container\">
 
         <div class=\"section-title\">
           <h2>Witaj, ";
-        // line 12
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12), "username", [], "any", false, false, false, 12), "html", null, true);
+        // line 10
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10), "username", [], "any", false, false, false, 10), "html", null, true);
         echo "</h2>
           <p>Skorzystaj z naszej bogatej oferty</p>
         </div>
@@ -84,32 +82,30 @@ class __TwigTemplate_8945c2c57994d56ca25d99c34fcf4dee extends Template
             <img src=\"assets/img/profile-img.jpg\" class=\"img-fluid\" alt=\"\">
           </div>
           <div class=\"col-lg-8 pt-4 pt-lg-0 content\" data-aos=\"fade-left\">
-            <h3>UI/UX Designer &amp; Web Developer.</h3>
+            <h3>Twoje dane</h3>
             <p class=\"fst-italic\">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Nasza spółka ceni Twoją prywatność!
             </p>
             <div class=\"row\">
               <div class=\"col-lg-6\">
                 <ul>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Birthday:</strong> <span>1 May 1995</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Website:</strong> <span>www.example.com</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Phone:</strong> <span>+123 456 7890</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>City:</strong> <span>New York, USA</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Imię i nazwisko:</strong> <span>1 May 1995</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Data urodzenia:</strong> <span>www.example.com</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Telefon kontaktowy:</strong> <span>+123 456 7890</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Adres zamieszkania:</strong> <span>New York, USA</span></li>
                 </ul>
               </div>
               <div class=\"col-lg-6\">
                 <ul>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Age:</strong> <span>30</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Degree:</strong> <span>Master</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>PhEmailone:</strong> <span>email@example.com</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Wiek:</strong> <span>30</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Rodzaj klienta:</strong> <span>Master</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Adres email:</strong> <span>email@example.com</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Numer PESEL:</strong> <span>Available</span></li>
                 </ul>
               </div>
             </div>
             <p>
-              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
+            Zachęcamy do korzystania z naszych usług!
             </p>
           </div>
         </div>
@@ -125,7 +121,7 @@ class __TwigTemplate_8945c2c57994d56ca25d99c34fcf4dee extends Template
 
         <div class=\"section-title\">
           <h2>O nas</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Nasz personel posiada ogromne doświadczenie przy współpracy z klientami, którzy do nas wracają.</p>
         </div>
 
         <div class=\"row no-gutters\">
@@ -270,7 +266,7 @@ class __TwigTemplate_8945c2c57994d56ca25d99c34fcf4dee extends Template
 
     public function getDebugInfo()
     {
-        return array (  77 => 12,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  75 => 10,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -280,8 +276,6 @@ class __TwigTemplate_8945c2c57994d56ca25d99c34fcf4dee extends Template
 
 {% block body %}
 <main id=\"main\">
-
-    <!-- ======= About Section ======= -->
     <section id=\"about\" class=\"about\">
       <div class=\"container\">
 
@@ -295,32 +289,30 @@ class __TwigTemplate_8945c2c57994d56ca25d99c34fcf4dee extends Template
             <img src=\"assets/img/profile-img.jpg\" class=\"img-fluid\" alt=\"\">
           </div>
           <div class=\"col-lg-8 pt-4 pt-lg-0 content\" data-aos=\"fade-left\">
-            <h3>UI/UX Designer &amp; Web Developer.</h3>
+            <h3>Twoje dane</h3>
             <p class=\"fst-italic\">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Nasza spółka ceni Twoją prywatność!
             </p>
             <div class=\"row\">
               <div class=\"col-lg-6\">
                 <ul>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Birthday:</strong> <span>1 May 1995</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Website:</strong> <span>www.example.com</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Phone:</strong> <span>+123 456 7890</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>City:</strong> <span>New York, USA</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Imię i nazwisko:</strong> <span>1 May 1995</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Data urodzenia:</strong> <span>www.example.com</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Telefon kontaktowy:</strong> <span>+123 456 7890</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Adres zamieszkania:</strong> <span>New York, USA</span></li>
                 </ul>
               </div>
               <div class=\"col-lg-6\">
                 <ul>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Age:</strong> <span>30</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Degree:</strong> <span>Master</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>PhEmailone:</strong> <span>email@example.com</span></li>
-                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Wiek:</strong> <span>30</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Rodzaj klienta:</strong> <span>Master</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Adres email:</strong> <span>email@example.com</span></li>
+                  <li><i class=\"bi bi-chevron-right\"></i> <strong>Numer PESEL:</strong> <span>Available</span></li>
                 </ul>
               </div>
             </div>
             <p>
-              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
+            Zachęcamy do korzystania z naszych usług!
             </p>
           </div>
         </div>
@@ -336,7 +328,7 @@ class __TwigTemplate_8945c2c57994d56ca25d99c34fcf4dee extends Template
 
         <div class=\"section-title\">
           <h2>O nas</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Nasz personel posiada ogromne doświadczenie przy współpracy z klientami, którzy do nas wracają.</p>
         </div>
 
         <div class=\"row no-gutters\">

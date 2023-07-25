@@ -230,9 +230,18 @@ class __TwigTemplate_4774796e6758b9f5b5bd0d4ca5638c57 extends Template
 
       <nav id=\"navbar\" class=\"nav-menu navbar\">
         <ul>
-          <li><a href=\"#hero\" class=\"nav-link scrollto active\"><i class=\"bx bx-home\"></i> <span>Start</span></a></li>
-          <li><a href=\"#about\" class=\"nav-link scrollto\"><i class=\"bx bx-user\"></i> <span>Twoje konto</span></a></li>
-          <li><a href=\"#resume\" class=\"nav-link scrollto\"><i class=\"bx bx-file-blank\"></i> <span>Rezerwacje</span></a></li>
+          <li><a href=\"";
+            // line 60
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+            echo "\" class=\"nav-link scrollto active\"><i class=\"bx bx-home\"></i> <span>Start</span></a></li>
+          <li><a href=\"";
+            // line 61
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_show");
+            echo "\" class=\"nav-link scrollto\"><i class=\"bx bx-user\"></i> <span>Twoje konto</span></a></li>
+          <li><a href=\"";
+            // line 62
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reservation_listing");
+            echo "\" class=\"nav-link scrollto\"><i class=\"bx bx-file-blank\"></i> <span>Rezerwacje</span></a></li>
           <li><a href=\"#portfolio\" class=\"nav-link scrollto\"><i class=\"bx bx-book-content\"></i> <span>Zabiegi</span></a></li>
           <li><a href=\"#services\" class=\"nav-link scrollto\"><i class=\"bx bx-server\"></i> <span>Kontakt</span></a></li>
           <li><a href=\"";
@@ -283,7 +292,7 @@ class __TwigTemplate_4774796e6758b9f5b5bd0d4ca5638c57 extends Template
 
     public function getDebugInfo()
     {
-        return array (  268 => 79,  258 => 78,  240 => 65,  219 => 47,  209 => 41,  199 => 40,  186 => 16,  176 => 15,  163 => 13,  153 => 12,  134 => 7,  104 => 82,  102 => 78,  95 => 73,  93 => 40,  69 => 18,  66 => 15,  64 => 12,  56 => 7,  48 => 1,);
+        return array (  277 => 79,  267 => 78,  249 => 65,  243 => 62,  239 => 61,  235 => 60,  219 => 47,  209 => 41,  199 => 40,  186 => 16,  176 => 15,  163 => 13,  153 => 12,  134 => 7,  104 => 82,  102 => 78,  95 => 73,  93 => 40,  69 => 18,  66 => 15,  64 => 12,  56 => 7,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -347,9 +356,9 @@ class __TwigTemplate_4774796e6758b9f5b5bd0d4ca5638c57 extends Template
 
       <nav id=\"navbar\" class=\"nav-menu navbar\">
         <ul>
-          <li><a href=\"#hero\" class=\"nav-link scrollto active\"><i class=\"bx bx-home\"></i> <span>Start</span></a></li>
-          <li><a href=\"#about\" class=\"nav-link scrollto\"><i class=\"bx bx-user\"></i> <span>Twoje konto</span></a></li>
-          <li><a href=\"#resume\" class=\"nav-link scrollto\"><i class=\"bx bx-file-blank\"></i> <span>Rezerwacje</span></a></li>
+          <li><a href=\"{{ path('home') }}\" class=\"nav-link scrollto active\"><i class=\"bx bx-home\"></i> <span>Start</span></a></li>
+          <li><a href=\"{{ path('user_show') }}\" class=\"nav-link scrollto\"><i class=\"bx bx-user\"></i> <span>Twoje konto</span></a></li>
+          <li><a href=\"{{ path('reservation_listing') }}\" class=\"nav-link scrollto\"><i class=\"bx bx-file-blank\"></i> <span>Rezerwacje</span></a></li>
           <li><a href=\"#portfolio\" class=\"nav-link scrollto\"><i class=\"bx bx-book-content\"></i> <span>Zabiegi</span></a></li>
           <li><a href=\"#services\" class=\"nav-link scrollto\"><i class=\"bx bx-server\"></i> <span>Kontakt</span></a></li>
           <li><a href=\"{{ path('logout') }}\" class=\"nav-link scrollto\"><i class=\"bx bx-envelope\"></i> <span>Wyloguj</span></a></li>
