@@ -23,5 +23,11 @@ return [
     'home' => [[], ['_controller' => 'App\\Core\\Controller\\HomeController::index'], [], [['text', '/home']], [], [], []],
     'welcome' => [[], ['_controller' => 'App\\Core\\Controller\\HomeController::welcome'], [], [['text', '/']], [], [], []],
     'reservation_listing' => [[], ['_controller' => 'App\\Reservation\\Controller\\Listing'], [], [['text', '/reservation']], [], [], []],
-    'user_show' => [[], ['_controller' => 'App\\User\\Controller\\Show'], [], [['text', '/user/show']], [], [], []],
+    'user_show' => [[], ['_controller' => 'App\\User\\Controller\\Show'], [], [['text', '/user']], [], [], []],
+    'user_listing' => [[], ['_controller' => 'App\\User\\Controller\\Listing'], [], [['text', '/users']], [], [], []],
+    'access_denied' => [[], ['_controller' => 'App\\Core\\Controller\\AccessDenied'], [], [['text', '/access_denied']], [], [], []],
+    'places_listing' => [[], ['_controller' => 'App\\Places\\Controller\\Listing'], [], [['text', '/places_listing']], [], [], []],
+    'treatments_show' => [[], ['_controller' => 'App\\Treatment\\Controller\\Show'], [], [['text', '/treatments_show']], [], [], []],
+    'place_edit' => [[], ['_controller' => 'App\\Places\\Controller\\Edit'], [], [['text', '/place_edit']], [], [], []],
+    'place_create' => [[], ['_controller' => 'App\\Places\\Controller\\Create'], [], [['text', '/place_create']], [], [], []],
 ];

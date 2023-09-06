@@ -65,19 +65,37 @@ class __TwigTemplate_c9f6d920401d6fd390657ee891804121 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 3
-        echo "    <section id=\"about\" class=\"about\">
+        echo "    <main id=\"main\">
+    <section id=\"about\" class=\"about\">
         <div class=\"container\">
 
             <div class=\"section-title\">
-                <h2>Witaj, ";
-        // line 7
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 7, $this->source); })()), "user", [], "any", false, false, false, 7), "username", [], "any", false, false, false, 7), "html", null, true);
-        echo "</h2>
-                <p>Twoje zaplanowane pobyty</p>
+                <h2>Rezerwacje</h2>
+                <p>Jeżeli widzisz błąd, prosimy o kontakt z administratorem systemu!</p>
+            </div>
+
+            <div class=\"row\">
+                <div class=\"col-lg-8 pt-4 pt-lg-0 content\" data-aos=\"fade-left\">
+                    <h2>Twój pobyt</h2>
+
+                    <div class=\"row\">
+                        <div class=\"col-lg-6\">
+                            <ul>
+                                <li><i class=\"bi bi-chevron-right\"></i> <strong>Miejsce pobytu:</strong> <span>Place</span></li>
+                                <li><i class=\"bi bi-chevron-right\"></i> <strong>Termin pobytu:</strong> <span>Termin</span></li>
+                                <li><i class=\"bi bi-chevron-right\"></i> <strong>Zakwaterowanie</strong> <span>Zakwaterowanie</span></li>
+                                <li><i class=\"bi bi-chevron-right\"></i> <strong>Plan pobytu:</strong> <span>Rodzaj planu</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>
+                        W razie wątplliwości związanych z zamówieniem skontaktuj się z nami!
+                    </p>
+                </div>
             </div>
 
         </div>
-    </section><!-- End About Section -->
+    </section>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -99,23 +117,44 @@ class __TwigTemplate_c9f6d920401d6fd390657ee891804121 extends Template
 
     public function getDebugInfo()
     {
-        return array (  74 => 7,  68 => 3,  58 => 2,  35 => 1,);
+        return array (  68 => 3,  58 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends \"base.html.twig\" %}
 {% block body %}
+    <main id=\"main\">
     <section id=\"about\" class=\"about\">
         <div class=\"container\">
 
             <div class=\"section-title\">
-                <h2>Witaj, {{ app.user.username }}</h2>
-                <p>Twoje zaplanowane pobyty</p>
+                <h2>Rezerwacje</h2>
+                <p>Jeżeli widzisz błąd, prosimy o kontakt z administratorem systemu!</p>
+            </div>
+
+            <div class=\"row\">
+                <div class=\"col-lg-8 pt-4 pt-lg-0 content\" data-aos=\"fade-left\">
+                    <h2>Twój pobyt</h2>
+
+                    <div class=\"row\">
+                        <div class=\"col-lg-6\">
+                            <ul>
+                                <li><i class=\"bi bi-chevron-right\"></i> <strong>Miejsce pobytu:</strong> <span>Place</span></li>
+                                <li><i class=\"bi bi-chevron-right\"></i> <strong>Termin pobytu:</strong> <span>Termin</span></li>
+                                <li><i class=\"bi bi-chevron-right\"></i> <strong>Zakwaterowanie</strong> <span>Zakwaterowanie</span></li>
+                                <li><i class=\"bi bi-chevron-right\"></i> <strong>Plan pobytu:</strong> <span>Rodzaj planu</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>
+                        W razie wątplliwości związanych z zamówieniem skontaktuj się z nami!
+                    </p>
+                </div>
             </div>
 
         </div>
-    </section><!-- End About Section -->
+    </section>
 {% endblock %}", "Reservation/listing.twig", "/var/www/templates/Reservation/listing.twig");
     }
 }

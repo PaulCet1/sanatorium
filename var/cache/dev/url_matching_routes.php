@@ -21,7 +21,13 @@ return [
         '/home' => [[['_route' => 'home', '_controller' => 'App\\Core\\Controller\\HomeController::index'], null, ['GET' => 0], null, false, false, null]],
         '/' => [[['_route' => 'welcome', '_controller' => 'App\\Core\\Controller\\HomeController::welcome'], null, ['GET' => 0], null, false, false, null]],
         '/reservation' => [[['_route' => 'reservation_listing', '_controller' => 'App\\Reservation\\Controller\\Listing'], null, ['GET' => 0], null, false, false, null]],
-        '/user/show' => [[['_route' => 'user_show', '_controller' => 'App\\User\\Controller\\Show'], null, ['GET' => 0], null, false, false, null]],
+        '/user' => [[['_route' => 'user_show', '_controller' => 'App\\User\\Controller\\Show'], null, ['GET' => 0], null, false, false, null]],
+        '/users' => [[['_route' => 'user_listing', '_controller' => 'App\\User\\Controller\\Listing'], null, ['GET' => 0], null, false, false, null]],
+        '/access_denied' => [[['_route' => 'access_denied', '_controller' => 'App\\Core\\Controller\\AccessDenied'], null, ['GET' => 0], null, false, false, null]],
+        '/places_listing' => [[['_route' => 'places_listing', '_controller' => 'App\\Places\\Controller\\Listing'], null, ['GET' => 0], null, false, false, null]],
+        '/treatments_show' => [[['_route' => 'treatments_show', '_controller' => 'App\\Treatment\\Controller\\Show'], null, ['GET' => 0], null, false, false, null]],
+        '/place_edit' => [[['_route' => 'place_edit', '_controller' => 'App\\Places\\Controller\\Edit'], null, ['GET' => 0], null, false, false, null]],
+        '/place_create' => [[['_route' => 'place_create', '_controller' => 'App\\Places\\Controller\\Create'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

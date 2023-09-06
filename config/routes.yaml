@@ -16,14 +16,11 @@ Post_controllers:
         namespace: App\Post\Controller
     type: attribute
 
-
 home:
     path: /home
     controller: App\Core\Controller\HomeController::index
     methods: ['GET']
 
-    
-    
 welcome:
     path: /
     controller: App\Core\Controller\HomeController::welcome
@@ -36,6 +33,39 @@ reservation_listing:
 
 
 user_show:
-    path: /user/show
+    path: /user
     controller: App\User\Controller\Show
     methods: ['GET']
+
+user_listing:
+    path: /users
+    controller: App\User\Controller\Listing
+    methods: ['GET']
+
+access_denied:
+    path: /access_denied
+    controller: App\Core\Controller\AccessDenied
+    methods: ['GET']
+
+places_listing:
+    path: /places_listing
+    controller: App\Places\Controller\Listing
+    methods: ['GET']
+
+treatments_show:
+    path: /treatments_show
+    controller: App\Treatment\Controller\Show
+    methods: ['GET']
+
+
+place_edit:
+    path: /place_edit
+    controller: App\Places\Controller\Edit
+    methods: ['GET']
+
+place_create:
+    path: /place_create
+    controller: App\Places\Controller\Create
+    methods: ['GET','POST']
+
+

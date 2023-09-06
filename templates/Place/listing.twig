@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <main id="main">
+        <section id="about" class="about">
+            <a href="{{ path('place_create') }}" class="btn btn-primary mb-3">Dodaj obiekt</a>
+            <table class="table table-success transparent-table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Miejscowość</th>
+                    <th scope="col">PostCode</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for place in places %}
+                    <tr>
+                        <th scope="row">{{ place.id }}</th>
+                        <td>{{ place.name }}</td>
+                        <td>{{ place.place }}</td>
+                        <td>{{ place.postcode }}</td>
+                        <td>
+                            <a href="{{ path('place_edit', {'id': place.id}) }}" class="btn btn-info">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+{% endblock %}

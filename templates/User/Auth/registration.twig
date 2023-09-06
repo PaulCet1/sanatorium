@@ -7,15 +7,19 @@
                 {% include 'Core/display_alerts.twig' %}
                 <form method="POST">
                     <div class="form-group">
+                        <label for="fullname">Imię i nazwisko:</label>
+                        <input type="text" name="fullname" class="form-control" />
+                    </div>
+                    <div class="form-group">
                         <label for="username">Login:</label>
                         <input type="text" name="username" class="form-control" />
-                    </div>  
+                    </div>
                      <div class="form-group">
                         <label for="email">E-mail:</label>
                         <input type="text" name="email" class="form-control" />
                     </div> 
                      <div class="form-group">
-                        <label for="password">Hasło:</label>
+                        <label for="password">Hasło</label>
                         <input type="password" name="password" class="form-control" />
                     </div> 
                      <div class="form-group">

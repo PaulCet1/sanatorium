@@ -7,4 +7,5 @@ class UserVO {
     public $email;
     public $password;
     public $roles;
+    public $fullname;
 }

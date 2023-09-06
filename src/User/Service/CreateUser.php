@@ -25,6 +25,7 @@ class CreateUser {
         $user = new User();
         $user->setEmail($userVO->email);
         $user->setUsername($userVO->username);
+        $user->setFullname($userVO->fullname);
         $passwordHashed = $this->userPasswordHasher->hashPassword($user, $userVO->password);
         $user->setRoles($userVO-> roles ?? []);
         $user->setPassword($passwordHashed);

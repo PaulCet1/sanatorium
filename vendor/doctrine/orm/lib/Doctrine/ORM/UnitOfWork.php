@@ -241,6 +241,17 @@ class UnitOfWork implements PropertyChangedListener
     private $visitedCollections = [];
 
     /**
+     * List of collections visited during the changeset calculation that contain to-be-removed
+     * entities and need to have keys removed post commit.
+     *
+     * Indexed by Collection object ID, which also serves as the key in self::$visitedCollections;
+     * values are the key names that need to be removed.
+     *
+     * @psalm-var array<int, array<array-key, true>>
+     */
+    private $pendingCollectionElementRemovals = [];
+
+    /**
      * The EntityManager that "owns" this UnitOfWork instance.
      *
      * @var EntityManagerInterface
@@ -474,8 +485,15 @@ class UnitOfWork implements PropertyChangedListener
 
         $this->afterTransactionComplete();
 
-        // Take new snapshots from visited collections
-        foreach ($this->visitedCollections as $coll) {
+        // Unset removed entities from collections, and take new snapshots from
+        // all visited collections.
+        foreach ($this->visitedCollections as $coid => $coll) {
+            if (isset($this->pendingCollectionElementRemovals[$coid])) {
+                foreach ($this->pendingCollectionElementRemovals[$coid] as $key => $valueIgnored) {
+                    unset($coll[$key]);
+                }
+            }
+
             $coll->takeSnapshot();
         }
 
@@ -487,15 +505,16 @@ class UnitOfWork implements PropertyChangedListener
     /** @param object|object[]|null $entity */
     private function postCommitCleanup($entity): void
     {
-        $this->entityInsertions               =
-        $this->entityUpdates                  =
-        $this->entityDeletions                =
-        $this->extraUpdates                   =
-        $this->collectionUpdates              =
-        $this->nonCascadedNewDetectedEntities =
-        $this->collectionDeletions            =
-        $this->visitedCollections             =
-        $this->orphanRemovals                 = [];
+        $this->entityInsertions                 =
+        $this->entityUpdates                    =
+        $this->entityDeletions                  =
+        $this->extraUpdates                     =
+        $this->collectionUpdates                =
+        $this->nonCascadedNewDetectedEntities   =
+        $this->collectionDeletions              =
+        $this->pendingCollectionElementRemovals =
+        $this->visitedCollections               =
+        $this->orphanRemovals                   = [];
 
         if ($entity === null) {
             $this->entityChangeSets = $this->scheduledForSynchronization = [];
@@ -916,6 +935,7 @@ class UnitOfWork implements PropertyChangedListener
             return;
         }
 
+        // If this collection is dirty, schedule it for updates
         if ($value instanceof PersistentCollection && $value->isDirty()) {
             $coid = spl_object_id($value);
 
@@ -967,10 +987,18 @@ class UnitOfWork implements PropertyChangedListener
                 case self::STATE_REMOVED:
                     // Consume the $value as array (it's either an array or an ArrayAccess)
                     // and remove the element from Collection.
-                    if ($assoc['type'] & ClassMetadata::TO_MANY) {
-                        unset($value[$key]);
+                    if (! ($assoc['type'] & ClassMetadata::TO_MANY)) {
+                        break;
                     }
 
+                    $coid                            = spl_object_id($value);
+                    $this->visitedCollections[$coid] = $value;
+
+                    if (! isset($this->pendingCollectionElementRemovals[$coid])) {
+                        $this->pendingCollectionElementRemovals[$coid] = [];
+                    }
+
+                    $this->pendingCollectionElementRemovals[$coid][$key] = true;
                     break;
 
                 case self::STATE_DETACHED:
@@ -1095,6 +1123,20 @@ class UnitOfWork implements PropertyChangedListener
 
         foreach ($actualData as $propName => $actualValue) {
             $orgValue = $originalData[$propName] ?? null;
+
+            if (isset($class->fieldMappings[$propName]['enumType'])) {
+                if (is_array($orgValue)) {
+                    foreach ($orgValue as $id => $val) {
+                        if ($val instanceof BackedEnum) {
+                            $orgValue[$id] = $val->value;
+                        }
+                    }
+                } else {
+                    if ($orgValue instanceof BackedEnum) {
+                        $orgValue = $orgValue->value;
+                    }
+                }
+            }
 
             if ($orgValue !== $actualValue) {
                 $changeSet[$propName] = [$orgValue, $actualValue];
@@ -1565,14 +1607,8 @@ class UnitOfWork implements PropertyChangedListener
     public function addToIdentityMap($entity)
     {
         $classMetadata = $this->em->getClassMetadata(get_class($entity));
-        $identifier    = $this->entityIdentifiers[spl_object_id($entity)];
-
-        if (empty($identifier) || in_array(null, $identifier, true)) {
-            throw ORMInvalidArgumentException::entityWithoutIdentity($classMetadata->name, $entity);
-        }
-
-        $idHash    = implode(' ', $identifier);
-        $className = $classMetadata->rootEntityName;
+        $idHash        = $this->getIdHashByEntity($entity);
+        $className     = $classMetadata->rootEntityName;
 
         if (isset($this->identityMap[$className][$idHash])) {
             return false;
@@ -1581,6 +1617,50 @@ class UnitOfWork implements PropertyChangedListener
         $this->identityMap[$className][$idHash] = $entity;
 
         return true;
+    }
+
+    /**
+     * Gets the id hash of an entity by its identifier.
+     *
+     * @param array<string|int, mixed> $identifier The identifier of an entity
+     *
+     * @return string The entity id hash.
+     */
+    final public static function getIdHashByIdentifier(array $identifier): string
+    {
+        return implode(
+            ' ',
+            array_map(
+                static function ($value) {
+                    if ($value instanceof BackedEnum) {
+                        return $value->value;
+                    }
+
+                    return $value;
+                },
+                $identifier
+            )
+        );
+    }
+
+    /**
+     * Gets the id hash of an entity.
+     *
+     * @param object $entity The entity managed by Unit Of Work
+     *
+     * @return string The entity id hash.
+     */
+    public function getIdHashByEntity($entity): string
+    {
+        $identifier = $this->entityIdentifiers[spl_object_id($entity)];
+
+        if (empty($identifier) || in_array(null, $identifier, true)) {
+            $classMetadata = $this->em->getClassMetadata(get_class($entity));
+
+            throw ORMInvalidArgumentException::entityWithoutIdentity($classMetadata->name, $entity);
+        }
+
+        return self::getIdHashByIdentifier($identifier);
     }
 
     /**
@@ -1685,7 +1765,7 @@ class UnitOfWork implements PropertyChangedListener
     {
         $oid           = spl_object_id($entity);
         $classMetadata = $this->em->getClassMetadata(get_class($entity));
-        $idHash        = implode(' ', $this->entityIdentifiers[$oid]);
+        $idHash        = self::getIdHashByIdentifier($this->entityIdentifiers[$oid]);
 
         if ($idHash === '') {
             throw ORMInvalidArgumentException::entityHasNoIdentity($entity, 'remove from identity map');
@@ -1755,7 +1835,7 @@ class UnitOfWork implements PropertyChangedListener
         }
 
         $classMetadata = $this->em->getClassMetadata(get_class($entity));
-        $idHash        = implode(' ', $this->entityIdentifiers[$oid]);
+        $idHash        = self::getIdHashByIdentifier($this->entityIdentifiers[$oid]);
 
         return isset($this->identityMap[$classMetadata->rootEntityName][$idHash]);
     }
@@ -2589,23 +2669,24 @@ class UnitOfWork implements PropertyChangedListener
     public function clear($entityName = null)
     {
         if ($entityName === null) {
-            $this->identityMap                    =
-            $this->entityIdentifiers              =
-            $this->originalEntityData             =
-            $this->entityChangeSets               =
-            $this->entityStates                   =
-            $this->scheduledForSynchronization    =
-            $this->entityInsertions               =
-            $this->entityUpdates                  =
-            $this->entityDeletions                =
-            $this->nonCascadedNewDetectedEntities =
-            $this->collectionDeletions            =
-            $this->collectionUpdates              =
-            $this->extraUpdates                   =
-            $this->readOnlyObjects                =
-            $this->visitedCollections             =
-            $this->eagerLoadingEntities           =
-            $this->orphanRemovals                 = [];
+            $this->identityMap                      =
+            $this->entityIdentifiers                =
+            $this->originalEntityData               =
+            $this->entityChangeSets                 =
+            $this->entityStates                     =
+            $this->scheduledForSynchronization      =
+            $this->entityInsertions                 =
+            $this->entityUpdates                    =
+            $this->entityDeletions                  =
+            $this->nonCascadedNewDetectedEntities   =
+            $this->collectionDeletions              =
+            $this->collectionUpdates                =
+            $this->extraUpdates                     =
+            $this->readOnlyObjects                  =
+            $this->pendingCollectionElementRemovals =
+            $this->visitedCollections               =
+            $this->eagerLoadingEntities             =
+            $this->orphanRemovals                   = [];
         } else {
             Deprecation::triggerIfCalledFromOutside(
                 'doctrine/orm',
@@ -2712,7 +2793,7 @@ class UnitOfWork implements PropertyChangedListener
         $class = $this->em->getClassMetadata($className);
 
         $id     = $this->identifierFlattener->flattenIdentifier($class, $data);
-        $idHash = implode(' ', $id);
+        $idHash = self::getIdHashByIdentifier($id);
 
         if (isset($this->identityMap[$class->rootEntityName][$idHash])) {
             $entity = $this->identityMap[$class->rootEntityName][$idHash];
@@ -2871,7 +2952,7 @@ class UnitOfWork implements PropertyChangedListener
                     // Check identity map first
                     // FIXME: Can break easily with composite keys if join column values are in
                     //        wrong order. The correct order is the one in ClassMetadata#identifier.
-                    $relatedIdHash = implode(' ', $associatedId);
+                    $relatedIdHash = self::getIdHashByIdentifier($associatedId);
 
                     switch (true) {
                         case isset($this->identityMap[$targetClass->rootEntityName][$relatedIdHash]):
@@ -3156,7 +3237,7 @@ class UnitOfWork implements PropertyChangedListener
      */
     public function tryGetById($id, $rootClassName)
     {
-        $idHash = implode(' ', (array) $id);
+        $idHash = self::getIdHashByIdentifier((array) $id);
 
         return $this->identityMap[$rootClassName][$idHash] ?? false;
     }
@@ -3538,7 +3619,7 @@ class UnitOfWork implements PropertyChangedListener
         $id1 = $this->entityIdentifiers[$oid1] ?? $this->identifierFlattener->flattenIdentifier($class, $class->getIdentifierValues($entity1));
         $id2 = $this->entityIdentifiers[$oid2] ?? $this->identifierFlattener->flattenIdentifier($class, $class->getIdentifierValues($entity2));
 
-        return $id1 === $id2 || implode(' ', $id1) === implode(' ', $id2);
+        return $id1 === $id2 || self::getIdHashByIdentifier($id1) === self::getIdHashByIdentifier($id2);
     }
 
     /** @throws ORMInvalidArgumentException */
@@ -3602,14 +3683,18 @@ class UnitOfWork implements PropertyChangedListener
                                 $targetClass = $this->em->getClassMetadata($assoc2['targetEntity']);
                                 $relatedId   = $targetClass->getIdentifierValues($other);
 
-                                if ($targetClass->subClasses) {
-                                    $other = $this->em->find($targetClass->name, $relatedId);
-                                } else {
-                                    $other = $this->em->getProxyFactory()->getProxy(
-                                        $assoc2['targetEntity'],
-                                        $relatedId
-                                    );
-                                    $this->registerManaged($other, $relatedId, []);
+                                $other = $this->tryGetById($relatedId, $targetClass->name);
+
+                                if (! $other) {
+                                    if ($targetClass->subClasses) {
+                                        $other = $this->em->find($targetClass->name, $relatedId);
+                                    } else {
+                                        $other = $this->em->getProxyFactory()->getProxy(
+                                            $assoc2['targetEntity'],
+                                            $relatedId
+                                        );
+                                        $this->registerManaged($other, $relatedId, []);
+                                    }
                                 }
                             }
 

@@ -26,7 +26,11 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Post/Entity'
                 prefix: 'App\Post\Entity'
                 alias: App
-                
+            Places:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Places/Entity'
+                prefix: 'App\Places\Entity'
+                alias: App
         
 
 when@test:

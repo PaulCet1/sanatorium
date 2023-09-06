@@ -21,6 +21,7 @@ class RegisterUser {
         $userVO->username = $request->get('username');
         $userVO->password = $request->get('password');
         $userVO->email = $request->get('email');
+        $userVO->fullname = $request->get('fullname');
         $this->createUser->create($userVO);
     }
     

@@ -27,6 +27,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $username;
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=false)
+     */
+    private $fullname;
     
     /**
      * @ORM\Column(type="json")
@@ -38,6 +43,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    public function setFullname(string $fullname): void
+    {
+        $this->fullname =$fullname;
+    }
+
+    public function getFullname(): string
+    {
+        return $this->fullname;
+    }
     
     public function setEmail(string $email) : void {
         $this->email = $email;

@@ -74,15 +74,19 @@ class __TwigTemplate_083d7fc70c3bba7fb8eb24fef533805d extends Template
         // line 8
         echo "                <form method=\"POST\">
                     <div class=\"form-group\">
+                        <label for=\"fullname\">Imię i nazwisko:</label>
+                        <input type=\"text\" name=\"fullname\" class=\"form-control\" />
+                    </div>
+                    <div class=\"form-group\">
                         <label for=\"username\">Login:</label>
                         <input type=\"text\" name=\"username\" class=\"form-control\" />
-                    </div>  
+                    </div>
                      <div class=\"form-group\">
                         <label for=\"email\">E-mail:</label>
                         <input type=\"text\" name=\"email\" class=\"form-control\" />
                     </div> 
                      <div class=\"form-group\">
-                        <label for=\"password\">Hasło:</label>
+                        <label for=\"password\">Hasło</label>
                         <input type=\"password\" name=\"password\" class=\"form-control\" />
                     </div> 
                      <div class=\"form-group\">
@@ -131,15 +135,19 @@ class __TwigTemplate_083d7fc70c3bba7fb8eb24fef533805d extends Template
                 {% include 'Core/display_alerts.twig' %}
                 <form method=\"POST\">
                     <div class=\"form-group\">
+                        <label for=\"fullname\">Imię i nazwisko:</label>
+                        <input type=\"text\" name=\"fullname\" class=\"form-control\" />
+                    </div>
+                    <div class=\"form-group\">
                         <label for=\"username\">Login:</label>
                         <input type=\"text\" name=\"username\" class=\"form-control\" />
-                    </div>  
+                    </div>
                      <div class=\"form-group\">
                         <label for=\"email\">E-mail:</label>
                         <input type=\"text\" name=\"email\" class=\"form-control\" />
                     </div> 
                      <div class=\"form-group\">
-                        <label for=\"password\">Hasło:</label>
+                        <label for=\"password\">Hasło</label>
                         <input type=\"password\" name=\"password\" class=\"form-control\" />
                     </div> 
                      <div class=\"form-group\">
@@ -153,6 +161,6 @@ class __TwigTemplate_083d7fc70c3bba7fb8eb24fef533805d extends Template
             </div>
         </div>
     </div>
-{% endblock %}", "User/Auth/registration.twig", "/home/paul-cetnarowski/Pulpit/Projects/sanatorium/templates/User/Auth/registration.twig");
+{% endblock %}", "User/Auth/registration.twig", "/var/www/templates/User/Auth/registration.twig");
     }
 }

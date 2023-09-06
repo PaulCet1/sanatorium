@@ -35,11 +35,30 @@ services:
     App\Reservation\Controller\:
         resource: '../src/Reservation/Controller'
         tags: ['controller.service_arguments']
+
+    App\Places\Controller\:
+        resource: '../src/Places/Controller'
+        tags: ['controller.service_arguments']
+
+    App\Treatment\Controller\:
+        resource: '../src/Treatment/Controller'
+        tags: [ 'controller.service_arguments' ]
+
+#    App\User\Repository\UserRepository:
+#        tags: ['doctrine.repository_service']
+
+    App\EventListener\AccessDeniedListener:
+        arguments:
+            $router: '@router'
+
         
     App\Core\Twig\:
         resource: '../src/Core/Twig/*'
         arguments: ["@service_container", "@twig", "@router"]
-        
+
+
+
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

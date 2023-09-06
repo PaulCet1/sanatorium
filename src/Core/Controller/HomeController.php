@@ -25,4 +25,9 @@ class HomeController extends AbstractController {
     {
         return $this->render('Home/welcome.twig');
     }
+
+    public function accessdenied():Response
+    {
+        return $this->render('Core/access-denied.twig');
+    }
 }

@@ -330,9 +330,7 @@
         <parameter>@WebProfiler/Collector/config.html.twig</parameter>
       </parameter>
     </parameter>
-    <parameter key="console.command.ids" type="collection">
-      <parameter>console.command.public_alias.App\Post\Command\CreatePostCommand</parameter>
-    </parameter>
+    <parameter key="console.command.ids" type="collection"/>
   </parameters>
   <services>
     <service id="service_container" class="Symfony\Component\DependencyInjection\ContainerInterface" public="true" synthetic="true"/>
@@ -343,14 +341,27 @@
     <service id="App\Core\Entity" class="App\Core\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Itinerary\Entity" class="App\Itinerary\Entity" abstract="true">
+      <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
+    </service>
+    <service id="App\Places\Entity" class="App\Places\Entity" abstract="true">
+      <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
+    </service>
     <service id="App\Post\Entity" class="App\Post\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
     <service id="App\Reservation\Entity" class="App\Reservation\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Treatment\Entity" class="App\Treatment\Entity" abstract="true">
+      <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
+    </service>
     <service id="App\User\Entity" class="App\User\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
+    </service>
+    <service id="App\Core\Controller\AccessDenied" class="App\Core\Controller\AccessDenied" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <argument type="service" id="twig"/>
     </service>
     <service id="App\Core\Controller\HomeController" class="App\Core\Controller\HomeController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -366,10 +377,20 @@
       <argument type="service" id="router.default"/>
     </service>
     <service id="App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true"/>
-    <service id="App\Post\Command\CreatePostCommand" class="App\Post\Command\CreatePostCommand" autowire="true" autoconfigure="true">
-      <tag name="console.command"/>
-      <tag name="container.no_preload"/>
-      <argument type="service" id="App\Post\Service\CreatePost"/>
+    <service id="App\EventListener\AccessDeniedListener" class="App\EventListener\AccessDeniedListener" autowire="true" autoconfigure="true">
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="App\Places\Controller\Create" class="App\Places\Controller\Create" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <argument type="service" id="twig"/>
+    </service>
+    <service id="App\Places\Controller\Listing" class="App\Places\Controller\Listing" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <argument type="service" id="twig"/>
+      <argument type="service" id="App\Places\Repository\PlacesRepository"/>
+    </service>
+    <service id="App\Places\Repository\PlacesRepository" class="App\Places\Repository\PlacesRepository" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="App\Post\Controller\PostController" class="App\Post\Controller\PostController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -396,6 +417,10 @@
       <tag name="controller.service_arguments"/>
       <argument type="service" id="twig"/>
     </service>
+    <service id="App\Treatment\Controller\Show" class="App\Treatment\Controller\Show" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <argument type="service" id="twig"/>
+    </service>
     <service id="App\User\Controller\AuthController" class="App\User\Controller\AuthController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -403,9 +428,21 @@
         <argument type="service" id=".service_locator.CshazM0.App\User\Controller\AuthController"/>
       </call>
     </service>
-    <service id="App\User\Controller\Show" class="App\User\Controller\Show" public="true" autowire="true" autoconfigure="true">
+    <service id="App\User\Controller\Listing" class="App\User\Controller\Listing" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <argument type="service" id="twig"/>
+      <argument type="service" id="App\User\Repository\UserRepository"/>
+    </service>
+    <service id="App\User\Controller\Show" class="App\User\Controller\Show" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="twig"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\User\Controller\Show"/>
+      </call>
+    </service>
+    <service id="App\User\Repository\UserRepository" class="App\User\Repository\UserRepository" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="App\User\Service\CreateUser" class="App\User\Service\CreateUser" autowire="true" autoconfigure="true">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
@@ -4760,7 +4797,7 @@
       <tag name="doctrine.orm.configuration"/>
       <call method="setEntityNamespaces">
         <argument type="collection">
-          <argument key="App">App\Post\Entity</argument>
+          <argument key="App">App\Places\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCache">
@@ -4819,6 +4856,7 @@
       <argument type="collection">
         <argument>/var/www/src/User/Entity</argument>
         <argument>/var/www/src/Post/Entity</argument>
+        <argument>/var/www/src/Places/Entity</argument>
       </argument>
     </service>
     <service id="cache.doctrine.orm.default.metadata" class="Symfony\Component\Cache\Adapter\ArrayAdapter"/>
@@ -5746,6 +5784,13 @@
         </argument>
         <argument>null</argument>
       </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.MeyEgn0"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
     </service>
     <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener">
       <tag name="monolog.logger" channel="security"/>
@@ -6317,6 +6362,14 @@
         <argument type="service" id=".security.request_matcher.obhk0jm"/>
       </argument>
     </service>
+    <service id=".security.request_matcher.kgHDGFw" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
+      <argument>^/users</argument>
+    </service>
+    <service id=".security.request_matcher.MeyEgn0" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
+      <argument type="collection">
+        <argument type="service" id=".security.request_matcher.kgHDGFw"/>
+      </argument>
+    </service>
     <service id="security.command.user_password_hash" class="Symfony\Component\PasswordHasher\Command\UserPasswordHashCommand">
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
@@ -6430,6 +6483,10 @@
           </argument>
           <argument type="collection">
             <argument>App\Post\Entity</argument>
+            <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+          </argument>
+          <argument type="collection">
+            <argument>App\Places\Entity</argument>
             <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
           </argument>
         </argument>
@@ -6719,14 +6776,15 @@
     <service id=".abstract.instanceof.App\Core\Controller\HomeController" class="App\Core\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Twig\Extension\ExtensionInterface.0.App\Core\Twig\TwigCustonExtension" class="App\Core\Twig\TwigCustonExtension" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Core\Twig\TwigCustonExtension" class="App\Core\Twig\TwigCustonExtension" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Post\Command\CreatePostCommand" class="App\Post\Command\CreatePostCommand" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Post\Command\CreatePostCommand" class="App\Post\Command\CreatePostCommand" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Post\Controller\PostController" class="App\Post\Controller\PostController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Post\Controller\PostController" class="App\Post\Controller\PostController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Post\Controller\PostController" class="App\Post\Controller\PostController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\User\Controller\AuthController" class="App\User\Controller\AuthController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\User\Controller\AuthController" class="App\User\Controller\AuthController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\User\Controller\AuthController" class="App\User\Controller\AuthController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\User\Controller\Show" class="App\User\Controller\Show" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\User\Controller\Show" class="App\User\Controller\Show" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\User\Controller\Show" class="App\User\Controller\Show" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.7nzbL4K" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7652,6 +7710,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
+    <service id=".service_locator.CshazM0.App\User\Controller\Show" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\User\Controller\Show"/>
+      <argument>App\User\Controller\Show</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
     <service id=".service_locator.fuYM_Z." class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7955,6 +8019,10 @@
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
         <argument>App\Post\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+        <argument>App\Places\Entity</argument>
       </call>
     </service>
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
@@ -8992,6 +9060,5 @@
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>
     <service id=".service_locator.hnz5ZNh" alias=".service_locator.0TACwl3"/>
     <service id=".service_locator.BlxN3Cw" alias=".service_locator.LrCXAmX"/>
-    <service id="console.command.public_alias.App\Post\Command\CreatePostCommand" alias="App\Post\Command\CreatePostCommand" public="true"/>
   </services>
 </container>
