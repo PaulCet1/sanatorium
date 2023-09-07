@@ -23,7 +23,7 @@ class getDoctrine_DatabaseDropCommandService extends App_KernelTestDebugContaine
 
         $container->privates['doctrine.database_drop_command'] = $instance = new \Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand(($container->services['doctrine'] ?? $container->getDoctrineService()));
 
-        $instance->setName('doctrine:database:drop');
+        $instance->setName('doctrine:db:drop');
 
         return $instance;
     }

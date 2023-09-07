@@ -39,26 +39,5 @@ services:
       - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
     labels:
       - io.docksal.virtual-host=pma-${VIRTUAL_HOST}
-#services:
-#  db:
-#    image: mariadb:10.6
-#    environment:
-#      MYSQL_ROOT_PASSWORD: root
-#      MYSQL_DATABASE: sanatorium_db
-#      #MYSQL_DATABASE: sanatorium_test
-#      MYSQL_USER: root
-#      MYSQL_PASSWORD: root
-#    ports:
-#      - "3306:3306"
-#
-#  # PHPMyAdmin
-#  pma:
-#    hostname: pma
-#    image: phpmyadmin/phpmyadmin
-#    environment:
-#      - PMA_HOST=db
-#      - PMA_USER=root
-#      - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
-#    labels:
-#      - io.docksal.virtual-host=pma-${VIRTUAL_HOST}
+
 

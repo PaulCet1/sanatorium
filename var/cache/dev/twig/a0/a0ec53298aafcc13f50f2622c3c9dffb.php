@@ -433,7 +433,7 @@ class __TwigTemplate_8ffe219e1c8253a30c332e36e36761b1 extends Template
             if (twig_test_empty($context["queries"])) {
                 // line 157
                 echo "            <div class=\"empty\">
-                <p>No database queries were performed.</p>
+                <p>No db queries were performed.</p>
             </div>
         ";
             } else {
@@ -802,7 +802,7 @@ class __TwigTemplate_8ffe219e1c8253a30c332e36e36761b1 extends Template
         if ( !twig_get_attribute($this->env, $this->source, (isset($context["collector"]) || array_key_exists("collector", $context) ? $context["collector"] : (function () { throw new RuntimeError('Variable "collector" does not exist.', 277, $this->source); })()), "connections", [], "any", false, false, false, 277)) {
             // line 278
             echo "        <div class=\"empty\">
-            <p>There are no configured database connections.</p>
+            <p>There are no configured db connections.</p>
         </div>
     ";
         } else {
@@ -1357,7 +1357,7 @@ class __TwigTemplate_8ffe219e1c8253a30c332e36e36761b1 extends Template
 
         {% if queries is empty %}
             <div class=\"empty\">
-                <p>No database queries were performed.</p>
+                <p>No db queries were performed.</p>
             </div>
         {% else %}
             {% if group_queries %}
@@ -1478,7 +1478,7 @@ class __TwigTemplate_8ffe219e1c8253a30c332e36e36761b1 extends Template
 
     {% if not collector.connections %}
         <div class=\"empty\">
-            <p>There are no configured database connections.</p>
+            <p>There are no configured db connections.</p>
         </div>
     {% else %}
         {{ helper.render_simple_table('Name', 'Service', collector.connections) }}

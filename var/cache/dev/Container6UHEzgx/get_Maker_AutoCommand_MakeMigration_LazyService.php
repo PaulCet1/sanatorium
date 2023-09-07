@@ -20,7 +20,7 @@ class get_Maker_AutoCommand_MakeMigration_LazyService extends App_KernelDevDebug
         include_once \dirname(__DIR__, 4).'/vendor/symfony/console/Command/Command.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/console/Command/LazyCommand.php';
 
-        return $container->privates['.maker.auto_command.make_migration.lazy'] = new \Symfony\Component\Console\Command\LazyCommand('make:migration', [], 'Creates a new migration based on database changes', false, #[\Closure(name: 'maker.auto_command.make_migration', class: 'Symfony\\Bundle\\MakerBundle\\Command\\MakerCommand')] function () use ($container): \Symfony\Bundle\MakerBundle\Command\MakerCommand {
+        return $container->privates['.maker.auto_command.make_migration.lazy'] = new \Symfony\Component\Console\Command\LazyCommand('make:migration', [], 'Creates a new migration based on db changes', false, #[\Closure(name: 'maker.auto_command.make_migration', class: 'Symfony\\Bundle\\MakerBundle\\Command\\MakerCommand')] function () use ($container): \Symfony\Bundle\MakerBundle\Command\MakerCommand {
             return ($container->privates['maker.auto_command.make_migration'] ?? $container->load('getMaker_AutoCommand_MakeMigrationService'));
         });
     }

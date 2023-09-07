@@ -2,7 +2,11 @@
 {% block body %}
 
     <main id="main">
-        <h1>Place for form container</h1>
+        <h1>Create a New Place</h1>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">Create</button>
+        {{ form_end(form) }}
 
     </main>
 {% endblock %}

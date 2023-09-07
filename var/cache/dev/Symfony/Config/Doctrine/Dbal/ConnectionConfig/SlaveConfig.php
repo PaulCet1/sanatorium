@@ -289,7 +289,7 @@ class SlaveConfig
     }
 
     /**
-     * The name of a running database server to connect to for SQL Anywhere.
+     * The name of a running db server to connect to for SQL Anywhere.
      * @default null
      * @param ParamConfigurator|mixed $value
      * @return $this
@@ -303,7 +303,7 @@ class SlaveConfig
     }
 
     /**
-     * Override the default database (postgres) to connect to for PostgreSQL connexion.
+     * Override the default db (postgres) to connect to for PostgreSQL connexion.
      * @default null
      * @param ParamConfigurator|mixed $value
      * @return $this

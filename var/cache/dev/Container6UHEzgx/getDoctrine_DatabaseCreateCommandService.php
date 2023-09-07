@@ -23,7 +23,7 @@ class getDoctrine_DatabaseCreateCommandService extends App_KernelDevDebugContain
 
         $container->privates['doctrine.database_create_command'] = $instance = new \Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand(($container->services['doctrine'] ?? $container->getDoctrineService()));
 
-        $instance->setName('doctrine:database:create');
+        $instance->setName('doctrine:db:create');
 
         return $instance;
     }

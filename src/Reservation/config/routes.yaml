@@ -1,0 +1,4 @@
+reservation_listing:
+  path: /reservation
+  controller: App\Reservation\Controller\Listing
+  methods: ['GET']

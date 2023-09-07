@@ -21,16 +21,22 @@ doctrine:
                 dir: '%kernel.project_dir%/src/User/Entity'
                 prefix: 'App\User\Entity'
                 alias: App
-            Post:
-                is_bundle: false
-                dir: '%kernel.project_dir%/src/Post/Entity'
-                prefix: 'App\Post\Entity'
-                alias: App
             Places:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Places/Entity'
-                prefix: 'App\Places\Entity'
+                dir: '%kernel.project_dir%/src/Place/Entity'
+                prefix: 'App\Place\Entity'
                 alias: App
+            Treatment:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Treatment/Entity'
+                prefix: 'App\Treatment\Entity'
+                alias: App
+            Reservation:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Reservation/Entity'
+                prefix: 'App\Reservation\Entity'
+                alias: App
+
         
 
 when@test:

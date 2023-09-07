@@ -27,17 +27,14 @@ services:
     App\User\Controller\:
         resource: '../src/User/Controller'
         tags: ['controller.service_arguments']
-        
-    App\Post\Controller\:
-        resource: '../src/Post/Controller'
-        tags: ['controller.service_arguments']
+
 
     App\Reservation\Controller\:
         resource: '../src/Reservation/Controller'
         tags: ['controller.service_arguments']
 
-    App\Places\Controller\:
-        resource: '../src/Places/Controller'
+    App\Place\Controller\:
+        resource: '../src/Place/Controller'
         tags: ['controller.service_arguments']
 
     App\Treatment\Controller\:

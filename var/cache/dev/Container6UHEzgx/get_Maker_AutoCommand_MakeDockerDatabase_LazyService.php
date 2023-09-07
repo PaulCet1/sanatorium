@@ -20,7 +20,7 @@ class get_Maker_AutoCommand_MakeDockerDatabase_LazyService extends App_KernelDev
         include_once \dirname(__DIR__, 4).'/vendor/symfony/console/Command/Command.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/console/Command/LazyCommand.php';
 
-        return $container->privates['.maker.auto_command.make_docker_database.lazy'] = new \Symfony\Component\Console\Command\LazyCommand('make:docker:database', [], 'Adds a database container to your docker-compose.yaml file', false, #[\Closure(name: 'maker.auto_command.make_docker_database', class: 'Symfony\\Bundle\\MakerBundle\\Command\\MakerCommand')] function () use ($container): \Symfony\Bundle\MakerBundle\Command\MakerCommand {
+        return $container->privates['.maker.auto_command.make_docker_database.lazy'] = new \Symfony\Component\Console\Command\LazyCommand('make:docker:db', [], 'Adds a db container to your docker-compose.yaml file', false, #[\Closure(name: 'maker.auto_command.make_docker_database', class: 'Symfony\\Bundle\\MakerBundle\\Command\\MakerCommand')] function () use ($container): \Symfony\Bundle\MakerBundle\Command\MakerCommand {
             return ($container->privates['maker.auto_command.make_docker_database'] ?? $container->load('getMaker_AutoCommand_MakeDockerDatabaseService'));
         });
     }

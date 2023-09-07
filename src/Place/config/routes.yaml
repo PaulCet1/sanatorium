@@ -1,0 +1,14 @@
+places_listing:
+  path: /places_listing
+  controller: App\Place\Controller\Listing
+  methods: ['GET']
+
+place_edit:
+  path: /place_edit
+  controller: App\Place\Controller\Edit
+  methods: ['GET']
+
+place_create:
+  path: /place_create
+  controller: App\Place\Controller\Create
+  methods: ['GET','POST']

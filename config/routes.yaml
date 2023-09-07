@@ -1,3 +1,13 @@
+place:
+    resource: '../src/Place/config/routes.yaml'
+
+user:
+    resource: '../src/User/config/routes.yaml'
+
+reservation:
+    resource: '../src/Reservation/config/routes.yaml'
+
+
 controllers:
     resource:
         path: ../src/Core/Controller/
@@ -9,12 +19,7 @@ User_controllers:
         path: ../src/User/Controller/
         namespace: App\User\Controller
     type: attribute
-    
-Post_controllers:
-    resource:
-        path: ../src/Post/Controller/
-        namespace: App\Post\Controller
-    type: attribute
+
 
 home:
     path: /home
@@ -25,32 +30,13 @@ welcome:
     path: /
     controller: App\Core\Controller\HomeController::welcome
     methods: ['GET']
-
-reservation_listing:
-    path: /reservation
-    controller: App\Reservation\Controller\Listing
-    methods: ['GET']
-
-
-user_show:
-    path: /user
-    controller: App\User\Controller\Show
-    methods: ['GET']
-
-user_listing:
-    path: /users
-    controller: App\User\Controller\Listing
-    methods: ['GET']
-
+    
 access_denied:
     path: /access_denied
     controller: App\Core\Controller\AccessDenied
     methods: ['GET']
 
-places_listing:
-    path: /places_listing
-    controller: App\Places\Controller\Listing
-    methods: ['GET']
+
 
 treatments_show:
     path: /treatments_show
@@ -58,14 +44,6 @@ treatments_show:
     methods: ['GET']
 
 
-place_edit:
-    path: /place_edit
-    controller: App\Places\Controller\Edit
-    methods: ['GET']
 
-place_create:
-    path: /place_create
-    controller: App\Places\Controller\Create
-    methods: ['GET','POST']
 
 

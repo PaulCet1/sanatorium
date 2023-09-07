@@ -43,7 +43,7 @@ class ControllerResolverConfig
     }
 
     /**
-     * Set to true to fetch the entity from the database instead of using the cache, if any
+     * Set to true to fetch the entity from the db instead of using the cache, if any
      * @default false
      * @param ParamConfigurator|bool $value
      * @return $this

@@ -6,10 +6,9 @@ use App\Core\Entity\TraitSpace\CreatedTrait;
 use App\Core\Entity\TraitSpace\IdTrait;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * @ORM\Entity
- * @ORM\Table(name="treatment)
+ * @ORM\Table(name="treatment")
  */
 class Treatment
 {
@@ -26,25 +25,23 @@ class Treatment
      */
     private $leading_person;
 
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName(string $name):void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    public function getLeadingPerson():string
+    public function getLeadingPerson(): string
     {
         return $this->leading_person;
     }
 
-    public function setLeadingPerson(string $leading_person):void
+    public function setLeadingPerson(string $leading_person): void
     {
-        $this->name = $leading_person;
+        $this->leading_person = $leading_person;
     }
-
-
 }

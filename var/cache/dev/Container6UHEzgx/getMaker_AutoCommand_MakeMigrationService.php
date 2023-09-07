@@ -27,7 +27,7 @@ class getMaker_AutoCommand_MakeMigrationService extends App_KernelDevDebugContai
         $container->privates['maker.auto_command.make_migration'] = $instance = new \Symfony\Bundle\MakerBundle\Command\MakerCommand(new \Symfony\Bundle\MakerBundle\Maker\MakeMigration(\dirname(__DIR__, 4)), ($container->privates['maker.file_manager'] ?? $container->load('getMaker_FileManagerService')), ($container->privates['maker.generator'] ?? $container->load('getMaker_GeneratorService')));
 
         $instance->setName('make:migration');
-        $instance->setDescription('Creates a new migration based on database changes');
+        $instance->setDescription('Creates a new migration based on db changes');
 
         return $instance;
     }

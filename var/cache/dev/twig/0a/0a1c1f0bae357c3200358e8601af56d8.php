@@ -87,7 +87,7 @@ class __TwigTemplate_28e113059b93050a1de612a2c31bb6a3 extends Template
             if (((isset($context["profiler_markup_version"]) || array_key_exists("profiler_markup_version", $context) ? $context["profiler_markup_version"] : (function () { throw new RuntimeError('Variable "profiler_markup_version" does not exist.', 11, $this->source); })()) >= 3)) {
                 // line 12
                 echo "                ";
-                echo twig_include($this->env, $context, "@Doctrine/Collector/database.svg");
+                echo twig_include($this->env, $context, "@Doctrine/Collector/db.svg");
                 echo "
             ";
             } else {
@@ -240,7 +240,7 @@ class __TwigTemplate_28e113059b93050a1de612a2c31bb6a3 extends Template
         echo "\">
         <span class=\"icon\">";
         // line 75
-        echo twig_include($this->env, $context, (("@Doctrine/Collector/" . ((((isset($context["profiler_markup_version"]) || array_key_exists("profiler_markup_version", $context) ? $context["profiler_markup_version"] : (function () { throw new RuntimeError('Variable "profiler_markup_version" does not exist.', 75, $this->source); })()) < 3)) ? ("icon") : ("database"))) . ".svg"));
+        echo twig_include($this->env, $context, (("@Doctrine/Collector/" . ((((isset($context["profiler_markup_version"]) || array_key_exists("profiler_markup_version", $context) ? $context["profiler_markup_version"] : (function () { throw new RuntimeError('Variable "profiler_markup_version" does not exist.', 75, $this->source); })()) < 3)) ? ("icon") : ("db"))) . ".svg"));
         echo "</span>
         <strong>Doctrine</strong>
         ";
@@ -476,7 +476,7 @@ class __TwigTemplate_28e113059b93050a1de612a2c31bb6a3 extends Template
                 if (twig_test_empty($context["queries"])) {
                     // line 179
                     echo "                            <div class=\"empty\">
-                                <p>No database queries were performed.</p>
+                                <p>No db queries were performed.</p>
                             </div>
                         ";
                 } else {
@@ -854,7 +854,7 @@ class __TwigTemplate_28e113059b93050a1de612a2c31bb6a3 extends Template
         if ( !twig_get_attribute($this->env, $this->source, (isset($context["collector"]) || array_key_exists("collector", $context) ? $context["collector"] : (function () { throw new RuntimeError('Variable "collector" does not exist.', 303, $this->source); })()), "connections", [], "any", false, false, false, 303)) {
             // line 304
             echo "                    <div class=\"empty\">
-                        <p>There are no configured database connections.</p>
+                        <p>There are no configured db connections.</p>
                     </div>
                 ";
         } else {
@@ -1296,7 +1296,7 @@ class __TwigTemplate_28e113059b93050a1de612a2c31bb6a3 extends Template
             {% set status = collector.invalidEntityCount > 0 ? 'red' : collector.querycount > 50 ? 'yellow' %}
 
             {% if profiler_markup_version >= 3 %}
-                {{ include('@Doctrine/Collector/database.svg') }}
+                {{ include('@Doctrine/Collector/db.svg') }}
             {% else %}
                 <span class=\"icon\">{{ include('@Doctrine/Collector/icon.svg') }}</span>
             {% endif %}
@@ -1359,7 +1359,7 @@ class __TwigTemplate_28e113059b93050a1de612a2c31bb6a3 extends Template
 
 {% block menu %}
     <span class=\"label {{ collector.invalidEntityCount > 0 ? 'label-status-error' }} {{ collector.querycount == 0 ? 'disabled' }}\">
-        <span class=\"icon\">{{ include('@Doctrine/Collector/' ~ (profiler_markup_version < 3 ? 'icon' : 'database') ~ '.svg') }}</span>
+        <span class=\"icon\">{{ include('@Doctrine/Collector/' ~ (profiler_markup_version < 3 ? 'icon' : 'db') ~ '.svg') }}</span>
         <strong>Doctrine</strong>
         {% if collector.invalidEntityCount %}
             <span class=\"count\">
@@ -1464,7 +1464,7 @@ class __TwigTemplate_28e113059b93050a1de612a2c31bb6a3 extends Template
 
                         {% if queries is empty %}
                             <div class=\"empty\">
-                                <p>No database queries were performed.</p>
+                                <p>No db queries were performed.</p>
                             </div>
                         {% else %}
                             {% if group_queries %}
@@ -1589,7 +1589,7 @@ class __TwigTemplate_28e113059b93050a1de612a2c31bb6a3 extends Template
             <div class=\"tab-content\">
                 {% if not collector.connections %}
                     <div class=\"empty\">
-                        <p>There are no configured database connections.</p>
+                        <p>There are no configured db connections.</p>
                     </div>
                 {% else %}
                     {{ helper.render_simple_table('Name', 'Service', collector.connections) }}

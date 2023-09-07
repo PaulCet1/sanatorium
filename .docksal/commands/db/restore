@@ -1,0 +1,5 @@
+#!/bin/bash
+
+DUMP_DIR=".docksal/database/dump"
+
+fin db import $DUMP_DIR/default-dump.sql --progress || exit 2

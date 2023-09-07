@@ -90,7 +90,7 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
     }
 
     /**
-     * Connection name to use for the migrations database.
+     * Connection name to use for the migrations db.
      * @default null
      * @param ParamConfigurator|mixed $value
      * @return $this
@@ -104,7 +104,7 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
     }
 
     /**
-     * Entity manager name to use for the migrations database (available when doctrine/orm is installed).
+     * Entity manager name to use for the migrations db (available when doctrine/orm is installed).
      * @default null
      * @param ParamConfigurator|mixed $value
      * @return $this

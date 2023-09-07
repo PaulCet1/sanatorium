@@ -77,7 +77,7 @@ class RedisConfig
      */
     public function database($value): static
     {
-        $this->_usedProperties['database'] = true;
+        $this->_usedProperties['db'] = true;
         $this->database = $value;
 
         return $this;
@@ -122,10 +122,10 @@ class RedisConfig
             unset($value['port']);
         }
 
-        if (array_key_exists('database', $value)) {
-            $this->_usedProperties['database'] = true;
-            $this->database = $value['database'];
-            unset($value['database']);
+        if (array_key_exists('db', $value)) {
+            $this->_usedProperties['db'] = true;
+            $this->database = $value['db'];
+            unset($value['db']);
         }
 
         if (array_key_exists('key_name', $value)) {
@@ -154,8 +154,8 @@ class RedisConfig
         if (isset($this->_usedProperties['port'])) {
             $output['port'] = $this->port;
         }
-        if (isset($this->_usedProperties['database'])) {
-            $output['database'] = $this->database;
+        if (isset($this->_usedProperties['db'])) {
+            $output['db'] = $this->database;
         }
         if (isset($this->_usedProperties['keyName'])) {
             $output['key_name'] = $this->keyName;

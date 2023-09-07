@@ -91,7 +91,7 @@ class MongoConfig
      */
     public function database($value): static
     {
-        $this->_usedProperties['database'] = true;
+        $this->_usedProperties['db'] = true;
         $this->database = $value;
 
         return $this;
@@ -142,10 +142,10 @@ class MongoConfig
             unset($value['pass']);
         }
 
-        if (array_key_exists('database', $value)) {
-            $this->_usedProperties['database'] = true;
-            $this->database = $value['database'];
-            unset($value['database']);
+        if (array_key_exists('db', $value)) {
+            $this->_usedProperties['db'] = true;
+            $this->database = $value['db'];
+            unset($value['db']);
         }
 
         if (array_key_exists('collection', $value)) {
@@ -177,8 +177,8 @@ class MongoConfig
         if (isset($this->_usedProperties['pass'])) {
             $output['pass'] = $this->pass;
         }
-        if (isset($this->_usedProperties['database'])) {
-            $output['database'] = $this->database;
+        if (isset($this->_usedProperties['db'])) {
+            $output['db'] = $this->database;
         }
         if (isset($this->_usedProperties['collection'])) {
             $output['collection'] = $this->collection;

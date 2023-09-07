@@ -27,8 +27,8 @@ class getMaker_AutoCommand_MakeDockerDatabaseService extends App_KernelDevDebugC
 
         $container->privates['maker.auto_command.make_docker_database'] = $instance = new \Symfony\Bundle\MakerBundle\Command\MakerCommand(new \Symfony\Bundle\MakerBundle\Maker\MakeDockerDatabase($a), $a, ($container->privates['maker.generator'] ?? $container->load('getMaker_GeneratorService')));
 
-        $instance->setName('make:docker:database');
-        $instance->setDescription('Adds a database container to your docker-compose.yaml file');
+        $instance->setName('make:docker:db');
+        $instance->setDescription('Adds a db container to your docker-compose.yaml file');
 
         return $instance;
     }

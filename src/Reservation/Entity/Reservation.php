@@ -14,8 +14,6 @@ class Reservation
     use IdTrait;
     use CreatedTrait;
 
-    /**
-     * @ORM\Column
-     */
+
 
 }

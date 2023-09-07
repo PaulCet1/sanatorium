@@ -2,3 +2,5 @@
 
 fin project rm -f
 fin project start
+
+fin db/restore
