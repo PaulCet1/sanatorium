@@ -19,14 +19,16 @@ return [
         '/place_create' => [[['_route' => 'place_create', '_controller' => 'App\\Place\\Controller\\Create'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/user' => [[['_route' => 'user_show', '_controller' => 'App\\User\\Controller\\Show'], null, ['GET' => 0], null, false, false, null]],
         '/users' => [[['_route' => 'user_listing', '_controller' => 'App\\User\\Controller\\Listing'], null, ['GET' => 0], null, false, false, null]],
+        '/user_create' => [[['_route' => 'user_create', '_controller' => 'App\\User\\Controller\\Create'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/reservation' => [[['_route' => 'reservation_listing', '_controller' => 'App\\Reservation\\Controller\\Listing'], null, ['GET' => 0], null, false, false, null]],
+        '/treatment-show' => [[['_route' => 'treatment_show', '_controller' => 'App\\Treatment\\Controller\\Show'], null, ['GET' => 0], null, false, false, null]],
+        '/treatment-create' => [[['_route' => 'treatment_create', '_controller' => 'App\\Treatment\\Controller\\Create'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/rejestracja' => [[['_route' => 'registration', '_controller' => 'App\\User\\Controller\\AuthController::registration'], null, null, null, false, false, null]],
         '/logowanie' => [[['_route' => 'login', '_controller' => 'App\\User\\Controller\\AuthController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\User\\Controller\\AuthController::logout'], null, null, null, false, false, null]],
         '/home' => [[['_route' => 'home', '_controller' => 'App\\Core\\Controller\\HomeController::index'], null, ['GET' => 0], null, false, false, null]],
         '/' => [[['_route' => 'welcome', '_controller' => 'App\\Core\\Controller\\HomeController::welcome'], null, ['GET' => 0], null, false, false, null]],
         '/access_denied' => [[['_route' => 'access_denied', '_controller' => 'App\\Core\\Controller\\AccessDenied'], null, ['GET' => 0], null, false, false, null]],
-        '/treatments_show' => [[['_route' => 'treatments_show', '_controller' => 'App\\Treatment\\Controller\\Show'], null, ['GET' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
