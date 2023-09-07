@@ -9,3 +9,8 @@ user_listing:
   path: /users
   controller: App\User\Controller\Listing
   methods: ['GET']
+
+user_create:
+  path: /user_create
+  controller: App\User\Controller\Create
+  methods: ['GET', 'POST']

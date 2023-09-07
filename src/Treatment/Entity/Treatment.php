@@ -5,6 +5,7 @@ namespace App\Treatment\Entity;
 use App\Core\Entity\TraitSpace\CreatedTrait;
 use App\Core\Entity\TraitSpace\IdTrait;
 use Doctrine\ORM\Mapping as ORM;
+use App\User\Entity\User;
 
 /**
  * @ORM\Entity
@@ -21,7 +22,8 @@ class Treatment
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=false)
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(name="leading_person_id", referencedColumnName="id")
      */
     private $leading_person;
 
@@ -35,7 +37,7 @@ class Treatment
         $this->name = $name;
     }
 
-    public function getLeadingPerson(): string
+    public function getLeadingPerson(): ?User
     {
         return $this->leading_person;
     }

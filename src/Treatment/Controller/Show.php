@@ -14,7 +14,7 @@ class Show
 
     public function __invoke(): Response
     {
-        $content = $this->twig->render('Treatments/show.twig');
+        $content = $this->twig->render('Treatment/show.twig');
 
         return new Response($content);
     }

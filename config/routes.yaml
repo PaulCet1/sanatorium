@@ -7,6 +7,9 @@ user:
 reservation:
     resource: '../src/Reservation/config/routes.yaml'
 
+treatment:
+    resource: '../src/Treatment/config/routes.yaml'
+
 
 controllers:
     resource:
@@ -38,10 +41,7 @@ access_denied:
 
 
 
-treatments_show:
-    path: /treatments_show
-    controller: App\Treatment\Controller\Show
-    methods: ['GET']
+
 
 
 
