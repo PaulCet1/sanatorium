@@ -4463,3 +4463,10 @@ f45257,192.168.48.2,GET,http://sanatorium.docksal/reservation,1694086808,,200
 408de9,192.168.48.2,GET,http://sanatorium.docksal/home,1694086812,,200
 e87568,192.168.176.2,GET,http://sanatorium.docksal/logout,1694088429,,302
 fd5f22,192.168.176.2,GET,http://sanatorium.docksal/,1694088429,,200
+45de0b,192.168.176.2,GET,http://sanatorium.docksal/,1694090327,,200
+8e7163,192.168.176.2,GET,http://sanatorium.docksal/logowanie,1694090329,,200
+d12456,192.168.176.2,POST,http://sanatorium.docksal/logowanie,1694090336,,302
+6838ce,192.168.176.2,GET,http://sanatorium.docksal/home,1694090336,,200
+b36c2f,192.168.176.2,GET,http://sanatorium.docksal/home,1694090795,,200
+dd3333,192.168.176.2,GET,http://sanatorium.docksal/user,1694090797,,200
+a060e0,192.168.176.2,GET,http://sanatorium.docksal/reservation,1694090798,,200
