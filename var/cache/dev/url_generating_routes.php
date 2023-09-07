@@ -19,6 +19,7 @@ return [
     'places_listing' => [[], ['_controller' => 'App\\Place\\Controller\\Listing'], [], [['text', '/places_listing']], [], [], []],
     'place_edit' => [[], ['_controller' => 'App\\Place\\Controller\\Edit'], [], [['text', '/place_edit']], [], [], []],
     'place_create' => [[], ['_controller' => 'App\\Place\\Controller\\Create'], [], [['text', '/place_create']], [], [], []],
+    'place_delete' => [['id'], ['_controller' => 'App\\Place\\Controller\\Delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/place_delete']], [], [], []],
     'user_show' => [[], ['_controller' => 'App\\User\\Controller\\Show'], [], [['text', '/user']], [], [], []],
     'user_listing' => [[], ['_controller' => 'App\\User\\Controller\\Listing'], [], [['text', '/users']], [], [], []],
     'reservation_listing' => [[], ['_controller' => 'App\\Reservation\\Controller\\Listing'], [], [['text', '/reservation']], [], [], []],

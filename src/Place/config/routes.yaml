@@ -12,3 +12,8 @@ place_create:
   path: /place_create
   controller: App\Place\Controller\Create
   methods: ['GET','POST']
+
+place_delete:
+  path: /place_delete/{id}
+  controller: App\Place\Controller\Delete
+  methods: ['GET']

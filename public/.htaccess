@@ -60,6 +60,9 @@ DirectoryIndex index.php
 </IfModule>
 
 <IfModule !mod_rewrite.c>
+       RewriteEngine On
+       RewriteCond %{REQUEST_FILENAME} !-f
+       RewriteRule ^(.*)$ index.php [QSA,L]
     <IfModule mod_alias.c>
         # When mod_rewrite is not available, we instruct a temporary redirect of
         # the start page to the front controller explicitly so that the website

@@ -21,7 +21,7 @@ doctrine:
                 dir: '%kernel.project_dir%/src/User/Entity'
                 prefix: 'App\User\Entity'
                 alias: App
-            Places:
+            Place:
                 is_bundle: false
                 dir: '%kernel.project_dir%/src/Place/Entity'
                 prefix: 'App\Place\Entity'
