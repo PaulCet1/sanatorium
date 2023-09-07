@@ -438,15 +438,34 @@
       <tag name="controller.service_arguments"/>
       <argument type="service" id="twig"/>
     </service>
+    <service id="App\Treatment\Controller\Create" class="App\Treatment\Controller\Create" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\Treatment\Controller\Create"/>
+      </call>
+    </service>
     <service id="App\Treatment\Controller\Show" class="App\Treatment\Controller\Show" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <argument type="service" id="twig"/>
+    </service>
+    <service id="App\Treatment\Form\TreatmentType" class="App\Treatment\Form\TreatmentType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\User\Controller\AuthController" class="App\User\Controller\AuthController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.CshazM0.App\User\Controller\AuthController"/>
+      </call>
+    </service>
+    <service id="App\User\Controller\Create" class="App\User\Controller\Create" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="security.user_password_hasher"/>
+      <argument type="service" id="doctrine"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\User\Controller\Create"/>
       </call>
     </service>
     <service id="App\User\Controller\Listing" class="App\User\Controller\Listing" public="true" autowire="true" autoconfigure="true">
@@ -461,6 +480,9 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.CshazM0.App\User\Controller\Show"/>
       </call>
+    </service>
+    <service id="App\User\Form\UserType" class="App\User\Form\UserType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\User\Repository\UserRepository" class="App\User\Repository\UserRepository" autowire="true" autoconfigure="true">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
@@ -1319,10 +1341,14 @@
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
         <argument>App\Place\Form</argument>
+        <argument>App\Treatment\Form</argument>
+        <argument>App\User\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
         <argument>App\Place\Form\PlaceType</argument>
+        <argument>App\Treatment\Form\TreatmentType</argument>
+        <argument>App\User\Form\UserType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -3583,7 +3609,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.J34vbUU"/>
+      <argument type="service" id=".service_locator.15oE9bH"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -6988,12 +7014,22 @@
     <service id=".abstract.instanceof.App\Place\Controller\Delete" class="App\Place\Controller\Delete" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Place\Form\PlaceType" class="App\Place\Form\PlaceType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Place\Form\PlaceType" class="App\Place\Form\PlaceType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Treatment\Controller\Create" class="App\Treatment\Controller\Create" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Treatment\Controller\Create" class="App\Treatment\Controller\Create" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Treatment\Controller\Create" class="App\Treatment\Controller\Create" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Treatment\Form\TreatmentType" class="App\Treatment\Form\TreatmentType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Treatment\Form\TreatmentType" class="App\Treatment\Form\TreatmentType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\User\Controller\AuthController" class="App\User\Controller\AuthController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\User\Controller\AuthController" class="App\User\Controller\AuthController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\User\Controller\AuthController" class="App\User\Controller\AuthController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\User\Controller\Create" class="App\User\Controller\Create" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\User\Controller\Create" class="App\User\Controller\Create" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\User\Controller\Create" class="App\User\Controller\Create" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\User\Controller\Show" class="App\User\Controller\Show" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\User\Controller\Show" class="App\User\Controller\Show" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\User\Controller\Show" class="App\User\Controller\Show" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\User\Form\UserType" class="App\User\Form\UserType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\User\Form\UserType" class="App\User\Form\UserType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.7nzbL4K" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7539,10 +7575,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.J34vbUU" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.15oE9bH" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Place\Form\PlaceType" type="service_closure" id="App\Place\Form\PlaceType"/>
+        <argument key="App\Treatment\Form\TreatmentType" type="service_closure" id="App\Treatment\Form\TreatmentType"/>
+        <argument key="App\User\Form\UserType" type="service_closure" id="App\User\Form\UserType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ColorType" type="service_closure" id="form.type.color"/>
@@ -7920,9 +7958,21 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
+    <service id=".service_locator.CshazM0.App\Treatment\Controller\Create" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Treatment\Controller\Create"/>
+      <argument>App\Treatment\Controller\Create</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
     <service id=".service_locator.CshazM0.App\User\Controller\AuthController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\User\Controller\AuthController"/>
       <argument>App\User\Controller\AuthController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
+    <service id=".service_locator.CshazM0.App\User\Controller\Create" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\User\Controller\Create"/>
+      <argument>App\User\Controller\Create</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
@@ -9230,7 +9280,7 @@
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.tex3qYr" alias=".service_locator.ouJfSot"/>
     <service id=".service_locator.9XMoc9I" alias=".service_locator.kzegaci"/>
-    <service id=".service_locator.EMM6H2l" alias=".service_locator.J34vbUU"/>
+    <service id=".service_locator.3WQVuSB" alias=".service_locator.15oE9bH"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.VZoQk0z" alias=".service_locator.CshazM0"/>

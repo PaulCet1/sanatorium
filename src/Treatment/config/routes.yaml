@@ -1,0 +1,9 @@
+treatment_show:
+  path: /treatment-show
+  controller: App\Treatment\Controller\Show
+  methods: ['GET']
+
+treatment_create:
+  path: /treatment-create
+  controller: App\Treatment\Controller\Create
+  methods: ['GET', 'POST']
