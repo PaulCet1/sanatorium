@@ -19,7 +19,7 @@ class TreatmentType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'username',
                 'label' => 'Lider leczenia',
-                'required' => false,
+                'required' => true,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->andWhere('u.roles LIKE :role')

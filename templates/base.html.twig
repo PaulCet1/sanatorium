@@ -31,8 +31,8 @@
 
                 <div class="profile">
                     <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="" class="img-fluid rounded-circle">
-                    <h1 class="text-light"><a href="index.html">Witaj, {{ app.user.username }}</a></h1>
-                    <h1 class="text-light"><a href="index.html">Sanatorium Elda</a></h1>
+                    <h1 class="text-light"><a href="{{ path('home') }}">Witaj, {{ app.user.username }}</a></h1>
+                    <h1 class="text-light"><a href="{{ path('home') }}">Sanatorium Elda</a></h1>
                     <div class="social-links mt-3 text-center">
                         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -50,7 +50,7 @@
                                 <span>Twoje dane</span></a></li>
                         <li><a href="{{ path('reservation_listing') }}" class="nav-link"> <i class="bx bx-file-blank"></i>
                                 <span>Rezerwacje</span></a></li>
-                        <li><a href="{{ path('treatment_show') }}" class="nav-link"><i class="bx bx-book-content"></i>
+                        <li><a href="{{ path('treatment_listing') }}" class="nav-link"><i class="bx bx-book-content"></i>
                                 <span>Zabiegi</span></a></li>
                         <li><a href="" class="nav-link"><i class="bx bx-server"></i>
                                 <span>Kontakt</span></a></li>

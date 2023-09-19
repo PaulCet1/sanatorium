@@ -9,7 +9,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nazwa</th>
-                    <th scope="col">Prowadzący</th>
+                    <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -17,12 +17,8 @@
                 {% for treatment in treatments %}
                     <tr>
                         <th scope="row">{{ treatment.id }}</th>
-                        <td>{{ treatment.name }}</td>
-                        <td>{{ treatment.leadingPerson.fullname }}</td>
-                        <td>
-{#                            <a href="{{ path('place_edit', {'id': place.id}) }}" class="btn btn-info">Edit</a>#}
-{#                            <a href="{{ path('place_delete', {'id': place.id}) }}" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>#}
-                        </td>
+                        <td>{{ treatment.name }} </td>
+                        <td><a href="{{ path('treatment_show', {'id': treatment.id}) }}" class="btn btn-info">Pokaż</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

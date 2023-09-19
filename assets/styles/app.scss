@@ -1,6 +1,30 @@
 @import '~bootstrap/scss/bootstrap';
 
 
+/* Ukryj submenu */
+#submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  transition: all 0.3s ease; /* Dodaj animację */
+}
+
+/* Stylizacja przycisku "Zabiegi" */
+#toggle-submenu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Stylizacja przycisku "Zabiegi" po kliknięciu */
+#toggle-submenu.active + #submenu {
+  display: block;
+}
 
 
 

@@ -1,9 +1,14 @@
-treatment_show:
-  path: /treatment-show
+treatment_listing:
+  path: /treatment-listing
   controller: App\Treatment\Controller\Listing
   methods: ['GET']
 
 treatment_create:
   path: /treatment-create
   controller: App\Treatment\Controller\Create
+  methods: ['GET', 'POST']
+
+treatment_show:
+  path: /treatment-show/{id}
+  controller: App\Treatment\Controller\Show
   methods: ['GET', 'POST']
