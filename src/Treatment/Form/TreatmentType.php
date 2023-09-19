@@ -22,8 +22,8 @@ class TreatmentType extends AbstractType
                 'required' => false,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
-                        ->andWhere(':role MEMBER OF u.roles')
-                        ->setParameter('role', 'ROLE_INSTRUCTOR');
+                        ->andWhere('u.roles LIKE :role')
+                        ->setParameter('role', '%ROLE_INSTRUCTOR%');
                 },
             ]);
     }

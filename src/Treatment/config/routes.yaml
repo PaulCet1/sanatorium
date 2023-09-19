@@ -1,6 +1,6 @@
 treatment_show:
   path: /treatment-show
-  controller: App\Treatment\Controller\Show
+  controller: App\Treatment\Controller\Listing
   methods: ['GET']
 
 treatment_create:

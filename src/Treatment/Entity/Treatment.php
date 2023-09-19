@@ -13,6 +13,11 @@ use App\User\Entity\User;
  */
 class Treatment
 {
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+    }
+
     use IdTrait;
     use CreatedTrait;
 
@@ -42,7 +47,7 @@ class Treatment
         return $this->leading_person;
     }
 
-    public function setLeadingPerson(string $leading_person): void
+    public function setLeadingPerson(User $leading_person): void
     {
         $this->leading_person = $leading_person;
     }
