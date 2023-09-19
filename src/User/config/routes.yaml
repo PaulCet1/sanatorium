@@ -16,6 +16,6 @@ user_create:
   methods: ['GET', 'POST']
 
 user_edit:
-  path: /{id}
+  path: /user/{id}
   controller: App\User\Controller\Edit
   methods: ['GET', 'POST']
