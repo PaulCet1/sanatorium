@@ -28,7 +28,6 @@ services:
         resource: '../src/User/Controller'
         tags: ['controller.service_arguments']
 
-
     App\Reservation\Controller\:
         resource: '../src/Reservation/Controller'
         tags: ['controller.service_arguments']

@@ -11,6 +11,7 @@
                     <th scope="col">Imię i nazwisko</th>
                     <th scope="col">Nazwa użytkownika</th>
                     <th scope="col">Email</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -20,6 +21,10 @@
                         <td>{{ user.fullname }}</td>
                         <td>{{ user.username }}</td>
                         <td>{{ user.email }}</td>
+                        <td>
+                            <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-info">Edit</a>
+                            <a href="" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
