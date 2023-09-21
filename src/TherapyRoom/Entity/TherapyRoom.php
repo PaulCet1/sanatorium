@@ -13,6 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TherapyRoom
 {
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+    }
 
     use IdTrait;
     use CreatedTrait;
