@@ -1,0 +1,9 @@
+therapy-room-listing:
+  path: /therapy_room/listing
+  controller: App\TherapyRoom\Controller\Listing
+  methods: ['GET']
+
+therapy-room-create:
+  path: /therapy_room/create
+  controller: App\TherapyRoom\Controller\Create
+  methods: ['GET', 'POST']
