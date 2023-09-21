@@ -10,6 +10,9 @@ reservation:
 treatment:
     resource: '../src/Treatment/config/routes.yaml'
 
+therapy_room:
+    resource: '../src/TherapyRoom/config/routes.yaml'
+
 
 controllers:
     resource:

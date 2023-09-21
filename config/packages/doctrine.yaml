@@ -36,6 +36,11 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Reservation/Entity'
                 prefix: 'App\Reservation\Entity'
                 alias: App
+            TherapyRoom:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/TherapyRoom/Entity'
+                prefix: 'App\TherapyRoom\Entity'
+                alias: App
 
         
 
