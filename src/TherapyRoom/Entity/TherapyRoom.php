@@ -22,6 +22,11 @@ class TherapyRoom
     use CreatedTrait;
 
     /**
+     * @ORM\Column(type="integer", unique=false)
+     */
+    private $number;
+
+    /**
      * @ORM\Column(type="string", length=180, unique=false)
      */
     private $name;
@@ -35,6 +40,16 @@ class TherapyRoom
      * @ORM\Column(type="integer", unique=false)
      */
     private $attendance_limit;
+
+    public function setNumber(int $number): void
+    {
+        $this->number = $number;
+    }
+
+    public function getNumber(): int
+    {
+        return $this->number;
+    }
 
 
     public function setName(string $name): void

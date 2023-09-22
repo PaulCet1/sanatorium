@@ -22,13 +22,13 @@ class Edit extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Zapisz zmienione dane użytkownika
+
             $entityManager = $this->doctrine->getManager();
             $entityManager->flush();
 
             $this->addFlash('success', 'Dane użytkownika zostały zaktualizowane.');
 
-            return $this->redirectToRoute('user_listing'); // Przekierowanie na listę użytkowników
+            return $this->redirectToRoute('user_listing');
         }
 
         return $this->render('User/edit.twig', [

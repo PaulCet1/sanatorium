@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <main id="main">
+        <section id="about" class="about">
+            <div class="container">
+
+                <table class="table table-bordered table-dark text-white">
+                    <tbody>
+                    <tr>
+                        <td width="30%"><i class="bi bi-chevron-right"></i></td>
+                        <td width="40%"><strong>Nazwa sali:</strong></td>
+                        <td width="30%">{{ therapy_room.name }}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="bi bi-chevron-right"></i></td>
+                        <td><strong>Rodzaj:</strong></td>
+                        <td>{{ therapy_room.session }}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="bi bi-chevron-right"></i></td>
+                        <td><strong>Limit ćwiczących:</strong></td>
+                        <td>{{ therapy_room.getAttendanceLimit() }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    </main>
+{% endblock %}

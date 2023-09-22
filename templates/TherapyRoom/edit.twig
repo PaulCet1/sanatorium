@@ -2,11 +2,11 @@
 
 {% block body %}
     <main id="main">
-        <div class="container" >
+        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
-                        <h1 class="card-header">Dodaj nową salę zabiegową</h1>
+                        <h1 class="card-header">Edycja sali zabiegowej</h1>
                         <div class="card-body">
                             {{ form_start(form) }}
                             <div class="form-group">
@@ -26,7 +26,7 @@
                                 {{ form_widget(form.attendance_limit, {'attr': {'class': 'form-control'}}) }}
                             </div>
                             <div class="text-center mt-4">
-                                {{ form_widget(form.save)  }}
+                                {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
                             </div>
                             {{ form_end(form) }}
                         </div>
