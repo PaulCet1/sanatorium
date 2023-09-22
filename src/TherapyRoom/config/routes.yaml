@@ -7,3 +7,18 @@ therapy-room-create:
   path: /therapy_room/create
   controller: App\TherapyRoom\Controller\Create
   methods: ['GET', 'POST']
+
+therapy-room-delete:
+  path: /therapy_room/delete/{id}
+  controller: App\TherapyRoom\Controller\Delete
+  methods: ['GET', 'POST']
+
+therapy-room-show:
+  path: /therapy_room_show/{id}
+  controller: App\TherapyRoom\Controller\Show
+  methods: ['GET']
+
+therapy-room-edit:
+  path: /therapy_room_edit/{id}
+  controller: App\TherapyRoom\Controller\Edit
+  methods: ['GET', 'POST']

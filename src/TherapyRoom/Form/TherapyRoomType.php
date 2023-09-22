@@ -4,6 +4,7 @@ namespace App\TherapyRoom\Form;
 
 use App\TherapyRoom\Entity\TherapyRoom;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,19 +17,25 @@ class TherapyRoomType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Name',
-                'attr' => ['placeholder' => 'Enter name'],
+                'label' => 'Nazwa sali',
+                'attr' => ['placeholder' => 'Nazwa'],
             ])
-            ->add('session', TextType::class, [
-                'label' => 'Session',
-                'attr' => ['placeholder' => 'Enter session number'],
+            ->add('number', IntegerType::class, [
+                'label' => 'Numer sali',
+            ])
+            ->add('session', ChoiceType::class, [
+                'label' => 'Rodzaj sali',
+                'choices' => [
+                  'Grupowe' => 'group',
+                  'Personalne' => 'personal',
+                ],
             ])
             ->add('attendance_limit', IntegerType::class, [
-                'label' => 'Attendance limit',
-                'attr' => ['placeholder' => 'Enter attendance limit'],
+                'label' => 'Limit miejsc',
+                'attr' => ['placeholder' => 'Limit miejsc ćwiczących'],
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Save',
+                'label' => 'Zapisz',
                 'attr' => ['class' => 'btn btn-primary'],
             ]);
     }

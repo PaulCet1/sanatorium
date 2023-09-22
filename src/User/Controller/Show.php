@@ -8,7 +8,6 @@ use Twig\Environment;
 
 class Show extends AbstractController
 {
-
     public function __construct(
         private Environment $twig,
     )
@@ -18,8 +17,9 @@ class Show extends AbstractController
     {
         $user = $this->getUser();
         $content = $this->twig->render(
-            'User/show.twig',
-            ['user' => $user]
+            'User/show.twig', [
+                'user' => $user,
+            ]
         );
         return new Response($content);
     }
