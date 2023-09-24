@@ -1,7 +1,39 @@
 {% extends "base.html.twig" %}
 {% block body %}
     <main id="main">
-         <h1>{{ treatment.id }}</h1>
-        <h1>{{ treatment.name }}</h1>
+        <section id="about" class="about">
+            <div class="container">
+
+                <table class="table table-bordered table-dark text-white">
+                    <tbody>
+                    <tr>
+                        <td width="40%"><strong>Nazwa zabiegu:</strong></td>
+                        <td width="30%">{{ treatment.name }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Cena:</strong></td>
+                        <td width="30%">{{ treatment.price }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Prowadzący:</strong></td>
+                        <td width="30%">{{ treatment.getLeadingPerson().getFullName() }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Gabinet:</strong></td>
+                        <td width="30%">
+                            <a href="{{ path('therapy-room-show', {'id': treatment.getTherapyRoom().getId() }) }}">
+                            {{ treatment.getTherapyRoom().getName() }}
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
     </main>
 {% endblock %}
+
+
+
+

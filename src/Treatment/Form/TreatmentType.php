@@ -2,8 +2,11 @@
 
 namespace App\Treatment\Form;
 
+use App\TherapyRoom\Entity\TherapyRoom;
 use App\Treatment\Entity\Treatment;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -16,10 +19,12 @@ class TreatmentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', TextType::class, [
+                'label' => 'Nazwa zabiegu'
+            ])
             ->add('leading_person', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'username',
+                'choice_label' => 'fullname',
                 'label' => 'Prowadzący',
                 'required' => true,
                 'query_builder' => function (EntityRepository $er) {
@@ -27,6 +32,22 @@ class TreatmentType extends AbstractType
                         ->andWhere('u.roles LIKE :role')
                         ->setParameter('role', '%ROLE_INSTRUCTOR%');
                 },
+            ])
+            ->add('price', NumberType::class, [
+                'label' => 'Cena',
+                'required' => true,
+            ])
+            ->add('duration', TextType::class, [
+                'label' => 'Długość trwania zabiegu(w minutach)'
+            ])
+            ->add('therapy_room', EntityType::class, [
+             'class' => TherapyRoom::class,
+             'choice_label' => 'name',
+             'label' => 'Sala zajęć',
+             'required' => 'true',
+            ])
+            ->add('number_of_patients', NumberType::class, [
+                'label' => 'Liczba uczestników'
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Zapisz', 

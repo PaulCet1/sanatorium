@@ -23,7 +23,7 @@ class Create extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->createTreatment->createTreatment($treatment);
 
-            return $this->redirectToRoute('treatment_show');
+            return $this->redirectToRoute('treatment_listing');
         }
 
         return $this->render('Treatment/create.twig', [

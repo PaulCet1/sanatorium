@@ -12,3 +12,8 @@ treatment_show:
   path: /treatment-show/{id}
   controller: App\Treatment\Controller\Show
   methods: ['GET', 'POST']
+
+treatment_delete:
+  path: /treatment-delete/{id}
+  controller: App\Treatment\Controller\Delete
+  methods: ['GET', 'POST']

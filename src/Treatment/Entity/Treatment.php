@@ -4,6 +4,8 @@ namespace App\Treatment\Entity;
 
 use App\Core\Entity\TraitSpace\CreatedTrait;
 use App\Core\Entity\TraitSpace\IdTrait;
+use App\TherapyRoom\Entity\TherapyRoom;
+use Decimal\Decimal;
 use Doctrine\ORM\Mapping as ORM;
 use App\User\Entity\User;
 
@@ -32,6 +34,29 @@ class Treatment
      */
     private $leading_person;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $duration;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TherapyRoom::class)
+     * @ORM\JoinColumn(name="therapy_room_id", referencedColumnName="id")
+     */
+    private $therapy_room;
+
+    /**
+     * @ORM\Column(type="integer", unique=false)
+     */
+    private $number_of_patients;
+
+
+
     public function getName(): string
     {
         return $this->name;
@@ -51,4 +76,47 @@ class Treatment
     {
         $this->leading_person = $leading_person;
     }
+
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
+
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    public function getDuration(): string
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(string $duration): void
+    {
+        $this->duration = $duration;
+    }
+
+    public function getTherapyRoom(): ?TherapyRoom
+    {
+        return $this->therapy_room;
+    }
+
+    public function setTherapyRoom(?TherapyRoom $therapyRoom): void
+    {
+        $this->therapy_room = $therapyRoom;
+    }
+
+    public function getNumberOfPatients(): ?int
+    {
+        return $this->number_of_patients;
+    }
+
+    public function setNumberOfPatients(int $number_of_patients): void
+    {
+        $this->number_of_patients = $number_of_patients;
+    }
+
+
+
 }

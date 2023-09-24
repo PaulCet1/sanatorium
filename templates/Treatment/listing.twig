@@ -9,7 +9,11 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nazwa</th>
+                    <th scope="col">Cena</th>
+                    <th scope="col">Gabinet</th>
+                    <th scope="col">Prowadzący</th>
                     <th scope="col"></th>
+
 
                 </tr>
                 </thead>
@@ -18,7 +22,15 @@
                     <tr>
                         <th scope="row">{{ treatment.id }}</th>
                         <td>{{ treatment.name }} </td>
-                        <td><a href="{{ path('treatment_show', {'id': treatment.id}) }}" class="btn btn-info">Pokaż</a></td>
+                        <td>{{ treatment.price }}</td>
+                        <td>
+                            <a href="{{ path('therapy-room-show', {'id': treatment.getTherapyRoom().getId() }) }}" class="no-link-styling">
+                            {{ treatment.getTherapyRoom() is not null ? treatment.getTherapyRoom().getName() : 'Brak informacji' }}
+                            </a>
+                        </td>
+                        <td>{{ treatment.getLeadingPerson().getFullName() }}</td>
+                        <td><a href="{{ path('treatment_show', {'id': treatment.id}) }}" class="btn btn-info">Pokaż</a>
+                        <a href="{{ path('treatment_delete', {'id': treatment.id}) }}" class="btn btn-danger">Usuń</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
