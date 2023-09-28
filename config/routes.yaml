@@ -13,6 +13,12 @@ treatment:
 therapy_room:
     resource: '../src/TherapyRoom/config/routes.yaml'
 
+treatment_type:
+    resource: '../src/TreatmentType/config/routes.yaml'
+
+room:
+    resource: '../src/Room/config/routes.yaml'
+
 
 controllers:
     resource:

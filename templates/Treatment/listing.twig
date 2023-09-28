@@ -12,6 +12,8 @@
                     <th scope="col">Cena</th>
                     <th scope="col">Gabinet</th>
                     <th scope="col">Prowadzący</th>
+                    <th scope="col">Czas trwania zabiegu</th>
+                    <th scope="col">Limit miejsc</th>
                     <th scope="col"></th>
 
 
@@ -29,6 +31,8 @@
                             </a>
                         </td>
                         <td>{{ treatment.getLeadingPerson().getFullName() }}</td>
+                        <td>{{ treatment.duration }}</td>
+                        <td>{{ treatment.getNumberOfPatients() }}</td>
                         <td><a href="{{ path('treatment_show', {'id': treatment.id}) }}" class="btn btn-info">Pokaż</a>
                         <a href="{{ path('treatment_delete', {'id': treatment.id}) }}" class="btn btn-danger">Usuń</a></td>
                     </tr>

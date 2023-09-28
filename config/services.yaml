@@ -44,6 +44,10 @@ services:
         resource: '../src/TherapyRoom/Controller'
         tags: [ 'controller.service_arguments' ]
 
+    App\Room\Controller\:
+        resource: '../src/Room/Controller'
+        tags: ['controller.service_arguments']
+
 
 #    App\User\Repository\UserRepository:
 #        tags: ['doctrine.repository_service']

@@ -19,3 +19,8 @@ user_edit:
   path: /user/{id}
   controller: App\User\Controller\Edit
   methods: ['GET', 'POST']
+
+user_delete:
+  path: /user/delete/{id}
+  controller: App\User\Controller\Delete
+  methods: ['GET']

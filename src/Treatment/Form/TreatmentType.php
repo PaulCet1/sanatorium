@@ -38,7 +38,7 @@ class TreatmentType extends AbstractType
                 'required' => true,
             ])
             ->add('duration', TextType::class, [
-                'label' => 'Długość trwania zabiegu(w minutach)'
+                'label' => 'Czas trwania zabiegu(w minutach)'
             ])
             ->add('therapy_room', EntityType::class, [
              'class' => TherapyRoom::class,
@@ -47,7 +47,7 @@ class TreatmentType extends AbstractType
              'required' => 'true',
             ])
             ->add('number_of_patients', NumberType::class, [
-                'label' => 'Liczba uczestników'
+                'label' => 'Liczba miejsc'
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Zapisz', 

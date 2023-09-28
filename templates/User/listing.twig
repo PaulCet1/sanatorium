@@ -23,7 +23,7 @@
                         <td>{{ user.email }}</td>
                         <td>
                             <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-info">Edit</a>
-                            <a href="" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                            <a href="{{ path('user_delete', {'id': user.id}) }}" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
                         </td>
                     </tr>
                 {% endfor %}

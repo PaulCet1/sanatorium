@@ -69,7 +69,7 @@
                 {# ADMIN FUNCTIONS#}
 
                 <div class="profile">
-                    <h1 class="text-light"><a href="index.html">ADMIN</a></h1>
+                    <h1 class="text-light"><a href="index.html">Sanatorium</a></h1>
                 </div>
             </div>
 
@@ -85,6 +85,17 @@
                             <span>Sale zabiegowe</span></a>
                     </li>
 
+                </ul>
+            </nav>
+            <div class="profile">
+                <h1 class="text-light"><a href="index.html">Hotel</a></h1>
+            </div>
+            <nav id="navbar" class="nav-menu navbar">
+                <ul>
+                    <li><a href="{{ path('room_listing') }}" class="nav-link"><i class="bx bx-user"></i>
+                            <span>Pokoje</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             {% endif %}

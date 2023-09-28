@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <a href="{{ path('room_create') }}" class="btn btn-primary mb-3">Dodaj pokój</a>
+            <table class="table table-success transparent-table">
+                <thead>
+                <tr>
+                    <th scope="col">Numer pokoju</th>
+                    <th scope="col">Liczba miejsc</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for room in rooms %}
+                    <tr>
+                        <th scope="row">{{ room.getRoomNumber() }}</th>
+                        <td>{{ room.getPlacesNum() }}</td>
+                        <td>
+                            <a href="{{ path('room_edit', {'id': room.id}) }}" class="btn btn-info">Edit</a>
+                            <a href="{{ path('room_delete', {'id': room.id}) }}" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+{% endblock %}

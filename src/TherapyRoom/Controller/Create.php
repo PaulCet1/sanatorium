@@ -13,7 +13,7 @@ use Twig\Environment;
 class Create extends AbstractController
 {
     public function __construct(
-        public CreateTherapyRoom $createTherapyRoom,
+        private CreateTherapyRoom $createTherapyRoom,
         private Environment $twig,
     ){}
 

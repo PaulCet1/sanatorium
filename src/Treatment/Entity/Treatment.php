@@ -5,7 +5,6 @@ namespace App\Treatment\Entity;
 use App\Core\Entity\TraitSpace\CreatedTrait;
 use App\Core\Entity\TraitSpace\IdTrait;
 use App\TherapyRoom\Entity\TherapyRoom;
-use Decimal\Decimal;
 use Doctrine\ORM\Mapping as ORM;
 use App\User\Entity\User;
 
