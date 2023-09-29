@@ -6,7 +6,7 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Twoje konto</h2>
+                    <h2>{{ user.fullname }}</h2>
                     <p>Jeżeli widzisz błąd, prosimy o kontakt z administratorem systemu!</p>
                 </div>
 
@@ -23,13 +23,14 @@
                                     <li><i class="bi bi-chevron-right"></i> <strong>Imię i nazwisko:</strong> <span>{{ user.fullname }}</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Adres email:</strong> <span>{{ user.email }}</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Nazwa użytkownika:</strong> <span>{{ user.username }}</span></li>
+{#                                    <li><i class="bi bi-chevron-right"></i> <strong>Płeć:</strong> <span>{{ user.gender }}</span></li>#}
 
                                     {% if is_granted('ROLE_ADMIN') %}
                                     <li><i class="bi bi-chevron-right"></i> <strong>Uprawnienia:</strong>
                                         <span>
                                             <ul>
                                                 {% for role in app.user.roles %}
-                                                    {{ role }}
+                                                     {{ role }}
                                                 {% endfor %}
                                             </ul>
                                         </span>

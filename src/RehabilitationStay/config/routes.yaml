@@ -1,0 +1,19 @@
+rehabilitation_stay_listing:
+  path: /rehabilitation_stay/listing
+  controller: App\RehabilitationStay\Controller\Listing
+  methods: [ 'GET' ]
+
+rehabilitation_stay_show:
+  path: /rehabilitation_stay/show/{id}
+  controller: App\RehabilitationStay\Controller\Show
+  methods: [ 'GET' ]
+
+rehabilitation_stay_create:
+  path: /rehabilitation_stay/create
+  controller: App\RehabilitationStay\Controller\Create
+  methods: [ 'GET', 'POST' ]
+
+rehabilitation_stay_delete:
+  path: /rehabilitation_stay/delete/{id}
+  controller: App\RehabilitationStay\Controller\Delete
+  methods: [ 'GET' ]

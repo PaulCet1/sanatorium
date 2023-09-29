@@ -19,6 +19,9 @@ treatment_type:
 room:
     resource: '../src/Room/config/routes.yaml'
 
+rehabilitation_stay:
+    resource: '../src/RehabilitationStay/config/routes.yaml'
+
 
 controllers:
     resource:

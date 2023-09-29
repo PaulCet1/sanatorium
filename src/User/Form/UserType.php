@@ -43,6 +43,7 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'label' => 'Roles',
             ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
