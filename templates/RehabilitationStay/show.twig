@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <div class="container">
+
+                <table class="table table-bordered table-dark text-white">
+                    <tbody>
+                    <tr>
+                        <td width="40%"><strong>Nazwa zabiegu</strong></td>
+                        <td width="30%">{{ rehabilitation_stay.name }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Data rozpoczęcia</strong></td>
+                        <td width="30%">{{ rehabilitation_stay.getStartDate()|date('d-m-Y') }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Data zakończenia</strong></td>
+                        <td width="30%">{{ rehabilitation_stay.getEndDate()|date('d-m-Y') }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Zabiegi</strong></td>
+                        <td width="30%">
+                            <ul>
+                                {% for treatment in rehabilitation_stay.getTreatments() %}
+                                    <li>
+                                        <a href="{{ path('treatment_show', {'id': treatment.id}) }}">{{ treatment.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a class="btn btn-success">Modyfikuj</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('rehabilitation_stay_delete', {'id': rehabilitation_stay.id}) }}" class="btn btn-danger">Usuń zabieg</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    </main>
+{% endblock %}

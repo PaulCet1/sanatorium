@@ -44,6 +44,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
      */
     private $password;
 
+
+
     public function setFullname(string $fullname): void
     {
         $this->fullname =$fullname;
@@ -102,5 +104,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
     public function getUserIdentifier(): string {
         return $this->username;
     }
+
 
 }

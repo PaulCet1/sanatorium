@@ -27,6 +27,8 @@ class Treatment
      */
     private $name;
 
+
+
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(name="leading_person_id", referencedColumnName="id")
@@ -53,6 +55,11 @@ class Treatment
      * @ORM\Column(type="integer", unique=false)
      */
     private $number_of_patients;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\RehabilitationStay\Entity\RehabilitationStay", mappedBy="treatments")
+     */
+    private $rehabilitationStays;
 
 
 

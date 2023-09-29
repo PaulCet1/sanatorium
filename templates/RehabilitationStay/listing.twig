@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <main id="main">
+        <section id="about" class="about">
+            <a href="{{ path('rehabilitation_stay_create') }}" class="btn btn-primary mb-3">Planowanie turnusu</a>
+            <table class="table table-success transparent-table">
+                <thead>
+                <tr>
+                    <th scope="col">Nazwa</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for rehabilitationStay in rehabilitationStays %}
+                    <tr>
+                        <td>
+                        <a href="{{ path('rehabilitation_stay_show', {'id': rehabilitationStay.id}) }}">{{ rehabilitationStay.name }}</a>
+                        </td>
+
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+{% endblock %}

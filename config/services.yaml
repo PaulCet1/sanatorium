@@ -48,6 +48,10 @@ services:
         resource: '../src/Room/Controller'
         tags: ['controller.service_arguments']
 
+    App\RehabilitationStay\Controller\:
+        resource: '../src/RehabilitationStay/Controller'
+        tags: ['controller.service_arguments']
+
 
 #    App\User\Repository\UserRepository:
 #        tags: ['doctrine.repository_service']
