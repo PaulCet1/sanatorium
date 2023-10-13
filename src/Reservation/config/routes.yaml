@@ -2,3 +2,8 @@ reservation_listing:
   path: /reservation
   controller: App\Reservation\Controller\Listing
   methods: ['GET']
+
+reservation_create:
+  path: /reservation/create
+  controller: App\Reservation\Controller\Create
+  methods: ['GET', 'POST']

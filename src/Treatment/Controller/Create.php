@@ -20,7 +20,8 @@ class Create extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid())
+        {
             $this->createTreatment->createTreatment($treatment);
 
             return $this->redirectToRoute('treatment_listing');

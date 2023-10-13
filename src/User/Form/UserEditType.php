@@ -20,6 +20,7 @@ class UserEditType extends AbstractType
                     'User' => 'ROLE_USER',
                     'Admin' => 'ROLE_ADMIN',
                     'Instructor' => 'ROLE_INSTRUCTOR',
+                    'Client' => 'ROLE_CLIENT',
                 ],
                 'expanded' => true,
                 'multiple' => true,
