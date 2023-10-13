@@ -28,17 +28,11 @@ class RehabilitationStay
      * @ORM\Column(type="string")
      */
     private $name;
-    /**
-     * @ORM\Column(type="datetime")
-     * @Assert\LessThanOrEqual(propertyPath="end_date", message="Data rozpoczęcia nie może być późniejsza niż data zakończenia.")
-     */
-    private $start_date;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @Assert\GreaterThanOrEqual(propertyPath="start_date", message="Data zakończenia nie może być wcześniejsza niż data rozpoczęcia.")
+     * @ORM\Column(type="integer")
      */
-    private $end_date;
+    private $duration;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Treatment\Entity\Treatment", inversedBy="rehabilitationStays")
@@ -56,24 +50,16 @@ class RehabilitationStay
         $this->name = $name;
     }
 
-    public function getStartDate(): \DateTime
+
+
+    public function getDuration(): ?int
     {
-        return $this->start_date;
+        return $this->duration;
     }
 
-    public function setStartDate(\DateTime $start_date): void
+    public function setDuration(int $duration): void
     {
-        $this->start_date = $start_date;
-    }
-
-    public function getEndDate(): \DateTime
-    {
-        return $this->end_date;
-    }
-
-    public function setEndDate(\DateTime $end_date): void
-    {
-        $this->end_date = $end_date;
+        $this->duration = $duration;
     }
 
     public function getTreatments(): Collection
