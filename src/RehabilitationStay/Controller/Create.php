@@ -27,6 +27,7 @@ class Create extends AbstractController
             $em = $this->doctrine->getManager();
             $em->persist($rehabilitationStay);
             $em->flush();
+            return $this->redirectToRoute('rehabilitation_stay_listing');
         }
 
 

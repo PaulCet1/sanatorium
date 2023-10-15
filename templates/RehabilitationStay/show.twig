@@ -7,14 +7,17 @@
                 <table class="table table-bordered table-dark text-white">
                     <tbody>
                     <tr>
-                        <td width="40%"><strong>Nazwa turnusu</strong></td>
+                        <td width="40%"><strong>Nazwa zabiegu</strong></td>
                         <td width="30%">{{ rehabilitation_stay.name }}</td>
                     </tr>
                     <tr>
-                        <td width="40%"><strong>Czas trwania</strong></td>
-                        <td width="30%">{{ rehabilitation_stay.duration}}</td>
+                        <td width="40%"><strong>Data rozpoczęcia</strong></td>
+                        <td width="30%">{{ rehabilitation_stay.getStartDate()|date('d-m-Y') }}</td>
                     </tr>
-
+                    <tr>
+                        <td width="40%"><strong>Data zakończenia</strong></td>
+                        <td width="30%">{{ rehabilitation_stay.getEndDate()|date('d-m-Y') }}</td>
+                    </tr>
                     <tr>
                         <td width="40%"><strong>Zabiegi</strong></td>
                         <td width="30%">
@@ -33,16 +36,6 @@
                         </td>
                         <td>
                             <a href="{{ path('rehabilitation_stay_delete', {'id': rehabilitation_stay.id}) }}" class="btn btn-danger">Usuń zabieg</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a>Zapisani użytkownicy</a>
-                        </td>
-                        <td>
-                            <ul>
-                                 <li>Jan Kowalski</li>
-                            </ul>
                         </td>
                     </tr>
                     </tbody>

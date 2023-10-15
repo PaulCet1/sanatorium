@@ -1,35 +1,38 @@
 {% extends "base.html.twig" %}
 {% block body %}
+
     <main id="main">
-    <section id="about" class="about">
-        <div class="container">
+        <section id="about" class="about">
+            <a href="{{ path('reservation_create') }}" class="btn btn-primary mb-3">Dodaj rezerwację</a>
+            <table class="table table-success transparent-table">
+                <thead>
+                <tr>
+                    <th scope="col">Turnus</th>
+                    <th scope="col">Klient</th>
+                    <th scope="col">Zakwaterowanie</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for reservation in reservations %}
+                    <tr>
+                        <th>
+                            <a href="{{ path("rehabilitation_stay_show", {'id': reservation.getRehabilitationStay().getId()}) }}">
+                                {{ reservation.getRehabilitationStay().getName() }}
+                            </a>
+                        </th>
+                        <td>{{ reservation.getClient().getFullname() }}</td>
+                        <td>{{ reservation.getRoom().getRoomNumber() }}</td>
+                        <td>
+                            <a href="" class="btn btn-info">Edit</a>
+                            <a href="" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
-            <div class="section-title">
-                <h2>Rezerwacje</h2>
-                <p>Jeżeli widzisz błąd, prosimy o kontakt z administratorem systemu!</p>
-                <a class="btn btn-success" href="{{ path('reservation_create') }}">Tworzenie rezerwacji</a>
-            </div>
+        </section>
 
-            <div class="row">
-                <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-                    <h2>Twój pobyt</h2>
-
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Miejsce pobytu:</strong> <span>Place</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Termin pobytu:</strong> <span>Termin</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Zakwaterowanie</strong> <span>Zakwaterowanie</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Plan pobytu:</strong> <span>Rodzaj planu</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <p>
-                        W razie wątplliwości związanych z zamówieniem skontaktuj się z nami!
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section>
+    </main>
 {% endblock %}

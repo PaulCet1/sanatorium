@@ -15,7 +15,8 @@ class RehabilitationStayType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('duration')
+            ->add('start_date')
+            ->add('end_date')
             ->add('treatments', EntityType::class, [
                 'class' => Treatment::class,
                 'choice_label' => 'name',
@@ -29,7 +30,7 @@ class RehabilitationStayType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-           'data_class' => RehabilitationStay::class,
+            'data_class' => RehabilitationStay::class,
         ]);
     }
 

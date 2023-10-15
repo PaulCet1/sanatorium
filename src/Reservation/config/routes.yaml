@@ -7,3 +7,8 @@ reservation_create:
   path: /reservation/create
   controller: App\Reservation\Controller\Create
   methods: ['GET', 'POST']
+
+reservation_edit:
+  path: /reservation/edit/{id}
+  controller: App\Reservation\Controller\Edit
+  methods: ['GET', 'POST']
