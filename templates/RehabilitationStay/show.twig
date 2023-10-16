@@ -32,7 +32,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a class="btn btn-success">Modyfikuj</a>
+                            <a class="btn btn-success" href="{{ path('rehabilitation_stay_edit', {'id': rehabilitation_stay.id}) }}">Modyfikuj</a>
                         </td>
                         <td>
                             <a href="{{ path('rehabilitation_stay_delete', {'id': rehabilitation_stay.id}) }}" class="btn btn-danger">Usuń zabieg</a>

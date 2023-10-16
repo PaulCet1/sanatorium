@@ -150,7 +150,7 @@ CREATE TABLE `rehabilitation_stay_treatment` (
 
 LOCK TABLES `rehabilitation_stay_treatment` WRITE;
 /*!40000 ALTER TABLE `rehabilitation_stay_treatment` DISABLE KEYS */;
-INSERT INTO `rehabilitation_stay_treatment` VALUES (17,20),(17,21),(17,22),(17,29),(17,32),(17,33),(17,34),(18,28),(18,29),(18,30),(18,32),(18,33),(18,34),(18,35);
+INSERT INTO `rehabilitation_stay_treatment` VALUES (17,20),(17,21),(17,23),(17,32),(17,33),(17,34),(17,35),(18,28),(18,29),(18,30),(18,32),(18,33),(18,34),(18,35);
 /*!40000 ALTER TABLE `rehabilitation_stay_treatment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +264,7 @@ CREATE TABLE `treatment` (
   KEY `IDX_98013C31BC399E7D` (`leading_person_id`),
   CONSTRAINT `FK_98013C3141B4AC78` FOREIGN KEY (`therapy_room_id`) REFERENCES `therapy_room` (`id`),
   CONSTRAINT `FK_98013C31BC399E7D` FOREIGN KEY (`leading_person_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +273,7 @@ CREATE TABLE `treatment` (
 
 LOCK TABLES `treatment` WRITE;
 /*!40000 ALTER TABLE `treatment` DISABLE KEYS */;
-INSERT INTO `treatment` VALUES (20,'Fizjoterapia','2023-10-15 15:12:26',50,'60',10,0,3844),(21,'Kinezyterapia','2023-10-15 15:12:52',60,'60',10,0,3847),(22,'Masaż leczniczy','2023-10-15 15:13:09',60,'60',10,0,3853),(23,'Elektroterapia','2023-10-15 15:13:35',80,'30',10,0,3851),(24,'Terapia manualna','2023-10-15 15:13:56',60,'120',10,0,3849),(25,'Gimnastyka Korekcyjna','2023-10-15 15:14:20',30,'60',10,0,3849),(26,'Terapia zajęciowa','2023-10-15 15:14:47',60,'60',11,0,3844),(27,'Terapia poznawczo-behawioralna','2023-10-15 15:15:10',60,'60',11,0,3844),(28,'Terapia oddechowa','2023-10-15 15:16:34',40,'60',11,0,3847),(29,'Terapia po urazach','2023-10-15 15:16:59',60,'60',11,0,3853),(30,'Terapia ręki','2023-10-15 15:17:34',60,'60',11,0,3844),(31,'Masaż relaksacyjny','2023-10-15 15:17:54',60,'60',12,0,3847),(32,'Masaż spotowy','2023-10-15 15:18:09',60,'60',12,0,3851),(33,'Ćwiczenia izometryczne','2023-10-15 15:18:41',60,'60',13,0,3847),(34,'Elektrostymulacja','2023-10-15 15:19:04',60,'30',13,0,3851),(35,'Zabieg na skórę','2023-10-15 15:19:34',60,'70',14,0,3860);
+INSERT INTO `treatment` VALUES (20,'Fizjoterapia','2023-10-15 15:12:26',50,'60',10,0,3847),(21,'Kinezyterapia','2023-10-15 15:12:52',60,'60',10,0,3847),(22,'Masaż leczniczy','2023-10-15 15:13:09',60,'60',10,0,3853),(23,'Elektroterapia','2023-10-15 15:13:35',80,'30',10,0,3851),(24,'Terapia manualna','2023-10-15 15:13:56',60,'120',10,0,3849),(25,'Gimnastyka Korekcyjna','2023-10-15 15:14:20',30,'60',10,0,3849),(26,'Terapia zajęciowa','2023-10-15 15:14:47',60,'60',11,0,3844),(27,'Terapia poznawczo-behawioralna','2023-10-15 15:15:10',60,'60',11,0,3844),(28,'Terapia oddechowa','2023-10-15 15:16:34',40,'60',11,0,3847),(29,'Terapia po urazach','2023-10-15 15:16:59',60,'60',11,0,3853),(30,'Terapia ręki','2023-10-15 15:17:34',60,'60',11,0,3844),(31,'Masaż relaksacyjny','2023-10-15 15:17:54',60,'60',12,0,3847),(32,'Masaż spotowy','2023-10-15 15:18:09',60,'60',12,0,3851),(33,'Ćwiczenia izometryczne','2023-10-15 15:18:41',60,'60',13,0,3847),(34,'Elektrostymulacja','2023-10-15 15:19:04',60,'30',13,0,3851),(35,'Zabieg na skórę','2023-10-15 15:19:34',60,'70',14,0,3860);
 /*!40000 ALTER TABLE `treatment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-15 19:13:21
+-- Dump completed on 2023-10-16 20:21:00

@@ -8,6 +8,7 @@
                 <thead>
                 <tr>
                     <th scope="col">Nazwa</th>
+                    <th>Najbliższy turnus</th>
 
 
                 </tr>
@@ -18,7 +19,7 @@
                         <td>
                         <a href="{{ path('rehabilitation_stay_show', {'id': rehabilitationStay.id}) }}">{{ rehabilitationStay.name }}</a>
                         </td>
-
+                        <td>{{ rehabilitationStay.getStartDate()|date('Y-m-d') }}</td>
 
                     </tr>
                 {% endfor %}

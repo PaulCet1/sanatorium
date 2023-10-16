@@ -26,6 +26,10 @@
                             </a>
                         </td>
                     </tr>
+                    <tr>
+                        <td width="40%"><a class="btn btn-success" href="{{ path('treatment_edit', {'id': treatment.id}) }}">Modyfikuj</a></td>
+                        <td width="30%"><a class="btn btn-danger" href="{{ path('treatment_delete', {'id': treatment.id}) }}">Usuń</a></td>
+                    </tr>
                     </tbody>
                 </table>
 

@@ -17,3 +17,8 @@ rehabilitation_stay_delete:
   path: /rehabilitation_stay/delete/{id}
   controller: App\RehabilitationStay\Controller\Delete
   methods: [ 'GET' ]
+
+rehabilitation_stay_edit:
+  path: /rehabilitation_stay/edit/{id}
+  controller: App\RehabilitationStay\Controller\Edit
+  methods: ['GET', 'POST']

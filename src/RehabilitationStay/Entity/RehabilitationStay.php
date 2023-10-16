@@ -61,6 +61,8 @@ class RehabilitationStay
         return $this->start_date;
     }
 
+
+
     public function setStartDate(\DateTime $start_date): void
     {
         $this->start_date = $start_date;
