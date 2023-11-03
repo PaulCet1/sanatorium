@@ -22,6 +22,12 @@ room:
 rehabilitation_stay:
     resource: '../src/RehabilitationStay/config/routes.yaml'
 
+planned_stay:
+    resource: '../src/PlannedStay/config/routes.yaml'
+
+user_reservation:
+    resource: '../src/UserReservation/config/routes.yaml'
+
 
 controllers:
     resource:

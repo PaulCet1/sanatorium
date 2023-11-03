@@ -51,6 +51,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/RehabilitationStay/Entity'
                 prefix: 'App\RehabilitationStay\Entity'
                 alias: App
+            PlannedStay:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/PlannedStay/Entity'
+                prefix: 'App\PlannedStay\Entity'
+                alias: App
+
 
         
 

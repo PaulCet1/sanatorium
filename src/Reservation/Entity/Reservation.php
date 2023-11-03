@@ -1,7 +1,7 @@
 <?php
 namespace App\Reservation\Entity;
 
-use App\RehabilitationStay\Entity\RehabilitationStay;
+use App\PlannedStay\Entity\PlannedStay;
 use App\Room\Entity\Room;
 use Doctrine\ORM\Mapping as ORM;
 use App\Core\Entity\TraitSpace\CreatedTrait;
@@ -29,10 +29,10 @@ class Reservation
     private $client;
 
     /**
-     * @ORM\ManyToOne(targetEntity=RehabilitationStay::class)
-     * @ORM\JoinColumn(name="rehabilitationstay_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity=PlannedStay::class)
+     * @ORM\JoinColumn(name="plannedStay_id", referencedColumnName="id")
      */
-    private $rehabilitationstay;
+    private $plannedStay;
 
     /**
      * @ORM\ManyToOne(targetEntity=Room::class)
@@ -60,13 +60,13 @@ class Reservation
         $this->client = $client;
     }
 
-    public function getRehabilitationStay(): ?RehabilitationStay
+    public function getPlannedStay(): ?PlannedStay
     {
-        return $this->rehabilitationstay;
+        return $this->plannedStay;
     }
 
-    public function setRehabilitationStay(RehabilitationStay $rehabilitationstay): void
+    public function setPlannedStay(PlannedStay $plannedStay): void
     {
-        $this->rehabilitationstay = $rehabilitationstay;
+        $this->plannedStay = $plannedStay;
     }
 }

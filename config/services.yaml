@@ -52,6 +52,14 @@ services:
         resource: '../src/RehabilitationStay/Controller'
         tags: ['controller.service_arguments']
 
+    App\PlannedStay\Controller\:
+        resource: '../src/PlannedStay/Controller'
+        tags: ['controller.service_arguments']
+
+    App\UserReservation\Controller\:
+        resource: '../src/UserReservation/Controller'
+        tags: ['controller.service_arguments']
+
 
 #    App\User\Repository\UserRepository:
 #        tags: ['doctrine.repository_service']

@@ -1,0 +1,15 @@
+UserReservationListing:
+  path: /UserReservationListing
+  controller: App\UserReservation\Controller\UserReservationListing
+  methods: ['GET']
+
+UserReservationCreate:
+  path: /UserReservationCreate
+  controller: App\UserReservation\Controller\UserReservationCreate
+  methods: ['GET', 'POST']
+
+UserReservationShow:
+  path: /userReservation/show/{id}
+  controller: App\UserReservation\Controller\Show
+  methods: ['GET']
+

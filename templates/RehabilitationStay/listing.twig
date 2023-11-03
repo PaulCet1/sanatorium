@@ -3,7 +3,7 @@
 
     <main id="main">
         <section id="about" class="about">
-            <a href="{{ path('rehabilitation_stay_create') }}" class="btn btn-primary mb-3">Planowanie turnusu</a>
+            <a href="{{ path('rehabilitation_stay_create') }}" class="btn btn-primary mb-3">Tworzenie turnusu</a>
             <table class="table table-success transparent-table">
                 <thead>
                 <tr>
@@ -19,7 +19,7 @@
                         <td>
                         <a href="{{ path('rehabilitation_stay_show', {'id': rehabilitationStay.id}) }}">{{ rehabilitationStay.name }}</a>
                         </td>
-                        <td>{{ rehabilitationStay.getStartDate()|date('Y-m-d') }}</td>
+                        <td>{{ rehabilitationStay.getDuration() }}</td>
 
                     </tr>
                 {% endfor %}

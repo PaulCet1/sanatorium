@@ -15,8 +15,7 @@ class RehabilitationStayEditType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('start_date')
-            ->add('end_date')
+            ->add('duration')
             ->add('treatments', EntityType::class, [
                 'class' => Treatment::class,
                 'choice_label' => 'name',

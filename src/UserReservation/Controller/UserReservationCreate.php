@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Reservation\Controller;
+namespace App\UserReservation\Controller;
 
 use App\Reservation\Entity\Reservation;
-use App\Reservation\Form\ReservationType;
 use App\Reservation\Services\CreateReservation;
+use App\UserReservation\Form\UserReservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
-class Create extends AbstractController
+class UserReservationCreate extends AbstractController
 {
     public function __construct(
         private Environment $twig,
@@ -19,23 +18,23 @@ class Create extends AbstractController
     ){}
 
 
-    /**
-     * @Security("is_granted('ROLE_ADMIN')", message="Brak uprawnień")
-     */
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request)
     {
+        $user = $this->getUser();
+        $user_id=$user->getId();
         $reservation = new Reservation();
-        $form = $this->createForm(ReservationType::class, $reservation);
+        $reservation->setClient($user);
+        $form = $this->createForm(UserReservationType::class, $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
             $this->createReservation->createReservation($reservation);
 
-            return $this->redirectToRoute('reservation_listing');
+            return $this->redirectToRoute('UserReservationListing');
         }
 
-        return new Response($this->twig->render('Reservation/create.twig', [
+        return new Response($this->twig->render('ReservationUser/create.twig', [
             'form' => $form->createView(),
         ]));
     }

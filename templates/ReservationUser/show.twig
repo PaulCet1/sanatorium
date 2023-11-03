@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <a href="{{ path('UserReservationCreate') }}" class="btn btn-primary mb-3">Zamów pobyt</a>
+
+
+                <div class="card text-center mb-3">
+                    <div class="card-header">
+                        Identyfikator rezerwacji: <b> {{ reservation.getId() }} </b>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Turnus:{{ reservation.getPlannedStay().getRehabilitationStay().getName() }}</h5>
+                        <p class="card-text">Data rozpoczęcia: {{ reservation.getPlannedStay().getStartDate()|date("d/m/Y") }}</p>
+                        <p class="card-text">Data zakończenia: {{ reservation.getPlannedStay().getEndDate()|date("d/m/Y") }}</p>
+                        <a href="{{ path('rehabilitation_stay_show', {'id': reservation.getPlannedStay().getRehabilitationStay().getId()}) }}" class="btn btn-info">Więcej informacji</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Data aktualizacji:
+                    </div>
+                </div>
+
+        </section>
+    </main>
+{% endblock %}
