@@ -29,7 +29,7 @@ class UserReservationType extends AbstractType
             ])
             ->add('plannedStay', EntityType::class, [
                 'class' => PlannedStay::class,
-                'choice_label' => 'id',
+                'choice_label' => 'rehabilitation_stay.name',
                 'label' => 'Turnus',
                 'required' => true,
             ])
@@ -37,7 +37,7 @@ class UserReservationType extends AbstractType
                 'class' => Room::class,
                 'choice_label' => 'room_number',
                 'label' => 'Pokój',
-                'required' => false,
+                'required' => true,
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Zapisz',

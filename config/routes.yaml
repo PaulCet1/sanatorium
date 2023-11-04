@@ -28,6 +28,9 @@ planned_stay:
 user_reservation:
     resource: '../src/UserReservation/config/routes.yaml'
 
+treatment_plan:
+    resource: '../src/TreatmentPlan/config/routes.yaml'
+
 
 controllers:
     resource:

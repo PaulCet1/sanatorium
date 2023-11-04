@@ -16,7 +16,7 @@
                         <a href="{{ path('UserReservationShow', {'id': reservation.getId()}) }}" class="btn btn-info">Więcej informacji</a>
                     </div>
                     <div class="card-footer text-muted">
-                        Data aktualizacji:
+                        Data aktualizacji: {{ reservation.getCreated()|date('d.m.Y') }}
                     </div>
                 </div>
             {% endfor %}

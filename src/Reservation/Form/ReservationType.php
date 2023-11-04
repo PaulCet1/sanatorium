@@ -2,6 +2,7 @@
 
 namespace App\Reservation\Form;
 
+use App\PlannedStay\Entity\PlannedStay;
 use App\RehabilitationStay\Entity\RehabilitationStay;
 use App\Reservation\Entity\Reservation;
 use App\Room\Entity\Room;
@@ -29,9 +30,9 @@ class ReservationType extends AbstractType
                     ->setParameter('role', '%ROLE_CLIENT%');
                 }
             ])
-            ->add('rehabilitationstay', EntityType::class, [
-                'class' => RehabilitationStay::class,
-                'choice_label' => 'name',
+            ->add('plannedStay', EntityType::class, [
+                'class' => PlannedStay::class,
+                'choice_label' => 'rehabilitation_stay.name',
                 'label' => 'Turnus',
                 'required' => true,
             ])
@@ -39,7 +40,7 @@ class ReservationType extends AbstractType
                 'class' => Room::class,
                 'choice_label' => 'room_number',
                 'label' => 'Pokój',
-                'required' => false,
+                'required' => true,
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Zapisz',

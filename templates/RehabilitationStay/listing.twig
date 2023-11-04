@@ -8,7 +8,8 @@
                 <thead>
                 <tr>
                     <th scope="col">Nazwa</th>
-                    <th>Najbliższy turnus</th>
+                    <th>Czas trwania turnusu</th>
+                    <th></th>
 
 
                 </tr>
@@ -20,6 +21,9 @@
                         <a href="{{ path('rehabilitation_stay_show', {'id': rehabilitationStay.id}) }}">{{ rehabilitationStay.name }}</a>
                         </td>
                         <td>{{ rehabilitationStay.getDuration() }}</td>
+                        <td>
+                            <a class="btn btn-light" href="{{ path('treatment_plan_create', {'id': rehabilitationStay.id}) }}">Planowanie zabiegów</a>
+                        </td>
 
                     </tr>
                 {% endfor %}
