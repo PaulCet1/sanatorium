@@ -13,7 +13,12 @@ room_edit:
   controller: App\Room\Controller\Edit
   methods: ['GET', 'POST']
 
+room_show:
+  path: /room/show/{id}
+  controller: App\Room\Controller\Show
+  methods: ['GET']
+
 room_delete:
   path: /room/delete/{id}
   controller: App\Room\Controller\Delete
-  methods: ['GET']
+  methods: ['GET', 'DELETE']

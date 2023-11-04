@@ -10,10 +10,11 @@
                         Identyfikator rezerwacji: <b> {{ reservation.getId() }} </b>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Turnus:{{ reservation.getPlannedStay().getRehabilitationStay().getName() }}</h5>
+                        <h5 class="card-title">{{ reservation.getPlannedStay().getRehabilitationStay().getName() }}</h5>
                         <p class="card-text">Data rozpoczęcia: {{ reservation.getPlannedStay().getStartDate()|date("d/m/Y") }}</p>
                         <p class="card-text">Data zakończenia: {{ reservation.getPlannedStay().getEndDate()|date("d/m/Y") }}</p>
-                        <a href="{{ path('rehabilitation_stay_show', {'id': reservation.getPlannedStay().getRehabilitationStay().getId()}) }}" class="btn btn-info">Więcej informacji</a>
+                        <p href="{{ path('room_show', {'id': reservation.getRoom().getId()}) }}" class="card-text">Zakwaterowanie: Pokój numer {{ reservation.getRoom().getRoomNumber() }}</p>
+                        <a href="{{ path('rehabilitation_stay_show', {'id': reservation.getPlannedStay().getRehabilitationStay().getId()}) }}" class="btn btn-info">Zobacz informacje o turnusie</a>
                     </div>
                     <div class="card-footer text-muted">
                         Data aktualizacji:

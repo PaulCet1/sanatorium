@@ -8,14 +8,14 @@
                     <tbody>
                     <tr>
                         <td width="40%"><strong>Nazwa turnusu</strong></td>
-                        <td width="30%">{{ rehabilitation_stay.name }}</td>
+                        <td width="30%">{{ rehabilitation_stay.getName() }}</td>
                     </tr>
                     <tr>
                         <td width="40%"><strong>Czas trwania turnusu (dni)</strong></td>
                         <td width="30%">{{ rehabilitation_stay.getDuration() }}</td>
                     </tr>
                     <tr>
-                        <td width="40%"><strong>Zabiegi</strong></td>
+                        <td width="40%"><strong>Zabiegi wchodzące w skład turnusu</strong></td>
                         <td width="30%">
                             <ul>
                                 {% for treatment in rehabilitation_stay.getTreatments() %}

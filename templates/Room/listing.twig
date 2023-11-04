@@ -17,8 +17,7 @@
                         <th scope="row">{{ room.getRoomNumber() }}</th>
                         <td>{{ room.getPlacesNum() }}</td>
                         <td>
-                            <a href="{{ path('room_edit', {'id': room.id}) }}" class="btn btn-info">Edit</a>
-                            <a href="{{ path('room_delete', {'id': room.id}) }}" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                            <a href="{{ path('room_show', {'id': room.id}) }}" class="btn btn-info">Pokaż szczegóły</a>
                         </td>
                     </tr>
                 {% endfor %}

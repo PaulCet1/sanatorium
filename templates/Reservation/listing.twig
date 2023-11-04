@@ -17,8 +17,8 @@
                 {% for reservation in reservations %}
                     <tr>
                         <th>
-                            <a href="{{ path("rehabilitation_stay_show", {'id': reservation.getRehabilitationStay().getId()}) }}">
-                                {{ reservation.getRehabilitationStay().getName() }}
+                            <a href="{{ path("rehabilitation_stay_show", {'id': reservation.getPlannedStay().getRehabilitationStay().getId()}) }}">
+                                {{ reservation.getPlannedStay().getRehabilitationStay().getName() }}
                             </a>
                         </th>
                         <td>{{ reservation.getClient().getFullname() }}</td>
