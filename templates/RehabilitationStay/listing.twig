@@ -23,6 +23,7 @@
                         <td>{{ rehabilitationStay.getDuration() }}</td>
                         <td>
                             <a class="btn btn-light" href="{{ path('treatment_plan_create', {'id': rehabilitationStay.id}) }}">Planowanie zabiegów</a>
+                            <a class="btn btn-light" href="{{ path('calendar_show', {'id': rehabilitationStay.getId()}) }}">Plan zajęć</a>
                         </td>
 
                     </tr>

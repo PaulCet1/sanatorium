@@ -17,7 +17,7 @@ class Listing
     {
         $planData = $this->treatmentPlanRepository->findAll();
 
-        // Sortowanie danych według nazwy turnusu
+
         usort($planData, function ($a, $b) {
             return strcmp($a->getRehabilitationStay()->getName(), $b->getRehabilitationStay()->getName());
         });

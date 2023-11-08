@@ -1,1 +1,44 @@
 {% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <div class="container">
+
+                <table class="table table-bordered table-dark text-white">
+                    <tbody>
+                    <tr>
+                        <td width="40%"><strong>Turnus:</strong></td>
+                        <td width="30%">{{ plannedStay.getRehabilitationStay().getName() }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data rozpoczęcia:</strong></td>
+                        <td>{{ plannedStay.getStartDate()|date('d-m-Y') }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data zakończenia</strong></td>
+                        <td>{{ plannedStay.getEndDate()|date('d-m-Y') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Lista uczestników</td>
+                        <td>
+                        <ul>
+                            {% for user in users %}
+                                <li>
+                                    <a href="{{ path('user_show', {'id': user.id}) }}">{{ user.fullname }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        </td>
+                    </tr>
+
+{#                    <tr>#}
+{#                        <td><a href="{{ path('room_edit', {'id': room.id}) }}" class="btn btn-info">Edytuj</a></td>#}
+{#                        <td><a href="{{ path('room_delete', {'id': room.id}) }}" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a></td>#}
+{#                    </tr>#}
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    </main>
+{% endblock %}

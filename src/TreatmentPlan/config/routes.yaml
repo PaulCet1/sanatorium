@@ -9,16 +9,16 @@ treatment_plan_create:
   methods: ['GET', 'POST']
 
 treatment_plan_edit:
-  path: /room/edit/{id}
+  path: /treatment/plan/edit/{id}
   controller: App\TreatmentPlan\Controller\Edit
   methods: ['GET', 'POST']
 
 treatment_plan_show:
-  path: /room/show/{id}
+  path: /treatment/plan/show/{id}
   controller: App\TreatmentPlan\Controller\Show
   methods: ['GET']
 
 treatment_plan_delete:
-  path: /room/delete/{id}
+  path: /treatment/plan/delete/{id}
   controller: App\TreatmentPlan\Controller\Delete
   methods: ['GET', 'DELETE']

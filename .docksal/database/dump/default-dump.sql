@@ -115,7 +115,7 @@ CREATE TABLE `planned_stay` (
   PRIMARY KEY (`id`),
   KEY `IDX_E551EE01C0776AB1` (`rehabilitationStay_id`),
   CONSTRAINT `FK_E551EE01C0776AB1` FOREIGN KEY (`rehabilitationStay_id`) REFERENCES `rehabilitation_stay` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `planned_stay` (
 
 LOCK TABLES `planned_stay` WRITE;
 /*!40000 ALTER TABLE `planned_stay` DISABLE KEYS */;
-INSERT INTO `planned_stay` VALUES (31,'2023-11-23 00:00:00','2023-12-13 00:00:00','2023-11-03 22:37:19',21),(32,'2023-11-23 00:00:00','2023-12-07 00:00:00','2023-11-03 22:52:01',22),(33,'2023-11-27 00:00:00','2023-12-05 00:00:00','2023-11-04 17:03:43',23);
+INSERT INTO `planned_stay` VALUES (31,'2023-11-23 00:00:00','2023-12-13 00:00:00','2023-11-03 22:37:19',21),(32,'2023-11-23 00:00:00','2023-12-07 00:00:00','2023-11-03 22:52:01',22),(33,'2023-11-27 00:00:00','2023-12-05 00:00:00','2023-11-04 17:03:43',23),(34,'2023-11-30 00:00:00','2023-12-10 00:00:00','2023-11-04 23:00:22',26),(35,'2023-01-01 00:00:00','2023-01-17 00:00:00','2023-11-08 20:18:38',27),(36,'2023-11-13 00:00:00','2023-11-18 00:00:00','2023-11-08 23:14:47',28);
 /*!40000 ALTER TABLE `planned_stay` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,7 +141,7 @@ CREATE TABLE `rehabilitation_stay` (
   `created` datetime NOT NULL,
   `duration` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +150,7 @@ CREATE TABLE `rehabilitation_stay` (
 
 LOCK TABLES `rehabilitation_stay` WRITE;
 /*!40000 ALTER TABLE `rehabilitation_stay` DISABLE KEYS */;
-INSERT INTO `rehabilitation_stay` VALUES (21,'Turnus A','2023-11-03 22:37:07',20),(22,'Turnus B','2023-11-03 22:51:45',14),(23,'Rehabilitacja po protezoplastyce','2023-11-04 16:23:56',8);
+INSERT INTO `rehabilitation_stay` VALUES (21,'Turnus A','2023-11-03 22:37:07',20),(22,'Turnus B','2023-11-03 22:51:45',14),(23,'Rehabilitacja po protezoplastyce','2023-11-04 16:23:56',8),(24,'Odnowa zdrowia','2023-11-04 22:54:08',10),(25,'231','2023-11-04 22:57:33',312),(26,'test','2023-11-04 22:58:23',10),(27,'Rehabilitacja poudarowa','2023-11-08 20:07:21',16),(28,'Fizyczne uspokojenie','2023-11-08 23:14:17',5);
 /*!40000 ALTER TABLE `rehabilitation_stay` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +178,7 @@ CREATE TABLE `rehabilitation_stay_treatment` (
 
 LOCK TABLES `rehabilitation_stay_treatment` WRITE;
 /*!40000 ALTER TABLE `rehabilitation_stay_treatment` DISABLE KEYS */;
-INSERT INTO `rehabilitation_stay_treatment` VALUES (21,20),(21,21),(21,22),(22,20),(22,21),(22,22),(22,23),(22,24),(22,25),(22,26),(22,27),(22,31),(22,32),(22,33),(23,20),(23,21),(23,22),(23,23),(23,29),(23,31),(23,32),(23,34),(23,35);
+INSERT INTO `rehabilitation_stay_treatment` VALUES (21,20),(21,21),(21,22),(22,20),(22,21),(22,22),(22,23),(22,24),(22,25),(22,26),(22,27),(22,31),(22,32),(22,33),(23,20),(23,21),(23,22),(23,23),(23,29),(23,31),(23,32),(23,34),(23,35),(24,21),(24,22),(24,23),(24,26),(24,32),(24,33),(24,34),(24,35),(25,20),(25,21),(25,23),(26,21),(26,22),(26,25),(26,26),(26,27),(26,32),(26,33),(26,34),(27,20),(27,21),(27,24),(27,26),(27,28),(27,29),(28,22),(28,25),(28,28),(28,37);
 /*!40000 ALTER TABLE `rehabilitation_stay_treatment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,7 +202,7 @@ CREATE TABLE `reservation` (
   CONSTRAINT `FK_42C8495519EB6921` FOREIGN KEY (`client_id`) REFERENCES `user` (`id`),
   CONSTRAINT `FK_42C849553A587B23` FOREIGN KEY (`plannedStay_id`) REFERENCES `planned_stay` (`id`),
   CONSTRAINT `FK_42C8495554177093` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,7 +211,7 @@ CREATE TABLE `reservation` (
 
 LOCK TABLES `reservation` WRITE;
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
-INSERT INTO `reservation` VALUES (45,'2023-11-03 22:40:49',3842,31,4),(46,'2023-11-03 22:42:18',3842,31,4),(47,'2023-11-03 22:52:21',3842,32,1),(48,'2023-11-04 16:55:52',3842,31,4),(49,'2023-11-04 16:57:23',3842,32,5),(50,'2023-11-04 17:04:10',3842,33,5),(51,'2023-11-04 17:04:46',3864,33,6),(52,'2023-11-04 17:06:59',3864,33,NULL),(53,'2023-11-04 17:07:38',3864,33,6);
+INSERT INTO `reservation` VALUES (57,'2023-11-08 21:37:44',3864,35,9),(58,'2023-11-08 21:38:34',3842,35,1);
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,7 +257,7 @@ CREATE TABLE `therapy_room` (
   `created` datetime NOT NULL,
   `number` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,7 +266,7 @@ CREATE TABLE `therapy_room` (
 
 LOCK TABLES `therapy_room` WRITE;
 /*!40000 ALTER TABLE `therapy_room` DISABLE KEYS */;
-INSERT INTO `therapy_room` VALUES (10,'Sala Rehabilitacji','group',10,'2023-10-15 15:07:32',1),(11,'Gabinet Terapeutyczny','group',10,'2023-10-15 15:07:50',2),(12,'Gabinet Masażu','group',4,'2023-10-15 15:08:16',3),(13,'Pracownia Fizjoterapii','group',10,'2023-10-15 15:08:37',4),(14,'Gabinet Zabiegowy','group',2,'2023-10-15 15:09:08',5),(15,'Gabinet Odnowy Biologicznej','group',4,'2023-10-15 15:09:27',6),(16,'Gabinet Balneologiczny','group',2,'2023-10-15 15:09:53',7),(17,'Gabinet Chiropraktora','personal',1,'2023-10-15 15:10:12',8),(18,'Sala do Zabiegów Aquafit','group',15,'2023-10-15 15:10:38',9),(19,'Gabinet Akupunktury','group',5,'2023-10-15 15:11:03',10);
+INSERT INTO `therapy_room` VALUES (10,'Sala Rehabilitacji','group',10,'2023-10-15 15:07:32',1),(11,'Gabinet Terapeutyczny','group',10,'2023-10-15 15:07:50',2),(12,'Gabinet Masażu','group',4,'2023-10-15 15:08:16',3),(13,'Pracownia Fizjoterapii','group',10,'2023-10-15 15:08:37',4),(14,'Gabinet Zabiegowy','group',2,'2023-10-15 15:09:08',5),(15,'Gabinet Odnowy Biologicznej','group',4,'2023-10-15 15:09:27',6),(16,'Gabinet Balneologiczny','group',2,'2023-10-15 15:09:53',7),(17,'Gabinet Chiropraktora','personal',1,'2023-10-15 15:10:12',8),(18,'Sala do Zabiegów Aquafit','group',15,'2023-10-15 15:10:38',9),(19,'Gabinet Akupunktury','group',5,'2023-10-15 15:11:03',10),(20,'Plener','group',0,'2023-11-08 23:12:58',100);
 /*!40000 ALTER TABLE `therapy_room` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,7 +292,7 @@ CREATE TABLE `treatment` (
   KEY `IDX_98013C31BC399E7D` (`leading_person_id`),
   CONSTRAINT `FK_98013C3141B4AC78` FOREIGN KEY (`therapy_room_id`) REFERENCES `therapy_room` (`id`),
   CONSTRAINT `FK_98013C31BC399E7D` FOREIGN KEY (`leading_person_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -301,7 +301,7 @@ CREATE TABLE `treatment` (
 
 LOCK TABLES `treatment` WRITE;
 /*!40000 ALTER TABLE `treatment` DISABLE KEYS */;
-INSERT INTO `treatment` VALUES (20,'Fizjoterapia','2023-10-15 15:12:26',50,'60',10,0,3847),(21,'Kinezyterapia','2023-10-15 15:12:52',60,'60',10,0,3847),(22,'Masaż leczniczy','2023-10-15 15:13:09',60,'60',10,0,3853),(23,'Elektroterapia','2023-10-15 15:13:35',80,'30',10,0,3851),(24,'Terapia manualna','2023-10-15 15:13:56',60,'120',10,0,3849),(25,'Gimnastyka Korekcyjna','2023-10-15 15:14:20',30,'60',10,0,3849),(26,'Terapia zajęciowa','2023-10-15 15:14:47',60,'60',11,0,3844),(27,'Terapia poznawczo-behawioralna','2023-10-15 15:15:10',60,'60',11,0,3844),(28,'Terapia oddechowa','2023-10-15 15:16:34',40,'60',11,0,3847),(29,'Terapia po urazach','2023-10-15 15:16:59',60,'60',11,0,3853),(30,'Terapia ręki','2023-10-15 15:17:34',60,'60',11,0,3844),(31,'Masaż relaksacyjny','2023-10-15 15:17:54',60,'60',12,0,3847),(32,'Masaż spotowy','2023-10-15 15:18:09',60,'60',12,0,3851),(33,'Ćwiczenia izometryczne','2023-10-15 15:18:41',60,'60',13,0,3847),(34,'Elektrostymulacja','2023-10-15 15:19:04',60,'30',13,0,3851),(35,'Zabieg na skórę','2023-10-15 15:19:34',60,'70',14,0,3860);
+INSERT INTO `treatment` VALUES (20,'Fizjoterapia','2023-10-15 15:12:26',50,'60',10,0,3847),(21,'Kinezyterapia','2023-10-15 15:12:52',60,'60',10,0,3847),(22,'Masaż leczniczy','2023-10-15 15:13:09',60,'60',10,0,3853),(23,'Elektroterapia','2023-10-15 15:13:35',80,'30',10,0,3851),(24,'Terapia manualna','2023-10-15 15:13:56',60,'120',10,0,3849),(25,'Gimnastyka Korekcyjna','2023-10-15 15:14:20',30,'60',10,0,3849),(26,'Terapia zajęciowa','2023-10-15 15:14:47',60,'60',11,0,3844),(27,'Terapia poznawczo-behawioralna','2023-10-15 15:15:10',60,'60',11,0,3844),(28,'Terapia oddechowa','2023-10-15 15:16:34',40,'60',11,0,3847),(29,'Terapia po urazach','2023-10-15 15:16:59',60,'60',11,0,3853),(30,'Terapia ręki','2023-10-15 15:17:34',60,'60',11,0,3844),(31,'Masaż relaksacyjny','2023-10-15 15:17:54',60,'60',12,0,3847),(32,'Masaż spotowy','2023-10-15 15:18:09',60,'60',12,0,3851),(33,'Ćwiczenia izometryczne','2023-10-15 15:18:41',60,'60',13,0,3847),(34,'Elektrostymulacja','2023-10-15 15:19:04',60,'30',13,0,3851),(35,'Zabieg na skórę','2023-10-15 15:19:34',60,'70',14,0,3860),(37,'Wycieczka w góry','2023-11-08 23:13:37',200,'300',20,40,3851);
 /*!40000 ALTER TABLE `treatment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,7 +324,7 @@ CREATE TABLE `treatment_plan` (
   KEY `IDX_1E99976C471C0366` (`treatment_id`),
   CONSTRAINT `FK_1E99976C471C0366` FOREIGN KEY (`treatment_id`) REFERENCES `treatment` (`id`),
   CONSTRAINT `FK_1E99976CA5E9CD9B` FOREIGN KEY (`rehabilitation_stay_id`) REFERENCES `rehabilitation_stay` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,7 +333,7 @@ CREATE TABLE `treatment_plan` (
 
 LOCK TABLES `treatment_plan` WRITE;
 /*!40000 ALTER TABLE `treatment_plan` DISABLE KEYS */;
-INSERT INTO `treatment_plan` VALUES (2,22,20,'2023-11-04 13:32:55','2023-11-04 13:32:55','2023-11-04 13:32:55'),(3,22,26,'2018-01-01 00:00:00','2023-11-04 15:49:30','2018-01-01 00:00:00'),(4,21,21,'2018-01-01 00:00:00','2023-11-04 15:54:03','2018-01-01 00:00:00'),(5,23,20,'2023-01-02 08:00:00','2023-11-04 16:25:16','2023-01-02 09:00:00'),(6,23,20,'2018-01-01 00:00:00','2023-11-04 17:03:01','2018-01-01 00:00:00'),(7,22,24,'2018-01-01 00:00:00','2023-11-04 17:10:23','2018-01-01 00:00:00'),(8,21,22,'2018-01-01 00:00:00','2023-11-04 17:10:38','2018-01-01 00:00:00'),(9,22,31,'2025-07-08 08:30:00','2023-11-04 21:15:11','2026-07-08 09:30:00');
+INSERT INTO `treatment_plan` VALUES (64,21,20,'2023-01-01 08:00:00','2023-11-08 19:56:50','2023-01-01 09:00:00'),(65,21,21,'2023-01-01 09:30:00','2023-11-08 19:57:26','2023-01-01 10:00:00'),(66,21,22,'2023-01-01 12:00:00','2023-11-08 19:57:55','2023-01-01 13:00:00'),(67,22,20,'2023-01-01 08:00:00','2023-11-08 19:59:33','2023-01-01 09:00:00'),(72,27,20,'2023-01-04 08:00:00','2023-11-08 22:32:31','2018-01-04 10:00:00'),(73,27,24,'2023-01-03 17:35:00','2023-11-08 22:48:31','2023-01-03 19:00:00'),(74,21,22,'2023-01-01 09:10:00','2023-11-08 23:02:07','2023-01-01 09:25:00'),(75,28,28,'2023-11-13 08:00:00','2023-11-08 23:15:49','2023-11-13 12:00:00'),(76,28,22,'2023-11-13 14:00:00','2023-11-08 23:16:36','2023-11-13 16:40:00'),(77,28,22,'2023-11-14 09:00:00','2023-11-08 23:17:16','2023-11-14 11:00:00'),(78,28,37,'2023-11-15 07:00:00','2023-11-08 23:31:34','2023-11-15 14:00:00'),(79,28,22,'2023-11-16 08:00:00','2023-11-08 23:32:12','2023-11-16 12:00:00'),(80,28,25,'2023-11-17 09:00:00','2023-11-08 23:32:37','2023-11-17 13:00:00'),(81,28,28,'2023-11-17 14:00:00','2023-11-08 23:46:58','2023-11-17 16:00:00');
 /*!40000 ALTER TABLE `treatment_plan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,4 +377,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-04 21:15:52
+-- Dump completed on 2023-11-08 23:48:23

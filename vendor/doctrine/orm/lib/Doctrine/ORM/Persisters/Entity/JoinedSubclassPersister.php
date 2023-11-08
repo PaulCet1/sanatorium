@@ -11,8 +11,11 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Internal\SQLResultCasing;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Utility\PersisterHelper;
+use LengthException;
 
 use function array_combine;
+use function array_keys;
+use function array_values;
 use function implode;
 
 /**
@@ -109,10 +112,10 @@ class JoinedSubclassPersister extends AbstractEntityInheritancePersister
     public function executeInserts()
     {
         if (! $this->queuedInserts) {
-            return [];
+            return;
         }
 
-        $postInsertIds  = [];
+        $uow            = $this->em->getUnitOfWork();
         $idGenerator    = $this->class->idGenerator;
         $isPostInsertId = $idGenerator->isPostInsertGenerator();
         $rootClass      = $this->class->name !== $this->class->rootEntityName
@@ -157,18 +160,12 @@ class JoinedSubclassPersister extends AbstractEntityInheritancePersister
             $rootTableStmt->executeStatement();
 
             if ($isPostInsertId) {
-                $generatedId     = $idGenerator->generateId($this->em, $entity);
-                $id              = [$this->class->identifier[0] => $generatedId];
-                $postInsertIds[] = [
-                    'generatedId' => $generatedId,
-                    'entity' => $entity,
-                ];
+                $generatedId = $idGenerator->generateId($this->em, $entity);
+                $id          = [$this->class->identifier[0] => $generatedId];
+
+                $uow->assignPostInsertId($entity, $generatedId);
             } else {
                 $id = $this->em->getUnitOfWork()->getEntityIdentifier($entity);
-            }
-
-            if ($this->class->requiresFetchAfterChange) {
-                $this->assignDefaultVersionAndUpsertableValues($entity, $id);
             }
 
             // Execute inserts on subtables.
@@ -191,11 +188,13 @@ class JoinedSubclassPersister extends AbstractEntityInheritancePersister
 
                 $stmt->executeStatement();
             }
+
+            if ($this->class->requiresFetchAfterChange) {
+                $this->assignDefaultVersionAndUpsertableValues($entity, $id);
+            }
         }
 
         $this->queuedInserts = [];
-
-        return $postInsertIds;
     }
 
     /**
@@ -514,6 +513,7 @@ class JoinedSubclassPersister extends AbstractEntityInheritancePersister
                     || isset($this->class->associationMappings[$name]['inherited'])
                     || ($this->class->isVersioned && $this->class->versionField === $name)
                     || isset($this->class->embeddedClasses[$name])
+                    || isset($this->class->fieldMappings[$name]['notInsertable'])
             ) {
                 continue;
             }
@@ -554,6 +554,60 @@ class JoinedSubclassPersister extends AbstractEntityInheritancePersister
 
             $this->class->setFieldValue($entity, $field, $value);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function fetchVersionAndNotUpsertableValues($versionedClass, array $id)
+    {
+        $columnNames = [];
+        foreach ($this->class->fieldMappings as $key => $column) {
+            $class = null;
+            if ($this->class->isVersioned && $key === $versionedClass->versionField) {
+                $class = $versionedClass;
+            } elseif (isset($column['generated'])) {
+                $class = isset($column['inherited'])
+                    ? $this->em->getClassMetadata($column['inherited'])
+                    : $this->class;
+            } else {
+                continue;
+            }
+
+            $columnNames[$key] = $this->getSelectColumnSQL($key, $class);
+        }
+
+        $tableName      = $this->quoteStrategy->getTableName($versionedClass, $this->platform);
+        $baseTableAlias = $this->getSQLTableAlias($this->class->name);
+        $joinSql        = $this->getJoinSql($baseTableAlias);
+        $identifier     = $this->quoteStrategy->getIdentifierColumnNames($versionedClass, $this->platform);
+        foreach ($identifier as $i => $idValue) {
+            $identifier[$i] = $baseTableAlias . '.' . $idValue;
+        }
+
+        $sql = 'SELECT ' . implode(', ', $columnNames)
+            . ' FROM ' . $tableName . ' ' . $baseTableAlias
+            . $joinSql
+            . ' WHERE ' . implode(' = ? AND ', $identifier) . ' = ?';
+
+        $flatId = $this->identifierFlattener->flattenIdentifier($versionedClass, $id);
+        $values = $this->conn->fetchNumeric(
+            $sql,
+            array_values($flatId),
+            $this->extractIdentifierTypes($id, $versionedClass)
+        );
+
+        if ($values === false) {
+            throw new LengthException('Unexpected empty result for database query.');
+        }
+
+        $values = array_combine(array_keys($columnNames), $values);
+
+        if (! $values) {
+            throw new LengthException('Unexpected number of database columns.');
+        }
+
+        return $values;
     }
 
     private function getJoinSql(string $baseTableAlias): string

@@ -29,6 +29,7 @@ use const PHP_VERSION_ID;
 class AttributeDriver extends CompatibilityAnnotationDriver
 {
     use ColocatedMappingDriver;
+    use ReflectionBasedDriver;
 
     private const ENTITY_ATTRIBUTE_CLASSES = [
         Mapping\Entity::class => 1,
@@ -52,7 +53,7 @@ class AttributeDriver extends CompatibilityAnnotationDriver
     protected $reader;
 
     /** @param array<string> $paths */
-    public function __construct(array $paths)
+    public function __construct(array $paths, bool $reportFieldsWhereDeclared = false)
     {
         if (PHP_VERSION_ID < 80000) {
             throw new LogicException(
@@ -72,6 +73,17 @@ class AttributeDriver extends CompatibilityAnnotationDriver
                 self::class
             );
         }
+
+        if (! $reportFieldsWhereDeclared) {
+            Deprecation::trigger(
+                'doctrine/orm',
+                'https://github.com/doctrine/orm/pull/10455',
+                'In ORM 3.0, the AttributeDriver will report fields for the classes where they are declared. This may uncover invalid mapping configurations. To opt into the new mode today, set the "reportFieldsWhereDeclared" constructor parameter to true.',
+                self::class
+            );
+        }
+
+        $this->reportFieldsWhereDeclared = $reportFieldsWhereDeclared;
     }
 
     /**
@@ -297,20 +309,13 @@ class AttributeDriver extends CompatibilityAnnotationDriver
 
         foreach ($reflectionClass->getProperties() as $property) {
             assert($property instanceof ReflectionProperty);
-            if (
-                $metadata->isMappedSuperclass && ! $property->isPrivate()
-                ||
-                $metadata->isInheritedField($property->name)
-                ||
-                $metadata->isInheritedAssociation($property->name)
-                ||
-                $metadata->isInheritedEmbeddedClass($property->name)
-            ) {
+
+            if ($this->isRepeatedPropertyDeclaration($property, $metadata)) {
                 continue;
             }
 
             $mapping              = [];
-            $mapping['fieldName'] = $property->getName();
+            $mapping['fieldName'] = $property->name;
 
             // Evaluate #[Cache] attribute
             $cacheAttribute = $this->reader->getPropertyAttribute($property, Mapping\Cache::class);
@@ -345,7 +350,7 @@ class AttributeDriver extends CompatibilityAnnotationDriver
             $embeddedAttribute   = $this->reader->getPropertyAttribute($property, Mapping\Embedded::class);
 
             if ($columnAttribute !== null) {
-                $mapping = $this->columnToArray($property->getName(), $columnAttribute);
+                $mapping = $this->columnToArray($property->name, $columnAttribute);
 
                 if ($this->reader->getPropertyAttribute($property, Mapping\Id::class)) {
                     $mapping['id'] = true;

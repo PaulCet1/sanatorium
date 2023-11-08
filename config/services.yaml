@@ -62,7 +62,11 @@ services:
 
     App\TreatmentPlan\Controller\:
         resource: '../src/TreatmentPlan/Controller'
-        tags: [ 'controller.service_arguments' ]
+        tags: ['controller.service_arguments' ]
+
+    App\Calendar\Controller\:
+        resource: '../src/Calendar/Controller'
+        tags: ['controller.service_arguments']
 
 
 #    App\User\Repository\UserRepository:

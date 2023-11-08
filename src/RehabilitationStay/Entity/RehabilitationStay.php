@@ -40,10 +40,6 @@ class RehabilitationStay
      */
     private $treatments;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Treatment\Entity\Treatment", inversedBy="rehabilitationStays")
-     * @ORM\JoinTable(name="rehabilitation_stay_treatment")
-     */
 
     public function getName(): string
     {

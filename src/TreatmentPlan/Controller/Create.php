@@ -35,14 +35,14 @@ class Create extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
             $this->createTreatmentPlan->CreateTreatmentPlan($treatmentPlan);
-
-            return $this->redirectToRoute('treatment_plan_listing');
+            return $this->redirectToRoute('treatment_plan_create', ['id' => $id]);
         }
 
-
+        $data_treatments = $this->treatmentPlanRepository->findBy(['rehabilitationStay' => $rehabilitationStay]);
 
         return new Response($this->twig->render('TreatmentPlan/create.twig', [
             'form' => $form->createView(),
+            'data_treatments' => $data_treatments,
         ]));
     }
 

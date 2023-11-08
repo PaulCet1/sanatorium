@@ -10,6 +10,7 @@
                 <th>Data rozpoczęcia turnusu</th>
                 <th>Data zakończenia turnusu</th>
                 <th>Czas trwania turnusu</th>
+                <th></th>
 
 
             </tr>
@@ -25,7 +26,10 @@
                     <td>{{ planned_stay.getStartDate()|date('d-m-Y') }}</td>
                     <td>{{ planned_stay.getEndDate()|date('d-m-Y') }}</td>
                     <td>{{ planned_stay.getRehabilitationStay().getDuration() }} dni</td>
-
+                    <td>
+                        <a class="btn btn-success" href="{{ path('planned_stay_show', {'id': planned_stay.getId()}) }}">Podgląd</a>
+                        <a class="btn btn-light" href="{{ path('calendar_show', {'id': planned_stay.getId()}) }}">Plan zajęć</a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -31,6 +31,9 @@ user_reservation:
 treatment_plan:
     resource: '../src/TreatmentPlan/config/routes.yaml'
 
+calendar:
+    resource: '../src/Calendar/config/routes.yaml'
+
 
 controllers:
     resource:
