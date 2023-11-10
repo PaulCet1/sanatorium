@@ -1,6 +1,6 @@
 calendar_show:
   path: /calendar/show/{id}
-  controller: App\Calendar\Controller\Show
+  controller: App\Calendar\Controller\AdminShow
   methods: ['GET']
 
 

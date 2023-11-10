@@ -23,6 +23,10 @@
                                 {{ form_widget(form.treatment, {'attr': {'class': 'form-control'}}) }}
                             </div>
                             <div class="form-group">
+                                {{ form_label(form.day_number) }}
+                                {{ form_widget(form.day_number, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
                                 {{ form_label(form.start_time) }}
                                 {{ form_widget(form.start_time, {'attr': {'class': 'form-control', 'type': 'time'}}) }}
                             </div>
@@ -39,6 +43,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">Zabieg</th>
+                                <th scope="col">Dzień</th>
                                 <th scope="col">Termin rozpoczęcia</th>
                                 <th scope="col">Termin zakończenia</th>
                             </tr>
@@ -47,8 +52,9 @@
                             {% for data in data_treatments %}
                                 <tr>
                                     <th scope="row">{{ data.getTreatment().getName() }} </th>
-                                    <td>{{ data.getStartTime()|date('d-m-Y H:i:s') }}</td>
-                                    <td>{{ data.getEndTime()|date('d-m-Y H:i:s') }}</td>
+                                    <td>{{ data.dayNumber }}</td>
+                                    <td>{{ data.getStartTime()|date('H:i:s') }}</td>
+                                    <td>{{ data.getEndTime()|date('H:i:s') }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

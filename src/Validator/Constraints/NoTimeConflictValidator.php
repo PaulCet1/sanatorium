@@ -23,8 +23,9 @@ class NoTimeConflictValidator extends ConstraintValidator
         $rehabilitationStayId = $value->getRehabilitationStay()->getId();
         $startTime = $value->getStartTime();
         $endTime = $value->getEndTime();
+        $dayNumber = $value->getDayNumber();
 
-        $conflictingPlans = $this->treatmentPlanRepository->findConflictingPlans($rehabilitationStayId, $startTime, $endTime);
+        $conflictingPlans = $this->treatmentPlanRepository->findConflictingPlans($rehabilitationStayId, $startTime, $endTime, $dayNumber);
 
         if (count($conflictingPlans) > 0) {
             $this->context->buildViolation($constraint->message)->addViolation();

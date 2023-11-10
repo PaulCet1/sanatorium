@@ -24,15 +24,17 @@ class TreatmentPlanRepository extends EntityRepository
             ->getResult();
     }
 
-    public function findConflictingPlans(int $rehabilitationStayId, \DateTimeInterface $startTime, \DateTimeInterface $endTime): array
+    public function findConflictingPlans(int $rehabilitationStayId, \DateTimeInterface $startTime, \DateTimeInterface $endTime, int $dayNumber): array
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.rehabilitationStay = :rehabilitationStayId')
             ->andWhere('t.start_time < :endTime AND t.end_time > :startTime')
+            ->andWhere('t.dayNumber = :dayNumber')
             ->setParameters([
                 'rehabilitationStayId' => $rehabilitationStayId,
                 'startTime' => $startTime,
                 'endTime' => $endTime,
+                'dayNumber' => $dayNumber,
             ])
             ->getQuery()
             ->getResult();

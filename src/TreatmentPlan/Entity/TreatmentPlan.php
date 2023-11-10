@@ -29,12 +29,17 @@ class TreatmentPlan
     private $treatment;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="integer")
+     */
+    private $dayNumber;
+
+    /**
+     * @ORM\Column(type="time")
      */
     private $start_time;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="time")
      */
     private $end_time;
 
@@ -82,6 +87,16 @@ class TreatmentPlan
     public function setTreatment(Treatment $treatment): void
     {
         $this->treatment = $treatment;
+    }
+
+    public function getDayNumber(): int
+    {
+        return $this->dayNumber;
+    }
+
+    public function setDayNumber(int $dayNumber): void
+    {
+        $this->dayNumber = $dayNumber;
     }
 
 }
