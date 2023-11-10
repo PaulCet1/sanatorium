@@ -3,7 +3,10 @@ calendar_show:
   controller: App\Calendar\Controller\AdminShow
   methods: ['GET']
 
-
+calendar_usershow:
+  path: /calendar/usershow/{id}
+  controller: App\Calendar\Controller\UserShow
+  methods: ['GET']
 
 calendar_render:
   path: /calendar/render/{id}

@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <div class="container">
+                <h2>Plan zajęć</h2>
+                <div class="row">
+                    {% for day in 1..7 %}
+                        {% set current_date = start_date|date_modify('+' ~ (day - 1) ~ ' days') %}
+                        {% set day_name = current_date|date('l') %}
+                        {% set day_has_treatments = false %}
+
+                        {# Convert English day names to Polish #}
+                        {% set polish_days = {'Monday': 'Poniedziałek', 'Tuesday': 'Wtorek', 'Wednesday': 'Środa', 'Thursday': 'Czwartek', 'Friday': 'Piątek', 'Saturday': 'Sobota', 'Sunday': 'Niedziela'} %}
+                        {% set day_name_polish = polish_days[day_name] %}
+
+                        {% for treatment_plan in treatment_plans %}
+                            {% if treatment_plan.getDayNumber() == day %}
+                                {% set day_has_treatments = true %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if day_has_treatments %}
+                            <div class="col-md-3 col-lg-8 mb-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <b>{{ day_name_polish }} ({{ current_date|date('d-m-Y') }}) - Dzień {{ day }}</b>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Godzina</th>
+                                                <th scope="col">Nazwa zabiegu</th>
+                                                <th scope="col">Sala</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for treatment_plan in treatment_plans|sort((a, b) => a.getStartTime().timestamp <=> b.getStartTime().timestamp) %}
+                                                {% if treatment_plan.getDayNumber() == day %}
+                                                    <tr>
+                                                        <td>{{ treatment_plan.getStartTime()|date('H:i') }} - {{ treatment_plan.getEndTime()|date('H:i') }}</td>
+                                                        <td>{{ treatment_plan.getTreatment().getName() }}</td>
+                                                        <td>
+                                                            <a href="{{ path('therapy-room-show', {'id': treatment_plan.getTreatment().getTherapyRoom().getId()}) }}">
+                                                                {{ treatment_plan.getTreatment().getTherapyRoom().getName() }}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                {% endif %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
