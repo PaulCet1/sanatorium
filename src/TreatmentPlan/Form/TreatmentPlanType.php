@@ -8,7 +8,9 @@ use App\TreatmentPlan\Entity\TreatmentPlan;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Validator\Constraints\NoTimeConflict;
@@ -32,11 +34,14 @@ class TreatmentPlanType extends AbstractType
                 'choices' => $treatments,
                 'label' => 'Wybierz zabieg',
             ])
-            ->add('start_time', DateTimeType::class, [
-                'label' => 'Termin rozpoczęcia',
+            ->add('day_number', IntegerType::class, [
+                'label' => 'Numer dnia turnusu',
             ])
-            ->add('end_time', DateTimeType::class, [
-                'label' => 'Termin zakończenia',
+            ->add('start_time', TimeType::class, [
+                'label' => 'Godzina rozpoczęcia',
+            ])
+            ->add('end_time', TimeType::class, [
+                'label' => 'Godzina zakończenia',
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Zapisz',

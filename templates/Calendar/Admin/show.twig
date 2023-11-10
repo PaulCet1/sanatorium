@@ -9,7 +9,7 @@
                     {% for day in 1..7 %}
                         {% set day_has_treatments = false %}
                         {% for treatment_plan in treatment_plans %}
-                            {% if treatment_plan.getStartTime()|date('N') == day %}
+                            {% if treatment_plan.getDayNumber() == day %}
                                 {% set day_has_treatments = true %}
                             {% endif %}
                         {% endfor %}
@@ -18,7 +18,7 @@
                             <div class="col-md-3 col-lg-8 mb-3">
                                 <div class="card">
                                     <div class="card-header">
-                                        <center><b> {{ ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'][day - 1] }} ({{ treatment_plans[0].getStartTime()|date_modify('+' ~ (day - treatment_plans[0].getStartTime()|date('N')) ~ ' days')|date('d-m-Y') }})</b></center>
+                                        <center><b>Dzień {{ day }}</b></center>
                                     </div>
                                     <div class="card-body">
                                         <table class="table table-striped">
@@ -31,13 +31,13 @@
                                             </thead>
                                             <tbody>
                                             {% for treatment_plan in treatment_plans|sort((a, b) => a.getStartTime().timestamp <=> b.getStartTime().timestamp) %}
-                                                {% if treatment_plan.getStartTime()|date('N') == day %}
+                                                {% if treatment_plan.getDayNumber() == day %}
                                                     <tr>
                                                         <td>{{ treatment_plan.getStartTime()|date('H:i') }} - {{ treatment_plan.getEndTime()|date('H:i') }}</td>
                                                         <td>{{ treatment_plan.getTreatment().getName() }}</td>
                                                         <td>
                                                             <a href="{{ path('therapy-room-show', {'id': treatment_plan.getTreatment().getTherapyRoom().getId()}) }}">
-                                                            {{ treatment_plan.getTreatment().getTherapyRoom().getName() }}
+                                                                {{ treatment_plan.getTreatment().getTherapyRoom().getName() }}
                                                             </a>
                                                         </td>
                                                     </tr>

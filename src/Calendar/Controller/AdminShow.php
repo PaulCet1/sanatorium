@@ -6,7 +6,7 @@ use App\TreatmentPlan\Repository\TreatmentPlanRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class Show
+class AdminShow
 {
     public function __construct(
         private Environment $twig,
@@ -17,7 +17,7 @@ class Show
     public function __invoke(int $id): Response
     {
         $treatment_plans = $this->treatmentPlanRepository->findByRehabilitationStayId($id);
-        return new Response($this->twig->render('Calendar/show.twig',[
+        return new Response($this->twig->render('Calendar/Admin/show.twig',[
             'treatment_plans' => $treatment_plans,
         ]));
     }
