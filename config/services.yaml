@@ -81,6 +81,9 @@ services:
         resource: '../src/Core/Twig/*'
         arguments: ["@service_container", "@twig", "@router"]
 
+    App\Service\DompdfService:
+        arguments: ['@twig']
+
 
 
 

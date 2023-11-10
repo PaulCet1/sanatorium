@@ -2,3 +2,10 @@ calendar_show:
   path: /calendar/show/{id}
   controller: App\Calendar\Controller\Show
   methods: ['GET']
+
+
+
+calendar_render:
+  path: /calendar/render/{id}
+  controller: App\Calendar\Controller\Render
+  methods: ['GET']
