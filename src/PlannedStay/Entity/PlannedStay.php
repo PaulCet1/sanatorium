@@ -1,4 +1,5 @@
 <?php
+
 namespace App\PlannedStay\Entity;
 
 
@@ -29,44 +30,44 @@ class PlannedStay
 
     /**
      * @ORM\Column(type="datetime")
-    */
+     */
     private $start_date;
 
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-    */
+     */
     private $end_date;
 
     public function getRehabilitationStay(): ?RehabilitationStay
     {
-    return $this->rehabilitation_stay;
+        return $this->rehabilitation_stay;
     }
 
     public function setRehabilitationStay(RehabilitationStay $rehabilitationStay): void
     {
-    $this->rehabilitation_stay = $rehabilitationStay;
+        $this->rehabilitation_stay = $rehabilitationStay;
     }
 
     public function getStartDate(): \DateTime
     {
-    return $this->start_date;
+        return $this->start_date;
     }
 
     public function setStartDate(\DateTime $start_date): void
     {
-    $this->start_date = $start_date;
-    //$this->updateEndDate();
+        $this->start_date = $start_date;
+        //$this->updateEndDate();
     }
 
     public function getEndDate(): ?\DateTime
     {
-    return $this->end_date;
+        return $this->end_date;
     }
 
-    public function setEndDate(\Datetime $end_date):void
+    public function setEndDate(\Datetime $end_date): void
     {
-        $this->end_date=$end_date;
+        $this->end_date = $end_date;
     }
 
 }

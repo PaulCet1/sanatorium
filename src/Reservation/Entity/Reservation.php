@@ -55,6 +55,11 @@ class Reservation
      */
     private $pesel;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $NFZPlace;
+
 
     public function getRoom(): ?Room
     {
@@ -114,5 +119,15 @@ class Reservation
     public function setPesel(string $pesel): void
     {
         $this->pesel = $pesel;
+    }
+
+    public function getNFZPlace(): ?string
+    {
+        return $this->NFZPlace;
+    }
+
+    public function setNFZPlace(string $NFZPlace): void
+    {
+        $this->NFZPlace = $NFZPlace;
     }
 }
