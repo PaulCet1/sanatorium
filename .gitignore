@@ -31,3 +31,5 @@ yarn-error.log
 .env.test
 
 /vendor/
+/.idea/
+/node_modules/
