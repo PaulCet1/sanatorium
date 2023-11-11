@@ -1,12 +1,7 @@
 {% extends "base.html.twig" %}
 {% block body %}
-    <main id="main">
-        <div class="container" >
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <h1 class="card-header">Dodaj pokój</h1>
-                        <div class="card-body">
+    {% embed 'Structure/Form/create_structure.html.twig' with {'title': data} %}
+        {% block form_content %}
                             {{ form_start(form) }}
                             <div class="form-group">
                                 {{ form_label(form.room_number) }}
@@ -20,10 +15,6 @@
                                 {{ form_widget(form.save)  }}
                             </div>
                             {{ form_end(form) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

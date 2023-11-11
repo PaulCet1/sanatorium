@@ -4,6 +4,7 @@ namespace App\Room\Controller;
 
 use App\Room\Entity\Room;
 use App\Room\Form\RoomEditType;
+use App\Room\Form\RoomType;
 use App\TherapyRoom\Entity\TherapyRoom;
 use App\TherapyRoom\Form\TherapyRoomEditType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -20,7 +21,7 @@ class Edit extends AbstractController
 
     public function __invoke(Request $request, Room $room)
     {
-        $form = $this->createForm(RoomEditType::class, $room);
+        $form = $this->createForm(RoomType::class, $room);
 
         $form->handleRequest($request);
 
@@ -34,8 +35,9 @@ class Edit extends AbstractController
             return $this->redirectToRoute('room_listing');
         }
 
-        return $this->render('Room/edit.twig', [
+        return $this->render('Room/create.twig', [
             'form' => $form->createView(),
+            'data' => 'Edytuj pokój',
         ]);
     }
 }

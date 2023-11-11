@@ -4,6 +4,7 @@ namespace App\TherapyRoom\Controller;
 
 use App\TherapyRoom\Entity\TherapyRoom;
 use App\TherapyRoom\Form\TherapyRoomEditType;
+use App\TherapyRoom\Form\TherapyRoomType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,7 @@ class Edit extends AbstractController
 
     public function __invoke(Request $request, TherapyRoom $therapyRoom)
     {
-        $form = $this->createForm(TherapyRoomEditType::class, $therapyRoom);
+        $form = $this->createForm(TherapyRoomType::class, $therapyRoom);
 
         $form->handleRequest($request);
 
@@ -30,8 +31,9 @@ class Edit extends AbstractController
             return $this->redirectToRoute('therapy-room-listing');
         }
 
-        return $this->render('TherapyRoom/edit.twig', [
+        return $this->render('TherapyRoom/create.twig', [
             'form' => $form->createView(),
+            'data' => 'Edytuj salę zabiegową',
         ]);
     }
 }

@@ -12,7 +12,6 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class Create extends AbstractController
 {
-
     public function __construct(
         private UserPasswordHasherInterface $passwordHasher,
         private ManagerRegistry $doctrine
@@ -41,6 +40,7 @@ class Create extends AbstractController
 
         return $this->render('User/create.twig', [
             'form' => $form->createView(),
+            'data' => 'Tworzenie użytkownika',
         ]);
     }
 }

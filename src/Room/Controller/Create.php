@@ -31,6 +31,7 @@ class Create extends AbstractController
 
         return new Response($this->twig->render('Room/create.twig', [
             'form' => $form->createView(),
+            'data' => 'Tworzenie pokoju',
         ]));
     }
 

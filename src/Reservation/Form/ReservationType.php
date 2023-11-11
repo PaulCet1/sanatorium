@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -29,6 +30,9 @@ class ReservationType extends AbstractType
                     ->andWhere('u.roles LIKE :role')
                     ->setParameter('role', '%ROLE_CLIENT%');
                 }
+            ])
+            ->add('numOfPeople', TextType::class, [
+                'label' => 'Liczba uczestników (w tym dzieci)',
             ])
             ->add('plannedStay', EntityType::class, [
                 'class' => PlannedStay::class,

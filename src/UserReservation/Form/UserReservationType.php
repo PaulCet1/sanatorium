@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Config\Security;
@@ -32,6 +33,9 @@ class UserReservationType extends AbstractType
                 'choice_label' => 'rehabilitation_stay.name',
                 'label' => 'Turnus',
                 'required' => true,
+            ])
+            ->add('numOfPeople', TextType::class, [
+                'label' => 'Liczba uczestników (w tym dzieci)',
             ])
             ->add('room', EntityType::class, [
                 'class' => Room::class,

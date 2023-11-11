@@ -40,6 +40,12 @@ class Reservation
      */
     private $room;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $numOfPeople;
+
+
     public function getRoom(): ?Room
     {
         return $this->room;
@@ -68,5 +74,15 @@ class Reservation
     public function setPlannedStay(PlannedStay $plannedStay): void
     {
         $this->plannedStay = $plannedStay;
+    }
+
+    public function getNumOfPeople(): ?int
+    {
+        return $this->numOfPeople;
+    }
+
+    public function setNumOfPeople(int $numOfPeople): void
+    {
+        $this->numOfPeople = $numOfPeople;
     }
 }
