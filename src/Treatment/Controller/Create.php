@@ -29,6 +29,7 @@ class Create extends AbstractController
 
         return $this->render('Treatment/create.twig', [
             'form' => $form->createView(),
+            'data' => 'Tworzenie zabiegu',
         ]);
     }
 }

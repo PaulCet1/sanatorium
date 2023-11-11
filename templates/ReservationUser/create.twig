@@ -1,12 +1,8 @@
 {% extends "base.html.twig" %}
 {% block body %}
-    <main id="main">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <h1 class="card-header">Tworzenie rezerwacji</h1>
-                        <div class="card-body">
+    {% embed 'Structure/Form/create_structure.html.twig' with {'title': 'Tworzenie rezerwacji'} %}
+        {% block form_content %}
+            {{ form_start(form) }}
                             {{ form_start(form) }}
                             <div class="form-group">
                                 {{ form_label(form.client) }}
@@ -17,6 +13,10 @@
                                 {{ form_widget(form.plannedStay, {'attr': {'class': 'form-control'}}) }}
                             </div>
                             <div class="form-group">
+                                {{ form_label(form.numOfPeople) }}
+                                {{ form_widget(form.numOfPeople, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
                                 {{ form_label(form.room) }}
                                 {{ form_widget(form.room, {'attr': {'class': 'form-control'}}) }}
                             </div>
@@ -24,11 +24,6 @@
                             {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
                         </div>
                         {{ form_end(form) }}
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </main>
-
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

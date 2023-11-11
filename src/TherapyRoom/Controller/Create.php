@@ -31,7 +31,8 @@ class Create extends AbstractController
         }
 
         return new Response($this->twig->render('TherapyRoom/create.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'data' => 'Dodaj salę zabiegową',
         ]));
 
     }

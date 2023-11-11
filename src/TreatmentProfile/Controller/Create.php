@@ -34,6 +34,7 @@ class Create extends AbstractController
 
         return new Response($this->twig->render('TreatmentProfile/create.twig', [
             'form' => $form->createView(),
+            'data' => 'Dodaj profil leczenia',
         ]));
     }
 

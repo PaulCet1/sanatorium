@@ -4,6 +4,7 @@ namespace App\Treatment\Controller;
 
 use App\Treatment\Entity\Treatment;
 use App\Treatment\Form\TreatmentEditType;
+use App\Treatment\Form\TreatmentType;
 use App\Treatment\Service\CreateTreatment;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,7 +16,7 @@ class Edit extends AbstractController
     ){}
     public function __invoke(Request $request, Treatment $treatment)
     {
-        $form = $this->createForm(TreatmentEditType::class, $treatment);
+        $form = $this->createForm(TreatmentType::class, $treatment);
 
         $form->handleRequest($request);
 
@@ -26,8 +27,9 @@ class Edit extends AbstractController
             return $this->redirectToRoute('treatment_show', ['id' => $treatment->getId()]);
         }
 
-        return $this->render('Treatment/edit.twig', [
+        return $this->render('Treatment/create.twig', [
             'form' => $form->createView(),
+            'data' => 'Edycja zabiegu',
         ]);
     }
 }

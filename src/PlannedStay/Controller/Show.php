@@ -21,6 +21,8 @@ class Show
     {
         $plannedStay = $this->plannedStayRepository->find($id);
         $treatmentPlans = $this->treatmentPlanRepository->findTreatmentsByRehabilitationStay($plannedStay->getRehabilitationStay()->getId());
+
+
         $totalCost = 0;
         foreach ($treatmentPlans as $treatmentPlan) {
             $totalCost += $treatmentPlan->getTreatment()->getPrice();
