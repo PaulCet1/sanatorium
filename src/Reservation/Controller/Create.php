@@ -5,6 +5,7 @@ namespace App\Reservation\Controller;
 use App\Reservation\Entity\Reservation;
 use App\Reservation\Form\ReservationType;
 use App\Reservation\Services\CreateReservation;
+use App\TreatmentProfile\Entity\TreatmentProfile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,6 +39,12 @@ class Create extends AbstractController
         return new Response($this->twig->render('Reservation/create.twig', [
             'form' => $form->createView(),
         ]));
+    }
+
+    private function getTreatmentProfileFromReferralNumber(string $referralNumber): ?TreatmentProfile
+    {
+        $profileCode = substr($referralNumber, -2); // Wyciąga ostatnie 2 znaki z numeru skierowania
+        return $this->getDoctrine()->getRepository(TreatmentProfile::class)->findOneBy(['code' => $profileCode]);
     }
 
 }

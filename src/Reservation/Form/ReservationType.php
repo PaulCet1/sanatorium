@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class ReservationType extends AbstractType
 {
@@ -30,6 +31,29 @@ class ReservationType extends AbstractType
                     ->andWhere('u.roles LIKE :role')
                     ->setParameter('role', '%ROLE_CLIENT%');
                 }
+            ])
+            ->add('pesel', TextType::class, [
+                'label' => 'Numer PESEL',
+                'attr' => [
+                    'placeholder' => '00000000000',
+                ],
+                'constraints' => [
+                    new Assert\Length([
+                        'min' => 11,
+                        'max' => 11,
+                        'exactMessage' => 'Numer PESEL musi zawierać dokładnie {{ limit }} znaków.',
+                    ]),
+                    new Assert\Regex([
+                        'pattern' => '/^\d{11}$/',
+                        'message' => 'Numer PESEL może zawierać tylko cyfry.',
+                    ]),
+                ],
+            ])
+            ->add('referralNumber', TextType::class, [
+                'label' => 'Numer ewidencyjny skierowania',
+                'attr' => [
+                    'placeholder' => '00/00/123456/A/P0',
+                ],
             ])
             ->add('numOfPeople', TextType::class, [
                 'label' => 'Liczba uczestników (w tym dzieci)',

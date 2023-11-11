@@ -45,6 +45,16 @@ class Reservation
      */
     private $numOfPeople;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $referralNumber;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pesel;
+
 
     public function getRoom(): ?Room
     {
@@ -84,5 +94,25 @@ class Reservation
     public function setNumOfPeople(int $numOfPeople): void
     {
         $this->numOfPeople = $numOfPeople;
+    }
+
+    public function getReferralNumber(): ?string
+    {
+        return $this->referralNumber;
+    }
+
+    public function setReferralNumber(string $referralNumber): void
+    {
+        $this->referralNumber = $referralNumber;
+    }
+
+    public function getPesel(): ?string
+    {
+        return $this->pesel;
+    }
+
+    public function setPesel(string $pesel): void
+    {
+        $this->pesel = $pesel;
     }
 }

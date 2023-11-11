@@ -10,7 +10,8 @@
                         Identyfikator rezerwacji: <b> {{ reservation.getId() }} </b>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ reservation.getPlannedStay().getRehabilitationStay().getName() }}</h5>
+                        <h2 class="card-title">{{ reservation.getPlannedStay().getRehabilitationStay().getName() }}</h2>
+                        <h5>Numer ewidencyjny skierowania: {{ reservation.getReferralNumber() }}</h5>
                         <p>Ilość osób: {{ reservation.getNumOfPeople() }}</p>
                         <p>Koszt: {{ totalCost }}</p>
                         <p class="card-text">Data rozpoczęcia: {{ reservation.getPlannedStay().getStartDate()|date("d/m/Y") }}</p>
