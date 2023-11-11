@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 {% block body %}
-    {% embed 'Structure/Form/create_structure.html.twig' with {'title': 'Tworzenie rezerwacji'} %}
+    {% embed 'Structure/Form/create_structure.html.twig' with {'title': 'Second Step'} %}
         {% block form_content %}
             {{ form_start(form) }}
             <div class="form-group">
@@ -10,17 +10,19 @@
             <div class="form-group">
                 {{ form_label(form.pesel) }}
                 {{ form_widget(form.pesel, {'attr': {'class': 'form-control'}}) }}
-                {% if form.pesel.vars.errors|length > 0 %}
-                    <div class="alert alert-danger">
-                        {{ form_errors(form.pesel) }}
-                    </div>
-                {% endif %}
             </div>
             <div class="form-group">
-                {{ form_label(form.referralNumber) }}
-                {{ form_widget(form.referralNumber, {'attr': {'class': 'form-control'}}) }}
+                {{ form_label(form.referral_number) }}
+                {{ form_widget(form.referral_number, {'attr': {'class': 'form-control'}}) }}
             </div>
-
+            <div class="form-group">
+                {{ form_label(form.NFZPlace) }}
+                {{ form_widget(form.NFZPlace, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.room) }}
+                {{ form_widget(form.room, {'attr': {'class': 'form-control'}}) }}
+            </div>
             <div class="form-group">
                 {{ form_label(form.plannedStay) }}
                 {{ form_widget(form.plannedStay, {'attr': {'class': 'form-control'}}) }}
@@ -29,10 +31,8 @@
                 {{ form_label(form.numOfPeople) }}
                 {{ form_widget(form.numOfPeople, {'attr': {'class': 'form-control'}}) }}
             </div>
-            <div class="form-group">
-                {{ form_label(form.room) }}
-                {{ form_widget(form.room, {'attr': {'class': 'form-control'}}) }}
-            </div>
+
+
 
             {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
             </div>
