@@ -68,6 +68,10 @@ services:
         resource: '../src/Calendar/Controller'
         tags: ['controller.service_arguments']
 
+    App\TreatmentProfile\Controller\:
+        resource: '../src/TreatmentProfile/Controller'
+        tags: [ 'controller.service_arguments' ]
+
 
 #    App\User\Repository\UserRepository:
 #        tags: ['doctrine.repository_service']

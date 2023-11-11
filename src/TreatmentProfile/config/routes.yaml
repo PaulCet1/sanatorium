@@ -1,0 +1,24 @@
+treatment_profile_listing:
+  path: /treatmentprofile/listing
+  controller: App\TreatmentProfile\Controller\Listing
+  methods: ['GET']
+
+treatment_profile_create:
+  path: /treatmentprofile/create
+  controller: App\TreatmentProfile\Controller\Create
+  methods: ['GET', 'POST']
+
+treatment_profile_edit:
+  path: /treatmentprofile/edit/{id}
+  controller: App\TreatmentProfile\Controller\Edit
+  methods: ['GET', 'POST']
+
+treatment_profile_show:
+  path: /treatmentprofile/show/{id}
+  controller: App\TreatmentProfile\Controller\Show
+  methods: ['GET']
+
+treatment_profile_delete:
+  path: /treatmentprofile/delete/{id}
+  controller: App\TreatmentProfile\Controller\Delete
+  methods: ['GET', 'DELETE']

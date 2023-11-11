@@ -61,6 +61,11 @@ doctrine:
                 dir: '%kernel.project_dir%/src/TreatmentPlan/Entity'
                 prefix: 'App\TreatmentPlan\Entity'
                 alias: App
+            TreatmentProfile:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/TreatmentProfile/Entity'
+                prefix: 'App\TreatmentProfile\Entity'
+                alias: App
 
 
         

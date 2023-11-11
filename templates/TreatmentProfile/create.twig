@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <div class="container" >
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <h1 class="card-header">Dodaj profil leczenia</h1>
+                        <div class="card-body">
+                            {{ form_start(form) }}
+                            <div class="form-group">
+                                {{ form_label(form.name) }}
+                                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.code) }}
+                                {{ form_widget(form.code, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="text-center mt-4">
+                                {{ form_widget(form.save)  }}
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
