@@ -34,6 +34,9 @@ treatment_plan:
 calendar:
     resource: '../src/Calendar/config/routes.yaml'
 
+treatment_profile:
+    resource: '../src/TreatmentProfile/config/routes.yaml'
+
 
 controllers:
     resource:
