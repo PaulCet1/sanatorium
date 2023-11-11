@@ -30,7 +30,7 @@ class TreatmentProfile
         $this->created = new \DateTime();
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }

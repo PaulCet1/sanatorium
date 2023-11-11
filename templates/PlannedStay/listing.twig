@@ -28,7 +28,7 @@
                     <td>{{ planned_stay.getRehabilitationStay().getDuration() }} dni</td>
                     <td>
                         <a class="btn btn-success" href="{{ path('planned_stay_show', {'id': planned_stay.getId()}) }}">Podgląd</a>
-                        <a class="btn btn-light" href="">Plan zajęć</a>
+                        <a class="btn btn-light" href="{{ path('calendar_usershow', {'id': planned_stay.getId()}) }}">Plan zajęć</a>
                     </td>
                 </tr>
             {% endfor %}

@@ -3,7 +3,6 @@
 namespace App\RehabilitationStay\Controller;
 
 use App\RehabilitationStay\Entity\RehabilitationStay;
-use App\RehabilitationStay\Form\RehabilitationStayEditType;
 use App\RehabilitationStay\Form\RehabilitationStayType;
 use Doctrine\Persistence\Event\ManagerEventArgs;
 use Doctrine\Persistence\ManagerRegistry;
@@ -21,7 +20,7 @@ class Edit extends AbstractController
 
     public function __invoke(Request $request, RehabilitationStay $rehabilitationStay)
     {
-        $form = $this->createForm(RehabilitationStayEditType::class, $rehabilitationStay);
+        $form = $this->createForm(RehabilitationStayType::class, $rehabilitationStay);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -34,6 +33,7 @@ class Edit extends AbstractController
 
         return new Response($this->twig->render('RehabilitationStay/create.twig', [
             'form' => $form->createView(),
+            'data' => 'Edycja turnusu'
         ]));
 
     }

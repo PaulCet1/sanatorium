@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\TreatmentProfile\Entity\TreatmentProfile;
 
 
 /**
@@ -39,6 +40,12 @@ class RehabilitationStay
      * @ORM\JoinTable(name="rehabilitation_stay_treatment")
      */
     private $treatments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TreatmentProfile::class)
+     * @ORM\JoinColumn(name="treatment_profile_id", referencedColumnName="id")
+     */
+    private $treatmentProfile;
 
 
     public function getName(): string
@@ -72,6 +79,15 @@ class RehabilitationStay
     public function setTreatments(Collection $treatments): void
     {
         $this->treatments = $treatments;
+    }
+
+    public function getTreatmentProfile(): ?TreatmentProfile
+    {
+        return $this->treatmentProfile;
+    }
+    public function setTreatmentProfile(TreatmentProfile $treatmentProfile): void
+    {
+        $this->treatmentProfile = $treatmentProfile;
     }
 
 

@@ -34,6 +34,7 @@ class Create extends AbstractController
 
         return new Response($this->twig->render('RehabilitationStay/create.twig', [
             'form' => $form->createView(),
+            'data' => 'Tworzenie turnusu',
         ]));
     }
 

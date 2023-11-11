@@ -34,6 +34,7 @@
                                                 <th scope="col">Godzina</th>
                                                 <th scope="col">Nazwa zabiegu</th>
                                                 <th scope="col">Sala</th>
+                                                <th scope="col">Prowadzący</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -47,6 +48,7 @@
                                                                 {{ treatment_plan.getTreatment().getTherapyRoom().getName() }}
                                                             </a>
                                                         </td>
+                                                        <td>{{ treatment_plan.getTreatment().getLeadingPerson().getFullName() }}</td>
                                                     </tr>
                                                 {% endif %}
                                             {% endfor %}

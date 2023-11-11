@@ -39,4 +39,13 @@ class TreatmentPlanRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findTreatmentsByRehabilitationStay($rehabilitationStayId)
+    {
+        return $this->createQueryBuilder('tp')
+            ->andWhere('tp.rehabilitationStay = :rehabilitationStayId')
+            ->setParameter('rehabilitationStayId', $rehabilitationStayId)
+            ->getQuery()
+            ->getResult();
+    }
 }
