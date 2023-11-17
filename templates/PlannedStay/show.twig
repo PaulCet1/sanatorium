@@ -11,6 +11,10 @@
                         <td width="30%">{{ plannedStay.getRehabilitationStay().getName() }}</td>
                     </tr>
                     <tr>
+                        <td><strong>Profil leczenia</strong></td>
+                        <td>{{ plannedStay.getRehabilitationStay().getTreatmentProfile().getName() }}</td>
+                    </tr>
+                    <tr>
                         <td><strong>Data rozpoczęcia:</strong></td>
                         <td>{{ plannedStay.getStartDate()|date('d-m-Y') }}</td>
                     </tr>

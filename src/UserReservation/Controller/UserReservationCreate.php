@@ -37,9 +37,12 @@ class UserReservationCreate extends AbstractController
             $referralNumber = $form->get('referral_number')->getData();
             $treatmentProfile = $this->getTreatmentProfileFromReferralNumber($referralNumber);
 
+            $cleanedReferralNumber = str_replace('/', '', $referralNumber);
+            dump($cleanedReferralNumber);
+
             return $this->redirectToRoute('UserReservationCreate2', [
                 'treatmentProfileId' => $treatmentProfile->getId(),
-                'referralNumber' => $form->get('referral_number')->getData(),
+                'referralNumber' => $cleanedReferralNumber,
                 'pesel' => $form->get('pesel')->getData(),
                 'NFZPlace' => $this->getNFZPlaceFromReferralNumber($referralNumber),
             ]);
@@ -65,7 +68,10 @@ class UserReservationCreate extends AbstractController
         $rehabilitationStays = $this->rehabilitationStayRepository->findBy(['treatmentProfile' => $treatmentProfileId]);
         $plannedStays = $this->plannedStayRepository->findBy(['rehabilitation_stay' => $rehabilitationStays]);
 
-        $form = $this->createForm(SecondStepType::class, $reservation, ['plannedStays' => $plannedStays]);
+        $form = $this->createForm(SecondStepType::class, $reservation, [
+            'plannedStays' => $plannedStays,
+            ]);
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())

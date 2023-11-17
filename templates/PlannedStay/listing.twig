@@ -7,6 +7,7 @@
             <thead>
             <tr>
                 <th scope="col">Nazwa turnusu</th>
+                <th>Profil leczenia</th>
                 <th>Data rozpoczęcia turnusu</th>
                 <th>Data zakończenia turnusu</th>
                 <th>Czas trwania turnusu</th>
@@ -23,6 +24,7 @@
                             {{ planned_stay.getRehabilitationStay().getName() }}
                         </a>
                     </td>
+                    <td>{{ planned_stay.getRehabilitationStay().getTreatmentProfile().getName() }}</td>
                     <td>{{ planned_stay.getStartDate()|date('d-m-Y') }}</td>
                     <td>{{ planned_stay.getEndDate()|date('d-m-Y') }}</td>
                     <td>{{ planned_stay.getRehabilitationStay().getDuration() }} dni</td>
