@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <main id="main">
+        <section id="about" class="about">
+            <a href="{{ path('treatment_create') }}" class="btn btn-primary mb-3">Dodaj zabieg</a>
+            <table class="table table-success transparent-table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Cena</th>
+                    <th scope="col">Gabinet</th>
+                    <th scope="col">Prowadzący</th>
+                    <th scope="col">Czas trwania zabiegu</th>
+                    <th scope="col">Limit miejsc</th>
+                    <th scope="col"></th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for treatment in treatments %}
+                    <tr>
+                        <th scope="row">{{ treatment.id }}</th>
+                        <td>{{ treatment.name }} </td>
+                        <td>{{ treatment.price }}</td>
+                        <td>
+                            <a href="{{ path('therapy-room-show', {'id': treatment.getTherapyRoom().getId() }) }}" class="no-link-styling">
+                            {{ treatment.getTherapyRoom() is not null ? treatment.getTherapyRoom().getName() : 'Brak informacji' }}
+                            </a>
+                        </td>
+                        <td>{{ treatment.getLeadingPerson().getFullName() }}</td>
+                        <td>{{ treatment.duration }}</td>
+                        <td>{{ treatment.getNumberOfPatients() }}</td>
+                        <td><a href="{{ path('treatment_show', {'id': treatment.id}) }}" class="btn btn-info">Pokaż</a>
+                        <a href="{{ path('treatment_delete', {'id': treatment.id}) }}" class="btn btn-danger">Usuń</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <div class="container">
+
+                <table class="table table-bordered table-dark text-white">
+                    <tbody>
+                    <tr>
+                        <td width="40%"><strong>Nazwa turnusu</strong></td>
+                        <td width="30%">{{ rehabilitation_stay.getName() }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Czas trwania turnusu (dni)</strong></td>
+                        <td width="30%">{{ rehabilitation_stay.getDuration() }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Zabiegi wchodzące w skład turnusu</strong></td>
+                        <td width="30%">
+                            <ul>
+                                {% for treatment in rehabilitation_stay.getTreatments() %}
+                                    <li>
+                                        <a href="{{ path('treatment_show', {'id': treatment.id}) }}">{{ treatment.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a class="btn btn-success" href="{{ path('rehabilitation_stay_edit', {'id': rehabilitation_stay.id}) }}">Modyfikuj</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('rehabilitation_stay_delete', {'id': rehabilitation_stay.id}) }}" class="btn btn-danger">Usuń turnus</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    </main>
+{% endblock %}

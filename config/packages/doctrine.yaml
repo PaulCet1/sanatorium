@@ -36,6 +36,37 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Reservation/Entity'
                 prefix: 'App\Reservation\Entity'
                 alias: App
+            TherapyRoom:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/TherapyRoom/Entity'
+                prefix: 'App\TherapyRoom\Entity'
+                alias: App
+            Room:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Room/Entity'
+                prefix: 'App\Room\Entity'
+                alias: App
+            RehabilitationStay:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/RehabilitationStay/Entity'
+                prefix: 'App\RehabilitationStay\Entity'
+                alias: App
+            PlannedStay:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/PlannedStay/Entity'
+                prefix: 'App\PlannedStay\Entity'
+                alias: App
+            TreatmentPlan:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/TreatmentPlan/Entity'
+                prefix: 'App\TreatmentPlan\Entity'
+                alias: App
+            TreatmentProfile:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/TreatmentProfile/Entity'
+                prefix: 'App\TreatmentProfile\Entity'
+                alias: App
+
 
         
 

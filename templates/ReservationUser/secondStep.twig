@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {% embed 'Structure/Form/create_structure.html.twig' with {'title': 'Second Step'} %}
+        {% block form_content %}
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.client) }}
+                {{ form_widget(form.client, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.pesel) }}
+                {{ form_widget(form.pesel, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.referral_number) }}
+                {{ form_widget(form.referral_number, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.NFZPlace) }}
+                {{ form_widget(form.NFZPlace, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.room) }}
+                {{ form_widget(form.room, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.plannedStay) }}
+                {{ form_widget(form.plannedStay, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.numOfPeople) }}
+                {{ form_widget(form.numOfPeople, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+            {{ form_end(form) }}
+        {% endblock %}
+    {% endembed %}
+
+
+{% block javascript %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const referralNumberInput = document.querySelector('[id$="_referral_number"]');
+
+    function addSlashes(value) {
+    if (value.length > 2) {
+    value = value.slice(0, 2) + '/' + value.slice(2);
+}
+
+    if (value.length > 5) {
+    value = value.slice(0, 5) + '/' + value.slice(5);
+}
+
+    if (value.length > 12) {
+    value = value.slice(0, 12) + '/' + value.slice(12);
+}
+
+    if (value.length > 14) {
+    value = value.slice(0, 14) + '/' + value.slice(14);
+}
+
+    return value;
+}
+
+    if (referralNumberInput) {
+    setTimeout(function() {
+    let value = referralNumberInput.value;
+    referralNumberInput.value = addSlashes(value);
+}, 100);
+}
+});
+</script>
+{% endblock %}
+{% endblock %}

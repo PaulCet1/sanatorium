@@ -1,5 +1,3 @@
-
-
 user_show:
   path: /user
   controller: App\User\Controller\Show
@@ -8,4 +6,19 @@ user_show:
 user_listing:
   path: /users
   controller: App\User\Controller\Listing
+  methods: ['GET']
+
+user_create:
+  path: /user_create
+  controller: App\User\Controller\Create
+  methods: ['GET', 'POST']
+
+user_edit:
+  path: /user/{id}
+  controller: App\User\Controller\Edit
+  methods: ['GET', 'POST']
+
+user_delete:
+  path: /user/delete/{id}
+  controller: App\User\Controller\Delete
   methods: ['GET']

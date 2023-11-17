@@ -1,0 +1,24 @@
+treatment_plan_listing:
+  path: /treatment/plan/listing
+  controller: App\TreatmentPlan\Controller\Listing
+  methods: ['GET']
+
+treatment_plan_create:
+  path: /treatment/plan/create/{id}
+  controller: App\TreatmentPlan\Controller\Create
+  methods: ['GET', 'POST']
+
+treatment_plan_edit:
+  path: /treatment/plan/edit/{id}
+  controller: App\TreatmentPlan\Controller\Edit
+  methods: ['GET', 'POST']
+
+treatment_plan_show:
+  path: /treatment/plan/show/{id}
+  controller: App\TreatmentPlan\Controller\Show
+  methods: ['GET']
+
+treatment_plan_delete:
+  path: /treatment/plan/delete/{id}
+  controller: App\TreatmentPlan\Controller\Delete
+  methods: ['GET', 'DELETE']

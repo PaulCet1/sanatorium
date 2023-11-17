@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <div class="container">
+
+                <table class="table table-bordered table-dark text-white">
+                    <tbody>
+                    <tr>
+                        <td width="40%"><strong>Nazwa zabiegu:</strong></td>
+                        <td width="30%">{{ treatment.name }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Cena:</strong></td>
+                        <td width="30%">{{ treatment.price }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Prowadzący:</strong></td>
+                        <td width="30%">{{ treatment.getLeadingPerson().getFullName() }}</td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><strong>Gabinet:</strong></td>
+                        <td width="30%">
+                            <a href="{{ path('therapy-room-show', {'id': treatment.getTherapyRoom().getId() }) }}">
+                            {{ treatment.getTherapyRoom().getName() }}
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><a class="btn btn-success" href="{{ path('treatment_edit', {'id': treatment.id}) }}">Modyfikuj</a></td>
+                        <td width="30%"><a class="btn btn-danger" href="{{ path('treatment_delete', {'id': treatment.id}) }}">Usuń</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {% embed 'Structure/Form/create_structure.html.twig' with {'title':  data } %}
+        {% block form_content %}
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.duration) }}
+        {{ form_widget(form.duration, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.treatmentProfile) }}
+        {{ form_widget(form.treatmentProfile, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.treatments.vars.id }}">Zabiegi:</label>
+        <div class="form-check">
+            {{ form_widget(form.treatments) }}
+            {{ form_errors(form.treatments) }}
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+    </div>
+    {{ form_end(form) }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

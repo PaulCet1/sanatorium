@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {% embed 'Structure/Form/create_structure.html.twig' with {'title': 'Dodaj nowy termin turnusu'} %}
+        {% block form_content %}
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.rehabilitation_stay) }}
+                {{ form_widget(form.rehabilitation_stay, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.start_date) }}
+                {{ form_widget(form.start_date, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+
+            <div class="text-center mt-4">
+                {{ form_label(form.save) }}
+            </div>
+            {{ form_end(form) }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

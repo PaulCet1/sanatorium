@@ -1,0 +1,20 @@
+UserReservationListing:
+  path: /UserReservationListing
+  controller: App\UserReservation\Controller\UserReservationListing
+  methods: ['GET']
+
+UserReservationCreate1:
+  path: /UserReservationCreate1
+  controller: App\UserReservation\Controller\UserReservationCreate::firstStep
+  methods: ['GET', 'POST']
+
+UserReservationCreate2:
+  path: /UserReservationCreate2/{treatmentProfileId}/{referralNumber}/{pesel}/{NFZPlace}
+  controller: App\UserReservation\Controller\UserReservationCreate::secondStep
+  methods: ['GET', 'POST']
+
+UserReservationShow:
+  path: /userReservation/show/{id}
+  controller: App\UserReservation\Controller\Show
+  methods: ['GET']
+

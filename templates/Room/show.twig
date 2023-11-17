@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <div class="container">
+
+                <table class="table table-bordered table-dark text-white">
+                    <tbody>
+                    <tr>
+                        <td width="40%"><strong>Numer pokoju:</strong></td>
+                        <td width="30%">{{ room.getRoomNumber() }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Liczba miejsc:</strong></td>
+                        <td>{{ room.getPlacesNum() }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Utworzono</strong></td>
+                        <td>{{ room.getCreated()|date('d-m-Y H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{{ path('room_edit', {'id': room.id}) }}" class="btn btn-info">Edytuj</a></td>
+                        <td><a href="{{ path('room_delete', {'id': room.id}) }}" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    </main>
+{% endblock %}

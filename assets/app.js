@@ -17,4 +17,8 @@ import './styles/app.scss';
 import './bootstrap';
 const $ = require('jquery');
 require('bootstrap');
-console.log("Test");
+console.log("Test nie działa");
+
+$(document).ready(function() {
+    console.log('jQuery is working!');
+});

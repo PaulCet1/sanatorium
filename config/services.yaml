@@ -28,7 +28,6 @@ services:
         resource: '../src/User/Controller'
         tags: ['controller.service_arguments']
 
-
     App\Reservation\Controller\:
         resource: '../src/Reservation/Controller'
         tags: ['controller.service_arguments']
@@ -41,6 +40,39 @@ services:
         resource: '../src/Treatment/Controller'
         tags: [ 'controller.service_arguments' ]
 
+    App\TherapyRoom\Controller\:
+        resource: '../src/TherapyRoom/Controller'
+        tags: [ 'controller.service_arguments' ]
+
+    App\Room\Controller\:
+        resource: '../src/Room/Controller'
+        tags: ['controller.service_arguments']
+
+    App\RehabilitationStay\Controller\:
+        resource: '../src/RehabilitationStay/Controller'
+        tags: ['controller.service_arguments']
+
+    App\PlannedStay\Controller\:
+        resource: '../src/PlannedStay/Controller'
+        tags: ['controller.service_arguments']
+
+    App\UserReservation\Controller\:
+        resource: '../src/UserReservation/Controller'
+        tags: ['controller.service_arguments']
+
+    App\TreatmentPlan\Controller\:
+        resource: '../src/TreatmentPlan/Controller'
+        tags: ['controller.service_arguments' ]
+
+    App\Calendar\Controller\:
+        resource: '../src/Calendar/Controller'
+        tags: ['controller.service_arguments']
+
+    App\TreatmentProfile\Controller\:
+        resource: '../src/TreatmentProfile/Controller'
+        tags: [ 'controller.service_arguments' ]
+
+
 #    App\User\Repository\UserRepository:
 #        tags: ['doctrine.repository_service']
 
@@ -52,6 +84,9 @@ services:
     App\Core\Twig\:
         resource: '../src/Core/Twig/*'
         arguments: ["@service_container", "@twig", "@router"]
+
+    App\Service\DompdfService:
+        arguments: ['@twig']
 
 
 

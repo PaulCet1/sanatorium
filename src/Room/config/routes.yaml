@@ -1,0 +1,24 @@
+room_listing:
+  path: /room/listing
+  controller: App\Room\Controller\Listing
+  methods: ['GET']
+
+room_create:
+  path: /room/create
+  controller: App\Room\Controller\Create
+  methods: ['GET', 'POST']
+
+room_edit:
+  path: /room/edit/{id}
+  controller: App\Room\Controller\Edit
+  methods: ['GET', 'POST']
+
+room_show:
+  path: /room/show/{id}
+  controller: App\Room\Controller\Show
+  methods: ['GET']
+
+room_delete:
+  path: /room/delete/{id}
+  controller: App\Room\Controller\Delete
+  methods: ['GET', 'DELETE']

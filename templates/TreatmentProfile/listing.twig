@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <a href="{{ path('treatment_profile_create') }}" class="btn btn-primary mb-3">Dodaj profil leczenia</a>
+            <table class="table table-success transparent-table">
+                <thead>
+                <tr>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Kod</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for treatment_profile in treatment_profiles %}
+                    <tr>
+                        <th scope="row">{{ treatment_profile.getName() }}</th>
+                        <td>{{ treatment_profile.getCode() }}</td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+{% endblock %}

@@ -7,6 +7,36 @@ user:
 reservation:
     resource: '../src/Reservation/config/routes.yaml'
 
+treatment:
+    resource: '../src/Treatment/config/routes.yaml'
+
+therapy_room:
+    resource: '../src/TherapyRoom/config/routes.yaml'
+
+treatment_type:
+    resource: '../src/TreatmentType/config/routes.yaml'
+
+room:
+    resource: '../src/Room/config/routes.yaml'
+
+rehabilitation_stay:
+    resource: '../src/RehabilitationStay/config/routes.yaml'
+
+planned_stay:
+    resource: '../src/PlannedStay/config/routes.yaml'
+
+user_reservation:
+    resource: '../src/UserReservation/config/routes.yaml'
+
+treatment_plan:
+    resource: '../src/TreatmentPlan/config/routes.yaml'
+
+calendar:
+    resource: '../src/Calendar/config/routes.yaml'
+
+treatment_profile:
+    resource: '../src/TreatmentProfile/config/routes.yaml'
+
 
 controllers:
     resource:
@@ -38,10 +68,7 @@ access_denied:
 
 
 
-treatments_show:
-    path: /treatments_show
-    controller: App\Treatment\Controller\Show
-    methods: ['GET']
+
 
 
 

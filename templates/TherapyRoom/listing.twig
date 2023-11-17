@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <main id="main">
+        <section id="about" class="about">
+            <a href="{{ path('therapy-room-create') }}" class="btn btn-primary mb-3">Dodaj salę zabiegową</a>
+            <table class="table table-success transparent-table">
+                <thead>
+                <tr>
+                    <th scope="col">Numer</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Rodzaj(group/personal)</th>
+                    <th scope="col">Limit ćwiczących</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for therapy_room in therapy_rooms %}
+                    <tr>
+                        <th scope="row">{{ therapy_room.number }}</th>
+                        <td>{{ therapy_room.name }}</td>
+                        <td>{{ therapy_room.session }}</td>
+                        <td>{{ therapy_room.getAttendanceLimit() }}</td>
+                        <td>
+                            <a href="{{ path('therapy-room-show', {'id': therapy_room.id}) }}" class="btn btn-success">Show</a>
+                            <a href="{{ path('therapy-room-edit', {'id': therapy_room.id}) }}" class="btn btn-info">Edit</a>
+                            <a href="{{ path('therapy-room-delete', {'id': therapy_room.id}) }}" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+{% endblock %}

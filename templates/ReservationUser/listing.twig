@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <a href="{{ path('UserReservationCreate1') }}" class="btn btn-primary mb-3">Zamów pobyt</a>
+
+            {% for reservation in reservations %}
+                <div class="card text-center mb-3">
+                    <div class="card-header">
+                        Identyfikator rezerwacji: <b> {{ reservation.getId() }} </b>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ reservation.getPlannedStay().getId() }}</h5>
+                        <p class="card-text">Termin: </p>
+                        <a href="{{ path('UserReservationShow', {'id': reservation.getId()}) }}" class="btn btn-info">Więcej informacji</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Data aktualizacji: {{ reservation.getCreated()|date('d.m.Y') }}
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}

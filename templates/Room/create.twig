@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {% embed 'Structure/Form/create_structure.html.twig' with {'title': data} %}
+        {% block form_content %}
+                            {{ form_start(form) }}
+                            <div class="form-group">
+                                {{ form_label(form.room_number) }}
+                                {{ form_widget(form.room_number, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.places_num) }}
+                                {{ form_widget(form.places_num, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="text-center mt-4">
+                                {{ form_widget(form.save)  }}
+                            </div>
+                            {{ form_end(form) }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
