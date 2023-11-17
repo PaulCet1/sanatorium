@@ -13,11 +13,119 @@
             </div>
             {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
 
-
-
-
-            </div>
             {{ form_end(form) }}
         {% endblock %}
     {% endembed %}
+
+    {% block javascript %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const referralNumberInput = document.querySelector('[id$="_referral_number"]');
+        const peselInput = document.querySelector('[id$="_pesel"]');
+        const form = document.querySelector('form');
+        const referralErrorMessage = document.createElement('div');
+        referralErrorMessage.style.color = 'red';
+        referralErrorMessage.textContent = 'Nieprawidłowy numer skierowania. Wprowadź numer w formacie 00/00/123456/A/P0';
+
+        const peselErrorMessage = document.createElement('div');
+        peselErrorMessage.style.color = 'red';
+        peselErrorMessage.textContent = 'Nieprawidłowy numer PESEL. Wprowadź poprawny 11-cyfrowy numer PESEL';
+
+        function validateReferralNumber(value) {
+            const pattern = /^\d{2}\/\d{2}\/\d{6}\/[A-Za-z]\/[A-Za-z]\d{1,2}$/;
+            return pattern.test(value);
+        }
+
+        function validatePesel(value) {
+            const pattern = /^\d{11}$/;
+            return pattern.test(value);
+        }
+
+        function updateInputStyle(input, isValid) {
+            if (isValid) {
+                input.style.borderColor = '';
+                input.style.backgroundColor = '';
+            } else {
+                input.style.borderColor = 'red';
+                input.style.backgroundColor = '#ffe6e6';
+            }
+        }
+
+        if (referralNumberInput) {
+            referralNumberInput.addEventListener('input', function(event) {
+                const input = event.target;
+                let value = input.value.replace(/[^0-9A-Za-z]/g, '');
+
+                if (value.length > 2) {
+                    value = value.slice(0, 2) + '/' + value.slice(2);
+                }
+
+                if (value.length > 5) {
+                    value = value.slice(0, 5) + '/' + value.slice(5);
+                }
+
+                if (value.length > 12) {
+                    value = value.slice(0, 12) + '/' + value.slice(12);
+                }
+
+                if (value.length > 14) {
+                    value = value.slice(0, 14) + '/' + value.slice(14);
+                }
+
+                input.value = value;
+
+                const isValid = validateReferralNumber(value);
+                updateInputStyle(input, isValid);
+
+                if (isValid && document.contains(referralErrorMessage)) {
+                    referralErrorMessage.remove();
+                }
+            });
+        }
+
+        if (peselInput) {
+            peselInput.addEventListener('input', function(event) {
+                const input = event.target;
+                let value = input.value.replace(/[^0-9]/g, '');
+
+                input.value = value;
+
+                const isValid = validatePesel(value);
+                updateInputStyle(input, isValid);
+
+                if (isValid && document.contains(peselErrorMessage)) {
+                    peselErrorMessage.remove();
+                }
+            });
+        }
+
+        form.addEventListener('submit', function(event) {
+            const isReferralValid = validateReferralNumber(referralNumberInput.value);
+            const isPeselValid = validatePesel(peselInput.value);
+
+            if (!isReferralValid) {
+                event.preventDefault();
+                if (!document.contains(referralErrorMessage)) {
+                    referralNumberInput.parentNode.insertBefore(referralErrorMessage, referralNumberInput.nextSibling);
+                }
+            } else {
+                if (document.contains(referralErrorMessage)) {
+                    referralErrorMessage.remove();
+                }
+            }
+
+            if (!isPeselValid) {
+                event.preventDefault();
+                if (!document.contains(peselErrorMessage)) {
+                    peselInput.parentNode.insertBefore(peselErrorMessage, peselInput.nextSibling);
+                }
+            } else {
+                if (document.contains(peselErrorMessage)) {
+                    peselErrorMessage.remove();
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}
 {% endblock %}

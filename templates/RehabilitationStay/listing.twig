@@ -8,8 +8,8 @@
                 <thead>
                 <tr>
                     <th scope="col">Nazwa</th>
-                    <th>Czas trwania turnusu</th>
                     <th>Profil leczenia</th>
+                    <th>Czas trwania turnusu</th>
                     <th></th>
 
 
@@ -21,8 +21,8 @@
                         <td>
                         <a href="{{ path('rehabilitation_stay_show', {'id': rehabilitationStay.id}) }}">{{ rehabilitationStay.name }}</a>
                         </td>
-                        <td>{{ rehabilitationStay.getDuration() }}</td>
                         <td>{{ rehabilitationStay.getTreatmentProfile().getName() }}</td>
+                        <td>{{ rehabilitationStay.getDuration() }}</td>
                         <td>
                             <a class="btn btn-light" href="{{ path('treatment_plan_create', {'id': rehabilitationStay.id}) }}">Planowanie zabiegów</a>
                             <a class="btn btn-light" href="{{ path('calendar_show', {'id': rehabilitationStay.getId()}) }}">Plan zajęć</a>
