@@ -17,6 +17,7 @@ class Reservation
     public function __construct()
     {
         $this->created = new \DateTime();
+        $this->status = 'waiting';
     }
 
     use IdTrait;
@@ -60,6 +61,21 @@ class Reservation
      */
     private $NFZPlace;
 
+    /**
+     * @ORM\Column(type="string",length=255)
+     */
+    private $status;
+
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
 
     public function getRoom(): ?Room
     {

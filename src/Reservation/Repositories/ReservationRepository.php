@@ -17,7 +17,7 @@ class ReservationRepository extends EntityRepository
     public function getClientsByPlannedId($plannedId)
     {
         $qb = $this->createQueryBuilder('r')
-            ->select('c.id, c.fullname') // Wybierz 'c.id' oraz 'c.fullname'
+            ->select('c.id, c.fullname')
             ->leftJoin('r.client', 'c')
             ->where('r.plannedStay = :plannedId')
             ->setParameter('plannedId', $plannedId);
@@ -34,5 +34,14 @@ class ReservationRepository extends EntityRepository
 
         return $clients;
 
+    }
+
+    public function findByStatus(string $status): array
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.status = :status')
+            ->setParameter('status', $status)
+            ->getQuery()
+            ->getResult();
     }
 }
