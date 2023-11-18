@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <section id="about" class="about">
+            <a href="{{ path('reservation_accepted') }}" class="btn btn-primary mb-3">Zaakceptowane zamówienia</a>
+            <a href="{{ path('reservation_rejected') }}" class="btn btn-primary mb-3">Odrzucone zamówienia</a>
+
+            <table class="table table-success transparent-table">
+                <thead>
+                <tr>
+                    <th scope="col">Rezerwacja</th>
+                    <th scope="col">Zamawiający</th>
+                    <th scope="col">Zaplanowany turnus</th>
+                    <th scope="col">Okres trwania</th>
+                    <th scope="col">Utworzono</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for reservation in reservations %}
+                    <tr>
+                        <th scope="row">{{ reservation.id }}</th>
+                        <td>{{ reservation.getClient().getFullName() }}</td>
+                        <td>{{ reservation.getPlannedStay().getRehabilitationStay().getName() }}</td>
+                        <td>{{ reservation.getPlannedStay().getStartDate()|date('d.m.Y') }}
+                            - {{ reservation.getPlannedStay().getEndDate()|date('d.m.Y') }}</td>
+                        <td>{{ reservation.getPlannedStay().getCreated()|date('d.m.Y') }}</td>
+                        <td>{% if reservation.getStatus() == 'waiting' %}
+                                Oczekiwanie
+                            {% elseif reservation.getStatus() == 'accepted' %}
+                                Zaakceptowano
+                            {% elseif reservation.getStatus() == 'rejected' %}
+                                Odrzucony
+                            {% else %}
+                                Nieznany
+                            {% endif %}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+{% endblock %}

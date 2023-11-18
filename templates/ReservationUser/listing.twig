@@ -6,14 +6,34 @@
             <a href="{{ path('UserReservationCreate1') }}" class="btn btn-primary mb-3">Zamów pobyt</a>
 
             {% for reservation in reservations %}
-                <div class="card text-center mb-3">
+                <div class="card text-center mb-3" style="max-width: 50%; margin: 0 auto;">
                     <div class="card-header">
                         Identyfikator rezerwacji: <b> {{ reservation.getId() }} </b>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ reservation.getPlannedStay().getId() }}</h5>
                         <p class="card-text">Termin: </p>
-                        <a href="{{ path('UserReservationShow', {'id': reservation.getId()}) }}" class="btn btn-info">Więcej informacji</a>
+                        <p class="card-text">{{ reservation.getPlannedStay().getStartDate()|date("d/m/Y") }}
+                            - {{ reservation.getPlannedStay().getEndDate()|date("d/m/Y") }}</p>
+                        <p class="card-text">Status: <span class="{% if reservation.getStatus() == 'waiting' %}
+                                text-dark
+                            {% elseif reservation.getStatus() == 'accepted' %}
+                                text-success
+                            {% elseif reservation.getStatus() == 'rejected' %}
+                                text-danger
+                            {% else %}
+                                text-muted
+                            {% endif %}">{% if reservation.getStatus() == 'waiting' %}
+                                Oczekiwanie
+                            {% elseif reservation.getStatus() == 'accepted' %}
+                                    Zaakceptowano
+                                {% elseif reservation.getStatus() == 'rejected' %}
+                                    Odrzucony
+                                {% else %}
+                                    Nieznany
+                                {% endif %}</span></p>
+                        <a href="{{ path('UserReservationShow', {'id': reservation.getId()}) }}" class="btn btn-info">Więcej
+                            informacji</a>
                     </div>
                     <div class="card-footer text-muted">
                         Data aktualizacji: {{ reservation.getCreated()|date('d.m.Y') }}

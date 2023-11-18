@@ -79,14 +79,23 @@
                     <li><a href="{{ path('user_listing') }}" class="nav-link"><i class="bx bx-user"></i>
                             <span>Użytkownicy</span></a>
                     </li>
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bx bx-building-house"></i>
+                            <span>Rezerwacje - klienci</span>
+                        </a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <li><a href="{{ path('reservation_listing') }}" class="nav-link">Wszystkie rezerwacje</a></li>
+                            <li><a href="{{ path('reservation_status_listing') }}" class="nav-link">Do akceptacji</a></li>
+                            <li><a href="{{ path('reservation_accepted') }}" class="nav-link">Zatwierdzone rezerwacje</a></li>
+                            <li><a href="{{ path('reservation_rejected') }}" class="nav-link">Odrzucone rezerwacje</a></li>
+                        </ul>
+                    </div>
                     <li><a href="{{ path('treatment_profile_listing') }}" class="nav-link"><i class="bx bx-building-house"></i>
                             <span>Profile leczenia</span></a>
                     </li>
                     <li><a href="{{ path('rehabilitation_stay_listing') }}" class="nav-link"><i class="bx bx-building-house"></i>
                             <span>Turnusy</span></a>
-                    </li>
-                    <li><a href="{{ path('reservation_listing') }}" class="nav-link"><i class="bx bx-building-house"></i>
-                            <span>Rezerwacje - Admin</span></a>
                     </li>
 
                     <li><a href="{{ path('planned_stay_listing') }}" class="nav-link"><i class="bx bx-building-house"></i>
@@ -98,6 +107,7 @@
                     <li><a href="{{ path('therapy-room-listing') }}" class="nav-link"><i class="bx bx-building-house"></i>
                             <span>Sale zabiegowe</span></a>
                     </li>
+
 
                 </ul>
             </nav>

@@ -1,16 +1,15 @@
 {% extends "base.html.twig" %}
 {% block body %}
-
     <main id="main">
         <section id="about" class="about">
-            <a href="{{ path('reservation_create') }}" class="btn btn-primary mb-3">Dodaj rezerwację</a>
             <table class="table table-success transparent-table">
                 <thead>
                 <tr>
-                    <th scope="col">Turnus</th>
-                    <th scope="col">Klient</th>
-                    <th scope="col">Zakwaterowanie</th>
-                    <th scope="col">Numer ewidencyjny</th>
+                    <th scope="col">Rezerwacja</th>
+                    <th scope="col">Zamawiający</th>
+                    <th scope="col">Zaplanowany turnus</th>
+                    <th scope="col">Okres trwania</th>
+                    <th scope="col">Utworzono</th>
                     <th scope="col">Status</th>
                     <th scope="col"></th>
                 </tr>
@@ -18,14 +17,11 @@
                 <tbody>
                 {% for reservation in reservations %}
                     <tr>
-                        <th>
-                            <a href="{{ path("rehabilitation_stay_show", {'id': reservation.getPlannedStay().getRehabilitationStay().getId()}) }}">
-                                {{ reservation.getPlannedStay().getRehabilitationStay().getName() }}
-                            </a>
-                        </th>
-                        <td>{{ reservation.getClient().getFullname() }}</td>
-                        <td>{{ reservation.getRoom().getRoomNumber() }}</td>
-                        <td>{{ reservation.getReferralNumber() }}</td>
+                        <th scope="row">{{ reservation.id }}</th>
+                        <td>{{ reservation.getClient().getFullName() }}</td>
+                        <td>{{ reservation.getPlannedStay().getRehabilitationStay().getName() }}</td>
+                        <td>{{ reservation.getPlannedStay().getStartDate()|date('d.m.Y') }} - {{ reservation.getPlannedStay().getEndDate()|date('d.m.Y') }}</td>
+                        <td>{{ reservation.getPlannedStay().getCreated()|date('d.m.Y') }}</td>
                         <td>{% if reservation.getStatus() == 'waiting' %}
                                 Oczekiwanie
                             {% elseif reservation.getStatus() == 'accepted' %}
@@ -36,8 +32,8 @@
                                 Nieznany
                             {% endif %}</td>
                         <td>
-                            <a href="" class="btn btn-info">Edytuj</a>
-                            <a href="" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                            <a href="{{ path('reservation_status_accept', {'id': reservation.id}) }}" class="btn btn-success">Akceptuj</a>
+                            <a href="{{ path('reservation_status_reject', {'id': reservation.id}) }}" class="btn btn-danger">Odrzuć</a>
                         </td>
                     </tr>
                 {% endfor %}

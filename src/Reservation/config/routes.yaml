@@ -12,3 +12,29 @@ reservation_edit:
   path: /reservation/edit/{id}
   controller: App\Reservation\Controller\Edit
   methods: ['GET', 'POST']
+
+
+reservation_status_listing:
+  path: /reservation/status/listing
+  controller: App\Reservation\Controller\StatusController::listing
+  methods: ['GET']
+
+reservation_status_accept:
+  path: /reservation/status/{id}/accept
+  controller: App\Reservation\Controller\StatusController::accept
+  methods: ['GET']
+
+reservation_status_reject:
+  path: /reservation/status/{id}/reject
+  controller: App\Reservation\Controller\StatusController::reject
+  methods: ['GET']
+
+reservation_rejected:
+  path: /reservation/rejected
+  controller: App\Reservation\Controller\StatusController::rejectedlisting
+  methods: ['GET']
+
+reservation_accepted:
+  path: /reservation/accepted
+  controller: App\Reservation\Controller\StatusController::acceptedlisting
+  methods: ['GET']
