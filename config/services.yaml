@@ -72,6 +72,10 @@ services:
         resource: '../src/TreatmentProfile/Controller'
         tags: [ 'controller.service_arguments' ]
 
+    App\SanatorySurvey\Controller\:
+        resource: '../src/SanatorySurvey/Controller'
+        tags: [ 'controller.service_arguments' ]
+
 
 #    App\User\Repository\UserRepository:
 #        tags: ['doctrine.repository_service']

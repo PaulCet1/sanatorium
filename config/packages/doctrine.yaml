@@ -66,6 +66,11 @@ doctrine:
                 dir: '%kernel.project_dir%/src/TreatmentProfile/Entity'
                 prefix: 'App\TreatmentProfile\Entity'
                 alias: App
+            SanatorySurvey:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/SanatorySurvey/Entity'
+                prefix: 'App\SanatorySurvey\Entity'
+                alias: App
 
 
         

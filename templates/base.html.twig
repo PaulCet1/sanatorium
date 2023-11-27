@@ -14,6 +14,8 @@
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
         <!-- Vendor CSS Files -->
         <link href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+
+
         <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -21,6 +23,32 @@
         <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
     {% endblock %}
+
+    <style>
+
+        .reserve-btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .reserve-btn {
+            background-color: #151a59;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .reserve-btn:hover {
+            background-color: #3c8613;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+
 
 </head>
 
@@ -44,20 +72,29 @@
                         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
                         <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
                         <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                        <a href="#" class="linkedin"><i class="bx bxl-logout"></i></a>
+                        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                    </div>
+                    <div class="reserve-btn-container">
+                        <a href="{{ path('UserReservationCreate1') }}"
+                           class="nav-link reserve-btn reserve-btn-container">Zarezerwuj Pobyt</a>
                     </div>
                 </div>
 
+
                 <nav id="navbar" class="nav-menu navbar">
                     <ul>
+                        <li>
+
+                        </li>
+
                         <li><a href="{{ path('home') }}" class="nav-link"><i class="bx bx-home"></i>
                                 <span>Start</span></a></li>
                         <li><a href="{{ path('user_show') }}" class="nav-link"><i class="bx bx-user"></i>
                                 <span>Twoje dane</span></a></li>
-                        <li><a href="{{ path('UserReservationListing') }}" class="nav-link"> <i class="bx bx-file-blank"></i>
+                        <li><a href="{{ path('UserReservationListing') }}" class="nav-link"> <i
+                                        class="bx bx-file-blank"></i>
                                 <span>Rezerwacje</span></a></li>
-                        <li><a href="{{ path('treatment_listing') }}" class="nav-link"><i class="bx bx-book-content"></i>
-                                <span>Zabiegi</span></a></li>
+
                         <li><a href="" class="nav-link"><i class="bx bx-server"></i>
                                 <span>Kontakt</span></a></li>
                         <li><a href="{{ path('logout') }}" class="nav-link"><i class="bx bx-envelope"></i>
@@ -67,7 +104,7 @@
                 </nav>
 
                 {% if is_granted('ROLE_ADMIN') %}
-                {# ADMIN FUNCTIONS#}
+                {# ADMIN FUNCTIONS #}
 
                 <div class="profile">
                     <h1 class="text-light"><a href="index.html">Sanatorium</a></h1>
@@ -80,31 +117,50 @@
                             <span>Użytkownicy</span></a>
                     </li>
                     <div class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bx bx-building-house"></i>
                             <span>Rezerwacje - klienci</span>
                         </a>
                         <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <li><a href="{{ path('reservation_listing') }}" class="nav-link">Wszystkie rezerwacje</a></li>
-                            <li><a href="{{ path('reservation_status_listing') }}" class="nav-link">Do akceptacji</a></li>
-                            <li><a href="{{ path('reservation_accepted') }}" class="nav-link">Zatwierdzone rezerwacje</a></li>
-                            <li><a href="{{ path('reservation_rejected') }}" class="nav-link">Odrzucone rezerwacje</a></li>
+                            <li><a href="{{ path('reservation_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Wszystkie rezerwacje</a>
+                            </li>
+                            <li><a href="{{ path('reservation_status_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Do akceptacji</a>
+                            </li>
+                            <li><a href="{{ path('reservation_accepted') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Zatwierdzone
+                                    rezerwacje</a></li>
+                            <li><a href="{{ path('reservation_rejected') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Odrzucone rezerwacje</a>
+                            </li>
                         </ul>
                     </div>
-                    <li><a href="{{ path('treatment_profile_listing') }}" class="nav-link"><i class="bx bx-building-house"></i>
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bx bx-building-house"></i>
+                            <span>Turnusy - zarządzanie</span>
+                        </a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <li><a href="{{ path('rehabilitation_stay_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Lista turnusów</a>
+                            </li>
+                            <li><a href="{{ path('planned_stay_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Planuj turnus</a></li>
+                            <li><a href="{{ path('treatment_plan_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Planuj zabiegi</a></li>
+                            <li><a href="{{ path('treatment_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Zabiegi</a></li>
+                        </ul>
+                    </div>
+                    <li><a href="{{ path('treatment_profile_listing') }}" class="nav-link"><i
+                                    class="bx bx-building-house"></i>
                             <span>Profile leczenia</span></a>
                     </li>
-                    <li><a href="{{ path('rehabilitation_stay_listing') }}" class="nav-link"><i class="bx bx-building-house"></i>
-                            <span>Turnusy</span></a>
-                    </li>
-
-                    <li><a href="{{ path('planned_stay_listing') }}" class="nav-link"><i class="bx bx-building-house"></i>
-                            <span>Turnusy - planowanie</span></a>
-                    </li>
-                    <li><a href="{{ path('treatment_plan_listing') }}" class="nav-link"><i class="bx bx-building-house"></i>
-                            <span>Zabiegi - planowanie</span></a>
-                    </li>
-                    <li><a href="{{ path('therapy-room-listing') }}" class="nav-link"><i class="bx bx-building-house"></i>
+                    <li><a href="{{ path('therapy-room-listing') }}" class="nav-link"><i
+                                    class="bx bx-building-house"></i>
                             <span>Sale zabiegowe</span></a>
                     </li>
 
@@ -131,7 +187,7 @@
 
 
 
-{% endblock body%}
+{% endblock body %}
 
 
 <!-- Vendor JS Files -->
@@ -150,7 +206,7 @@
 
 
 <!-- Template Main JS File -->
-<script src="{{ asset('assets/js/main.js')}}"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 
 </html>

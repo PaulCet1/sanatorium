@@ -1,0 +1,9 @@
+survey_create:
+  path: /survey/create/{reservation_id}
+  controller: App\SanatorySurvey\Controller\Create
+  methods: ['GET', 'POST']
+
+survey_complete:
+  path: /survey/complete
+  controller: App\SanatorySurvey\Controller\Complete
+  methods: ['GET']

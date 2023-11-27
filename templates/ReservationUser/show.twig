@@ -24,12 +24,31 @@
                             </p>
 
                         {% endif %}
+                        <p class="card-text">Status: <span class="{% if reservation.getStatus() == 'waiting' %}
+                                text-dark
+                            {% elseif reservation.getStatus() == 'accepted' %}
+                                text-success
+                            {% elseif reservation.getStatus() == 'rejected' %}
+                                text-danger
+                            {% else %}
+                                text-muted
+                            {% endif %}">{% if reservation.getStatus() == 'waiting' %}
+                                Oczekiwanie
+                            {% elseif reservation.getStatus() == 'accepted' %}
+                                    Zaakceptowano
+                                {% elseif reservation.getStatus() == 'rejected' %}
+                                    Odrzucony
+                                {% else %}
+                                    Nieznany
+                                {% endif %}</span></p>
                         <p class="card-text">Data rozpoczęcia: {{ reservation.getPlannedStay().getStartDate()|date("d/m/Y") }}</p>
                         <p class="card-text">Data zakończenia: {{ reservation.getPlannedStay().getEndDate()|date("d/m/Y") }}</p>
                         {% if reservation.getStatus() == 'accepted' %}
                         <a href="{{ path('calendar_usershow', {'id': reservation.getPlannedStay().getId()}) }}" class="btn btn-info">Plan pobytu</a>
                         {% endif %}
                         <a href="{{ path('rehabilitation_stay_show', {'id': reservation.getPlannedStay().getRehabilitationStay().getId()}) }}" class="btn btn-info">Zobacz informacje o turnusie</a>
+                        <a href="{{ path('survey_create', {'reservation_id': reservation.getId()}) }}" class="btn btn-success">Wypełnij ankietę</a>
+
                     </div>
                     <div class="card-footer text-muted">
                         Data aktualizacji: {{ reservation.getCreated()|date('d.m.Y H:i')}}

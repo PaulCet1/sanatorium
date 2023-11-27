@@ -37,6 +37,9 @@ calendar:
 treatment_profile:
     resource: '../src/TreatmentProfile/config/routes.yaml'
 
+sanatory_survey:
+    resource: '../src/SanatorySurvey/config/routes.yaml'
+
 
 controllers:
     resource:

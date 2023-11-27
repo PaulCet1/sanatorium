@@ -3,8 +3,6 @@
 {% block body %}
     <main id="main">
         <section id="about" class="about">
-            <a href="{{ path('UserReservationCreate1') }}" class="btn btn-primary mb-3">Zamów pobyt</a>
-
             {% for reservation in reservations %}
                 <div class="card text-center mb-3" style="max-width: 50%; margin: 0 auto;">
                     <div class="card-header">
