@@ -4,31 +4,31 @@
         {% block form_content %}
             {{ form_start(form) }}
             <div class="form-group">
-                {{ form_label(form.username, 'Username') }}
-                {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Enter username'}}) }}
+                {{ form_label(form.username, 'Nazwa użytkownika') }}
+                {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.fullname, 'Fullname') }}
-                {{ form_widget(form.fullname, {'attr': {'class': 'form-control', 'placeholder': 'Fullname'}}) }}
+                {{ form_label(form.fullname, 'Imię i nazwisko') }}
+                {{ form_widget(form.fullname, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.email, 'Email') }}
-                {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Enter email'}}) }}
+                {{ form_label(form.email, 'Adres e-mail') }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.password.first, 'Password') }}
-                {{ form_widget(form.password.first, {'attr': {'class': 'form-control', 'placeholder': 'Enter password'}}) }}
+                {{ form_label(form.password.first, 'Hasło') }}
+                {{ form_widget(form.password.first, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.password.second, 'Confirm Password') }}
-                {{ form_widget(form.password.second, {'attr': {'class': 'form-control', 'placeholder': 'Confirm password'}}) }}
+                {{ form_label(form.password.second, 'Powtórz hasło') }}
+                {{ form_widget(form.password.second, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.roles, 'Roles') }}
+                {{ form_label(form.roles, 'Uprawnienia') }}
                 {{ form_widget(form.roles, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="text-center mt-4">
-                <button type="submit" class="btn btn-primary">Create User</button>
+                <button type="submit" class="btn btn-primary">Utwórz</button>
             </div>
             {{ form_end(form) }}
         {% endblock %}

@@ -59,6 +59,11 @@ home:
     controller: App\Core\Controller\HomeController::index
     methods: ['GET']
 
+system_welcome:
+    path: /systemWelcome
+    controller: App\Core\Controller\HomeController::systemWelcome
+    methods: ['GET']
+
 welcome:
     path: /
     controller: App\Core\Controller\HomeController::welcome

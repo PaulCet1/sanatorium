@@ -25,6 +25,7 @@ class StatusController extends AbstractController
         ]));
     }
 
+
     public function accept($id): Response
     {
         $entityManager = $this->doctrine->getManager();

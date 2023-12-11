@@ -21,7 +21,7 @@ class TreatmentProfileType extends AbstractType
                 'attr' => ['placeholder' => 'Wprowadź nazwę'],
             ])
             ->add('code', IntegerType::class, [
-                'label' => 'Ilość miejsc',
+                'label' => 'Kod',
                 'attr' => ['placeholder' => 'Wprowadź kod'],
             ])
             ->add('save', SubmitType::class, [

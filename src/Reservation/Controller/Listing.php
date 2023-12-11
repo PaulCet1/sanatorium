@@ -5,6 +5,7 @@ namespace App\Reservation\Controller;
 use App\RehabilitationStay\Repository\RehabilitationStayRepository;
 use App\Reservation\Repositories\ReservationRepository;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -20,6 +21,7 @@ class Listing
     {}
 
     /**
+     * @IsGranted("ROLE_USER")
      * @throws RuntimeError
      * @throws SyntaxError
      * @throws LoaderError

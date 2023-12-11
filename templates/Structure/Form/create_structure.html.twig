@@ -1,6 +1,29 @@
 {% block body %}
+    <style>
+        .container {
+            padding-top: 100px;
+        }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+        .card-header {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        .card-body {
+            padding: 20px;
+        }
+    </style>
+
     <main id="main">
-        <div class="container" style="padding-top: 100px;">
+        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
@@ -11,7 +34,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </main>
 {% endblock %}

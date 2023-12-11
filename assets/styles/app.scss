@@ -6,10 +6,13 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
+  background-color: #151e98;
   border: 1px solid #ccc;
   padding: 10px;
   transition: all 0.3s ease; /* Dodaj animację */
+}
+body{
+  background: #0f1381;
 }
 
 /* Stylizacja przycisku "Zabiegi" */
