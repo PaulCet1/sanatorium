@@ -219,7 +219,7 @@ CREATE TABLE `reservation` (
 
 LOCK TABLES `reservation` WRITE;
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
-INSERT INTO `reservation` VALUES (81,'2023-11-17 22:16:25',3842,41,1,4,'15/11/111111/A/P5','11111111111','Wielkopolski Oddział Wojewódzki NFZ','accepted'),(83,'2023-11-26 22:27:22',3842,42,1,2,'15/11/111111/A/P6','11111111111','Wielkopolski Oddział Wojewódzki NFZ','rejected'),(84,'2023-11-27 00:27:58',3867,39,9,6,'01/01/010101/A/B6','11111111111','Dolnośląski Oddział Wojewódzki NFZ','accepted'),(85,'2023-11-27 23:11:13',3842,43,8,4,'05/01/000000/B/A5','11111111111','Łódzki Oddział Wojewódzki NFZ','accepted'),(86,'2023-12-03 21:57:02',3842,39,1,4,'16/02/020202/B/A6','00000000000','Zachodniopomorski Oddział Wojewódzki NFZ','accepted'),(87,'2023-12-07 20:29:53',3842,43,1,5,'13/13/323133/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','accepted'),(88,'2023-12-07 20:30:33',3842,43,1,12,'13//1/3/3231/3/3/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','waiting'),(89,'2023-12-07 20:30:48',3842,43,1,1,'13//1/3/3231/3/3/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','waiting'),(90,'2023-12-11 10:10:59',3842,40,5,1,'06/13/213312/B/A5','01011001101','Małopolski Oddział Wojewódzki NFZ','waiting'),(91,'2023-12-11 12:44:33',3869,39,1,2,'16/01/110010/B/A6','11111111111','Zachodniopomorski Oddział Wojewódzki NFZ','waiting');
+INSERT INTO `reservation` VALUES (81,'2023-11-17 22:16:25',3842,41,1,4,'15/11/111111/A/P5','11111111111','Wielkopolski Oddział Wojewódzki NFZ','accepted'),(83,'2023-11-26 22:27:22',3842,42,1,2,'15/11/111111/A/P6','11111111111','Wielkopolski Oddział Wojewódzki NFZ','rejected'),(84,'2023-11-27 00:27:58',3867,39,9,6,'01/01/010101/A/B6','11111111111','Dolnośląski Oddział Wojewódzki NFZ','accepted'),(85,'2023-11-27 23:11:13',3842,43,8,4,'05/01/000000/B/A5','11111111111','Łódzki Oddział Wojewódzki NFZ','accepted'),(86,'2023-12-03 21:57:02',3842,39,1,4,'16/02/020202/B/A6','00000000000','Zachodniopomorski Oddział Wojewódzki NFZ','accepted'),(87,'2023-12-07 20:29:53',3842,43,1,5,'13/13/323133/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','accepted'),(88,'2023-12-07 20:30:33',3842,43,1,12,'13//1/3/3231/3/3/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','waiting'),(89,'2023-12-07 20:30:48',3842,43,1,1,'13//1/3/3231/3/3/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','waiting'),(90,'2023-12-11 10:10:59',3842,40,5,1,'06/13/213312/B/A5','01011001101','Małopolski Oddział Wojewódzki NFZ','waiting'),(91,'2023-12-11 12:44:33',3869,39,1,2,'16/01/110010/B/A6','11111111111','Zachodniopomorski Oddział Wojewódzki NFZ','accepted');
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -443,4 +443,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-11 13:00:38
+-- Dump completed on 2023-12-14 20:34:41
