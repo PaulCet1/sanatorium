@@ -9,6 +9,7 @@ use App\TreatmentProfile\Entity\TreatmentProfile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
@@ -17,6 +18,7 @@ class Create extends AbstractController
     public function __construct(
         private Environment $twig,
         private CreateReservation $createReservation,
+        private TranslatorInterface $translator,
     ){}
 
 
@@ -38,12 +40,13 @@ class Create extends AbstractController
 
         return new Response($this->twig->render('Reservation/create.twig', [
             'form' => $form->createView(),
+            'data' => $this->translator->trans('reservation.create.value'),
         ]));
     }
 
     private function getTreatmentProfileFromReferralNumber(string $referralNumber): ?TreatmentProfile
     {
-        $profileCode = substr($referralNumber, -2); // Wyciąga ostatnie 2 znaki z numeru skierowania
+        $profileCode = substr($referralNumber, -2);
         return $this->getDoctrine()->getRepository(TreatmentProfile::class)->findOneBy(['code' => $profileCode]);
     }
 

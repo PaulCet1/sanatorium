@@ -24,7 +24,10 @@ class ReservationType extends AbstractType
             ->add('client', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'fullname',
-                'label' => 'Klient',
+                'label' => 'reservation.client.value',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
                 'required' => true,
                 'query_builder' => function(EntityRepository $er) {
                 return $er->createQueryBuilder('u')
@@ -33,46 +36,59 @@ class ReservationType extends AbstractType
                 }
             ])
             ->add('pesel', TextType::class, [
-                'label' => 'Numer PESEL',
+                'label' => 'reservation.pesel.value',
                 'attr' => [
-                    'placeholder' => '00000000000',
+                    'placeholder' => 'reservation.pesel.placeholder',
+                    'class' => 'form-control',
                 ],
                 'constraints' => [
                     new Assert\Length([
                         'min' => 11,
                         'max' => 11,
-                        'exactMessage' => 'Numer PESEL musi zawierać dokładnie {{ limit }} znaków.',
+                        'exactMessage' => 'Numer PESEL musi zawierać dokładnie {{ limit }} znaków',
                     ]),
                     new Assert\Regex([
                         'pattern' => '/^\d{11}$/',
-                        'message' => 'Numer PESEL może zawierać tylko cyfry.',
+                        'message' => 'Numer PESEL może zawierać tylko cyfry',
                     ]),
                 ],
             ])
             ->add('referralNumber', TextType::class, [
-                'label' => 'Numer ewidencyjny skierowania',
+                'label' => 'reservation.refferalNumber.value',
                 'attr' => [
-                    'placeholder' => '00/00/123456/A/P0',
+                    'placeholder' => 'reservation.refferalNumber.placeholder',
+                    'class' => 'form-control',
                 ],
             ])
             ->add('numOfPeople', TextType::class, [
-                'label' => 'Liczba uczestników (w tym dzieci)',
+                'label' => 'reservation.numOfPeople.value',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
             ])
             ->add('plannedStay', EntityType::class, [
                 'class' => PlannedStay::class,
                 'choice_label' => 'rehabilitation_stay.name',
-                'label' => 'Turnus',
+                'label' => 'reservation.plannedStay.value',
                 'required' => true,
+                'attr' => [
+                    'class' => 'form-control',
+                ],
             ])
             ->add('room', EntityType::class, [
                 'class' => Room::class,
                 'choice_label' => 'room_number',
-                'label' => 'Pokój',
+                'label' => 'reservation.room.value',
                 'required' => true,
+                'attr' => [
+                    'class' => 'form-control',
+                ],
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Zapisz',
-                'attr' => ['class' => 'btn btn-primary'],
+                'label' => 'reservation.save.value',
+                'attr' => [
+                    'class' => 'btn btn-primary'
+                ],
             ]);
     }
 

@@ -185,14 +185,36 @@
                                             class="bx bx-book-content"></i>Zabiegi</a></li>
                         </ul>
                     </div>
-                    <li><a href="{{ path('treatment_profile_listing') }}" class="nav-link"><i
-                                    class="bx bx-building-house"></i>
-                            <span>Profile leczenia</span></a>
-                    </li>
-                    <li><a href="{{ path('therapy-room-listing') }}" class="nav-link"><i
-                                    class="bx bx-building-house"></i>
-                            <span>Sale zabiegowe</span></a>
-                    </li>
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bx bx-building-house"></i>
+                            <span>Profile leczenia</span>
+                        </a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <li><a href="{{ path('treatment_profile_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Lista profilów leczenia</a>
+                            </li>
+                            <li><a href="{{ path('treatment_profile_create') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Dodaj nowy profil</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bx bx-building-house"></i>
+                            <span>Sale zabiegowe</span>
+                        </a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <li><a href="{{ path('therapy-room-listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Lista sal zabiegowych</a>
+                            </li>
+                            <li><a href="{{ path('therapy-room-create') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Dodaj salę</a>
+                            </li>
+                        </ul>
+                    </div>
 
 
                 </ul>

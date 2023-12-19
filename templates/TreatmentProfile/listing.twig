@@ -1,28 +1,44 @@
 {% extends "base.html.twig" %}
 {% block body %}
+    <style>
+        .align-right {
+            text-align: right;
+        }
+    </style>
     <main id="main">
-        <section id="about" class="about">
-            <a href="{{ path('treatment_profile_create') }}" class="btn btn-primary mb-3">Dodaj profil leczenia</a>
-            <table class="table table-success transparent-table">
-                <thead>
-                <tr>
-                    <th scope="col">Nazwa</th>
-                    <th scope="col">Kod</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for treatment_profile in treatment_profiles %}
+        <div class="container">
+            <section id="about" class="about">
+                <div class="section-title">
+                    <h2>Profile leczenia</h2>
+                    <p>W tej zakładce możesz zarządzać profilami leczenia</p>
+                </div>
+                <table class="table table-light transparent-table">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ treatment_profile.getName() }}</th>
-                        <td>{{ treatment_profile.getCode() }}</td>
-                        <td></td>
+                        <th scope="col">Nazwa profilu</th>
+                        <th scope="col">Kod</th>
+                        <th scope="col"></th>
+
+
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for paginate in pagination %}
+                        <tr>
+                            <td>{{ paginate.getName() }}</td>
+                            <td>{{ paginate.getCode() }}</td>
+                            <td class="align-right">
+                                <a href="{{ path('treatment_profile_edit', { 'id': paginate.getId() }) }}" class="btn btn-success">Edytuj</a>
+                                <a href="{{ path('treatment_profile_delete', { 'id': paginate.getId() }) }}" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% include 'Structure/Table/pagination.html.twig' with {'pagination': pagination} %}
 
-        </section>
 
+            </section>
+        </div>
     </main>
 {% endblock %}

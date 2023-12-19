@@ -1,0 +1,18 @@
+treatmentprofile:
+  data:
+    create:
+      value: "Dodaj profil leczenia"
+    edit:
+      value: "Edytuj profil leczenia"
+
+  #TreatmentProfileType
+  name:
+    value: "Nazwa profilu leczenia"
+    placeholder: "Wprowadź nazwę"
+
+  code:
+    value: "Kod"
+    placeholder: "Wprowadź kod"
+
+  save:
+    value: "Zapisz"

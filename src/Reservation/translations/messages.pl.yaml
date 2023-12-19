@@ -1,0 +1,40 @@
+reservation:
+  create:
+    value: "Tworzenie rezerwacji"
+
+  edit:
+    value: "Edycja rezerwacji"
+
+  client:
+    value: "Klient"
+
+  pesel:
+    value:  "Numer pesel"
+    placeholder: "00000000000"
+    assert:
+      length: "Numer PESEL musi zawierać dokładnie {{ limit }} znaków"
+      regex: "Numer PESEL może zawierać tylko cyfry"
+
+  status:
+    rejected:
+      title: "Odrzucone zgłoszenia"
+      desc: "Lista odrzuconych zgłoszeń"
+    accepted:
+      title: "Zatwierdzone rezerwacje"
+      desc: "Lista zaakceptowanych zgłoszeń, oczekujących na realizację"
+
+  refferalNumber:
+    value: "Numer ewidencyjny skierowania"
+    placeholder: "00/00/123456/A/P0"
+
+  numOfPeople:
+    value: "Liczba uczestników"
+
+  plannedStay:
+    value: "Turnus"
+
+  room:
+    value: "Pokój"
+
+  save:
+    value: "Zapisz"

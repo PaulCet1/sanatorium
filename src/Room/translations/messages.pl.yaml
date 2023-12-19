@@ -1,0 +1,10 @@
+room.create: "Tworzenie pokoju"
+
+room.edit: "Edytuj pokój"
+
+#RoomType
+room.number: "Numer pokoju"
+room.number.placeholder: "Wprowadź numer pokoju"
+room.places: "Ilość miejs"
+room.places.placeholder: "Wprowadź ilość miejsc"
+room.save: "Zapisz"

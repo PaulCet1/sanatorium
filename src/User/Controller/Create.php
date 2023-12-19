@@ -14,7 +14,8 @@ class Create extends AbstractController
 {
     public function __construct(
         private UserPasswordHasherInterface $passwordHasher,
-        private ManagerRegistry $doctrine
+        private ManagerRegistry $doctrine,
+
     ){}
 
     public function __invoke(Request $request): Response
@@ -25,7 +26,7 @@ class Create extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Hash the user's password
+
             $password = $this->passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($password);
 
@@ -33,7 +34,7 @@ class Create extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // Redirect to a success page or do something else
+
 
             return $this->redirectToRoute('user_listing'); // Change 'user_list' to the route you want to redirect to
         }

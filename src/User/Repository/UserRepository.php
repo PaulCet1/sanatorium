@@ -14,5 +14,15 @@ class UserRepository extends EntityRepository
         parent::__construct($entityManager, $class);
     }
 
+    public function searchByUsername($term)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.fullname LIKE :term')
+            ->setParameter('term', '%' . $term . '%')
+            ->getQuery()
+            ->getResult();
+    }
+
+
 
 }

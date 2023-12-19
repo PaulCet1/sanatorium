@@ -4,10 +4,12 @@ namespace App\Reservation\Controller;
 
 use App\Reservation\Entity\Reservation;
 use App\Reservation\Form\ReservationEditType;
+use App\Reservation\Form\ReservationType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
@@ -15,12 +17,13 @@ class Edit extends AbstractController
 {
     public function __construct(
         private Environment $twig,
-        private ManagerRegistry $doctrine
+        private ManagerRegistry $doctrine,
+        private TranslatorInterface $translator,
     ){}
 
     public function __invoke(Request $request, Reservation $reservation)
     {
-        $form = $this->createForm(ReservationEditType::class, $reservation);
+        $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
@@ -33,8 +36,9 @@ class Edit extends AbstractController
             return $this->redirectToRoute('reservation_listing');
         }
 
-        return new Response($this->twig->render('Reservation/edit.twig', [
+        return new Response($this->twig->render('Reservation/create.twig', [
             'form' => $form->createView(),
+            'data' => $this->translator->trans('reservation.edit.value'),
         ]));
     }
 }

@@ -15,15 +15,21 @@ class RoomType extends  AbstractType
     {
         $builder
             ->add('room_number', IntegerType::class, [
-                'label' => 'Numer pokoju',
-                'attr' => ['placeholder' => 'Wprowadź numer pokoju'],
+                'label' => 'room.number',
+                'attr' => [
+                    'placeholder' => 'room.number.placeholder',
+                    'class' => 'form-control'
+                ],
             ])
             ->add('places_num', IntegerType::class, [
-                'label' => 'Ilość miejsc',
-                'attr' => ['placeholder' => 'Wprowadź ilość miejsc'],
+                'label' => 'room.places',
+                'attr' => [
+                    'placeholder' => 'room.places.placeholder',
+                    'class' => 'form-control'
+                    ],
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Zapisz',
+                'label' => 'room.save',
                 'attr' => ['class' => 'btn btn-primary'],
             ]);
     }
