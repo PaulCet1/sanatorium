@@ -1,45 +1,124 @@
 {% extends "base.html.twig" %}
 {% block body %}
+    <style>
+        .pagination a {
+            padding: 5px 10px;
+            font-size: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #portfolio {
+            margin-top: -50px;
+        }
+    </style>
     <main id="main">
-        <section id="about" class="about">
-            <a href="{{ path('reservation_accepted') }}" class="btn btn-primary mb-3">Zaakceptowane zamówienia</a>
-            <a href="{{ path('reservation_rejected') }}" class="btn btn-primary mb-3">Odrzucone zamówienia</a>
-
-            <table class="table table-success transparent-table">
-                <thead>
-                <tr>
-                    <th scope="col">Rezerwacja</th>
-                    <th scope="col">Zamawiający</th>
-                    <th scope="col">Zaplanowany turnus</th>
-                    <th scope="col">Okres trwania</th>
-                    <th scope="col">Utworzono</th>
-                    <th scope="col">Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for reservation in reservations %}
+        <div class="container">
+            <section id="about" class="about">
+                <div class="section-title">
+                    <h2>{{ title }}</h2>
+                    <p>{{ desc }}</p>
+                </div>
+                <table class="table table-light transparent-table">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ reservation.id }}</th>
-                        <td>{{ reservation.getClient().getFullName() }}</td>
-                        <td>{{ reservation.getPlannedStay().getRehabilitationStay().getName() }}</td>
-                        <td>{{ reservation.getPlannedStay().getStartDate()|date('d.m.Y') }}
-                            - {{ reservation.getPlannedStay().getEndDate()|date('d.m.Y') }}</td>
-                        <td>{{ reservation.getPlannedStay().getCreated()|date('d.m.Y') }}</td>
-                        <td>{% if reservation.getStatus() == 'waiting' %}
-                                Oczekiwanie
-                            {% elseif reservation.getStatus() == 'accepted' %}
-                                Zaakceptowano
-                            {% elseif reservation.getStatus() == 'rejected' %}
-                                Odrzucony
-                            {% else %}
-                                Nieznany
-                            {% endif %}</td>
+                        <th scope="col">Rezerwacja</th>
+                        <th scope="col">Zamawiający</th>
+                        <th scope="col">Zaplanowany turnus</th>
+                        <th scope="col">Okres trwania</th>
+                        <th scope="col">Utworzono</th>
+                        <th scope="col">Status</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for paginate in pagination %}
+                        <tr>
+                            <th scope="row">{{ paginate.id }}</th>
+                            <td>{{ paginate.getClient().getFullName() }}</td>
+                            <td>{{ paginate.getPlannedStay().getRehabilitationStay().getName() }}</td>
+                            <td>{{ paginate.getPlannedStay().getStartDate()|date('d.m.Y') }}
+                                - {{ paginate.getPlannedStay().getEndDate()|date('d.m.Y') }}</td>
+                            <td>{{ paginate.getPlannedStay().getCreated()|date('d.m.Y') }}</td>
+                            <td>{% if paginate.getStatus() == 'waiting' %}
+                                    Oczekiwanie
+                                {% elseif paginate.getStatus() == 'accepted' %}
+                                    Zaakceptowano
+                                {% elseif paginate.getStatus() == 'rejected' %}
+                                    Odrzucony
+                                {% else %}
+                                    Nieznany
+                                {% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <section id="portfolio" class="portfolio">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 d-flex justify-content-center">
+                                <ul id="portfolio-flters">
+                                    {% if pagination.currentPageNumber > 1 %}
+                                    <li>
+                                        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': pagination.currentPageNumber - 1})) }}"
+                                           aria-label="Previous">
+                                            <span aria-hidden="true"></span>
+                                            <span class="sr-only"><<</span>
+                                        </a>
+                                    </li>
+                                    {% endif %}
 
-        </section>
+                                    <li{% if pagination.currentPageNumber == 1 %} class="filter-active"{% endif %}">
+                                    <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': 1})) }}">1</a>
+                                    </li>
 
+                                    {% if pagination.currentPageNumber > 2 %}
+                                    <li class="disabled">
+                                        <span>...</span>
+                                    </li>
+                                    {% endif %}
+
+                                    {% if pagination.currentPageNumber > 1 and pagination.currentPageNumber < pagination.pageCount %}
+                                    <li class="filter-active">
+                                        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': pagination.currentPageNumber})) }}">{{ pagination.currentPageNumber }}</a>
+                                    </li>
+                                    {% endif %}
+
+                                    {% if pagination.currentPageNumber < pagination.pageCount - 1 %}
+                                    <li>
+                                        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': pagination.currentPageNumber + 1})) }}">{{ pagination.currentPageNumber + 1 }}</a>
+                                    </li>
+                                    {% endif %}
+
+                                    {% if pagination.currentPageNumber < pagination.pageCount - 1 %}
+                                    <li class="disabled">
+                                        <span>...</span>
+                                    </li>
+                                    {% endif %}
+
+                                    {% if pagination.pageCount > 1 %}
+                                    <li{% if pagination.currentPageNumber == pagination.pageCount %}
+                                            class="filter-active"{% endif %}">
+                                    <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': pagination.pageCount})) }}">{{ pagination.pageCount }}</a>
+                                    </li>
+                                    {% endif %}
+
+                                    {% if pagination.currentPageNumber < pagination.pageCount %}
+                                    <li>
+                                        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': pagination.currentPageNumber + 1})) }}"
+                                           aria-label="Next">
+                                            <span aria-hidden="true"></span>
+                                            <span class="sr-only">>></span>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+        </div>
     </main>
 {% endblock %}

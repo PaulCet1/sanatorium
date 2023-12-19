@@ -8,6 +8,7 @@ use App\TreatmentProfile\Service\CreateTreatmentProfile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 
 class Create extends AbstractController
@@ -15,6 +16,7 @@ class Create extends AbstractController
     public function __construct(
         private Environment $twig,
         private CreateTreatmentProfile $createTreatmentProfile,
+        private TranslatorInterface $translator,
     ){}
 
     public function __invoke(Request $request): Response
@@ -34,7 +36,7 @@ class Create extends AbstractController
 
         return new Response($this->twig->render('TreatmentProfile/create.twig', [
             'form' => $form->createView(),
-            'data' => 'Dodaj profil leczenia',
+            'data' => $this->translator->trans('treatmentprofile.data.create.value'),
         ]));
     }
 

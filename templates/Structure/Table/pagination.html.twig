@@ -1,0 +1,77 @@
+<style>
+    .pagination a {
+        padding: 5px 10px;
+        font-size: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #portfolio {
+        margin-top: -50px;
+    }
+</style>
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <ul id="portfolio-flters">
+                    {% if pagination.currentPageNumber > 1 %}
+                    <li>
+                        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': pagination.currentPageNumber - 1})) }}"
+                           aria-label="Previous">
+                            <span aria-hidden="true"></span>
+                            <span class="sr-only"><<</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    <li{% if pagination.currentPageNumber == 1 %} class="filter-active"{% endif %}">
+                    <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': 1})) }}">1</a>
+                    </li>
+
+                    {% if pagination.currentPageNumber > 2 %}
+                    <li class="disabled">
+                        <span>...</span>
+                    </li>
+                    {% endif %}
+
+                    {% if pagination.currentPageNumber > 1 and pagination.currentPageNumber < pagination.pageCount %}
+                    <li class="filter-active">
+                        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': pagination.currentPageNumber})) }}">{{ pagination.currentPageNumber }}</a>
+                    </li>
+                    {% endif %}
+
+                    {% if pagination.currentPageNumber < pagination.pageCount - 1 %}
+                    <li>
+                        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': pagination.currentPageNumber + 1})) }}">{{ pagination.currentPageNumber + 1 }}</a>
+                    </li>
+                    {% endif %}
+
+                    {% if pagination.currentPageNumber < pagination.pageCount - 1 %}
+                    <li class="disabled">
+                        <span>...</span>
+                    </li>
+                    {% endif %}
+
+                    {% if pagination.pageCount > 1 %}
+                    <li{% if pagination.currentPageNumber == pagination.pageCount %}
+                            class="filter-active"{% endif %}">
+                    <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': pagination.pageCount})) }}">{{ pagination.pageCount }}</a>
+                    </li>
+                    {% endif %}
+
+                    {% if pagination.currentPageNumber < pagination.pageCount %}
+                    <li>
+                        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': pagination.currentPageNumber + 1})) }}"
+                           aria-label="Next">
+                            <span aria-hidden="true"></span>
+                            <span class="sr-only">>></span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

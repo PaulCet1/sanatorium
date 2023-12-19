@@ -55,7 +55,9 @@ class SecondStepType extends AbstractType
             ])
             ->add('room', EntityType::class, [
                 'class' => Room::class,
-                'choice_label' => 'room_number',
+                'choice_label' => function(Room $room) {
+                    return sprintf('Numer pokoju %s | Ilość miejsc: %s ', $room->getRoomNumber(), $room->getPlacesNum());
+                },
                 'label' => 'Pokój',
                 'required' => true,
             ])

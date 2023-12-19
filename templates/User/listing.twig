@@ -2,37 +2,58 @@
 {% block body %}
 
     <main id="main">
+        <div class="container">
+            <section id="about" class="about">
+                <div class="section-title">
+                    <h2>Lista użytkowników</h2>
+                    <p>Przeglądaj listę użytkowników oraz zarządzaj nimi</p>
+                </div>
 
-            <table class="table table-dark">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Imię i nazwisko</th>
-                    <th scope="col">Nazwa użytkownika</th>
-                    <th scope="col">Email</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for user in users %}
+                <table class="table table-light">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ user.id }}</th>
-                        <td>
-                            <a href="{{ path('user_show', {'id': user.id}) }}">{{ user.fullname }}</a>
-                        </td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>
-                            <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-info">Edytuj</a>
-                            <a href="{{ path('user_delete', {'id': user.id}) }}" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
-                        </td>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+
+                        <th>
+                            <form method="get">
+                                <input type="text" name="search" placeholder="Nazwa użytkownika"
+                                       value="{{ app.request.query.get('search') }}">
+                                <button type="submit" class="btn btn-success">Szukaj</button>
+                            </form>
+                        </th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-
-
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Imię i nazwisko</th>
+                        <th scope="col">Nazwa użytkownika</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for paginate in pagination %}
+                        <tr>
+                            <th scope="row">{{ paginate.id }}</th>
+                            <td>
+                                <a href="{{ path('user_show', {'id': paginate.id}) }}">{{ paginate.fullname }}</a>
+                            </td>
+                            <td>{{ paginate.username }}</td>
+                            <td>{{ paginate.email }}</td>
+                            <td>
+                                <a href="{{ path('user_edit', {'id': paginate.id}) }}" class="btn btn-info">Edytuj</a>
+                                <a href="{{ path('user_delete', {'id': paginate.id}) }}" class="btn btn-danger"
+                                   onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% include 'Structure/Table/pagination.html.twig' with {'pagination': pagination} %}
+            </section>
+        </div>
     </main>
 
 {% endblock %}

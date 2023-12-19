@@ -17,15 +17,20 @@ class TreatmentProfileType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nazwa profilu leczenia',
-                'attr' => ['placeholder' => 'Wprowadź nazwę'],
+                'label' => 'treatmentprofile.name.value',
+                'attr' => [
+                    'placeholder' => 'treatmentprofile.name.placeholder',
+                    'class' => 'form-control'
+                    ],
             ])
             ->add('code', IntegerType::class, [
-                'label' => 'Kod',
-                'attr' => ['placeholder' => 'Wprowadź kod'],
+                'label' => 'treatmentprofile.code.value',
+                'attr' => [
+                    'placeholder' => 'treatmentprofile.code.placeholder',
+                    'class' => 'form-control'],
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Zapisz',
+                'label' => 'treatmentprofile.save.value',
                 'attr' => ['class' => 'btn btn-primary'],
             ]);
     }
