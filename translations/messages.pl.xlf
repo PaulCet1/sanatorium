@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="pl" target-language="pl" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="9SFxZQD" resname="room.create">
+        <source>room.create</source>
+        <target>Tworzenie pokoju</target>
+      </trans-unit>
+      <trans-unit id="046D07R" resname="room.edit">
+        <source>room.edit</source>
+        <target>Edytuj pokój</target>
+      </trans-unit>
+      <trans-unit id="BAgmyMu" resname="room.number">
+        <source>room.number</source>
+        <target>Numer pokoju</target>
+      </trans-unit>
+      <trans-unit id="N.O5aXx" resname="room.number.placeholder">
+        <source>room.number.placeholder</source>
+        <target>Wprowadź numer pokoju</target>
+      </trans-unit>
+      <trans-unit id="MHSVFvs" resname="room.places">
+        <source>room.places</source>
+        <target>Ilość miejs</target>
+      </trans-unit>
+      <trans-unit id="gJjpdH7" resname="room.places.placeholder">
+        <source>room.places.placeholder</source>
+        <target>Wprowadź ilość miejsc</target>
+      </trans-unit>
+      <trans-unit id="zexitz7" resname="room.save">
+        <source>room.save</source>
+        <target>Zapisz</target>
+      </trans-unit>
+      <trans-unit id="y0l1WX." resname="reservation.create.value">
+        <source>reservation.create.value</source>
+        <target>Tworzenie rezerwacji</target>
+      </trans-unit>
+      <trans-unit id="PhmMb4k" resname="reservation.edit.value">
+        <source>reservation.edit.value</source>
+        <target>Edycja rezerwacji</target>
+      </trans-unit>
+      <trans-unit id="vNCvSTJ" resname="reservation.client.value">
+        <source>reservation.client.value</source>
+        <target>Klient</target>
+      </trans-unit>
+      <trans-unit id="2LePocm" resname="reservation.pesel.value">
+        <source>reservation.pesel.value</source>
+        <target>Numer pesel</target>
+      </trans-unit>
+      <trans-unit id="gP9qRyx" resname="reservation.pesel.placeholder">
+        <source>reservation.pesel.placeholder</source>
+        <target>00000000000</target>
+      </trans-unit>
+      <trans-unit id="4F3m8qG" resname="reservation.pesel.assert.length">
+        <source>reservation.pesel.assert.length</source>
+        <target>Numer PESEL musi zawierać dokładnie {{ limit }} znaków</target>
+      </trans-unit>
+      <trans-unit id="j6tmGBk" resname="reservation.pesel.assert.regex">
+        <source>reservation.pesel.assert.regex</source>
+        <target>Numer PESEL może zawierać tylko cyfry</target>
+      </trans-unit>
+      <trans-unit id="xxbN3V_" resname="reservation.status.rejected.title">
+        <source>reservation.status.rejected.title</source>
+        <target>Odrzucone zgłoszenia</target>
+      </trans-unit>
+      <trans-unit id="ok1jHmw" resname="reservation.status.rejected.desc">
+        <source>reservation.status.rejected.desc</source>
+        <target>Lista odrzuconych zgłoszeń</target>
+      </trans-unit>
+      <trans-unit id="d8A6QMC" resname="reservation.status.accepted.title">
+        <source>reservation.status.accepted.title</source>
+        <target>Zatwierdzone rezerwacje</target>
+      </trans-unit>
+      <trans-unit id="Dj8NkVo" resname="reservation.status.accepted.desc">
+        <source>reservation.status.accepted.desc</source>
+        <target>Lista zaakceptowanych zgłoszeń, oczekujących na realizację</target>
+      </trans-unit>
+      <trans-unit id="bcu9VcE" resname="reservation.refferalNumber.value">
+        <source>reservation.refferalNumber.value</source>
+        <target>Numer ewidencyjny skierowania</target>
+      </trans-unit>
+      <trans-unit id="WywksC9" resname="reservation.refferalNumber.placeholder">
+        <source>reservation.refferalNumber.placeholder</source>
+        <target>00/00/123456/A/P0</target>
+      </trans-unit>
+      <trans-unit id="ploKOf9" resname="reservation.numOfPeople.value">
+        <source>reservation.numOfPeople.value</source>
+        <target>Liczba uczestników</target>
+      </trans-unit>
+      <trans-unit id="F958uHI" resname="reservation.plannedStay.value">
+        <source>reservation.plannedStay.value</source>
+        <target>Turnus</target>
+      </trans-unit>
+      <trans-unit id="cVG2Oej" resname="reservation.room.value">
+        <source>reservation.room.value</source>
+        <target>Pokój</target>
+      </trans-unit>
+      <trans-unit id="6NGOfWi" resname="reservation.save.value">
+        <source>reservation.save.value</source>
+        <target>Zapisz</target>
+      </trans-unit>
+      <trans-unit id="EGWtGYX" resname="treatmentprofile.data.create.value">
+        <source>treatmentprofile.data.create.value</source>
+        <target>Dodaj profil leczenia</target>
+      </trans-unit>
+      <trans-unit id="OQNmFQ0" resname="treatmentprofile.data.edit.value">
+        <source>treatmentprofile.data.edit.value</source>
+        <target>Edytuj profil leczenia</target>
+      </trans-unit>
+      <trans-unit id="dfezUEg" resname="treatmentprofile.name.value">
+        <source>treatmentprofile.name.value</source>
+        <target>Nazwa profilu leczenia</target>
+      </trans-unit>
+      <trans-unit id="2RzFlAH" resname="treatmentprofile.name.placeholder">
+        <source>treatmentprofile.name.placeholder</source>
+        <target>Wprowadź nazwę</target>
+      </trans-unit>
+      <trans-unit id="QFR1ogU" resname="treatmentprofile.code.value">
+        <source>treatmentprofile.code.value</source>
+        <target>Kod</target>
+      </trans-unit>
+      <trans-unit id="3FtL65U" resname="treatmentprofile.code.placeholder">
+        <source>treatmentprofile.code.placeholder</source>
+        <target>Wprowadź kod</target>
+      </trans-unit>
+      <trans-unit id="WLz7OyE" resname="treatmentprofile.save.value">
+        <source>treatmentprofile.save.value</source>
+        <target>Zapisz</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
