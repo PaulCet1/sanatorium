@@ -15,8 +15,8 @@ class Create extends AbstractController
     public function __construct(
         private UserPasswordHasherInterface $passwordHasher,
         private ManagerRegistry $doctrine,
-
-    ){}
+    ) {
+    }
 
     public function __invoke(Request $request): Response
     {
@@ -26,15 +26,12 @@ class Create extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $password = $this->passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($password);
 
             $entityManager = $this->doctrine->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-
-
 
             return $this->redirectToRoute('user_listing'); // Change 'user_list' to the route you want to redirect to
         }
@@ -45,9 +42,3 @@ class Create extends AbstractController
         ]);
     }
 }
-
-
-
-
-
-

@@ -14,13 +14,13 @@ use Twig\Environment;
 class StatusController extends AbstractController
 {
     public function __construct(
-        private Environment $twig,
-        private ReservationRepository $reservationRepository,
-        private ManagerRegistry $doctrine,
-        private PaginatorInterface $paginator,
-        private TranslatorInterface $translator,
-    ){}
-
+        private readonly Environment $twig,
+        private readonly ReservationRepository $reservationRepository,
+        private readonly ManagerRegistry $doctrine,
+        private readonly PaginatorInterface $paginator,
+        private readonly TranslatorInterface $translator,
+    ) {
+    }
 
     public function listing(Request $request): Response
     {
@@ -36,7 +36,6 @@ class StatusController extends AbstractController
         ]));
     }
 
-
     public function accept($id): Response
     {
         $entityManager = $this->doctrine->getManager();
@@ -45,7 +44,6 @@ class StatusController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('reservation_status_listing');
-
     }
 
     public function reject($id): Response
@@ -56,7 +54,6 @@ class StatusController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('reservation_status_listing');
-
     }
 
     public function rejectedlisting(Request $request): Response
@@ -67,6 +64,7 @@ class StatusController extends AbstractController
             $request->query->getInt('page', 1),
             10
         );
+
         return new Response($this->twig->render('Reservation/Status/rejected_accepted_listing.twig', [
             'pagination' => $pagination,
             'title' => $this->translator->trans('reservation.status.rejected.title'),
@@ -82,11 +80,11 @@ class StatusController extends AbstractController
             $request->query->getInt('page', 1),
             10
         );
+
         return new Response($this->twig->render('Reservation/Status/rejected_accepted_listing.twig', [
             'pagination' => $pagination,
             'title' => $this->translator->trans('reservation.status.accepted.title'),
             'desc' => $this->translator->trans('reservation.status.accepted.desc'),
         ]));
     }
-
 }

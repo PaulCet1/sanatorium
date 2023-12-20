@@ -17,8 +17,8 @@ class Create extends AbstractController
         private Environment $twig,
         private ManagerRegistry $doctrine,
         private ReservationRepository $reservationRepository,
-    ){}
-
+    ) {
+    }
 
     public function __invoke($reservation_id, Request $request): Response
     {
@@ -28,20 +28,17 @@ class Create extends AbstractController
         $form = $this->createForm(SanatorySurveyType::class, $sanatorySurvey);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
             $em->persist($sanatorySurvey);
             $em->flush();
+
             return $this->redirectToRoute('survey_complete');
-
         }
-
 
         return new Response($this->twig->render('SanatorySurvey/create.twig', [
             'form' => $form->createView(),
             'data' => 'Badanie opinii klienta',
         ]));
     }
-
 }

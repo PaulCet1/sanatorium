@@ -84,6 +84,34 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "translations": "@php bin/console translation:extract pl --format xlf --force",
+        "app:tests": [
+            "@app:tests:static",
+            "@app:tests:automatic"
+        ],
+        "app:tests:static": [
+            "@app:tests:static:cs-fixer",
+            "@app:tests:static:psalm",
+            "@app:tests:static:phpstan"
+        ],
+        "app:tests:static:doc-sche-val": [
+            "@php bin/console doctrine:schema:validate"
+        ],
+        "app:tests:static:cs-fixer": [
+            "@php ./tools/vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php -vvv --dry-run"
+        ],
+        "app:tests:static:psalm": [
+            "@php ./tools/vendor/bin/psalm --config=psalm.xml --no-cache --show-info=true"
+        ],
+        "app:tests:static:phpstan": [
+            "@php ./tools/vendor/bin/phpstan analyse -c phpstan.neon"
+        ],
+        "app:tests:automatic": [
+            "echo 'No automatic tests yet.'"
+        ],
+        "app:cs-fixer:fix": [
+            "@php ./tools/vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php -v"
         ]
     },
     "conflict": {

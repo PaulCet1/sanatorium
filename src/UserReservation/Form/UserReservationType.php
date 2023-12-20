@@ -3,20 +3,16 @@
 namespace App\UserReservation\Form;
 
 use App\PlannedStay\Entity\PlannedStay;
-use App\RehabilitationStay\Entity\RehabilitationStay;
 use App\Reservation\Entity\Reservation;
 use App\Room\Entity\Room;
 use App\User\Entity\User;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Config\Security;
 use Symfony\Component\Validator\Constraints as Assert;
-
 
 class UserReservationType extends AbstractType
 {
@@ -80,5 +76,4 @@ class UserReservationType extends AbstractType
             'data_class' => Reservation::class,
         ]);
     }
-
 }

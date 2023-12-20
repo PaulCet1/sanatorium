@@ -13,5 +13,4 @@ class RoomRepository extends EntityRepository
         $class = $entityManager->getClassMetadata(Room::class);
         parent::__construct($entityManager, $class);
     }
-
 }

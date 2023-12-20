@@ -40,13 +40,13 @@ class SecondStepType extends AbstractType
                 'label' => 'Numer PESEL',
                 'attr' => [
                     'readonly' => true,
-                    ]
+                    ],
             ])
             ->add('plannedStay', EntityType::class, [
                 'class' => PlannedStay::class,
                 'choices' => $options['plannedStays'],
                 'choice_label' => function (PlannedStay $plannedStay) {
-                    return $plannedStay->getRehabilitationStay()->getName() .': ' . $plannedStay->getStartDate()->format('d-m-Y') . ' - ' . $plannedStay->getEndDate()->format('d-m-Y');
+                    return $plannedStay->getRehabilitationStay()->getName().': '.$plannedStay->getStartDate()->format('d-m-Y').' - '.$plannedStay->getEndDate()->format('d-m-Y');
                 },
                 'label' => 'Dostępne turnusy',
             ])
@@ -55,7 +55,7 @@ class SecondStepType extends AbstractType
             ])
             ->add('room', EntityType::class, [
                 'class' => Room::class,
-                'choice_label' => function(Room $room) {
+                'choice_label' => function (Room $room) {
                     return sprintf('Numer pokoju %s | Ilość miejsc: %s ', $room->getRoomNumber(), $room->getPlacesNum());
                 },
                 'label' => 'Pokój',
@@ -65,7 +65,6 @@ class SecondStepType extends AbstractType
                 'label' => 'Zapisz',
                 'attr' => ['class' => 'btn btn-primary'],
             ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

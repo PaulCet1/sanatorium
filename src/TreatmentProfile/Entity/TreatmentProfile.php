@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ *
  * @ORM\Table(name="treatment_profile")
  */
 class TreatmentProfile
@@ -49,5 +50,4 @@ class TreatmentProfile
     {
         $this->code = $code;
     }
-
 }

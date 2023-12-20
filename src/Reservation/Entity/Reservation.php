@@ -1,42 +1,47 @@
 <?php
+
 namespace App\Reservation\Entity;
 
-use App\PlannedStay\Entity\PlannedStay;
-use App\Room\Entity\Room;
-use Doctrine\ORM\Mapping as ORM;
 use App\Core\Entity\TraitSpace\CreatedTrait;
 use App\Core\Entity\TraitSpace\IdTrait;
+use App\PlannedStay\Entity\PlannedStay;
+use App\Room\Entity\Room;
 use App\User\Entity\User;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ *
  * @ORM\Table(name="reservation")
  */
 class Reservation
 {
+    use IdTrait;
+    use CreatedTrait;
+
     public function __construct()
     {
         $this->created = new \DateTime();
         $this->status = 'waiting';
     }
 
-    use IdTrait;
-    use CreatedTrait;
-
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
+     *
      * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
      */
     private $client;
 
     /**
      * @ORM\ManyToOne(targetEntity=PlannedStay::class)
+     *
      * @ORM\JoinColumn(name="plannedStay_id", referencedColumnName="id")
      */
     private $plannedStay;
 
     /**
      * @ORM\ManyToOne(targetEntity=Room::class)
+     *
      * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
      */
     private $room;
@@ -65,7 +70,6 @@ class Reservation
      * @ORM\Column(type="string",length=255)
      */
     private $status;
-
 
     public function getStatus(): ?string
     {

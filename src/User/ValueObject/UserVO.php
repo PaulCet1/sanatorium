@@ -1,8 +1,9 @@
 <?php
+
 namespace App\User\ValueObject;
 
-
-class UserVO {
+class UserVO
+{
     public $username;
     public $email;
     public $password;

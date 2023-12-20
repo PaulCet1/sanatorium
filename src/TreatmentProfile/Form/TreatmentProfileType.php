@@ -3,7 +3,6 @@
 namespace App\TreatmentProfile\Form;
 
 use App\TreatmentProfile\Entity\TreatmentProfile;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -20,7 +19,7 @@ class TreatmentProfileType extends AbstractType
                 'label' => 'treatmentprofile.name.value',
                 'attr' => [
                     'placeholder' => 'treatmentprofile.name.placeholder',
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                     ],
             ])
             ->add('code', IntegerType::class, [
@@ -41,5 +40,4 @@ class TreatmentProfileType extends AbstractType
             'data_class' => TreatmentProfile::class,
         ]);
     }
-
 }

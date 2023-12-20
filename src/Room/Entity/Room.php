@@ -8,24 +8,23 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity()
+ *
  * @ORM\Table(name="room")
  */
 class Room
 {
+    use IdTrait;
+    use CreatedTrait;
+
     public function __construct()
     {
         $this->created = new \DateTime();
     }
 
-
-    use IdTrait;
-    use CreatedTrait;
-
     /**
      * @ORM\Column(type="integer", unique=true)
      */
     private $room_number;
-
 
     /**
      * @ORM\Column(type="integer", unique=false)
@@ -41,6 +40,7 @@ class Room
     {
         $this->places_num = $places_num;
     }
+
     public function getRoomNumber(): ?int
     {
         return $this->room_number;
@@ -50,8 +50,4 @@ class Room
     {
         $this->room_number = $room_number;
     }
-
-
-
-
 }

@@ -13,5 +13,4 @@ class TreatmentRepository extends EntityRepository
         $class = $entityManager->getClassMetadata(Treatment::class);
         parent::__construct($entityManager, $class);
     }
-
 }

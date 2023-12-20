@@ -222,12 +222,24 @@
             <div class="profile">
                 <h1 class="text-light"><a href="index.html">Hotel</a></h1>
             </div>
+
             <nav id="navbar" class="nav-menu navbar">
                 <ul>
-                    <li><a href="{{ path('room_listing') }}" class="nav-link"><i class="bx bx-user"></i>
-                            <span>Pokoje</span>
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bx bx-building-house"></i>
+                            <span>Pokoje hotelowe</span>
                         </a>
-                    </li>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <li><a href="{{ path('room_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Lista pokoi</a>
+                            </li>
+                            <li><a href="{{ path('room_create') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Dodaj pokój</a>
+                            </li>
+                        </ul>
+                    </div>
                 </ul>
             </nav>
             {% endif %}

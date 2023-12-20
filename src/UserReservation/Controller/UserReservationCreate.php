@@ -6,12 +6,10 @@ use App\PlannedStay\Repository\PlannedStayRepository;
 use App\RehabilitationStay\Repository\RehabilitationStayRepository;
 use App\Reservation\Entity\Reservation;
 use App\Reservation\Services\CreateReservation;
-use App\TreatmentPlan\Repository\TreatmentPlanRepository;
 use App\TreatmentProfile\Entity\TreatmentProfile;
 use App\TreatmentProfile\Repository\TreatmentProfileRepository;
 use App\UserReservation\Form\FirstStepType;
 use App\UserReservation\Form\SecondStepType;
-use App\UserReservation\Form\UserReservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,15 +23,15 @@ class UserReservationCreate extends AbstractController
         private TreatmentProfileRepository $treatmentProfileRepository,
         private RehabilitationStayRepository $rehabilitationStayRepository,
         private PlannedStayRepository $plannedStayRepository,
-    ){}
+    ) {
+    }
 
     public function firstStep(Request $request): Response
     {
         $form = $this->createForm(FirstStepType::class);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $referralNumber = $form->get('referral_number')->getData();
             $treatmentProfile = $this->getTreatmentProfileFromReferralNumber($referralNumber);
 
@@ -48,9 +46,7 @@ class UserReservationCreate extends AbstractController
             ]);
         }
 
-
-
-        return new Response($this->twig->render('ReservationUser/firstStep.twig',[
+        return new Response($this->twig->render('ReservationUser/firstStep.twig', [
             'form' => $form->createView(),
         ]));
     }
@@ -64,7 +60,6 @@ class UserReservationCreate extends AbstractController
         $reservation->setPesel($pesel);
         $reservation->setNFZPlace($NFZPlace);
 
-
         $rehabilitationStays = $this->rehabilitationStayRepository->findBy(['treatmentProfile' => $treatmentProfileId]);
         $plannedStays = $this->plannedStayRepository->findBy(['rehabilitation_stay' => $rehabilitationStays]);
 
@@ -74,24 +69,21 @@ class UserReservationCreate extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->createReservation->createReservation($reservation);
 
             return $this->redirectToRoute('UserReservationListing');
         }
 
-
         return new Response($this->twig->render('ReservationUser/secondStep.twig', [
             'form' => $form->createView(),
         ]));
-
     }
 
     private function getTreatmentProfileFromReferralNumber(string $referralNumber): ?TreatmentProfile
     {
-
         $profileCode = substr($referralNumber, -1);
+
         return $this->treatmentProfileRepository->findOneBy(['code' => $profileCode]);
     }
 
@@ -120,5 +112,4 @@ class UserReservationCreate extends AbstractController
 
         return $nfzBranches[$placeCode] ?? null;
     }
-
 }

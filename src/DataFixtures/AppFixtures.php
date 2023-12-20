@@ -10,7 +10,6 @@ use Faker\Factory;
 
 class AppFixtures extends Fixture
 {
-
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
@@ -25,9 +24,8 @@ class AppFixtures extends Fixture
         $manager->persist($user);
         $manager->flush();
 
-
         // Tworzenie użytkowników
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $user = new User();
             $user->setEmail($faker->email);
             $user->setUsername($faker->userName);
@@ -39,8 +37,7 @@ class AppFixtures extends Fixture
 
         $manager->flush();
 
-
-        for($i = 0; $i < 10; $i++){
+        for ($i = 0; $i < 10; ++$i) {
             $place = new Place();
             $place->setName($faker->sentence(3));
             $place->setPlace($faker->city);

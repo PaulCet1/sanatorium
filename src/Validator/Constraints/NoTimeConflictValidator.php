@@ -11,8 +11,8 @@ class NoTimeConflictValidator extends ConstraintValidator
 {
     public function __construct(
         private TreatmentPlanRepository $treatmentPlanRepository,
-    ){}
-
+    ) {
+    }
 
     public function validate($value, Constraint $constraint)
     {
@@ -31,5 +31,4 @@ class NoTimeConflictValidator extends ConstraintValidator
             $this->context->buildViolation($constraint->message)->addViolation();
         }
     }
-
 }

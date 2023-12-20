@@ -9,11 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Render extends AbstractController
 {
-    public function __construct
-    (
+    public function __construct(
         private DompdfService $dompdfService,
         private TreatmentPlanRepository $treatmentPlanRepository,
-    ){}
+    ) {
+    }
 
     public function __invoke(int $id): Response
     {
@@ -29,6 +29,4 @@ class Render extends AbstractController
             'Content-Disposition' => 'inline; filename="Plan zabiegów"',
         ]);
     }
-
-
 }

@@ -17,7 +17,8 @@ class Create extends AbstractController
         private Environment $twig,
         private CreateTreatmentProfile $createTreatmentProfile,
         private TranslatorInterface $translator,
-    ){}
+    ) {
+    }
 
     public function __invoke(Request $request): Response
     {
@@ -25,19 +26,15 @@ class Create extends AbstractController
         $form = $this->createForm(TreatmentProfileType::class, $treatmentProfile);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->createTreatmentProfile->createTreatmentProfile($treatmentProfile);
 
             return $this->redirectToRoute('treatment_profile_listing');
         }
-
-
 
         return new Response($this->twig->render('TreatmentProfile/create.twig', [
             'form' => $form->createView(),
             'data' => $this->translator->trans('treatmentprofile.data.create.value'),
         ]));
     }
-
 }

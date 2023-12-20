@@ -7,10 +7,10 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class CreatePlace
 {
-
     public function __construct(
         private ManagerRegistry $doctrine,
-    ){}
+    ) {
+    }
 
     public function createPlace(Place $place)
     {
@@ -18,5 +18,4 @@ class CreatePlace
         $entityManager->persist($place);
         $entityManager->flush();
     }
-
 }

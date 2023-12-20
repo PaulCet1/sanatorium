@@ -11,12 +11,12 @@ class Listing
     public function __construct(
         private Environment $twig,
         private TreatmentPlanRepository $treatmentPlanRepository,
-    ){}
+    ) {
+    }
 
     public function __invoke(): Response
     {
         $planData = $this->treatmentPlanRepository->findAll();
-
 
         usort($planData, function ($a, $b) {
             return strcmp($a->getRehabilitationStay()->getName(), $b->getRehabilitationStay()->getName());

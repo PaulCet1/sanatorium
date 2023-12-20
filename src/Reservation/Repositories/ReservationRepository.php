@@ -24,16 +24,15 @@ class ReservationRepository extends EntityRepository
 
         $results = $qb->getQuery()->getResult();
 
-        $clients = array();
+        $clients = [];
         foreach ($results as $result) {
-            $clients[] = array(
+            $clients[] = [
                 'id' => $result['id'],
-                'fullname' => $result['fullname']
-            );
+                'fullname' => $result['fullname'],
+            ];
         }
 
         return $clients;
-
     }
 
     public function findByStatus(string $status): array

@@ -10,10 +10,10 @@ class Show extends AbstractController
 {
     public function __construct(
         private Environment $twig,
-    )
-    {}
+    ) {
+    }
 
-    public function __invoke():Response
+    public function __invoke(): Response
     {
         $user = $this->getUser();
         $content = $this->twig->render(
@@ -21,7 +21,7 @@ class Show extends AbstractController
                 'user' => $user,
             ]
         );
+
         return new Response($content);
     }
-
 }

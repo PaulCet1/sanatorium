@@ -15,20 +15,19 @@ class Show
         private PlannedStayRepository $plannedStayRepository,
         private ReservationRepository $reservationRepository,
         private TreatmentPlanRepository $treatmentPlanRepository,
-    ){}
+    ) {
+    }
 
     public function __invoke(int $id): Response
     {
         $plannedStay = $this->plannedStayRepository->find($id);
         $treatmentPlans = $this->treatmentPlanRepository->findTreatmentsByRehabilitationStay($plannedStay->getRehabilitationStay()->getId());
 
-
         $totalCost = 0;
         foreach ($treatmentPlans as $treatmentPlan) {
             $totalCost += $treatmentPlan->getTreatment()->getPrice();
         }
         dump($totalCost);
-
 
         $users = $this->reservationRepository->getClientsByPlannedId($id);
 
@@ -37,7 +36,5 @@ class Show
             'users' => $users,
             'totalCost' => $totalCost,
         ]));
-
     }
-
 }

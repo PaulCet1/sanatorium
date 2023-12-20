@@ -15,7 +15,8 @@ class UserShow
         private TreatmentPlanRepository $treatmentPlanRepository,
         private PlannedStayRepository $plannedStayRepository,
         private RehabilitationStayRepository $rehabilitationStayRepository,
-    ){}
+    ) {
+    }
 
     public function __invoke(int $id): Response
     {
@@ -27,14 +28,9 @@ class UserShow
         $start_date = $plannedStay->getStartDate();
         dump($start_date);
 
-
-
-
-
         return new Response($this->twig->render('Calendar/User/show.twig', [
             'treatment_plans' => $treatment_plans,
             'start_date' => $start_date,
         ]));
     }
-
 }

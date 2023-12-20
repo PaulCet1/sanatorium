@@ -14,7 +14,6 @@ class TreatmentType
     use IdTrait;
     use CreatedTrait;
 
-
     /**
      * @ORM\Column(type="string")
      */
@@ -29,5 +28,4 @@ class TreatmentType
     {
         $this->name = $name;
     }
-
 }

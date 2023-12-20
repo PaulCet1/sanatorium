@@ -3,7 +3,6 @@
 namespace App\Reservation\Controller;
 
 use App\Reservation\Entity\Reservation;
-use App\Reservation\Form\ReservationEditType;
 use App\Reservation\Form\ReservationType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class Edit extends AbstractController
 {
@@ -19,15 +17,15 @@ class Edit extends AbstractController
         private Environment $twig,
         private ManagerRegistry $doctrine,
         private TranslatorInterface $translator,
-    ){}
+    ) {
+    }
 
     public function __invoke(Request $request, Reservation $reservation)
     {
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->doctrine->getManager();
             $entityManager->flush();
 

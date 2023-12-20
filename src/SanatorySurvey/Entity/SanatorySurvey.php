@@ -5,7 +5,6 @@ namespace App\SanatorySurvey\Entity;
 use App\Core\Entity\TraitSpace\CreatedTrait;
 use App\Core\Entity\TraitSpace\IdTrait;
 use App\Reservation\Entity\Reservation;
-use App\User\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,6 +17,7 @@ class SanatorySurvey
 
     /**
      * @ORM\ManyToOne(targetEntity=Reservation::class)
+     *
      * @ORM\JoinColumn(name="reservation_id", referencedColumnName="id")
      */
     private $reservation;
@@ -46,8 +46,6 @@ class SanatorySurvey
     {
         $this->created = new \DateTime();
     }
-
-
 
     public function getReservation(): ?Reservation
     {
@@ -98,6 +96,4 @@ class SanatorySurvey
     {
         $this->text = $text;
     }
-
-
 }

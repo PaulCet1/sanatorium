@@ -3,17 +3,17 @@
 namespace App\TherapyRoom\Controller;
 
 use App\TherapyRoom\Entity\TherapyRoom;
-use App\TherapyRoom\Form\TherapyRoomEditType;
 use App\TherapyRoom\Form\TherapyRoomType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
 class Edit extends AbstractController
 {
     public function __construct(
         private ManagerRegistry $doctrine,
-    ){}
+    ) {
+    }
 
     public function __invoke(Request $request, TherapyRoom $therapyRoom)
     {
@@ -22,7 +22,6 @@ class Edit extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $entityManager = $this->doctrine->getManager();
             $entityManager->flush();
 

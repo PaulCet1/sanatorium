@@ -11,8 +11,8 @@ class Delete extends AbstractController
 {
     public function __construct(
         private ManagerRegistry $doctrine,
-    ){}
-
+    ) {
+    }
 
     public function __invoke(Request $request, RehabilitationStay $rehabilitationStay)
     {
@@ -24,5 +24,4 @@ class Delete extends AbstractController
 
         return $this->redirectToRoute('rehabilitation_stay_listing');
     }
-
 }

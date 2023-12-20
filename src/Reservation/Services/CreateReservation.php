@@ -7,10 +7,10 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class CreateReservation
 {
-
     public function __construct(
         private ManagerRegistry $doctrine,
-    ){}
+    ) {
+    }
 
     public function createReservation(Reservation $reservation)
     {
@@ -18,5 +18,4 @@ class CreateReservation
         $entityManager->persist($reservation);
         $entityManager->flush();
     }
-
 }

@@ -13,5 +13,4 @@ class PlacesRepository extends EntityRepository
         $class = $entityManager->getClassMetadata(Place::class);
         parent::__construct($entityManager, $class);
     }
-
 }

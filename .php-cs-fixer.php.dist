@@ -1,0 +1,16 @@
+<?php
+
+$finder = (new PhpCsFixer\Finder())
+    ->in(__DIR__.'/src/')
+    ->in(__DIR__.'/migrations/')
+    ->in(__DIR__.'/config/')
+    ->exclude('var')
+;
+
+return (new PhpCsFixer\Config())
+    ->setRules([
+        '@Symfony' => true,
+    ])
+    ->setCacheFile(__DIR__.'/tools/var/.php-cs-fixer.cache')
+    ->setFinder($finder)
+    ;

@@ -3,24 +3,24 @@
 namespace App\Room\Controller;
 
 use App\Room\Entity\Room;
-use App\Room\Form\RoomEditType;
 use App\Room\Form\RoomType;
-use App\TherapyRoom\Entity\TherapyRoom;
-use App\TherapyRoom\Form\TherapyRoomEditType;
 use Doctrine\Persistence\ManagerRegistry;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Twig\Environment;
 
 class Edit extends AbstractController
 {
     public function __construct(
         private ManagerRegistry $doctrine,
         private TranslatorInterface $translator,
-    ){}
+    ) {
+    }
 
+    /**
+     * @IsGranted("ROLE_ADMIN", message="You do not have access to this resource")
+     */
     public function __invoke(Request $request, Room $room)
     {
         $form = $this->createForm(RoomType::class, $room);
@@ -28,7 +28,6 @@ class Edit extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $entityManager = $this->doctrine->getManager();
             $entityManager->flush();
 

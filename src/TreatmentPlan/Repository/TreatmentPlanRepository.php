@@ -5,7 +5,6 @@ namespace App\TreatmentPlan\Repository;
 use App\TreatmentPlan\Entity\TreatmentPlan;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Mapping\ClassMetadata;
 
 class TreatmentPlanRepository extends EntityRepository
 {

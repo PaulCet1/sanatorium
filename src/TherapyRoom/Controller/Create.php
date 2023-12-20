@@ -15,7 +15,8 @@ class Create extends AbstractController
     public function __construct(
         private CreateTherapyRoom $createTherapyRoom,
         private Environment $twig,
-    ){}
+    ) {
+    }
 
     public function __invoke(Request $request): Response
     {
@@ -24,7 +25,7 @@ class Create extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->createTherapyRoom->createTherapyRoom($therapyRoom);
 
             return $this->redirectToRoute('therapy-room-listing');
@@ -34,7 +35,5 @@ class Create extends AbstractController
             'form' => $form->createView(),
             'data' => 'Dodaj salę zabiegową',
         ]));
-
     }
-
 }

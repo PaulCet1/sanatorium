@@ -6,12 +6,12 @@ use App\Reservation\Entity\Reservation;
 use App\Reservation\Form\ReservationType;
 use App\Reservation\Services\CreateReservation;
 use App\TreatmentProfile\Entity\TreatmentProfile;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class Create extends AbstractController
 {
@@ -19,8 +19,8 @@ class Create extends AbstractController
         private Environment $twig,
         private CreateReservation $createReservation,
         private TranslatorInterface $translator,
-    ){}
-
+    ) {
+    }
 
     /**
      * @Security("is_granted('ROLE_ADMIN')", message="Brak uprawnień")
@@ -31,8 +31,7 @@ class Create extends AbstractController
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->createReservation->createReservation($reservation);
 
             return $this->redirectToRoute('reservation_listing');
@@ -47,7 +46,7 @@ class Create extends AbstractController
     private function getTreatmentProfileFromReferralNumber(string $referralNumber): ?TreatmentProfile
     {
         $profileCode = substr($referralNumber, -2);
+
         return $this->getDoctrine()->getRepository(TreatmentProfile::class)->findOneBy(['code' => $profileCode]);
     }
-
 }

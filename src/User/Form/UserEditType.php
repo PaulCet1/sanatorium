@@ -33,5 +33,4 @@ class UserEditType extends AbstractType
         $user = $options['data'];
         $builder->setData($user);
     }
-
 }

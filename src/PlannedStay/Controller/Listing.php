@@ -11,7 +11,8 @@ class Listing
     public function __construct(
         private Environment $twig,
         private PlannedStayRepository $plannedStayRepository,
-    ){}
+    ) {
+    }
 
     public function __invoke()
     {

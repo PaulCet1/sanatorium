@@ -11,7 +11,8 @@ class Listing
     public function __construct(
         private Environment $twig,
         private RehabilitationStayRepository $repository,
-    ){}
+    ) {
+    }
 
     public function __invoke()
     {
@@ -19,5 +20,4 @@ class Listing
             'rehabilitationStays' => $this->repository->findAll(),
         ]));
     }
-
 }

@@ -3,8 +3,8 @@
 namespace App\TherapyRoom\Repository;
 
 use App\TherapyRoom\Entity\TherapyRoom;
-use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 
 class TherapyRoomRepository extends EntityRepository
 {
@@ -13,5 +13,4 @@ class TherapyRoomRepository extends EntityRepository
         $class = $entityManager->getClassMetadata(TherapyRoom::class);
         parent::__construct($entityManager, $class);
     }
-
 }

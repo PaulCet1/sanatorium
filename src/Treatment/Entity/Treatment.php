@@ -5,32 +5,32 @@ namespace App\Treatment\Entity;
 use App\Core\Entity\TraitSpace\CreatedTrait;
 use App\Core\Entity\TraitSpace\IdTrait;
 use App\TherapyRoom\Entity\TherapyRoom;
-use Doctrine\ORM\Mapping as ORM;
 use App\User\Entity\User;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ *
  * @ORM\Table(name="treatment")
  */
 class Treatment
 {
+    use IdTrait;
+    use CreatedTrait;
+
     public function __construct()
     {
         $this->created = new \DateTime();
     }
-
-    use IdTrait;
-    use CreatedTrait;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $name;
 
-
-
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
+     *
      * @ORM\JoinColumn(name="leading_person_id", referencedColumnName="id")
      */
     private $leading_person;
@@ -47,6 +47,7 @@ class Treatment
 
     /**
      * @ORM\ManyToOne(targetEntity=TherapyRoom::class)
+     *
      * @ORM\JoinColumn(name="therapy_room_id", referencedColumnName="id")
      */
     private $therapy_room;
@@ -60,8 +61,6 @@ class Treatment
      * @ORM\ManyToMany(targetEntity="App\RehabilitationStay\Entity\RehabilitationStay", mappedBy="treatments")
      */
     private $rehabilitationStays;
-
-
 
     public function getName(): string
     {
@@ -122,7 +121,4 @@ class Treatment
     {
         $this->number_of_patients = $number_of_patients;
     }
-
-
-
 }

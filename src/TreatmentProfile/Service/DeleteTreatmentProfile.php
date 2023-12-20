@@ -9,7 +9,8 @@ class DeleteTreatmentProfile
 {
     public function __construct(
         private ManagerRegistry $doctrine,
-    ){}
+    ) {
+    }
 
     public function DeleteTreatmentProfile(TreatmentProfile $treatmentProfile): void
     {
@@ -17,5 +18,4 @@ class DeleteTreatmentProfile
         $entityManager->remove($treatmentProfile);
         $entityManager->flush();
     }
-
 }

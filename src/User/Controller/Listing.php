@@ -4,11 +4,9 @@ namespace App\User\Controller;
 
 use App\User\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
-
 
 class Listing
 {
@@ -16,9 +14,10 @@ class Listing
         private Environment $twig,
         private UserRepository $userRepository,
         private PaginatorInterface $paginator,
-    ){}
+    ) {
+    }
 
-    public function __invoke(Request $request):Response
+    public function __invoke(Request $request): Response
     {
         $searchTerm = $request->query->get('search');
         if ($searchTerm) {
@@ -37,7 +36,7 @@ class Listing
             'User/listing.twig',
             ['pagination' => $pagination],
         );
+
         return new Response($content);
     }
-
 }

@@ -2,28 +2,29 @@
 
 namespace App\PlannedStay\Entity;
 
-
-use App\RehabilitationStay\Entity\RehabilitationStay;
 use App\Core\Entity\TraitSpace\CreatedTrait;
 use App\Core\Entity\TraitSpace\IdTrait;
+use App\RehabilitationStay\Entity\RehabilitationStay;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity()
+ *
  * @ORM\Table(name="planned_stay")
  */
 class PlannedStay
 {
+    use IdTrait;
+    use CreatedTrait;
+
     public function __construct()
     {
         $this->created = new \DateTime();
     }
 
-    use IdTrait;
-    use CreatedTrait;
-
     /**
      * @ORM\ManyToOne(targetEntity=RehabilitationStay::class)
+     *
      * @ORM\JoinColumn(name="rehabilitationStay_id", referencedColumnName="id")
      */
     private $rehabilitation_stay;
@@ -32,7 +33,6 @@ class PlannedStay
      * @ORM\Column(type="datetime")
      */
     private $start_date;
-
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -57,7 +57,7 @@ class PlannedStay
     public function setStartDate(\DateTime $start_date): void
     {
         $this->start_date = $start_date;
-        //$this->updateEndDate();
+        // $this->updateEndDate();
     }
 
     public function getEndDate(): ?\DateTime
@@ -65,9 +65,8 @@ class PlannedStay
         return $this->end_date;
     }
 
-    public function setEndDate(\Datetime $end_date): void
+    public function setEndDate(\DateTime $end_date): void
     {
         $this->end_date = $end_date;
     }
-
 }

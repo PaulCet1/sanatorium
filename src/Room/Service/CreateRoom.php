@@ -2,7 +2,6 @@
 
 namespace App\Room\Service;
 
-
 use App\Room\Entity\Room;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -10,7 +9,8 @@ class CreateRoom
 {
     public function __construct(
         private ManagerRegistry $doctrine,
-    ){}
+    ) {
+    }
 
     public function createTherapyRoom(Room $room)
     {
@@ -18,5 +18,4 @@ class CreateRoom
         $entityManager->persist($room);
         $entityManager->flush();
     }
-
 }

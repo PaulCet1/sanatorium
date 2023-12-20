@@ -9,7 +9,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 class FirstStepType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -48,5 +47,4 @@ class FirstStepType extends AbstractType
     {
         $resolver->setDefaults([]);
     }
-
 }

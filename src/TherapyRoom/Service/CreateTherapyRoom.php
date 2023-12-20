@@ -9,7 +9,8 @@ class CreateTherapyRoom
 {
     public function __construct(
         private ManagerRegistry $doctrine,
-    ){}
+    ) {
+    }
 
     public function createTherapyRoom(TherapyRoom $therapyRoom)
     {
@@ -17,5 +18,4 @@ class CreateTherapyRoom
         $entityManager->persist($therapyRoom);
         $entityManager->flush();
     }
-
 }

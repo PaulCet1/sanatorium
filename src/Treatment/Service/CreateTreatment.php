@@ -7,10 +7,10 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class CreateTreatment
 {
-
     public function __construct(
         private ManagerRegistry $doctrine,
-    ){}
+    ) {
+    }
 
     public function createTreatment(Treatment $treatment)
     {
@@ -18,5 +18,4 @@ class CreateTreatment
         $entityManager->persist($treatment);
         $entityManager->flush();
     }
-
 }

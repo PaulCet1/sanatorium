@@ -9,8 +9,8 @@ class CreateTreatmentPlan
 {
     public function __construct(
         private ManagerRegistry $doctrine,
-    ){}
-
+    ) {
+    }
 
     public function CreateTreatmentPlan(TreatmentPlan $treatmentPlan)
     {
@@ -18,5 +18,4 @@ class CreateTreatmentPlan
         $entityManager->persist($treatmentPlan);
         $entityManager->flush();
     }
-
 }

@@ -9,7 +9,8 @@ class CreateTreatmentProfile
 {
     public function __construct(
         private ManagerRegistry $doctrine,
-    ){}
+    ) {
+    }
 
     public function createTreatmentProfile(TreatmentProfile $treatmentProfile)
     {
@@ -17,5 +18,4 @@ class CreateTreatmentProfile
         $entityManager->persist($treatmentProfile);
         $entityManager->flush();
     }
-
 }

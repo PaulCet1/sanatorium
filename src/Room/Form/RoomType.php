@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RoomType extends  AbstractType
+class RoomType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,14 +18,14 @@ class RoomType extends  AbstractType
                 'label' => 'room.number',
                 'attr' => [
                     'placeholder' => 'room.number.placeholder',
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 ],
             ])
             ->add('places_num', IntegerType::class, [
                 'label' => 'room.places',
                 'attr' => [
                     'placeholder' => 'room.places.placeholder',
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                     ],
             ])
             ->add('save', SubmitType::class, [
@@ -40,5 +40,4 @@ class RoomType extends  AbstractType
             'data_class' => Room::class,
         ]);
     }
-
 }

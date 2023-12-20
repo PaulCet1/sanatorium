@@ -6,20 +6,20 @@ use App\Core\Entity\TraitSpace\CreatedTrait;
 use App\Core\Entity\TraitSpace\IdTrait;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * @ORM\Entity()
+ *
  * @ORM\Table(name="therapy_room")
  */
 class TherapyRoom
 {
+    use IdTrait;
+    use CreatedTrait;
+
     public function __construct()
     {
         $this->created = new \DateTime();
     }
-
-    use IdTrait;
-    use CreatedTrait;
 
     /**
      * @ORM\Column(type="integer", unique=false)
@@ -51,13 +51,12 @@ class TherapyRoom
         return $this->number;
     }
 
-
     public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -67,7 +66,7 @@ class TherapyRoom
         $this->session = $session;
     }
 
-    public function getSession():string
+    public function getSession(): string
     {
         return $this->session;
     }

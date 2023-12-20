@@ -14,7 +14,8 @@ class Listing
         private Environment $twig,
         private TreatmentProfileRepository $treatmentProfileRepository,
         private PaginatorInterface $paginator,
-    ){}
+    ) {
+    }
 
     public function __invoke(Request $request): Response
     {
@@ -24,9 +25,9 @@ class Listing
             $request->query->getInt('page', 1),
             10
         );
+
         return new Response($this->twig->render('TreatmentProfile/listing.twig', [
             'pagination' => $pagination,
         ]));
     }
-
 }

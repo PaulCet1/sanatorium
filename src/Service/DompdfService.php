@@ -7,11 +7,10 @@ use Twig\Environment;
 
 class DompdfService
 {
-
     public function __construct(
         private Environment $twig,
-    )
-    {}
+    ) {
+    }
 
     public function genereatePdf($html)
     {
@@ -22,5 +21,4 @@ class DompdfService
 
         return $dompdf->output();
     }
-
 }

@@ -14,9 +14,7 @@ class RehabilitationStayRepository extends EntityRepository
         parent::__construct($entityManager, $class);
     }
 
-    public function getRehabilitationStayByPlannedStayId( int $id)
+    public function getRehabilitationStayByPlannedStayId(int $id)
     {
-
     }
-
 }

@@ -3,13 +3,13 @@
 namespace App\PlannedStay\Form;
 
 use App\PlannedStay\Entity\PlannedStay;
+use App\RehabilitationStay\Entity\RehabilitationStay;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType; // Używamy DateType dla daty
+use Symfony\Component\Form\AbstractType; // Używamy DateType dla daty
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\RehabilitationStay\Entity\RehabilitationStay;
 
 class PlannedStayType extends AbstractType
 {
@@ -19,7 +19,7 @@ class PlannedStayType extends AbstractType
             ->add('rehabilitation_stay', EntityType::class, [
                 'class' => RehabilitationStay::class,
                 'choice_label' => 'name',
-                'label' => 'Wybierz rodzaj turnusu'
+                'label' => 'Wybierz rodzaj turnusu',
             ])
             ->add('start_date', DateType::class, [
                 'widget' => 'single_text',

@@ -20,7 +20,7 @@ class RehabilitationStayType extends AbstractType
                 'label' => 'Nazwa turnusu',
             ])
             ->add('duration', TextType::class, [
-                'label' => 'Czas trwania'
+                'label' => 'Czas trwania',
             ])
             ->add('treatmentProfile', EntityType::class, [
                 'class' => TreatmentProfile::class,
@@ -33,8 +33,6 @@ class RehabilitationStayType extends AbstractType
                 'multiple' => true,
                 'expanded' => false,
             ]);
-
-
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -43,6 +41,4 @@ class RehabilitationStayType extends AbstractType
             'data_class' => RehabilitationStay::class,
         ]);
     }
-
-
 }

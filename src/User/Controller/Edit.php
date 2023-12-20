@@ -2,19 +2,17 @@
 
 namespace App\User\Controller;
 
+use App\User\Entity\User;
+use App\User\Form\UserEditType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use App\User\Entity\User;
-use App\User\Form\UserEditType;
 
 class Edit extends AbstractController
 {
-
     public function __construct(
         private ManagerRegistry $doctrine,
-    )
-    {
+    ) {
     }
 
     public function __invoke(Request $request, User $user)
@@ -24,7 +22,6 @@ class Edit extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $entityManager = $this->doctrine->getManager();
             $entityManager->flush();
 
@@ -38,6 +35,4 @@ class Edit extends AbstractController
             'data' => 'Edycja użytkownika',
         ]);
     }
-
-
 }

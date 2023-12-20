@@ -6,8 +6,8 @@ use App\Place\Entity\Place;
 use App\Place\Form\PlaceType;
 use App\Place\Services\CreatePlace;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
@@ -16,7 +16,8 @@ class Create extends AbstractController
     public function __construct(
         private CreatePlace $createPlace,
         private Environment $twig,
-    ){}
+    ) {
+    }
 
     public function __invoke(Request $request): Response
     {
@@ -25,29 +26,20 @@ class Create extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->createPlace->createPlace($place);
 
             return $this->redirectToRoute('places_listing');
         }
 
         return new Response($this->twig->render('Place/create.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]));
-
     }
 }
 
-
-
-
-
-
-
-
-
-//class Create extends AbstractController
-//{
+// class Create extends AbstractController
+// {
 //    public function __invoke(Request $request, ManagerRegistry $doctrine): Response
 //    {
 //        $place = new Place();
@@ -67,4 +59,4 @@ class Create extends AbstractController
 //            'form' => $form->createView(),
 //        ]);
 //    }
-//}
+// }

@@ -2,11 +2,11 @@
 
 namespace App\TreatmentPlan\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use App\Core\Entity\TraitSpace\CreatedTrait;
 use App\Core\Entity\TraitSpace\IdTrait;
 use App\RehabilitationStay\Entity\RehabilitationStay;
 use App\Treatment\Entity\Treatment;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -18,12 +18,14 @@ class TreatmentPlan
 
     /**
      * @ORM\ManyToOne(targetEntity=RehabilitationStay::class)
+     *
      * @ORM\JoinColumn(name="rehabilitation_stay_id", referencedColumnName="id")
      */
     private $rehabilitationStay;
 
     /**
      * @ORM\ManyToOne(targetEntity=Treatment::class)
+     *
      * @ORM\JoinColumn(name="treatment_id", referencedColumnName="id")
      */
     private $treatment;
@@ -48,7 +50,6 @@ class TreatmentPlan
         $this->created = new \DateTime();
     }
 
-
     public function getRehabilitationStay(): RehabilitationStay
     {
         return $this->rehabilitationStay;
@@ -64,7 +65,7 @@ class TreatmentPlan
         return $this->start_time;
     }
 
-    public function setStartTime(\DateTime $start_time):void
+    public function setStartTime(\DateTime $start_time): void
     {
         $this->start_time = $start_time;
     }
@@ -98,5 +99,4 @@ class TreatmentPlan
     {
         $this->dayNumber = $dayNumber;
     }
-
 }

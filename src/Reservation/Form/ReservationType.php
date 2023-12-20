@@ -3,7 +3,6 @@
 namespace App\Reservation\Form;
 
 use App\PlannedStay\Entity\PlannedStay;
-use App\RehabilitationStay\Entity\RehabilitationStay;
 use App\Reservation\Entity\Reservation;
 use App\Room\Entity\Room;
 use App\User\Entity\User;
@@ -29,11 +28,11 @@ class ReservationType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'required' => true,
-                'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('u')
-                    ->andWhere('u.roles LIKE :role')
-                    ->setParameter('role', '%ROLE_CLIENT%');
-                }
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->andWhere('u.roles LIKE :role')
+                        ->setParameter('role', '%ROLE_CLIENT%');
+                },
             ])
             ->add('pesel', TextType::class, [
                 'label' => 'reservation.pesel.value',
@@ -87,7 +86,7 @@ class ReservationType extends AbstractType
             ->add('save', SubmitType::class, [
                 'label' => 'reservation.save.value',
                 'attr' => [
-                    'class' => 'btn btn-primary'
+                    'class' => 'btn btn-primary',
                 ],
             ]);
     }
@@ -98,6 +97,4 @@ class ReservationType extends AbstractType
             'data_class' => Reservation::class,
         ]);
     }
-
-
 }

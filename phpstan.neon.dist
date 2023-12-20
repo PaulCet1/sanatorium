@@ -1,0 +1,7 @@
+parameters:
+  level: 7
+  checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false
+  tmpDir: tools/var/.phpstan/
+  paths:
+    - src/

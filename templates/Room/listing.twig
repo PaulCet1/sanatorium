@@ -1,30 +1,42 @@
 {% extends "base.html.twig" %}
 {% block body %}
+    <style>
+        .align-right {
+            text-align: right;
+        }
+    </style>
     <main id="main">
-        <section id="about" class="about">
-            <a href="{{ path('room_create') }}" class="btn btn-primary mb-3">Dodaj pokój</a>
-            <table class="table table-success transparent-table">
-                <thead>
-                <tr>
-                    <th scope="col">Numer pokoju</th>
-                    <th scope="col">Liczba miejsc</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for room in rooms %}
+        <div class="container">
+            <section id="about" class="about">
+                <div class="section-title">
+                    <h2>Lista pokoi</h2>
+                    <p>Zarządzaj pokojami</p>
+                </div>
+                <table class="table table-light transparent-table">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ room.getRoomNumber() }}</th>
-                        <td>{{ room.getPlacesNum() }}</td>
-                        <td>
-                            <a href="{{ path('room_show', {'id': room.id}) }}" class="btn btn-info">Pokaż szczegóły</a>
-                        </td>
+                        <th scope="col">Numer pokoju</th>
+                        <th scope="col">Liczba miejsc</th>
+                        <th scope="col">Data utworzenia</th>
+                        <th scope="col"></th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-        </section>
-
+                    </thead>
+                    <tbody>
+                    {% for paginate in pagination %}
+                        <tr>
+                            <th scope="row">{{ paginate.getRoomNumber() }}</th>
+                            <td>{{ paginate.getPlacesNum() }}</td>
+                            <td>{{ paginate.getCreated()|date('d-m-Y') }}</td>
+                            <td class="align-right">
+                                <a href="{{ path('room_show', {'id': paginate.id}) }}" class="btn btn-info">Pokaż
+                                    szczegóły</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% include 'Structure/Table/pagination.html.twig' with {'pagination': pagination} %}
+            </section>
+        </div>
     </main>
 {% endblock %}

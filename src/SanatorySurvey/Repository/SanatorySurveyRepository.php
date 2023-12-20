@@ -13,5 +13,4 @@ class SanatorySurveyRepository extends EntityRepository
         $class = $entityManager->getClassMetadata(SanatorySurvey::class);
         parent::__construct($entityManager, $class);
     }
-
 }

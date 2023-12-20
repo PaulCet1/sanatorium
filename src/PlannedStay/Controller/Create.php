@@ -15,7 +15,8 @@ class Create extends AbstractController
     public function __construct(
         private Environment $twig,
         private ManagerRegistry $doctrine,
-    ){}
+    ) {
+    }
 
     public function __invoke(Request $request)
     {
@@ -23,17 +24,17 @@ class Create extends AbstractController
         $form = $this->createForm(PlannedStayType::class, $plannedStay);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
-
+        if ($form->isSubmitted() && $form->isValid()) {
             $duration = $plannedStay->getRehabilitationStay()->getDuration();
 
             $start_date = $form->get('start_date')->getData();
             $end_date = clone $start_date;
-            $end_date->modify('+' . $duration . ' days');
+            $end_date->modify('+'.$duration.' days');
             $plannedStay->setEndDate($end_date);
             $em = $this->doctrine->getManager();
             $em->persist($plannedStay);
             $em->flush();
+
             return $this->redirectToRoute('planned_stay_listing');
         }
 
@@ -41,5 +42,4 @@ class Create extends AbstractController
             'form' => $form->createView(),
         ]));
     }
-
 }

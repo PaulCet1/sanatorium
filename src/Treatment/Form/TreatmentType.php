@@ -4,15 +4,15 @@ namespace App\Treatment\Form;
 
 use App\TherapyRoom\Entity\TherapyRoom;
 use App\Treatment\Entity\Treatment;
+use App\User\Entity\User;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Doctrine\ORM\EntityRepository;
-use App\User\Entity\User;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class TreatmentType extends AbstractType
 {
@@ -20,7 +20,7 @@ class TreatmentType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nazwa zabiegu'
+                'label' => 'Nazwa zabiegu',
             ])
             ->add('leading_person', EntityType::class, [
                 'class' => User::class,
@@ -38,7 +38,7 @@ class TreatmentType extends AbstractType
                 'required' => true,
             ])
             ->add('duration', TextType::class, [
-                'label' => 'Czas trwania zabiegu(w minutach)'
+                'label' => 'Czas trwania zabiegu(w minutach)',
             ])
             ->add('therapy_room', EntityType::class, [
              'class' => TherapyRoom::class,
@@ -47,10 +47,10 @@ class TreatmentType extends AbstractType
              'required' => 'true',
             ])
             ->add('number_of_patients', NumberType::class, [
-                'label' => 'Liczba miejsc'
+                'label' => 'Liczba miejsc',
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Zapisz', 
+                'label' => 'Zapisz',
                 'attr' => ['class' => 'btn btn-primary'],
             ]);
     }
