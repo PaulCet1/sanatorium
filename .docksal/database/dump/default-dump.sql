@@ -16,6 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `contact`
+--
+
+DROP TABLE IF EXISTS `contact`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `contact` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contact_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `topic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contact`
+--
+
+LOCK TABLES `contact` WRITE;
+/*!40000 ALTER TABLE `contact` DISABLE KEYS */;
+INSERT INTO `contact` VALUES (3,'test','test','test','testt','2023-12-31 20:05:15'),(5,'Jack Jackowski','jack@o2.pl','Pytanie odnośnie profilu zabiegu','Witam, czy organizujecie leczenie o profilu leczenia \"kardiologia\"? Proszę o odpowiedź.\r\n\r\n\r\n\r\nPozdrawiam, \r\nJack Jackowski','2023-12-31 20:11:34'),(6,'Piotr Kowalski','admin@admin.com','password','Wiadomość testowa','2024-01-01 21:17:31'),(7,'test','test','test','test','2024-01-01 21:21:19'),(9,'Piotr Kowalski','piotr@kowalski.pl','Profile leczenia - pytanie.','Czy w państwa ofercie znajduje się leczenie terapeutyczne o profilu kardiologia?','2024-01-11 21:03:15'),(10,'ANS NS','przyklad@poczta.pl','Pytanie','Czy w ofercie sanatorium jest leczenie pourazowe?','2024-01-25 21:58:16');
+/*!40000 ALTER TABLE `contact` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `doctrine_migration_versions`
 --
 
@@ -36,7 +64,7 @@ CREATE TABLE `doctrine_migration_versions` (
 
 LOCK TABLES `doctrine_migration_versions` WRITE;
 /*!40000 ALTER TABLE `doctrine_migration_versions` DISABLE KEYS */;
-INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20230907111841','2023-09-07 13:22:54',221),('DoctrineMigrations\\Version20230907112821','2023-09-07 13:28:29',84),('DoctrineMigrations\\Version20230907201117','2023-09-07 22:12:01',502),('DoctrineMigrations\\Version20230921184426','2023-09-21 20:46:17',85),('DoctrineMigrations\\Version20230922112142','2023-09-22 13:22:38',65),('DoctrineMigrations\\Version20230924113113','2023-09-24 13:31:22',66),('DoctrineMigrations\\Version20230924114456','2023-09-24 13:45:03',388),('DoctrineMigrations\\Version20230925214215','2023-09-25 23:42:37',121),('DoctrineMigrations\\Version20230928194856','2023-09-28 21:49:01',51),('DoctrineMigrations\\Version20230928195610','2023-09-28 21:56:14',64),('DoctrineMigrations\\Version20230928205020','2023-09-28 22:50:25',66),('DoctrineMigrations\\Version20230929083959','2023-09-29 10:40:08',218),('DoctrineMigrations\\Version20230929101909','2023-09-29 12:19:16',77),('DoctrineMigrations\\Version20230929102157','2023-09-29 12:22:06',556),('DoctrineMigrations\\Version20230929122209','2023-09-29 14:22:13',162),('DoctrineMigrations\\Version20230929143830','2023-09-29 16:38:36',590),('DoctrineMigrations\\Version20230929144759','2023-09-29 16:48:03',304),('DoctrineMigrations\\Version20230929145252','2023-09-29 16:52:56',361),('DoctrineMigrations\\Version20230929145523','2023-09-29 16:55:26',62),('DoctrineMigrations\\Version20230929152142','2023-09-29 17:21:46',220),('DoctrineMigrations\\Version20231011205806','2023-10-11 22:58:17',343),('DoctrineMigrations\\Version20231013120515','2023-10-13 14:05:25',279),('DoctrineMigrations\\Version20231013125030','2023-10-13 14:50:37',498),('DoctrineMigrations\\Version20231013140128','2023-10-13 16:01:39',958),('DoctrineMigrations\\Version20231013145756','2023-10-13 16:58:02',944),('DoctrineMigrations\\Version20231013150211','2023-10-13 17:02:16',362),('DoctrineMigrations\\Version20231013153152','2023-10-13 17:31:59',163),('DoctrineMigrations\\Version20231013154251','2023-10-13 17:43:09',64),('DoctrineMigrations\\Version20231013154554','2023-10-13 17:45:58',69),('DoctrineMigrations\\Version20231013161647','2023-10-13 18:16:50',968),('DoctrineMigrations\\Version20231013161854','2023-10-13 18:18:57',562),('DoctrineMigrations\\Version20231015144030','2023-10-15 16:46:44',125),('DoctrineMigrations\\Version20231017202542','2023-10-17 22:25:49',270),('DoctrineMigrations\\Version20231017205151','2023-10-17 22:51:55',122),('DoctrineMigrations\\Version20231017210311','2023-10-17 23:03:14',74),('DoctrineMigrations\\Version20231017210549','2023-10-17 23:05:53',342),('DoctrineMigrations\\Version20231017213045','2023-10-17 23:30:48',149),('DoctrineMigrations\\Version20231103213411','2023-11-03 21:34:19',213),('DoctrineMigrations\\Version20231103215232','2023-11-03 21:52:37',678),('DoctrineMigrations\\Version20231103215632','2023-11-03 21:56:35',447),('DoctrineMigrations\\Version20231103223317','2023-11-03 22:35:39',295),('DoctrineMigrations\\Version20231104130016','2023-11-04 13:00:26',514),('DoctrineMigrations\\Version20231104130516','2023-11-04 13:05:21',163),('DoctrineMigrations\\Version20231109194825','2023-11-10 21:44:40',63),('DoctrineMigrations\\Version20231109195008','2023-11-10 21:44:40',246),('DoctrineMigrations\\Version20231109214427','2023-11-10 21:44:41',380),('DoctrineMigrations\\Version20231110214642','2023-11-10 21:47:54',328),('DoctrineMigrations\\Version20231110234412','2023-11-10 23:44:30',90),('DoctrineMigrations\\Version20231111124125','2023-11-11 12:41:32',410),('DoctrineMigrations\\Version20231111150655','2023-11-11 15:06:59',65),('DoctrineMigrations\\Version20231111172759','2023-11-11 17:28:07',66),('DoctrineMigrations\\Version20231111174849','2023-11-11 17:48:53',55),('DoctrineMigrations\\Version20231111224628','2023-11-11 22:46:32',59),('DoctrineMigrations\\Version20231117221509','2023-11-17 22:15:17',67),('DoctrineMigrations\\Version20231123225825','2023-11-23 22:59:19',290),('DoctrineMigrations\\Version20231126205005','2023-11-26 20:50:13',347),('DoctrineMigrations\\Version20231126205256','2023-11-26 20:53:00',505),('DoctrineMigrations\\Version20231126210044','2023-11-26 21:00:49',62);
+INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20230907111841','2023-09-07 13:22:54',221),('DoctrineMigrations\\Version20230907112821','2023-09-07 13:28:29',84),('DoctrineMigrations\\Version20230907201117','2023-09-07 22:12:01',502),('DoctrineMigrations\\Version20230921184426','2023-09-21 20:46:17',85),('DoctrineMigrations\\Version20230922112142','2023-09-22 13:22:38',65),('DoctrineMigrations\\Version20230924113113','2023-09-24 13:31:22',66),('DoctrineMigrations\\Version20230924114456','2023-09-24 13:45:03',388),('DoctrineMigrations\\Version20230925214215','2023-09-25 23:42:37',121),('DoctrineMigrations\\Version20230928194856','2023-09-28 21:49:01',51),('DoctrineMigrations\\Version20230928195610','2023-09-28 21:56:14',64),('DoctrineMigrations\\Version20230928205020','2023-09-28 22:50:25',66),('DoctrineMigrations\\Version20230929083959','2023-09-29 10:40:08',218),('DoctrineMigrations\\Version20230929101909','2023-09-29 12:19:16',77),('DoctrineMigrations\\Version20230929102157','2023-09-29 12:22:06',556),('DoctrineMigrations\\Version20230929122209','2023-09-29 14:22:13',162),('DoctrineMigrations\\Version20230929143830','2023-09-29 16:38:36',590),('DoctrineMigrations\\Version20230929144759','2023-09-29 16:48:03',304),('DoctrineMigrations\\Version20230929145252','2023-09-29 16:52:56',361),('DoctrineMigrations\\Version20230929145523','2023-09-29 16:55:26',62),('DoctrineMigrations\\Version20230929152142','2023-09-29 17:21:46',220),('DoctrineMigrations\\Version20231011205806','2023-10-11 22:58:17',343),('DoctrineMigrations\\Version20231013120515','2023-10-13 14:05:25',279),('DoctrineMigrations\\Version20231013125030','2023-10-13 14:50:37',498),('DoctrineMigrations\\Version20231013140128','2023-10-13 16:01:39',958),('DoctrineMigrations\\Version20231013145756','2023-10-13 16:58:02',944),('DoctrineMigrations\\Version20231013150211','2023-10-13 17:02:16',362),('DoctrineMigrations\\Version20231013153152','2023-10-13 17:31:59',163),('DoctrineMigrations\\Version20231013154251','2023-10-13 17:43:09',64),('DoctrineMigrations\\Version20231013154554','2023-10-13 17:45:58',69),('DoctrineMigrations\\Version20231013161647','2023-10-13 18:16:50',968),('DoctrineMigrations\\Version20231013161854','2023-10-13 18:18:57',562),('DoctrineMigrations\\Version20231015144030','2023-10-15 16:46:44',125),('DoctrineMigrations\\Version20231017202542','2023-10-17 22:25:49',270),('DoctrineMigrations\\Version20231017205151','2023-10-17 22:51:55',122),('DoctrineMigrations\\Version20231017210311','2023-10-17 23:03:14',74),('DoctrineMigrations\\Version20231017210549','2023-10-17 23:05:53',342),('DoctrineMigrations\\Version20231017213045','2023-10-17 23:30:48',149),('DoctrineMigrations\\Version20231103213411','2023-11-03 21:34:19',213),('DoctrineMigrations\\Version20231103215232','2023-11-03 21:52:37',678),('DoctrineMigrations\\Version20231103215632','2023-11-03 21:56:35',447),('DoctrineMigrations\\Version20231103223317','2023-11-03 22:35:39',295),('DoctrineMigrations\\Version20231104130016','2023-11-04 13:00:26',514),('DoctrineMigrations\\Version20231104130516','2023-11-04 13:05:21',163),('DoctrineMigrations\\Version20231109194825','2023-11-10 21:44:40',63),('DoctrineMigrations\\Version20231109195008','2023-11-10 21:44:40',246),('DoctrineMigrations\\Version20231109214427','2023-11-10 21:44:41',380),('DoctrineMigrations\\Version20231110214642','2023-11-10 21:47:54',328),('DoctrineMigrations\\Version20231110234412','2023-11-10 23:44:30',90),('DoctrineMigrations\\Version20231111124125','2023-11-11 12:41:32',410),('DoctrineMigrations\\Version20231111150655','2023-11-11 15:06:59',65),('DoctrineMigrations\\Version20231111172759','2023-11-11 17:28:07',66),('DoctrineMigrations\\Version20231111174849','2023-11-11 17:48:53',55),('DoctrineMigrations\\Version20231111224628','2023-11-11 22:46:32',59),('DoctrineMigrations\\Version20231117221509','2023-11-17 22:15:17',67),('DoctrineMigrations\\Version20231123225825','2023-11-23 22:59:19',290),('DoctrineMigrations\\Version20231126205005','2023-11-26 20:50:13',347),('DoctrineMigrations\\Version20231126205256','2023-11-26 20:53:00',505),('DoctrineMigrations\\Version20231126210044','2023-11-26 21:00:49',62),('DoctrineMigrations\\Version20231231195324','2023-12-31 19:53:34',86),('DoctrineMigrations\\Version20231231195451','2023-12-31 19:54:54',489);
 /*!40000 ALTER TABLE `doctrine_migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +143,7 @@ CREATE TABLE `planned_stay` (
   PRIMARY KEY (`id`),
   KEY `IDX_E551EE01C0776AB1` (`rehabilitationStay_id`),
   CONSTRAINT `FK_E551EE01C0776AB1` FOREIGN KEY (`rehabilitationStay_id`) REFERENCES `rehabilitation_stay` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +152,7 @@ CREATE TABLE `planned_stay` (
 
 LOCK TABLES `planned_stay` WRITE;
 /*!40000 ALTER TABLE `planned_stay` DISABLE KEYS */;
-INSERT INTO `planned_stay` VALUES (39,'2024-05-01 00:00:00','2024-05-09 00:00:00','2023-11-11 13:12:34',30),(40,'2024-03-31 00:00:00','2024-04-14 00:00:00','2023-11-11 13:35:04',31),(41,'2024-06-03 00:00:00','2024-06-13 00:00:00','2023-11-11 22:03:52',32),(42,'2025-01-01 00:00:00','2025-01-09 00:00:00','2023-11-26 22:25:28',30),(43,'2024-06-01 00:00:00','2024-06-11 00:00:00','2023-11-27 23:06:09',33),(44,'2023-12-20 00:00:00','2024-01-03 00:00:00','2023-12-07 20:33:14',31);
+INSERT INTO `planned_stay` VALUES (39,'2024-05-01 00:00:00','2024-05-09 00:00:00','2023-11-11 13:12:34',30),(40,'2024-03-31 00:00:00','2024-04-14 00:00:00','2023-11-11 13:35:04',31),(41,'2024-06-03 00:00:00','2024-06-13 00:00:00','2023-11-11 22:03:52',32),(42,'2025-01-01 00:00:00','2025-01-09 00:00:00','2023-11-26 22:25:28',30),(43,'2024-06-01 00:00:00','2024-06-11 00:00:00','2023-11-27 23:06:09',33),(44,'2023-12-20 00:00:00','2024-01-03 00:00:00','2023-12-07 20:33:14',31),(45,'2024-06-06 00:00:00','2024-06-20 00:00:00','2023-12-14 22:30:07',31),(46,'2024-06-02 00:00:00','2024-06-16 00:00:00','2024-01-02 13:41:22',31),(47,'2024-09-02 00:00:00','2024-09-16 00:00:00','2024-01-02 13:43:30',31),(48,'2024-09-02 00:00:00','2024-09-12 00:00:00','2024-01-02 18:36:00',32),(49,'2024-01-31 00:00:00','2024-02-09 00:00:00','2024-01-11 21:12:27',34),(50,'2024-02-01 00:00:00','2024-02-15 00:00:00','2024-01-29 19:37:09',31);
 /*!40000 ALTER TABLE `planned_stay` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +172,7 @@ CREATE TABLE `rehabilitation_stay` (
   PRIMARY KEY (`id`),
   KEY `IDX_A6254374DF84AFAD` (`treatment_profile_id`),
   CONSTRAINT `FK_A6254374DF84AFAD` FOREIGN KEY (`treatment_profile_id`) REFERENCES `treatment_profile` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +181,7 @@ CREATE TABLE `rehabilitation_stay` (
 
 LOCK TABLES `rehabilitation_stay` WRITE;
 /*!40000 ALTER TABLE `rehabilitation_stay` DISABLE KEYS */;
-INSERT INTO `rehabilitation_stay` VALUES (30,'Rehabilitacja poudarowa','2023-11-11 13:10:13',8,7),(31,'Dbam o serce','2023-11-11 13:34:16',14,5),(32,'Ulga dla serca','2023-11-11 22:03:07',10,5),(33,'Turnus testowy','2023-11-27 23:00:49',10,5);
+INSERT INTO `rehabilitation_stay` VALUES (30,'Rehabilitacja poudarowa','2023-11-11 13:10:13',8,7),(31,'Dbam o serce','2023-11-11 13:34:16',14,5),(32,'Ulga dla serca','2023-11-11 22:03:07',10,5),(33,'Turnus testowy','2023-11-27 23:00:49',10,5),(34,'Test','2024-01-11 21:07:11',9,3);
 /*!40000 ALTER TABLE `rehabilitation_stay` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +209,7 @@ CREATE TABLE `rehabilitation_stay_treatment` (
 
 LOCK TABLES `rehabilitation_stay_treatment` WRITE;
 /*!40000 ALTER TABLE `rehabilitation_stay_treatment` DISABLE KEYS */;
-INSERT INTO `rehabilitation_stay_treatment` VALUES (30,20),(30,21),(30,23),(30,28),(30,29),(30,33),(31,20),(31,22),(31,25),(31,28),(31,31),(31,37),(32,20),(32,21),(32,22),(32,33),(33,20),(33,21),(33,22),(33,23),(33,24),(33,25),(33,26),(33,27),(33,28),(33,29),(33,30),(33,31),(33,32),(33,33),(33,34),(33,35),(33,37);
+INSERT INTO `rehabilitation_stay_treatment` VALUES (30,20),(30,21),(30,23),(30,28),(30,29),(30,33),(31,20),(31,22),(31,25),(31,28),(31,31),(31,37),(32,20),(32,21),(32,22),(32,33),(33,20),(33,21),(33,22),(33,23),(33,24),(33,25),(33,26),(33,27),(33,28),(33,29),(33,30),(33,31),(33,32),(33,33),(33,34),(33,35),(33,37),(34,21),(34,22),(34,23),(34,27),(34,28),(34,29),(34,33),(34,34),(34,35);
 /*!40000 ALTER TABLE `rehabilitation_stay_treatment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,10 +227,10 @@ CREATE TABLE `reservation` (
   `plannedStay_id` int DEFAULT NULL,
   `room_id` int DEFAULT NULL,
   `num_of_people` int NOT NULL,
-  `referral_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pesel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nfzplace` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `referral_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pesel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nfzplace` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_42C8495519EB6921` (`client_id`),
   KEY `IDX_42C8495554177093` (`room_id`),
@@ -210,7 +238,7 @@ CREATE TABLE `reservation` (
   CONSTRAINT `FK_42C8495519EB6921` FOREIGN KEY (`client_id`) REFERENCES `user` (`id`),
   CONSTRAINT `FK_42C849553A587B23` FOREIGN KEY (`plannedStay_id`) REFERENCES `planned_stay` (`id`),
   CONSTRAINT `FK_42C8495554177093` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,7 +247,7 @@ CREATE TABLE `reservation` (
 
 LOCK TABLES `reservation` WRITE;
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
-INSERT INTO `reservation` VALUES (81,'2023-11-17 22:16:25',3842,41,1,4,'15/11/111111/A/P5','11111111111','Wielkopolski Oddział Wojewódzki NFZ','accepted'),(83,'2023-11-26 22:27:22',3842,42,1,2,'15/11/111111/A/P6','11111111111','Wielkopolski Oddział Wojewódzki NFZ','rejected'),(84,'2023-11-27 00:27:58',3867,39,9,6,'01/01/010101/A/B6','11111111111','Dolnośląski Oddział Wojewódzki NFZ','accepted'),(85,'2023-11-27 23:11:13',3842,43,8,4,'05/01/000000/B/A5','11111111111','Łódzki Oddział Wojewódzki NFZ','accepted'),(86,'2023-12-03 21:57:02',3842,39,1,4,'16/02/020202/B/A6','00000000000','Zachodniopomorski Oddział Wojewódzki NFZ','accepted'),(87,'2023-12-07 20:29:53',3842,43,1,5,'13/13/323133/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','accepted'),(88,'2023-12-07 20:30:33',3842,43,1,12,'13//1/3/3231/3/3/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','waiting'),(89,'2023-12-07 20:30:48',3842,43,1,1,'13//1/3/3231/3/3/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','waiting'),(90,'2023-12-11 10:10:59',3842,40,5,1,'06/13/213312/B/A5','01011001101','Małopolski Oddział Wojewódzki NFZ','waiting'),(91,'2023-12-11 12:44:33',3869,39,1,2,'16/01/110010/B/A6','11111111111','Zachodniopomorski Oddział Wojewódzki NFZ','accepted');
+INSERT INTO `reservation` VALUES (81,'2023-11-17 22:16:25',3842,41,1,4,'15/11/111111/A/P5','00260307734','Wielkopolski Oddział Wojewódzki NFZ','accepted'),(83,'2023-11-26 22:27:22',3842,42,1,2,'15/11/111111/A/P6','11111111111','Wielkopolski Oddział Wojewódzki NFZ','rejected'),(84,'2023-11-27 00:27:58',3867,39,9,6,'01/01/010101/A/B6','11111111111','Dolnośląski Oddział Wojewódzki NFZ','accepted'),(85,'2023-11-27 23:11:13',3842,43,8,4,'05/01/000000/B/A5','11111111111','Łódzki Oddział Wojewódzki NFZ','accepted'),(86,'2023-12-03 21:57:02',3842,39,1,4,'16/02/020202/B/A6','00000000000','Zachodniopomorski Oddział Wojewódzki NFZ','accepted'),(87,'2023-12-07 20:29:53',3842,43,1,5,'13/13/323133/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','accepted'),(88,'2023-12-07 20:30:33',3842,43,1,12,'13//1/3/3231/3/3/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','accepted'),(89,'2023-12-07 20:30:48',3842,43,1,1,'13//1/3/3231/3/3/A/A5','31273812312','Świętokrzyski Oddział Wojewódzki NFZ','accepted'),(90,'2023-12-11 10:10:59',3842,40,5,1,'06/13/213312/B/A5','01011001101','Małopolski Oddział Wojewódzki NFZ','accepted'),(91,'2023-12-11 12:44:33',3869,39,1,2,'16/01/110010/B/A6','11111111119','Zachodniopomorski Oddział Wojewódzki NFZ','accepted'),(92,'2023-12-14 20:41:20',3842,42,4,2,'16/01/110010/B/A6','11111111111','Zachodniopomorski Oddział Wojewódzki NFZ','waiting'),(93,'2023-12-14 20:57:15',3873,42,1,1,'16/01/110010/B/A6','12361278345','Zachodniopomorski Oddział Wojewódzki NFZ','rejected'),(94,'2023-12-14 22:35:30',3842,39,1,1,'16/01/110010/B/A6','10912389389','Zachodniopomorski Oddział Wojewódzki NFZ','waiting'),(95,'2023-12-18 21:14:11',3842,39,1,2,'16/01/110010/B/A6','00260307734','Zachodniopomorski Oddział Wojewódzki NFZ','waiting'),(96,'2024-01-02 10:43:00',3875,40,27,3,'06/13/213312/B/A5','00260307734','Małopolski Oddział Wojewódzki NFZ','waiting'),(97,'2024-01-02 13:12:05',3842,40,1,2,'06/13/213312/B/A5','06261354195','Małopolski Oddział Wojewódzki NFZ','waiting'),(98,'2024-01-02 13:42:14',3842,46,1,2,'16/01/110010/B/A5','00260307734','Zachodniopomorski Oddział Wojewódzki NFZ','accepted'),(99,'2024-01-02 13:44:02',3842,47,1,2,'16/01/110010/B/A5','00260307734','Zachodniopomorski Oddział Wojewódzki NFZ','accepted'),(100,'2024-01-11 21:12:49',3842,49,1,1,'15/00/000000/A/P3','00260307734','Wielkopolski Oddział Wojewódzki NFZ','accepted'),(101,'2024-01-11 21:18:56',3876,42,1,2,'04/12/312312/A/T6','82010991299','Lubuski Oddział Wojewódzki NFZ','rejected'),(102,'2024-01-25 14:58:01',3842,42,1,2,'16/00/010100/A/B6','00260307734','Zachodniopomorski Oddział Wojewódzki NFZ','waiting'),(103,'2024-01-29 19:42:59',3842,50,5,1,'15/00/000000/A/P5','00260307734','Wielkopolski Oddział Wojewódzki NFZ','accepted');
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,7 +265,7 @@ CREATE TABLE `room` (
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_729F519BD7DED995` (`room_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,7 +274,7 @@ CREATE TABLE `room` (
 
 LOCK TABLES `room` WRITE;
 /*!40000 ALTER TABLE `room` DISABLE KEYS */;
-INSERT INTO `room` VALUES (1,1,2,'2023-09-25 21:52:05'),(4,4,8,'2023-09-28 19:59:47'),(5,2,2,'2023-11-03 14:51:15'),(6,3,2,'2023-11-03 14:51:19'),(8,5,2,'2023-11-03 14:51:28'),(9,6,2,'2023-11-03 14:51:32'),(10,7,2,'2023-11-03 14:51:37');
+INSERT INTO `room` VALUES (1,1,4,'2023-09-25 21:52:05'),(4,4,8,'2023-09-28 19:59:47'),(5,2,2,'2023-11-03 14:51:15'),(6,3,2,'2023-11-03 14:51:19'),(8,5,2,'2023-11-03 14:51:28'),(9,6,2,'2023-11-03 14:51:32'),(27,7,2,'2023-12-19 15:29:25'),(28,8,2,'2023-12-19 15:29:28'),(29,9,2,'2023-12-19 15:29:32'),(30,10,2,'2023-12-19 15:29:38'),(31,11,2,'2023-12-19 15:29:43');
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,16 +287,16 @@ DROP TABLE IF EXISTS `sanatory_survey`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sanatory_survey` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `created` datetime NOT NULL,
   `reservation_id` int DEFAULT NULL,
   `rehabilitation_stay_rating` int NOT NULL,
   `treatment_rating` int NOT NULL,
   `staff_rating` int NOT NULL,
-  `text` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_5C9F9781B83297E7` (`reservation_id`),
   CONSTRAINT `FK_5C9F9781B83297E7` FOREIGN KEY (`reservation_id`) REFERENCES `reservation` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,7 +305,6 @@ CREATE TABLE `sanatory_survey` (
 
 LOCK TABLES `sanatory_survey` WRITE;
 /*!40000 ALTER TABLE `sanatory_survey` DISABLE KEYS */;
-INSERT INTO `sanatory_survey` VALUES (1,'2023-11-26 22:08:37',81,4,4,3,'Example text'),(2,'2023-11-27 00:28:27',84,4,4,3,'Coś mi się nie podoba ale nie pamiętam co dokładnie.');
 /*!40000 ALTER TABLE `sanatory_survey` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,7 +332,7 @@ CREATE TABLE `therapy_room` (
 
 LOCK TABLES `therapy_room` WRITE;
 /*!40000 ALTER TABLE `therapy_room` DISABLE KEYS */;
-INSERT INTO `therapy_room` VALUES (10,'Sala Rehabilitacji','group',9,'2023-10-15 15:07:32',1),(11,'Gabinet Terapeutyczny','group',10,'2023-10-15 15:07:50',2),(12,'Gabinet Masażu','group',4,'2023-10-15 15:08:16',3),(13,'Pracownia Fizjoterapii','group',10,'2023-10-15 15:08:37',4),(14,'Gabinet Zabiegowy','group',2,'2023-10-15 15:09:08',5),(15,'Gabinet Odnowy Biologicznej','group',4,'2023-10-15 15:09:27',6),(16,'Gabinet Balneologiczny','group',2,'2023-10-15 15:09:53',7),(17,'Gabinet Chiropraktora','personal',1,'2023-10-15 15:10:12',8),(18,'Sala do Zabiegów Aquafit','group',15,'2023-10-15 15:10:38',9),(19,'Gabinet Akupunktury','group',6,'2023-10-15 15:11:03',10),(20,'Plener','group',0,'2023-11-08 23:12:58',100);
+INSERT INTO `therapy_room` VALUES (10,'Sala Rehabilitacji','group',9,'2023-10-15 15:07:32',1),(11,'Gabinet Terapeutyczny','group',10,'2023-10-15 15:07:50',2),(12,'Gabinet Masażu','group',4,'2023-10-15 15:08:16',3),(13,'Pracownia Fizjoterapii','group',10,'2023-10-15 15:08:37',4),(14,'Gabinet Zabiegowy','group',2,'2023-10-15 15:09:08',5),(15,'Gabinet Odnowy Biologicznej','group',4,'2023-10-15 15:09:27',6),(16,'Gabinet Balneologiczny','group',2,'2023-10-15 15:09:53',7),(17,'Gabinet Chiropraktora','personal',1,'2023-10-15 15:10:12',8),(18,'Sala do Zabiegów Aquafit','group',15,'2023-10-15 15:10:38',9),(20,'Plener','group',0,'2023-11-08 23:12:58',100);
 /*!40000 ALTER TABLE `therapy_room` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -364,7 +391,7 @@ CREATE TABLE `treatment_plan` (
   KEY `IDX_1E99976C471C0366` (`treatment_id`),
   CONSTRAINT `FK_1E99976C471C0366` FOREIGN KEY (`treatment_id`) REFERENCES `treatment` (`id`),
   CONSTRAINT `FK_1E99976CA5E9CD9B` FOREIGN KEY (`rehabilitation_stay_id`) REFERENCES `rehabilitation_stay` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -373,7 +400,7 @@ CREATE TABLE `treatment_plan` (
 
 LOCK TABLES `treatment_plan` WRITE;
 /*!40000 ALTER TABLE `treatment_plan` DISABLE KEYS */;
-INSERT INTO `treatment_plan` VALUES (99,30,20,'08:00:00','2023-11-11 13:10:57','10:00:00',1),(100,30,23,'09:00:00','2023-11-11 13:11:15','12:00:00',2),(101,30,29,'12:00:00','2023-11-11 13:11:29','14:00:00',6),(102,30,28,'08:00:00','2023-11-11 13:32:56','10:00:00',3),(103,31,37,'08:00:00','2023-11-11 13:34:36','16:00:00',1),(104,31,31,'17:00:00','2023-11-11 13:42:36','20:00:00',1),(105,31,37,'08:00:00','2023-11-11 13:43:04','14:00:00',2),(106,31,20,'03:00:00','2023-11-11 16:47:57','04:00:00',1),(107,31,20,'04:00:00','2023-11-11 16:59:34','05:00:00',1),(108,32,21,'04:00:00','2023-11-11 22:03:17','15:00:00',1),(109,32,21,'16:00:00','2023-11-12 22:28:44','15:00:00',1),(110,33,37,'09:00:00','2023-11-27 23:01:48','15:00:00',1),(111,33,31,'16:00:00','2023-11-27 23:02:26','18:00:00',1),(112,33,20,'09:00:00','2023-11-27 23:02:46','10:45:00',2),(113,33,27,'11:00:00','2023-11-27 23:03:09','13:00:00',2),(114,33,24,'14:00:00','2023-11-27 23:03:28','18:00:00',2),(115,33,37,'10:00:00','2023-11-27 23:03:47','15:00:00',5);
+INSERT INTO `treatment_plan` VALUES (99,30,20,'08:00:00','2023-11-11 13:10:57','10:00:00',1),(100,30,23,'09:00:00','2023-11-11 13:11:15','12:00:00',2),(101,30,29,'12:00:00','2023-11-11 13:11:29','14:00:00',6),(102,30,28,'08:00:00','2023-11-11 13:32:56','10:00:00',3),(103,31,37,'08:00:00','2023-11-11 13:34:36','16:00:00',1),(104,31,31,'17:00:00','2023-11-11 13:42:36','20:00:00',1),(105,31,37,'08:00:00','2023-11-11 13:43:04','14:00:00',2),(106,31,20,'03:00:00','2023-11-11 16:47:57','04:00:00',1),(107,31,20,'04:00:00','2023-11-11 16:59:34','05:00:00',1),(108,32,21,'04:00:00','2023-11-11 22:03:17','15:00:00',1),(109,32,21,'16:00:00','2023-11-12 22:28:44','15:00:00',1),(110,33,37,'09:00:00','2023-11-27 23:01:48','15:00:00',1),(111,33,31,'16:00:00','2023-11-27 23:02:26','18:00:00',1),(112,33,20,'09:00:00','2023-11-27 23:02:46','10:45:00',2),(113,33,27,'11:00:00','2023-11-27 23:03:09','13:00:00',2),(114,33,24,'14:00:00','2023-11-27 23:03:28','18:00:00',2),(115,33,37,'10:00:00','2023-11-27 23:03:47','15:00:00',5),(116,31,25,'08:00:00','2023-12-14 22:28:48','09:00:00',3),(117,31,25,'10:30:00','2023-12-19 14:47:28','11:00:00',3),(118,34,21,'08:00:00','2024-01-11 21:08:00','09:00:00',1),(119,34,22,'09:30:00','2024-01-11 21:08:52','11:00:00',1),(120,34,21,'07:00:00','2024-01-11 21:09:04','08:00:00',2),(121,34,33,'05:00:00','2024-01-11 21:09:15','09:00:00',5),(122,34,21,'10:00:00','2024-01-11 21:09:23','11:00:00',3),(123,31,28,'08:00:00','2024-01-22 22:05:35','09:00:00',4),(124,31,20,'10:00:00','2024-01-22 22:05:49','11:00:00',4),(125,31,37,'08:00:00','2024-01-22 22:06:00','12:00:00',5),(126,31,28,'08:00:00','2024-01-22 22:08:14','10:00:00',7);
 /*!40000 ALTER TABLE `treatment_plan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -386,11 +413,11 @@ DROP TABLE IF EXISTS `treatment_profile`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `treatment_profile` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `code` int NOT NULL,
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -399,7 +426,7 @@ CREATE TABLE `treatment_profile` (
 
 LOCK TABLES `treatment_profile` WRITE;
 /*!40000 ALTER TABLE `treatment_profile` DISABLE KEYS */;
-INSERT INTO `treatment_profile` VALUES (1,'Alergologia',1,'2023-11-11 00:02:45'),(2,'Cukrzyca',2,'2023-11-11 00:03:17'),(3,'Dermatologia',3,'2023-11-11 00:03:35'),(4,'Ginekologia',4,'2023-11-11 00:03:52'),(5,'Kardiologia',5,'2023-11-11 12:50:37'),(7,'Rehabilitacja poudarowa',6,'2023-11-11 13:09:23');
+INSERT INTO `treatment_profile` VALUES (2,'Cukrzyca',2,'2023-11-11 00:03:17'),(3,'Dermatologia',3,'2023-11-11 00:03:35'),(4,'Ginekologia',4,'2023-11-11 00:03:52'),(5,'Kardiologia',5,'2023-11-11 12:50:37'),(7,'Rehabilitacja poudarowa',6,'2023-11-11 13:09:23');
 /*!40000 ALTER TABLE `treatment_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,7 +448,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`),
   UNIQUE KEY `UNIQ_8D93D649F85E0677` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3873 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3878 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -430,7 +457,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (3842,'admin@admin.com','admin','Paweł Cetnarowski','[\"ROLE_ADMIN\", \"ROLE_USER\", \"ROLE_INSTRUCTOR\", \"ROLE_CLIENT\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3843,'rschuppe@hilll.com','deja234','Ms. Nyah Stroman MD','[\"ROLE_CLIENT\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3844,'ethel.lehner@durgan.com','sincere.greenfelder','Dr. Jordi Schmitt I','[\"ROLE_USER\", \"ROLE_INSTRUCTOR\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3845,'alfred.lynch@yahoo.com','dbartell','Breanna O\'Hara','[]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3846,'sschmidt@mueller.com','ruecker.roderick','Noel Greenfelder','[]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3847,'jake.bashirian@wolff.com','oma.lueilwitz','Effie Hamill','[\"ROLE_INSTRUCTOR\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3848,'eryan@hotmail.com','jany41','Emmy Abernathy','[]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3849,'vida.cummerata@cormier.com','homenick.nelda','Gilbert Langworth','[\"ROLE_INSTRUCTOR\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3850,'craig05@hotmail.com','roxanne.wuckert','Prof. Antoinette Bradtke Jr.','[]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3851,'nyasia40@gmail.com','jaqueline.schumm','Dr. Noel Shields','[\"ROLE_INSTRUCTOR\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3852,'borer.lynn@ritchie.com','khalid87','Dylan McGlynn','[]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3853,'pawel@o2.pl','pawel.cetnarowski','Paweł Kowalski','[\"ROLE_USER\", \"ROLE_ADMIN\", \"ROLE_INSTRUCTOR\"]','$2y$13$PhDoHUsLlwcqK2Q0LrozI.hFRkIvyl57q/dRPmX5rE0hqJE/ssaqe','2023-09-21 20:58:31'),(3854,'test@test.com','test','test','[]','$2y$13$x08L/HfZIwIES7o1JKPeQudIcm1VThUj3nbiwEQPCDojpkWVDywN2','2023-09-24 11:04:02'),(3858,'test@test.comq','test123','testtest','[\"ROLE_USER\", \"ROLE_ADMIN\", \"ROLE_INSTRUCTOR\"]','$2y$13$Ll.7nTAmLH21Xxh/x4l5rOdgODOpbgY.E48hACWJ4luEm4IlWaIR2','2023-09-28 21:21:37'),(3859,'regular@o2.pl','regular','Regular Kowalski','[]','$2y$13$HglijaBvfL.Th3Pp28qDDOM77CIgc9V0CXWPw8kg5RCFtIrDtkgMm','2023-09-29 09:21:51'),(3860,'pawel@sanatorium.com','pawel123','pawel cet','[\"ROLE_USER\", \"ROLE_ADMIN\", \"ROLE_INSTRUCTOR\"]','$2y$13$vH4NvmYhQw8KtHmg6/cxUu2sekJkW.LXhzVyPtbSaud5zFUSQIrgK','2023-10-02 09:29:29'),(3863,'test@test.comq1','test412412','tetetee','[\"ROLE_USER\", \"ROLE_ADMIN\", \"ROLE_INSTRUCTOR\", \"ROLE_CLIENT\"]','$2y$13$koOyukv2Q9u1ZiNPGLO/COAn8ddkQRGGD9s/QNemtgarcYxcstw8a','2023-10-13 12:11:20'),(3864,'client@elda.pl','client','Klient Klientowski','[\"ROLE_CLIENT\"]','$2y$13$C.tQQWNh6Z60wGEB7kLYG.Qi6GZMY.cizgSxrVkKoj0f4S/WsS4hq','2023-11-03 15:04:04'),(3865,'normal@elda.pl','normal','normal normal','[]','$2y$13$ZhYRahqr3e7WWCWo2Up0wO0lg/i7bJryzbj0UiaUEDVVOmPFt3Pga','2023-11-03 17:29:13'),(3866,'jkowalski@o2.pl','jkowalski','Jan Kowalski','[]','$2y$13$yZ4c9zdm0K77ZDDEOfKtWOXz1V0d9ljpppzJvrxNINIhGg6rz3WXG','2023-11-10 23:18:03'),(3867,'piotr@poczta.pl','piotr123','Piotr Nowak','[]','$2y$13$76oXhVT8F2u0XwyUpCnEY.c92WdC0UlVhG8bvyoVTfetpQc86p9pC','2023-11-12 22:24:26'),(3869,'anna.nowak@o2.pl','anna.nowak','Anna Nowak','[\"ROLE_USER\", \"ROLE_CLIENT\"]','$2y$13$SC7VjfxnqTSoy/Egofyj5OuoGaEj6q169AkS/s9GkLG4Z7OTCSrfi','2023-12-11 12:40:36');
+INSERT INTO `user` VALUES (3842,'admin@admin.com','admin','Paweł Cetnarowski','[\"ROLE_ADMIN\", \"ROLE_USER\", \"ROLE_INSTRUCTOR\", \"ROLE_CLIENT\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3843,'rschuppe@hilll.com','deja2342','Ms. Nyah Stroman MD','[\"ROLE_CLIENT\", \"ROLE_USER\", \"ROLE_TREATMENT_PLANNER\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3844,'ethel.lehner@durgan.com','sincere.greenfelder','Dr. Jordi Schmitt I','[\"ROLE_USER\", \"ROLE_INSTRUCTOR\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3845,'alfred.lynch@yahoo.com','dbartell','Breanna O\'Hara','[]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3846,'sschmidt@mueller.com','ruecker.roderick','Noel Greenfelder','[]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3847,'jake.bashirian@wolff.com','oma.lueilwitz','Effie Hamill','[\"ROLE_INSTRUCTOR\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3848,'eryan@hotmail.com','jany41','Emmy Abernathy','[]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3849,'vida.cummerata@cormier.com','homenick.nelda','Gilbert Langworth','[\"ROLE_INSTRUCTOR\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3850,'craig05@hotmail.com','roxanne.wuckert','Prof. Antoinette Bradtke Jr.','[]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3851,'nyasia40@gmail.com','jaqueline.schumm','Dr. Noel Shields','[\"ROLE_INSTRUCTOR\"]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3852,'borer.lynn@ritchie.com','khalid87','Dylan McGlynn','[]','$2y$13$v.7JQoPJwPfjHm0nmcMNCONovju7G/wt8ZJ3psqUcuRkkGjg/Aeym','2023-09-07 23:24:55'),(3853,'pawel@o2.pl','pawel.cetnarowski','Paweł Kowalski','[\"ROLE_USER\", \"ROLE_ADMIN\", \"ROLE_INSTRUCTOR\"]','$2y$13$PhDoHUsLlwcqK2Q0LrozI.hFRkIvyl57q/dRPmX5rE0hqJE/ssaqe','2023-09-21 20:58:31'),(3854,'test@test.com','test','test','[]','$2y$13$x08L/HfZIwIES7o1JKPeQudIcm1VThUj3nbiwEQPCDojpkWVDywN2','2023-09-24 11:04:02'),(3858,'test@test.comq','test123','testtest','[\"ROLE_USER\", \"ROLE_ADMIN\", \"ROLE_INSTRUCTOR\"]','$2y$13$Ll.7nTAmLH21Xxh/x4l5rOdgODOpbgY.E48hACWJ4luEm4IlWaIR2','2023-09-28 21:21:37'),(3859,'regular@o2.pl','regular','Regular Kowalski','[]','$2y$13$HglijaBvfL.Th3Pp28qDDOM77CIgc9V0CXWPw8kg5RCFtIrDtkgMm','2023-09-29 09:21:51'),(3860,'pawel@sanatorium.com','pawel123','pawel cet','[\"ROLE_USER\", \"ROLE_ADMIN\", \"ROLE_INSTRUCTOR\"]','$2y$13$vH4NvmYhQw8KtHmg6/cxUu2sekJkW.LXhzVyPtbSaud5zFUSQIrgK','2023-10-02 09:29:29'),(3863,'test@test.comq1','test412412','tetetee','[\"ROLE_USER\", \"ROLE_ADMIN\", \"ROLE_INSTRUCTOR\", \"ROLE_CLIENT\"]','$2y$13$koOyukv2Q9u1ZiNPGLO/COAn8ddkQRGGD9s/QNemtgarcYxcstw8a','2023-10-13 12:11:20'),(3864,'client@elda.pl','client','Klient Klientowski','[\"ROLE_CLIENT\"]','$2y$13$C.tQQWNh6Z60wGEB7kLYG.Qi6GZMY.cizgSxrVkKoj0f4S/WsS4hq','2023-11-03 15:04:04'),(3865,'normal@elda.pl','normal','normal normal','[]','$2y$13$ZhYRahqr3e7WWCWo2Up0wO0lg/i7bJryzbj0UiaUEDVVOmPFt3Pga','2023-11-03 17:29:13'),(3866,'jkowalski@o2.pl','jkowalski','Jan Kowalski','[]','$2y$13$yZ4c9zdm0K77ZDDEOfKtWOXz1V0d9ljpppzJvrxNINIhGg6rz3WXG','2023-11-10 23:18:03'),(3867,'piotr@poczta.pl','piotr123','Piotr Nowak','[]','$2y$13$76oXhVT8F2u0XwyUpCnEY.c92WdC0UlVhG8bvyoVTfetpQc86p9pC','2023-11-12 22:24:26'),(3869,'anna.nowak@o2.pl','anna.nowak','Anna Nowak','[\"ROLE_USER\", \"ROLE_CLIENT\"]','$2y$13$SC7VjfxnqTSoy/Egofyj5OuoGaEj6q169AkS/s9GkLG4Z7OTCSrfi','2023-12-11 12:40:36'),(3873,'bogdan.kowalski@elda.pl','bogdankowalski','Bogdan Kowalski','[\"ROLE_USER\", \"ROLE_CLIENT\"]','$2y$13$qDMd8UzD942B1LWggDKY.urWtf2B3D1jo23UcKRhpRt5hsEDbgEGu','2023-12-14 20:56:24'),(3874,'adamkowalski@poczta.pl','adamkowalski','Adam Kowalski','[]','$2y$13$k/FSojdxkjw8g5zr8VJS.upZ2T1h/OQRf8EZXatHC1sSfjb1l2Fqm','2024-01-02 10:30:48'),(3875,'jannowak@poczta.pl','jannowak','Jan Nowak','[]','$2y$13$/7Wi0NMdq3.LDK2gjYzMxud09Fa6BXmnmQSIssDFglMm5UNYvoHXK','2024-01-02 10:41:35'),(3876,'jan.nowak@poczta.pl','jan.nowak','Jan Nowak','[\"ROLE_USER\", \"ROLE_CLIENT\"]','$2y$13$aiPAFJ3AB3KX9QxBS9U9V.rqZ9zgvXzPZITsRfYyavFVR1OeI52p2','2024-01-11 21:17:19'),(3877,'pawel.cetnarowski@hotel.pl','pawel','Paweł Cetnarowski','[\"ROLE_USER\", \"ROLE_ADMIN\"]','$2y$13$Bwt71puWhnvZEczOalT4.Ohfbk2QVKD8RBm8OQnnNEHLZLugnCf1K','2024-01-29 19:52:15');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -443,4 +470,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-14 20:34:41
+-- Dump completed on 2024-01-29 21:20:59

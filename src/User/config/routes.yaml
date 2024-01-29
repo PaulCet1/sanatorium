@@ -3,6 +3,11 @@ user_show:
   controller: App\User\Controller\Show
   methods: ['GET']
 
+user_show_id:
+  path: /user/show/{id}
+  controller: App\User\Controller\Show::ShowUserById
+  methods: ['GET']
+
 user_listing:
   path: /users
   controller: App\User\Controller\Listing

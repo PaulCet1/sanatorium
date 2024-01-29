@@ -1,70 +1,76 @@
 {% extends "base.html.twig" %}
 {% block body %}
     <main id="main">
-        <section id="about" class="about">
-            <a href="{{ path('treatment_create') }}" class="btn btn-primary mb-3">Plan</a>
-
-            <table class="table table-success transparent-table">
-                <thead>
-                <tr>
-                    <th scope="col">Turnus</th>
-                    <th scope="col">Zabieg</th>
-                    <th scope="col">Termin rozpoczęcia</th>
-                    <th scope="col">Termin zakończenia</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% set currentTurnus = null %}
-                {% for data in plan_data %}
-                    {% if currentTurnus != data.getRehabilitationStay().getName() %}
-                        <tr class="turnus-header">
-                            <td>
-                                <a href="{{ path('rehabilitation_stay_show', {'id': data.getRehabilitationStay().getId()}) }}">
-                                    {{ data.getRehabilitationStay().getName() }}
-                                </a>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <a class="btn btn-success" href="{{ path('treatment_plan_create', {'id': data.getRehabilitationStay().getId()}) }}">
-                                    Dodaj zabieg
-                                </a>
-                                <a class="btn btn-info toggle-button" data-bs-toggle="collapse" data-bs-target="#turnus-{{ data.getRehabilitationStay().getId() }}">
-                                    Zwiń/Rozwiń
-                                </a>
-
-                            </td>
-                        </tr>
-
-                        {% set currentTurnus = data.getRehabilitationStay().getName() %}
-                    {% endif %}
-                    <tr class="turnus-details collapse" id="turnus-{{ data.getRehabilitationStay().getId() }}">
-                        <td></td>
-                        <td>
-                            <a href="{{ path('treatment_show', {'id': data.getTreatment().getId()}) }}">
-                                {{ data.getTreatment().getName() }}
-                            </a>
-                        </td>
-                        <td>{{ data.getStartTime()|date('d-m-Y H:i:s') }}</td>
-                        <td>{{ data.getEndTime()|date('d-m-Y H:i:s') }}</td>
-                        <td></td>
+        <div class="container">
+            <section id="about" class="about">
+                <div class="section-title">
+                    <h2>Planowanie zabiegów w turnusie</h2>
+                    <p>Wybierz turnus i zaplanuj w nim zabiegi</p>
+                </div>
+                <table class="table table-bordered transparent-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Turnus</th>
+                        <th scope="col">Zabieg</th>
+                        <th scope="col">Termin rozpoczęcia</th>
+                        <th scope="col">Termin zakończenia</th>
+                        <th></th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </section>
+                    </thead>
+                    <tbody>
+                    {% set currentTurnus = null %}
+                    {% for data in plan_data %}
+                        {% if currentTurnus != data.getRehabilitationStay().getName() %}
+                            <tr class="turnus-header">
+                                <td>
+                                    <a href="{{ path('rehabilitation_stay_show', {'id': data.getRehabilitationStay().getId()}) }}">
+                                        {{ data.getRehabilitationStay().getName() }}
+                                    </a>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a class="btn btn-success"
+                                       href="{{ path('treatment_plan_create', {'id': data.getRehabilitationStay().getId()}) }}">
+                                        Dodaj zabieg
+                                    </a>
+                                    <a class="btn btn-info toggle-button" data-bs-toggle="collapse"
+                                       data-bs-target="#turnus-{{ data.getRehabilitationStay().getId() }}">
+                                        Zwiń/Rozwiń
+                                    </a>
+
+                                </td>
+                            </tr>
+
+                            {% set currentTurnus = data.getRehabilitationStay().getName() %}
+                        {% endif %}
+                        <tr class="turnus-details collapse" id="turnus-{{ data.getRehabilitationStay().getId() }}">
+                            <td></td>
+                            <td>
+                                <a href="{{ path('treatment_show', {'id': data.getTreatment().getId()}) }}">
+                                    {{ data.getTreatment().getName() }}
+                                </a>
+                            </td>
+                            <td>{{ data.getStartTime()|date('d-m-Y H:i:s') }}</td>
+                            <td>{{ data.getEndTime()|date('d-m-Y H:i:s') }}</td>
+                            <td></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </div>
     </main>
 {% endblock %}
 
 {% block javascripts %}
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const toggleButtons = document.querySelectorAll('.toggle-button');
 
-            toggleButtons.forEach(function(button) {
-                button.addEventListener('click', function(event) {
+            toggleButtons.forEach(function (button) {
+                button.addEventListener('click', function (event) {
                     const targetId = event.target.getAttribute('data-bs-target');
                     const targetElement = document.querySelector(targetId);
 

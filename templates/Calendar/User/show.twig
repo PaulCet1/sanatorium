@@ -4,7 +4,7 @@
     <main id="main">
         <section id="about" class="about">
             <div class="container">
-                <h2>Plan zajęć</h2>
+                <h2>Karta zabiegowa</h2>
                 <div class="row">
                     {% for day in 1..7 %}
                         {% set current_date = start_date|date_modify('+' ~ (day - 1) ~ ' days') %}

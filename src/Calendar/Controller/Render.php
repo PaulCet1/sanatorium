@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 class Render extends AbstractController
 {
     public function __construct(
-        private DompdfService $dompdfService,
-        private TreatmentPlanRepository $treatmentPlanRepository,
+        private readonly DompdfService $dompdfService,
+        private readonly TreatmentPlanRepository $treatmentPlanRepository,
     ) {
     }
 

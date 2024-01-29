@@ -32,13 +32,14 @@
 
         html::before {
             content: "";
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/59/Sanatorium_Rownica_interior.jpg');
             background-size: cover;
+            background-attachment: fixed;
             filter: blur(10px);
             z-index: -1;
         }
@@ -113,7 +114,7 @@
                                         class="bx bx-file-blank"></i>
                                 <span>Rezerwacje</span></a></li>
 
-                        <li><a href="" class="nav-link"><i class="bx bx-server"></i>
+                        <li><a href="/#contact" class="nav-link"><i class="bx bx-server"></i>
                                 <span>Kontakt</span></a></li>
                         <li><a href="{{ path('logout') }}" class="nav-link"><i class="bx bx-envelope"></i>
                                 <span>Wyloguj</span></a></li>
@@ -150,53 +151,11 @@
                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bx bx-building-house"></i>
-                            <span>Rezerwacje - klienci</span>
+                            <span>Wiadomości</span>
                         </a>
                         <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <li><a href="{{ path('reservation_listing') }}" class="nav-link"><i
-                                            class="bx bx-book-content"></i>Wszystkie rezerwacje</a>
-                            </li>
-                            <li><a href="{{ path('reservation_status_listing') }}" class="nav-link"><i
-                                            class="bx bx-book-content"></i>Do akceptacji</a>
-                            </li>
-                            <li><a href="{{ path('reservation_accepted') }}" class="nav-link"><i
-                                            class="bx bx-book-content"></i>Zatwierdzone
-                                    rezerwacje</a></li>
-                            <li><a href="{{ path('reservation_rejected') }}" class="nav-link"><i
-                                            class="bx bx-book-content"></i>Odrzucone rezerwacje</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bx bx-building-house"></i>
-                            <span>Turnusy - zarządzanie</span>
-                        </a>
-                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <li><a href="{{ path('rehabilitation_stay_listing') }}" class="nav-link"><i
-                                            class="bx bx-book-content"></i>Lista turnusów</a>
-                            </li>
-                            <li><a href="{{ path('planned_stay_listing') }}" class="nav-link"><i
-                                            class="bx bx-book-content"></i>Planuj turnus</a></li>
-                            <li><a href="{{ path('treatment_plan_listing') }}" class="nav-link"><i
-                                            class="bx bx-book-content"></i>Planuj zabiegi</a></li>
-                            <li><a href="{{ path('treatment_listing') }}" class="nav-link"><i
-                                            class="bx bx-book-content"></i>Zabiegi</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bx bx-building-house"></i>
-                            <span>Profile leczenia</span>
-                        </a>
-                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <li><a href="{{ path('treatment_profile_listing') }}" class="nav-link"><i
-                                            class="bx bx-book-content"></i>Lista profilów leczenia</a>
-                            </li>
-                            <li><a href="{{ path('treatment_profile_create') }}" class="nav-link"><i
-                                            class="bx bx-book-content"></i>Dodaj nowy profil</a>
+                            <li><a href="{{ path('contact_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Wszystkie wiadomości</a>
                             </li>
                         </ul>
                     </div>
@@ -215,6 +174,97 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bx bx-building-house"></i>
+                            <span>Zabiegi</span>
+                        </a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <li><a href="{{ path('treatment_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Lista zabiegów</a>
+                            </li>
+                            <li><a href="{{ path('treatment_create') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Dodaj zabieg</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bx bx-building-house"></i>
+                            <span>Turnusy - zarządzanie</span>
+                        </a>
+
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a href="{{ path('rehabilitation_stay_create') }}" class="nav-link">
+                                    <i class="bx bx-book-content"></i>
+                                    Dodaj turnus
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('treatment_plan_listing') }}" class="nav-link">
+                                    <i class="bx bx-book-content"></i>
+                                    Planuj zabiegi
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('rehabilitation_stay_listing') }}" class="nav-link">
+                                    <i class="bx bx-book-content"></i>
+                                    Lista turnusów
+                                </a>
+                            </li>
+                            {% if is_granted('ROLE_TREATMENT_PLANNER') %}
+                                <li><a href="{{ path('planned_stay_listing') }}" class="nav-link"><i
+                                                class="bx bx-book-content"></i>Zaplanowane turnusy</a>
+                                </li>
+                                <li><a href="{{ path('planned_stay_create') }}" class="nav-link"><i
+                                                class="bx bx-book-content"></i>Planowanie turnusu</a>
+                                </li>
+                            {% endif %}
+
+
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bx bx-building-house"></i>
+                            <span>Rezerwacje - klienci</span>
+                        </a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <li><a href="{{ path('reservation_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Wszystkie rezerwacje</a>
+                            </li>
+                            <li><a href="{{ path('reservation_status_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Do akceptacji</a>
+                            </li>
+                            <li><a href="{{ path('reservation_accepted') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Zatwierdzone
+                                    rezerwacje</a></li>
+                            <li><a href="{{ path('reservation_rejected') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Odrzucone rezerwacje</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bx bx-building-house"></i>
+                            <span>Profile leczenia</span>
+                        </a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <li><a href="{{ path('treatment_profile_listing') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Lista profilów leczenia</a>
+                            </li>
+                            <li><a href="{{ path('treatment_profile_create') }}" class="nav-link"><i
+                                            class="bx bx-book-content"></i>Dodaj nowy profil</a>
+                            </li>
+                        </ul>
+                    </div>
+
 
 
                 </ul>

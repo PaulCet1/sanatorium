@@ -17,10 +17,11 @@ class UserEditType extends AbstractType
             ->add('fullname')
             ->add('roles', ChoiceType::class, [
                 'choices' => [
-                    'User' => 'ROLE_USER',
-                    'Admin' => 'ROLE_ADMIN',
-                    'Instructor' => 'ROLE_INSTRUCTOR',
-                    'Client' => 'ROLE_CLIENT',
+                    'Użytkownik' => 'ROLE_USER',
+                    'Administrator' => 'ROLE_ADMIN',
+                    'Instruktor' => 'ROLE_INSTRUCTOR',
+                    'Klient' => 'ROLE_CLIENT',
+                    'Planista zabiegów' => 'ROLE_TREATMENT_PLANNER',
                 ],
                 'expanded' => true,
                 'multiple' => true,

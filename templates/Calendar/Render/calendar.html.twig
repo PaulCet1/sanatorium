@@ -1,3 +1,40 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    .card-header {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;
+    }
+    .table th,
+    .table td {
+        width: 33%;
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+        text-align: left; /* Dodane */
+    }
+</style>
+
 <div class="row">
     {% for day in 1..7 %}
         {% set day_has_treatments = false %}
@@ -11,7 +48,7 @@
             <div class="col-md-3 col-lg-8 mb-3">
                 <div class="card">
                     <div class="card-header">
-                        <center><b>Numer dnia:  {{ day }}</b></center>
+                        Numer dnia:  {{ day }}
                     </div>
                     <div class="card-body">
                         <table class="table table-striped">
@@ -41,6 +78,10 @@
                     </div>
                 </div>
             </div>
+
         {% endif %}
     {% endfor %}
+    <div style="position: fixed; bottom: 0; width: 100%; border-top: 1px solid #000; padding: 10px; font-size: 0.8em; text-align: center;">
+        Dokument wygenerowany automatycznie przez system Elda
+    </div>
 </div>

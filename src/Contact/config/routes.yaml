@@ -1,0 +1,14 @@
+contact_listing:
+  path: /contact/listing
+  controller: App\Contact\Controller\Listing
+  methods: ['GET']
+
+contact_show:
+  path: /contact/show/{id}
+  controller: App\Contact\Controller\Show
+  methods: ['GET']
+
+contact_delete:
+  path: /contact/delete/{id}
+  controller: App\Contact\Controller\Delete
+  methods: ['GET', 'DELETE']

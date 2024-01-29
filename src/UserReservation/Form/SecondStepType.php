@@ -51,7 +51,7 @@ class SecondStepType extends AbstractType
                 'label' => 'Dostępne turnusy',
             ])
             ->add('numOfPeople', TextType::class, [
-                'label' => 'Liczba uczestników (w tym dzieci)',
+                'label' => 'Liczba uczestników',
             ])
             ->add('room', EntityType::class, [
                 'class' => Room::class,
@@ -62,7 +62,7 @@ class SecondStepType extends AbstractType
                 'required' => true,
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Zapisz',
+                'label' => 'Utwórz rezerwację',
                 'attr' => ['class' => 'btn btn-primary'],
             ]);
     }

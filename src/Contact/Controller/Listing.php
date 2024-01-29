@@ -1,8 +1,8 @@
 <?php
 
-namespace App\RehabilitationStay\Controller;
+namespace App\Contact\Controller;
 
-use App\RehabilitationStay\Repository\RehabilitationStayRepository;
+use App\Contact\Repository\ContactRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,22 +11,26 @@ use Twig\Environment;
 class Listing
 {
     public function __construct(
-        private readonly Environment $twig,
-        private readonly RehabilitationStayRepository $repository,
-        private readonly PaginatorInterface $paginator,
-    ) {
+        private Environment        $twig,
+        private PaginatorInterface $paginator,
+        private ContactRepository $contactRepository,
+
+    )
+    {
     }
 
     public function __invoke(Request $request): Response
     {
-        $rehabilitationStays = $this->repository->findAll();
+        $contacts = $this->contactRepository->findAll();
+
         $pagination = $this->paginator->paginate(
-            $rehabilitationStays,
+            $contacts,
             $request->query->getInt('page', 1),
             10
         );
-        return new Response($this->twig->render('RehabilitationStay/listing.twig', [
+        return new Response($this->twig->render('Contact/listing.twig', [
             'pagination' => $pagination,
         ]));
     }
+
 }

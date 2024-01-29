@@ -2,10 +2,16 @@
 {% block body %}
 
     <main id="main">
+        <div class="container">
         <section id="about" class="about">
-            <div class="container">
+            <div class="section-title">
+                <h2>{{ therapy_room.name }}</h2>
+                <p>Informacje o sali zabiegowej </p>
+            </div>
 
-                <table class="table table-bordered table-dark text-white">
+
+
+            <table class="table table-bordered transparent-table">
                     <tbody>
                     <tr>
                         <td width="40%"><strong>Nazwa sali:</strong></td>
@@ -21,8 +27,7 @@
                     </tr>
                     </tbody>
                 </table>
-
-            </div>
         </section>
+        </div>
     </main>
 {% endblock %}

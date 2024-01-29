@@ -404,40 +404,39 @@
                     </div>
 
                     <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-                        <form action="" method="post" role="form" class="php-email-form">
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="name">Imię i nazwisko</label>
-                                    <input type="text" name="name" class="form-control" id="name" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="name">Adres email</label>
-                                    <input type="email" class="form-control" name="email" id="email" required>
-                                </div>
+                        {{ form_start(form, {'attr': {'class': 'php-email-form', 'role': 'form'}}) }}                        <div class="row">
+                            <div class="form-group col-md-6">
+                                {{ form_label(form.name) }}
+                                {{ form_widget(form.name) }}
                             </div>
-                            <div class="form-group">
-                                <label for="name">Temat</label>
-                                <input type="text" class="form-control" name="subject" id="subject" required>
+                            <div class="form-group col-md-6">
+                                {{ form_label(form.contact_email) }}
+                                {{ form_widget(form.contact_email) }}
                             </div>
-                            <div class="form-group">
-                                <label for="name">Wiadomość</label>
-                                <textarea class="form-control" name="message" rows="10" required></textarea>
-                            </div>
-                            <div class="my-3">
-                                <div class="loading">Ładowanie</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Wiadomość została wysłana! Dziękujemy za zaufanie!</div>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit">Wyślij wiadomość</button>
-                            </div>
-                        </form>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.topic) }}
+                            {{ form_widget(form.topic) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.message) }}
+                            {{ form_widget(form.message) }}
+                        </div>
+                        <div class="my-3">
+                            <div class="loading">Ładowanie</div>
+                            <div class="sent-message">Wiadomość została wysłana! Dziękujemy za zaufanie!</div>
+                        </div>
+                        <div class="text-center">
+                            {{ form_widget(form.save) }}
+                        </div>
+                        {% include "Core/display_alerts.twig" %}
+                        {{ form_end(form) }}
                     </div>
 
                 </div>
 
             </div>
-        </section><!-- End Contact Section -->
+        </section>
 
 
     </main>

@@ -50,7 +50,7 @@
                                     {{ reservation.getPlannedStay().getRehabilitationStay().getName() }}
                                 </a>
                             </th>
-                            <td>{{ reservation.getClient().getFullname() }}</td>
+                            <td><a href="{{ path('user_show_id', {'id': reservation.getClient().getId()}) }}">{{ reservation.getClient().getFullname() }}</a></td>
                             <td>{{ reservation.getRoom().getRoomNumber() }}</td>
                             <td>{{ reservation.getReferralNumber() }}</td>
                             <td>{% if reservation.getStatus() == 'waiting' %}
@@ -68,9 +68,7 @@
                             </td>
                         </tr>
                     {% endfor %}
-
                     </tbody>
-
                 </table>
                 {% include 'Structure/Table/pagination.html.twig' with {'pagination': pagination} %}
             </section>

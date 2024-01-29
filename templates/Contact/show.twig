@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main id="main">
+        <div class="container">
+            <section id="about" class="about">
+                <div class="section-title">
+                    <h2>Wiadomość od {{ contact.getName() }}</h2>
+                    <p>Nie pozostawiaj pytań klientów bez odpowiedzi!</p>
+                </div>
+
+                <table class="table table-bordered transparent-table">
+                    <tbody>
+                    <tr>
+                        <td>Przesłano</td>
+                        <td><strong>{{ contact.getCreated()|date('d-m-Y H:i:s') }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Nazwa użytkownika:</td>
+                        <td><strong>{{ contact.getName() }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Email kontaktowy:</td>
+                        <td><strong>{{ contact.getContactEmail() }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Temat:</td>
+                        <td><strong>{{ contact.getTopic() }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Treść wiadomości:</td>
+                        <td><strong>{{ contact.getMessage() }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="{{ path('contact_listing') }}" class="btn btn-info mr-2 flex-grow-1">Powrót do listy</a>
+                            <a href="{{ path('contact_delete', {'id': contact.id}) }}" class="btn btn-danger flex-grow-1" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                            <a href="mailto:{{ contact.getContactEmail() }}?subject=SANATORIUM Odpowiedź na: {{ contact.getTopic() }}" class="btn btn-success mr-2 flex-grow-1">Odpowiedz</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </section>
+        </div>
+    </main>
+{% endblock %}

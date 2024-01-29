@@ -1,40 +1,45 @@
 {% extends "base.html.twig" %}
 {% block body %}
-
     <main id="main">
-        <section id="about" class="about">
-            <a href="{{ path('rehabilitation_stay_create') }}" class="btn btn-primary mb-3">Tworzenie turnusu</a>
-            <table class="table table-success transparent-table">
-                <thead>
-                <tr>
-                    <th scope="col">Nazwa</th>
-                    <th>Profil leczenia</th>
-                    <th>Czas trwania turnusu</th>
-                    <th></th>
-
-
-                </tr>
-                </thead>
-                <tbody>
-                {% for rehabilitationStay in rehabilitationStays %}
+        <div class="container">
+            <section id="about" class="about">
+                <div class="section-title">
+                    <h2>Lista dostępnych turnusów</h2>
+                    <p>Przeglądaj listę turnusów i zarządzaj nimi</p>
+                </div>
+                <table class="table table-bordered transparent-table">
+                    <thead>
                     <tr>
-                        <td>
-                        <a href="{{ path('rehabilitation_stay_show', {'id': rehabilitationStay.id}) }}">{{ rehabilitationStay.name }}</a>
-                        </td>
-                        <td>{{ rehabilitationStay.getTreatmentProfile().getName() }}</td>
-                        <td>{{ rehabilitationStay.getDuration() }}</td>
-                        <td>
-                            <a class="btn btn-light" href="{{ path('treatment_plan_create', {'id': rehabilitationStay.id}) }}">Planowanie zabiegów</a>
-                            <a class="btn btn-light" href="{{ path('calendar_show', {'id': rehabilitationStay.getId()}) }}">Plan zajęć</a>
-                            <a class="btn btn-light" href="{{ path('calendar_render', {'id': rehabilitationStay.getId()}) }}" target="_blank">Pobierz plan</a>
-                        </td>
-
+                        <th scope="col">Nazwa</th>
+                        <th>Profil leczenia</th>
+                        <th>Czas trwania turnusu</th>
+                        <th></th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-        </section>
-
+                    </thead>
+                    <tbody>
+                    {% for paginate in pagination %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('rehabilitation_stay_show', {'id': paginate.id}) }}">{{ paginate.name }}</a>
+                            </td>
+                            <td>{{ paginate.getTreatmentProfile().getName() }}</td>
+                            <td>{{ paginate.getDuration() }}</td>
+                            <td>
+                                <a class="btn btn-light"
+                                   href="{{ path('treatment_plan_create', {'id': paginate.id}) }}">Planowanie
+                                    zabiegów</a>
+                                <a class="btn btn-light"
+                                   href="{{ path('calendar_show', {'id': paginate.getId()}) }}">Plan zajęć</a>
+                                <a class="btn btn-light"
+                                   href="{{ path('calendar_render', {'id': paginate.getId()}) }}"
+                                   target="_blank">Pobierz plan</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% include 'Structure/Table/pagination.html.twig' with {'pagination': pagination} %}
+            </section>
+        </div>
     </main>
 {% endblock %}

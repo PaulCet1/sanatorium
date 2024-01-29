@@ -76,8 +76,12 @@ services:
         resource: '../src/SanatorySurvey/Controller'
         tags: [ 'controller.service_arguments' ]
 
+    App\Contact\Controller\:
+        resource: '../src/Contact/Controller'
+        tags: [ 'controller.service_arguments' ]
 
-#    App\User\Repository\UserRepository:
+
+    #    App\User\Repository\UserRepository:
 #        tags: ['doctrine.repository_service']
 
     App\EventListener\AccessDeniedListener:

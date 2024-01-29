@@ -23,7 +23,7 @@ class Create extends AbstractController
     }
 
     /**
-     * @Security("is_granted('ROLE_ADMIN')", message="Brak uprawnień")
+     * @Security("is_granted('ROLE_ADMIN')", message="Acces denied")
      */
     public function __invoke(Request $request): Response
     {

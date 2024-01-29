@@ -3,14 +3,15 @@
 namespace App\TreatmentPlan\Controller;
 
 use App\TreatmentPlan\Repository\TreatmentPlanRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
 class Listing
 {
     public function __construct(
-        private Environment $twig,
-        private TreatmentPlanRepository $treatmentPlanRepository,
+        private readonly Environment $twig,
+        private readonly TreatmentPlanRepository $treatmentPlanRepository,
     ) {
     }
 

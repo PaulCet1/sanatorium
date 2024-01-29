@@ -39,6 +39,8 @@ security:
 #         - { path: ^/logowanie$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 #         - { path: ^/rejestracja$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 #         - { path: ^/welcome$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    role_hierarchy:
+        ROLE_ADMIN: ['ROLE_USER', 'ROLE_TREATMENT_PLANNER', 'ROLE_INSTRUCTOR', 'ROLE_CLIENT']
 
 when@test:
     security:

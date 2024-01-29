@@ -22,7 +22,7 @@
 
     <div class="form-container">
         <h2>Rejestracja</h2>
-        <p>Zarejestruj się w naszym systemie!</p>
+        <p>Wprowadź dane aby założyć konto!</p>
 
         {% include 'Core/display_alerts.twig' %}
         <form method="POST">
@@ -46,7 +46,7 @@
                 <label for="repeatPassword">Powtórz hasło</label>
                 <input type="password" name="repeatPassword" class="form-control" />
             </div>
-            <div class="form-group">
+            <div class="text-center mt-4">
                 <input type="submit" value="Zarejestruj" class="btn btn-primary" />
             </div>
         </form>

@@ -22,6 +22,7 @@ class AuthController extends AbstractController
             } catch (\Exception $ex) {
                 $this->addFlash('danger', $ex->getMessage());
             }
+            return $this->redirectToRoute('login');
         }
 
         return $this->render('User/Auth/registration.twig');

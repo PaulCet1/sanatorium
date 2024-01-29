@@ -2,14 +2,19 @@
 
 namespace App\Core\Controller;
 
+use App\Contact\Entity\Contact;
+use App\Contact\Form\ContactType;
 use App\SanatorySurvey\Repository\SanatorySurveyRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends AbstractController
 {
     public function __construct(
         private SanatorySurveyRepository $sanatorySurveyRepository,
+        private ManagerRegistry $doctrine,
     ) {
     }
 
@@ -44,9 +49,24 @@ class HomeController extends AbstractController
         ]);
     }
 
-    public function welcome(): Response
+    public function welcome(Request $request): Response
     {
-        return $this->render('Home/welcome.twig');
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->doctrine->getManager();
+            $entityManager->persist($contact);
+            $entityManager->flush();
+            $this->addFlash('success', 'Wiadomość została wysłana! Dziękujemy za zaufanie!');
+
+            return $this->redirectToRoute('welcome');
+        }
+
+        return $this->render('Home/welcome.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     public function accessdenied(): Response

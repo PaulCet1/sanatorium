@@ -40,6 +40,9 @@ treatment_profile:
 sanatory_survey:
     resource: '../src/SanatorySurvey/config/routes.yaml'
 
+contact:
+    resource: '../src/Contact/config/routes.yaml'
+
 
 controllers:
     resource:
@@ -67,7 +70,7 @@ system_welcome:
 welcome:
     path: /
     controller: App\Core\Controller\HomeController::welcome
-    methods: ['GET']
+    methods: ['GET', 'POST']
     
 access_denied:
     path: /access_denied

@@ -1,46 +1,50 @@
 {% extends "base.html.twig" %}
 {% block body %}
-
     <main id="main">
-        <section id="about" class="about">
-            <a href="{{ path('treatment_create') }}" class="btn btn-primary mb-3">Dodaj zabieg</a>
-            <table class="table table-dark transparent-table">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nazwa</th>
-                    <th scope="col">Cena</th>
-                    <th scope="col">Gabinet</th>
-                    <th scope="col">Prowadzący</th>
-                    <th scope="col">Czas trwania zabiegu</th>
-                    <th scope="col">Limit miejsc</th>
-                    <th scope="col"></th>
-
-
-                </tr>
-                </thead>
-                <tbody>
-                {% for treatment in treatments %}
+        <div class="container">
+            <section id="about" class="about">
+                <div class="section-title">
+                    <h2>Lista zabiegów</h2>
+                    <p>Przeglądaj listę zabiegów oraz zarządzaj nimi</p>
+                </div>
+                <table class="table table-bordered transparent-table">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ treatment.id }}</th>
-                        <td>{{ treatment.name }} </td>
-                        <td>{{ treatment.price }}</td>
-                        <td>
-                            <a href="{{ path('therapy-room-show', {'id': treatment.getTherapyRoom().getId() }) }}" class="no-link-styling">
-                            {{ treatment.getTherapyRoom() is not null ? treatment.getTherapyRoom().getName() : 'Brak informacji' }}
-                            </a>
-                        </td>
-                        <td>{{ treatment.getLeadingPerson().getFullName() }}</td>
-                        <td>{{ treatment.duration }}</td>
-                        <td>{{ treatment.getNumberOfPatients() }}</td>
-                        <td><a href="{{ path('treatment_show', {'id': treatment.id}) }}" class="btn btn-info">Pokaż</a>
-                        <a href="{{ path('treatment_delete', {'id': treatment.id}) }}" class="btn btn-danger">Usuń</a></td>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nazwa</th>
+                        <th scope="col">Cena</th>
+                        <th scope="col">Gabinet</th>
+                        <th scope="col">Prowadzący</th>
+                        <th scope="col">Czas trwania zabiegu</th>
+                        <th scope="col">Limit miejsc</th>
+                        <th scope="col"></th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-        </section>
-
+                    </thead>
+                    <tbody>
+                    {% for paginate in pagination %}
+                        <tr>
+                            <th scope="row">{{ paginate.id }}</th>
+                            <td>{{ paginate.name }} </td>
+                            <td>{{ paginate.price }}</td>
+                            <td>
+                                <a href="{{ path('therapy-room-show', {'id': paginate.getTherapyRoom().getId() }) }}"
+                                   class="no-link-styling">
+                                    {{ paginate.getTherapyRoom() is not null ? paginate.getTherapyRoom().getName() : 'Brak informacji' }}
+                                </a>
+                            </td>
+                            <td>{{ paginate.getLeadingPerson().getFullName() }}</td>
+                            <td>{{ paginate.duration }}</td>
+                            <td>{{ paginate.getNumberOfPatients() }}</td>
+                            <td>
+                                <a href="{{ path('treatment_show', {'id': paginate.id}) }}"
+                                   class="btn btn-info">Pokaż</a>
+                                <a href="{{ path('treatment_delete', {'id': paginate.id}) }}" class="btn btn-danger">Usuń</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </div>
     </main>
 {% endblock %}

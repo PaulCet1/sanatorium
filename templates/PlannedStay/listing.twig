@@ -1,41 +1,47 @@
 {% extends "base.html.twig" %}
 {% block body %}
     <main id="main">
-    <section id="about" class="about">
-        <a href="{{ path('planned_stay_create') }}" class="btn btn-primary mb-3">Planowanie turnusu</a>
-        <table class="table table-success transparent-table">
-            <thead>
-            <tr>
-                <th scope="col">Nazwa turnusu</th>
-                <th>Profil leczenia</th>
-                <th>Data rozpoczęcia turnusu</th>
-                <th>Data zakończenia turnusu</th>
-                <th>Czas trwania turnusu</th>
-                <th></th>
-
-
-            </tr>
-            </thead>
-            <tbody>
-            {% for planned_stay in planned_stays %}
-                <tr>
-                    <td>
-                        <a href="{{ path('rehabilitation_stay_show', {'id': planned_stay.getRehabilitationStay().getId()}) }}">
-                            {{ planned_stay.getRehabilitationStay().getName() }}
-                        </a>
-                    </td>
-                    <td>{{ planned_stay.getRehabilitationStay().getTreatmentProfile().getName() }}</td>
-                    <td>{{ planned_stay.getStartDate()|date('d-m-Y') }}</td>
-                    <td>{{ planned_stay.getEndDate()|date('d-m-Y') }}</td>
-                    <td>{{ planned_stay.getRehabilitationStay().getDuration() }} dni</td>
-                    <td>
-                        <a class="btn btn-success" href="{{ path('planned_stay_show', {'id': planned_stay.getId()}) }}">Podgląd</a>
-                        <a class="btn btn-light" href="{{ path('calendar_usershow', {'id': planned_stay.getId()}) }}">Plan zajęć</a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </section>
+        <div class="container">
+            <section id="about" class="about">
+                <div class="section-title">
+                    <h2>Lista zaplanowanych turnusów</h2>
+                    <p>Przeglądaj listę zaplanowanych turnusów i zarządzaj nimi</p>
+                </div>
+                <table class="table table-bordered transparent-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nazwa turnusu</th>
+                        <th>Profil leczenia</th>
+                        <th>Data rozpoczęcia turnusu</th>
+                        <th>Data zakończenia turnusu</th>
+                        <th>Czas trwania turnusu</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for planned_stay in planned_stays %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('rehabilitation_stay_show', {'id': planned_stay.getRehabilitationStay().getId()}) }}">
+                                    {{ planned_stay.getRehabilitationStay().getName() }}
+                                </a>
+                            </td>
+                            <td>{{ planned_stay.getRehabilitationStay().getTreatmentProfile().getName() }}</td>
+                            <td>{{ planned_stay.getStartDate()|date('d-m-Y') }}</td>
+                            <td>{{ planned_stay.getEndDate()|date('d-m-Y') }}</td>
+                            <td>{{ planned_stay.getRehabilitationStay().getDuration() }} dni</td>
+                            <td>
+                                <a class="btn btn-success"
+                                   href="{{ path('planned_stay_show', {'id': planned_stay.getId()}) }}">Podgląd</a>
+                                <a class="btn btn-light"
+                                   href="{{ path('calendar_usershow', {'id': planned_stay.getId()}) }}">Plan zajęć</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% include 'Structure/Table/pagination.html.twig' with {'pagination': planned_stays} %}
+            </section>
+        </div>
     </main>
 {% endblock %}
