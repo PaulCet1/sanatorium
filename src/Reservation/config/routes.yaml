@@ -13,6 +13,10 @@ reservation_edit:
   controller: App\Reservation\Controller\Edit
   methods: ['GET', 'POST']
 
+reservation_delete:
+  path: /reservation/delete/{id}
+  controller: App\Reservation\Controller\Delete
+  methods: ['GET', 'POST', 'DELETE']
 
 reservation_status_listing:
   path: /reservation/status/listing

@@ -64,7 +64,7 @@
                                 {% endif %}</td>
                             <td class="align-right">
                                 <a href="{{ path('reservation_edit', {'id': reservation.getId()}) }}" class="btn btn-info">Edytuj</a>
-                                <a href="" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
+                                <a href="{{ path('reservation_delete', {'id': reservation.getId()}) }}" class="btn btn-danger" onclick="return confirm('Czy jesteś pewny?')">Usuń</a>
                             </td>
                         </tr>
                     {% endfor %}

@@ -45,9 +45,9 @@
                         {% for data in data_treatments %}
                             <tr>
                                 <th scope="row">{{ data.getTreatment().getName() }} </th>
-                                <td>{{ data.dayNumber }}</td>
-                                <td>{{ data.getStartTime()|date('H:i:s') }}</td>
-                                <td>{{ data.getEndTime()|date('H:i:s') }}</td>
+                                <td><center>{{ data.dayNumber }}</center></td>
+                                <td><center>{{ data.getStartTime()|date('H:i') }}</center></td>
+                                <td><center>{{ data.getEndTime()|date('H:i') }}</center></td>
                             </tr>
                         {% endfor %}
                         </tbody>
